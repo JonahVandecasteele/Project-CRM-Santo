@@ -181,3 +181,7 @@ C:\Users\Jim\Documents\GitHub\Project-CRM-Santo\WebApplication1\WebApplication1\
 C:\Users\Jim\Documents\GitHub\Project-CRM-Santo\WebApplication1\WebApplication1\obj\Debug\WebApplication1.dll
 C:\Users\Jim\Documents\GitHub\Project-CRM-Santo\WebApplication1\WebApplication1\obj\Debug\WebApplication1.pdb
 C:\Users\Jim\Documents\GitHub\Project-CRM-Santo\WebApplication1\WebApplication1\obj\Debug\WebApplication1.Migrations.dbtest.resources
+C:\Users\Jim\Documents\GitHub\Project-CRM-Santo\WebApplication1\WebApplication1\obj\Debug\WebApplication1.Migrations.opvullendata.resources
+C:\Users\Jim\Documents\GitHub\Project-CRM-Santo\WebApplication1\WebApplication1\obj\Debug\WebApplication1.Migrations.opvullendata2.resources
+C:\Users\Jim\Documents\GitHub\Project-CRM-Santo\WebApplication1\WebApplication1\obj\Debug\WebApplication1.Migrations.opvullendata3.resources
+C:\Users\Jim\Documents\GitHub\Project-CRM-Santo\WebApplication1\WebApplication1\obj\Debug\WebApplication1.Migrations.dataopvullen4.resources

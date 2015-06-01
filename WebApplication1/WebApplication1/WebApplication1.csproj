@@ -192,6 +192,22 @@
     <Compile Include="Migrations\201506010825502_dbtest.Designer.cs">
       <DependentUpon>201506010825502_dbtest.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201506010928550_opvullendata.cs" />
+    <Compile Include="Migrations\201506010928550_opvullendata.Designer.cs">
+      <DependentUpon>201506010928550_opvullendata.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201506010938252_opvullendata2.cs" />
+    <Compile Include="Migrations\201506010938252_opvullendata2.Designer.cs">
+      <DependentUpon>201506010938252_opvullendata2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201506010939400_opvullendata3.cs" />
+    <Compile Include="Migrations\201506010939400_opvullendata3.Designer.cs">
+      <DependentUpon>201506010939400_opvullendata3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201506010943409_dataopvullen4.cs" />
+    <Compile Include="Migrations\201506010943409_dataopvullen4.Designer.cs">
+      <DependentUpon>201506010943409_dataopvullen4.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Adres.cs" />
@@ -298,6 +314,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201506010825502_dbtest.resx">
       <DependentUpon>201506010825502_dbtest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506010928550_opvullendata.resx">
+      <DependentUpon>201506010928550_opvullendata.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506010938252_opvullendata2.resx">
+      <DependentUpon>201506010938252_opvullendata2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506010939400_opvullendata3.resx">
+      <DependentUpon>201506010939400_opvullendata3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506010943409_dataopvullen4.resx">
+      <DependentUpon>201506010943409_dataopvullen4.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
