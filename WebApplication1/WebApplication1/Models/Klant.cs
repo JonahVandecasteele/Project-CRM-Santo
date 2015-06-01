@@ -11,6 +11,7 @@ namespace WebApplication1.Models
         public string Naam { get; set; }
         public string Voornaam { get; set; }
         public Adres Adres { get; set; }
+        public string Foto { get; set; }
         public string Telefoon { get; set; }
         public string Email { get; set; }
         public Geslacht Geslacht { get; set; }
