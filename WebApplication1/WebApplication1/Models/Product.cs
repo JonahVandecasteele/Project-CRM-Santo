@@ -11,6 +11,7 @@ namespace WebApplication1.Models
         public string Naam { get; set; }
         public Decimal Prijs { get; set; }
         public int Inhoud { get; set; }
-        public String Foto { get; set; }
+        public string Foto { get; set; }
+        public string Barcode { get; set; }
     }
 }
