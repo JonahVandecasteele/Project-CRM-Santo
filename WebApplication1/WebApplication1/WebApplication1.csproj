@@ -208,6 +208,10 @@
     <Compile Include="Migrations\201506010943409_dataopvullen4.Designer.cs">
       <DependentUpon>201506010943409_dataopvullen4.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201506011112048_dataopvullen5.cs" />
+    <Compile Include="Migrations\201506011112048_dataopvullen5.Designer.cs">
+      <DependentUpon>201506011112048_dataopvullen5.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Adres.cs" />
@@ -326,6 +330,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201506010943409_dataopvullen4.resx">
       <DependentUpon>201506010943409_dataopvullen4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506011112048_dataopvullen5.resx">
+      <DependentUpon>201506011112048_dataopvullen5.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

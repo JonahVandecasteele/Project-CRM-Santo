@@ -185,3 +185,4 @@ C:\Users\Jim\Documents\GitHub\Project-CRM-Santo\WebApplication1\WebApplication1\
 C:\Users\Jim\Documents\GitHub\Project-CRM-Santo\WebApplication1\WebApplication1\obj\Debug\WebApplication1.Migrations.opvullendata2.resources
 C:\Users\Jim\Documents\GitHub\Project-CRM-Santo\WebApplication1\WebApplication1\obj\Debug\WebApplication1.Migrations.opvullendata3.resources
 C:\Users\Jim\Documents\GitHub\Project-CRM-Santo\WebApplication1\WebApplication1\obj\Debug\WebApplication1.Migrations.dataopvullen4.resources
+C:\Users\Jim\Documents\GitHub\Project-CRM-Santo\WebApplication1\WebApplication1\obj\Debug\WebApplication1.Migrations.dataopvullen5.resources
