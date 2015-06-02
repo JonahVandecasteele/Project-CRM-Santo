@@ -85,11 +85,10 @@
     <Compile Include="Repository\MutualiteitenRepository.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Services\" />
+    <Compile Include="Services\IKlantService.cs" />
     <Compile Include="Services\KlantService.cs" />
     <Compile Include="StorageHelper.cs" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\CRMSanto.Models\CRMSanto.Models.csproj">
       <Project>{4e71dfd7-6f50-4cb6-b39a-c4ed702b2dbd}</Project>

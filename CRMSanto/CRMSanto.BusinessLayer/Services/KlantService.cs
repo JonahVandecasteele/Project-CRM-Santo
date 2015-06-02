@@ -5,11 +5,17 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CRMSanto.BusinessLayer.Repository;
 
 namespace CRMSanto.BusinessLayer.Services
 {
-    class KlantService
+    public class KlantService : IKlantService
     {
+        private IGenericRepository<Mutualiteit> repoMutualiteit = null;
+        public KlantService(IGenericRepository<Mutualiteit> repoMutualiteit)
+        {
+            this.repoMutualiteit = repoMutualiteit;
+        }
         public List<Klant> GetKlanten()
         {
             return new List<Klant>();
@@ -24,8 +30,12 @@ namespace CRMSanto.BusinessLayer.Services
         }
         public Klant AddKlant(Klant klant,Stream Image)
         {
-            StorageHelper.AddImage("WebShop.Properties.Settings.StorageConnectionString", "images", Image, System.Guid.NewGuid().ToString());
+            StorageHelper.AddImage("StorageConnectionString", "images", Image, System.Guid.NewGuid().ToString());
             return klant;
+        }
+        public List<Mutualiteit> GetMutualiteiten()
+        {
+            return repoMutualiteit.All().ToList<Mutualiteit>();
         }
     }
 }
