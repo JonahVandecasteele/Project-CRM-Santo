@@ -1,17 +1,17 @@
 namespace CRMSanto.Migrations
 {
+    using CRMSanto.Models;
     using System;
+    using System.Collections.Generic;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
-    using System.Linq;
-    using CRMSanto.Models;
-using System.Collections.Generic;
     using System.IO;
+    using System.Linq;
 
     internal sealed class Configuration : DbMigrationsConfiguration<CRMSanto.Models.ApplicationDbContext>
     {
         private string pathGemeentes = AppDomain.CurrentDomain.BaseDirectory + "..\\Data\\zipcodes.txt";
-        //List<Gemeente> gemeentes = new List<Gemeente>();
+        List<Gemeente> gemeentes = new List<Gemeente>();
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
@@ -19,6 +19,7 @@ using System.Collections.Generic;
 
         protected override void Seed(CRMSanto.Models.ApplicationDbContext context)
         {
+            seedGemeentes(context);
             //GESLACHT
             context.Geslacht.AddOrUpdate<Geslacht>(g => g.Naam, new Geslacht() { Naam = "M" });
             context.Geslacht.AddOrUpdate<Geslacht>(g => g.Naam, new Geslacht() { Naam = "V" });
@@ -76,19 +77,30 @@ using System.Collections.Generic;
             context.Karaktertrek.AddOrUpdate<Karaktertrek>(k => k.Naam, new Karaktertrek() { Naam = "Volhardend" });
             context.Karaktertrek.AddOrUpdate<Karaktertrek>(k => k.Naam, new Karaktertrek() { Naam = "Zorgzaam" });
             context.Karaktertrek.AddOrUpdate<Karaktertrek>(k => k.Naam, new Karaktertrek() { Naam = "Zuinig" });
-
-            //Klanten toevoegen
-            //context.Adres.AddOrUpdate<Adres>(a => a.Straat, new Adres() { Straat = "Jan de Beerstraat", Nummer = "5", Postcode = "8760", Gemeente = "Meulebeke" });
-            //context.Klant.AddOrUpdate<Klant>(k => k.Naam, new Klant() { Naam = "Vandecasteele", Voornaam = "Jonah", Adres = 1, Email = "jonah.vandecasteele@student.howest.be", Geslacht = 1, Telefoon = "0470421227" });
-
         }
-
         public void seedGemeentes(ApplicationDbContext context)
         {
-            using(StreamReader sr = new StreamReader(pathGemeentes))
+            using (StreamReader sr = new StreamReader(pathGemeentes))
             {
+                string line = sr.ReadLine();
+                while (line != null)
+                {
+                    Gemeente g = new Gemeente();
+                    g.Postcode = Convert.ToString(line.Split(',')[0]);
+                    g.Plaatsnaam = Convert.ToString(line.Split(',')[1]);
+                    g.Provincie = Convert.ToString(line.Split(',')[2]);
 
+                    gemeentes.Add(g);
+
+                    line = sr.ReadLine();
+                }
+                sr.Close();
             }
+            foreach(Gemeente g in gemeentes)
+            {
+                context.Gemeente.AddOrUpdate(g);
+            }
+            context.SaveChanges();
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CRMSanto.Models
 {
-    class Gemeente
+    public class Gemeente
     {
         public int ID { get; set; }
         public string Postcode { get; set; }
