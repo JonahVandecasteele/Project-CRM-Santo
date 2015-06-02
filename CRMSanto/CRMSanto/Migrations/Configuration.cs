@@ -99,8 +99,8 @@ namespace CRMSanto.Migrations
 
             public void seedProducten(ApplicationDbContext context)
             {
-                context.Product.AddOrUpdate<Product>(p => p.Naam, new Product() { Naam = "Buikzalfje", Prijs = 100, Inhoud = 200, Foto = "http://www.zwitsal.nl/Images/1380/1380-366083-zwitsal%20mama%20buikbalsem.png", Barcode = "12548456" });
-                context.Product.AddOrUpdate<Product>(p => p.Naam, new Product() { Naam = "Uierzalfje", Prijs = 3000, Inhoud = 10, Foto = "http://www.medigros.nl/media/catalog/product/u/i/uierzalf_700_gr.jpg", Barcode = "65959595" });
+                context.Product.AddOrUpdate<Product>(p => p.Naam, new Product() { Naam = "Buikzalfje", AankoopPrijs = 100,VerkoopPrijs=200, Inhoud = 200, Foto = "http://www.zwitsal.nl/Images/1380/1380-366083-zwitsal%20mama%20buikbalsem.png", Barcode = "12548456",Omschrijving="Ideaal voor buikje groot of klein."});
+                context.Product.AddOrUpdate<Product>(p => p.Naam, new Product() { Naam = "Uierzalfje", AankoopPrijs = 3000,VerkoopPrijs=5000, Inhoud = 10, Foto = "http://www.medigros.nl/media/catalog/product/u/i/uierzalf_700_gr.jpg", Barcode = "65959595", Omschrijving="Heerlijke uierzalf"});
             }
 
             public void seedGemeentes(ApplicationDbContext context)

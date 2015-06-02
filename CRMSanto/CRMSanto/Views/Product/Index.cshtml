@@ -15,13 +15,19 @@
             @Html.DisplayNameFor(model => model.Naam)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Prijs)
+            @Html.DisplayNameFor(model => model.AankoopPrijs)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VerkoopPrijs)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Inhoud)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Foto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Omschrijving)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Barcode)
@@ -35,13 +41,19 @@
             @Html.DisplayFor(modelItem => item.Naam)
         </td>
         <td>
-            € @Html.DisplayFor(modelItem => item.Prijs)
+            @Html.DisplayFor(modelItem => item.AankoopPrijs)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Inhoud) ml
+            @Html.DisplayFor(modelItem => item.VerkoopPrijs)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Inhoud)
         </td>
         <td>
             <img src="@Html.DisplayFor(modelItem => item.Foto)"/>
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Omschrijving)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Barcode)

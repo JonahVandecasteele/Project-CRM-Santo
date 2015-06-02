@@ -271,6 +271,10 @@
     <Compile Include="Migrations\201506021312127_seedproducten.Designer.cs">
       <DependentUpon>201506021312127_seedproducten.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201506021341571_productenaanpassen2.cs" />
+    <Compile Include="Migrations\201506021341571_productenaanpassen2.Designer.cs">
+      <DependentUpon>201506021341571_productenaanpassen2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -336,9 +340,9 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Home\EIDTest.cshtml" />
     <Content Include="Views\Klant\Index.cshtml" />
+    <Content Include="Views\Klant\AllKlanten.cshtml" />
     <Content Include="Views\Product\Index.cshtml" />
     <Content Include="Views\Product\Edit.cshtml" />
-    <Content Include="Views\Klant\AllKlanten.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -369,6 +373,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201506021312127_seedproducten.resx">
       <DependentUpon>201506021312127_seedproducten.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506021341571_productenaanpassen2.resx">
+      <DependentUpon>201506021341571_productenaanpassen2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

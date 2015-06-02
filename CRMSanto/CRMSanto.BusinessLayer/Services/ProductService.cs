@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CRMSanto.BusinessLayer.Services
 {
-    public class ProductService : CRMSanto.BusinessLayer.Services.IProductService 
+    public class ProductService : CRMSanto.BusinessLayer.Services.IProductService
     {
         private IGenericRepository<Product> repoProduct = null;
         public ProductService(IGenericRepository<Product> repoProduct)
@@ -23,6 +23,12 @@ namespace CRMSanto.BusinessLayer.Services
         public Product GetProductByID(int? id)
         {
             return repoProduct.GetByID(id.Value);
+        }
+
+        public void EditProduct(Product p)
+        {
+            repoProduct.Update(p);
+            repoProduct.SaveChanges();
         }
     }
 }
