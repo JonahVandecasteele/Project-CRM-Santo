@@ -17,5 +17,7 @@ namespace CRMSanto.Models
         public virtual Geslacht Geslacht { get; set; }
         public DateTime Geboortedatum { get; set; }
         public virtual List<Karaktertrek> Karaktertrek { get; set; }
+        public virtual MedischeFiche MedischeFiche { get; set; }
+        public virtual PersoonlijkeFiche PersoonlijkeFiche { get; set; }
     }
 }

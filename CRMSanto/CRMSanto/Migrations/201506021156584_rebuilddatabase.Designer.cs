@@ -7,13 +7,13 @@ namespace CRMSanto.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.1-30610")]
-    public sealed partial class virtuals : IMigrationMetadata
+    public sealed partial class rebuilddatabase : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(virtuals));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(rebuilddatabase));
         
         string IMigrationMetadata.Id
         {
-            get { return "201506021113231_virtuals"; }
+            get { return "201506021156584_rebuilddatabase"; }
         }
         
         string IMigrationMetadata.Source

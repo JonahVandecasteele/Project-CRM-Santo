@@ -8,6 +8,7 @@ namespace CRMSanto.Models
 {
     public class PersoonlijkeFiche
     {
+        public int ID { get; set; }
         public string Hobby { get; set; }
         public Werksituatie Werksituatie { get; set; }
         public string Gezinssituatie { get; set; }

@@ -22,6 +22,8 @@ namespace CRMSanto.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        public DbSet<MedischeFiche> MedischeFiche { get; set; }
+        public DbSet<PersoonlijkeFiche> PersoonlijkeFiche { get; set; }
         public DbSet<Gemeente> Gemeente { get; set; }
         public DbSet<Adres> Adres { get; set; }
         public DbSet<Geslacht> Geslacht { get; set; }
