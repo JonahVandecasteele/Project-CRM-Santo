@@ -52,20 +52,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Adres.cs" />
-    <Compile Include="Afspraak.cs" />
-    <Compile Include="Gemeente.cs" />
-    <Compile Include="Geslacht.cs" />
+    <Compile Include="Klant\Adres.cs" />
+    <Compile Include="Afspraak\Afspraak.cs" />
+    <Compile Include="Klant\Gemeente.cs" />
+    <Compile Include="Klant\Geslacht.cs" />
     <Compile Include="IdentityModels.cs" />
-    <Compile Include="Karaktertrek.cs" />
-    <Compile Include="Klant.cs" />
-    <Compile Include="Mutualiteit.cs" />
-    <Compile Include="Product.cs" />
-    <Compile Include="Productregistratie.cs" />
+    <Compile Include="Klant\Karaktertrek.cs" />
+    <Compile Include="Klant\Klant.cs" />
+    <Compile Include="Klant\MedischeFiche.cs" />
+    <Compile Include="Klant\Mutualiteit.cs" />
+    <Compile Include="Klant\PersoonlijkeFiche.cs" />
+    <Compile Include="Product\Product.cs" />
+    <Compile Include="Product\Productregistratie.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Sessie.cs" />
-    <Compile Include="SoortAfspraak.cs" />
-    <Compile Include="Werksituatie.cs" />
+    <Compile Include="Afspraak\Sessie.cs" />
+    <Compile Include="Afspraak\SoortAfspraak.cs" />
+    <Compile Include="Klant\Werksituatie.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

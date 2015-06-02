@@ -19,7 +19,7 @@ namespace CRMSanto.Migrations
 
         protected override void Seed(CRMSanto.Models.ApplicationDbContext context)
         {
-            seedGemeentes(context);
+            //seedGemeentes(context);
             //GESLACHT
             context.Geslacht.AddOrUpdate<Geslacht>(g => g.Naam, new Geslacht() { Naam = "M" });
             context.Geslacht.AddOrUpdate<Geslacht>(g => g.Naam, new Geslacht() { Naam = "V" });
