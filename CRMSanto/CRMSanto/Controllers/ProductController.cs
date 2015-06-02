@@ -30,7 +30,20 @@ namespace CRMSanto.Controllers
         public ActionResult Edit(Product p)
         {
             ps.EditProduct(p);
-            return View("Index");
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult New()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult New(Product p)
+        {
+            ps.AddProduct(p);
+            return View();
         }
     }
 }

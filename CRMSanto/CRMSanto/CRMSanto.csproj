@@ -343,6 +343,7 @@
     <Content Include="Views\Klant\AllKlanten.cshtml" />
     <Content Include="Views\Product\Index.cshtml" />
     <Content Include="Views\Product\Edit.cshtml" />
+    <Content Include="Views\Product\New.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
