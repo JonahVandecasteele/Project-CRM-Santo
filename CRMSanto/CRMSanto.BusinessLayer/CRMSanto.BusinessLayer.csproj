@@ -81,6 +81,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\GenericRepository.cs" />
     <Compile Include="Repository\IGenericRepository.cs" />
+    <Compile Include="Repository\KlantenRepository.cs" />
+    <Compile Include="Repository\MutualiteitenRepository.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Services\" />
     <Compile Include="Services\KlantService.cs" />
     <Compile Include="StorageHelper.cs" />
   </ItemGroup>
