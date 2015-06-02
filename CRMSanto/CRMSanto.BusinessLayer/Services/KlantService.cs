@@ -13,18 +13,16 @@ namespace CRMSanto.BusinessLayer.Services
     {
         private IGenericRepository<Mutualiteit> repoMutualiteit = null;
         private IGenericRepository<Geslacht> repoGeslacht = null;
-        private IGenericRepository<Karaktertrek> repoKaraktertrek = null;
-        public KlantService(IGenericRepository<Mutualiteit> repoMutualiteit)
+        private IGenericRepository<Gemeente> repoGemeente = null;
+        private IGenericRepository<Werksituatie> repoWerksituatie = null;
+
+
+        public KlantService(IGenericRepository<Mutualiteit> repoMutualiteit, IGenericRepository<Geslacht> repoGeslacht, IGenericRepository<Gemeente> repoGemeente, IGenericRepository<Werksituatie> repoWerksituatie)
         {
             this.repoMutualiteit = repoMutualiteit;
-        }
-        public KlantService(IGenericRepository<Geslacht> repoGeslacht)
-        {
             this.repoGeslacht = repoGeslacht;
-        }
-        public KlantService(IGenericRepository<Karaktertrek> repoKaraktertrek)
-        {
-            this.repoKaraktertrek = repoKaraktertrek;
+            this.repoGemeente = repoGemeente;
+            this.repoWerksituatie = repoWerksituatie;
         }
         public List<Klant> GetKlanten()
         {
@@ -47,15 +45,17 @@ namespace CRMSanto.BusinessLayer.Services
         {
             return repoMutualiteit.All().ToList<Mutualiteit>();
         }
-
+        public List<Gemeente> GetGemeentes()
+        {
+            return repoGemeente.All().ToList<Gemeente>();
+        }
         public List<Geslacht> GetGeslachten()
         {
             return repoGeslacht.All().ToList<Geslacht>();
         }
-
-        public List<Karaktertrek> GetKaraktertrekken()
+        public List<Werksituatie> GetWerkSituaties()
         {
-            return repoKaraktertrek.All().ToList<Karaktertrek>();
+            return repoWerksituatie.All().ToList<Werksituatie>();
         }
     }
 }
