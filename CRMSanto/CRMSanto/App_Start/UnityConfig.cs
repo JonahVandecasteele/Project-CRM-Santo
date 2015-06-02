@@ -25,6 +25,7 @@ namespace CRMSanto
             container.RegisterType<IGenericRepository<Werksituatie>, GenericRepository<Werksituatie>>();
             container.RegisterType<IGenericRepository<Gemeente>, GenericRepository<Gemeente>>();
             container.RegisterType<IProductService, ProductService>();
+            container.RegisterType<IKlantenRepository, KlantenRepository>();
             container.RegisterType<IKlantService, KlantService>();
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
         }
