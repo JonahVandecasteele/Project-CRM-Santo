@@ -5,9 +5,13 @@ namespace CRMSanto.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
     using CRMSanto.Models;
+using System.Collections.Generic;
+    using System.IO;
 
     internal sealed class Configuration : DbMigrationsConfiguration<CRMSanto.Models.ApplicationDbContext>
     {
+        private string pathGemeentes = AppDomain.CurrentDomain.BaseDirectory + "..\\Data\\zipcodes.txt";
+        //List<Gemeente> gemeentes = new List<Gemeente>();
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
@@ -77,6 +81,14 @@ namespace CRMSanto.Migrations
             //context.Adres.AddOrUpdate<Adres>(a => a.Straat, new Adres() { Straat = "Jan de Beerstraat", Nummer = "5", Postcode = "8760", Gemeente = "Meulebeke" });
             //context.Klant.AddOrUpdate<Klant>(k => k.Naam, new Klant() { Naam = "Vandecasteele", Voornaam = "Jonah", Adres = 1, Email = "jonah.vandecasteele@student.howest.be", Geslacht = 1, Telefoon = "0470421227" });
 
+        }
+
+        public void seedGemeentes(ApplicationDbContext context)
+        {
+            using(StreamReader sr = new StreamReader(pathGemeentes))
+            {
+
+            }
         }
     }
 }
