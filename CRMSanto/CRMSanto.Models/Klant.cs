@@ -20,9 +20,14 @@ namespace CRMSanto.Models
         public List<Karaktertrek> Karaktertrek { get; set; }
         public string Hobby { get; set; }
         public Werksituatie Werksituatie { get; set; }
-        public string Extra { get; set; }
+        public string Medicatie { get; set; }
+        public string Spijsvertering { get; set; }
         public string Allergie { get; set; }
         public string Blessure { get; set; }
-        public string AndereMedische { get; set; }
+        public string OperatiesZiektes { get; set; }
+        public string Voedingssupplementen { get; set; }
+        public string GezinRelatie { get; set; }
+        public string Voedingspatroon { get; set; }
+        public string HuidigeKlachten { get; set; }
     }
 }
