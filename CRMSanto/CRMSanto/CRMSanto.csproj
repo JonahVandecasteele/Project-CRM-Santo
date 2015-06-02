@@ -246,6 +246,11 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201506020839173_aanmaken.cs" />
+    <Compile Include="Migrations\201506020839173_aanmaken.Designer.cs">
+      <DependentUpon>201506020839173_aanmaken.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -331,6 +336,11 @@
       <Project>{4e71dfd7-6f50-4cb6-b39a-c4ed702b2dbd}</Project>
       <Name>CRMSanto.Models</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201506020839173_aanmaken.resx">
+      <DependentUpon>201506020839173_aanmaken.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
