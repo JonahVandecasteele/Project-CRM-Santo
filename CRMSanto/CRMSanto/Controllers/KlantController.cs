@@ -12,6 +12,7 @@ namespace CRMSanto.Controllers
     public class KlantController : Controller
     {
         private IKlantService ks;
+        
         public KlantController(IKlantService ks)
         {
             this.ks = ks;
@@ -19,6 +20,7 @@ namespace CRMSanto.Controllers
         // GET: Klant
         public ActionResult Index()
         {
+            
             return View(ks.GetMutualiteiten());
         }
     }

@@ -12,9 +12,19 @@ namespace CRMSanto.BusinessLayer.Services
     public class KlantService : IKlantService
     {
         private IGenericRepository<Mutualiteit> repoMutualiteit = null;
+        private IGenericRepository<Geslacht> repoGeslacht = null;
+        private IGenericRepository<Karaktertrek> repoKaraktertrek = null;
         public KlantService(IGenericRepository<Mutualiteit> repoMutualiteit)
         {
             this.repoMutualiteit = repoMutualiteit;
+        }
+        public KlantService(IGenericRepository<Geslacht> repoGeslacht)
+        {
+            this.repoGeslacht = repoGeslacht;
+        }
+        public KlantService(IGenericRepository<Karaktertrek> repoKaraktertrek)
+        {
+            this.repoKaraktertrek = repoKaraktertrek;
         }
         public List<Klant> GetKlanten()
         {
@@ -36,6 +46,16 @@ namespace CRMSanto.BusinessLayer.Services
         public List<Mutualiteit> GetMutualiteiten()
         {
             return repoMutualiteit.All().ToList<Mutualiteit>();
+        }
+
+        public List<Geslacht> GetGeslachten()
+        {
+            return repoGeslacht.All().ToList<Geslacht>();
+        }
+
+        public List<Karaktertrek> GetKaraktertrekken()
+        {
+            return repoKaraktertrek.All().ToList<Karaktertrek>();
         }
     }
 }

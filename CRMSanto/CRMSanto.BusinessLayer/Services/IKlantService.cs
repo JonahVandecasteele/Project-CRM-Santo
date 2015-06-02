@@ -8,5 +8,7 @@ namespace CRMSanto.BusinessLayer.Services
         System.Collections.Generic.List<CRMSanto.Models.Klant> GetKlanten();
         System.Collections.Generic.List<CRMSanto.Models.Klant> GetKlantenByPostCode(CRMSanto.Models.Adres Add);
         System.Collections.Generic.List<CRMSanto.Models.Mutualiteit> GetMutualiteiten();
+        System.Collections.Generic.List<CRMSanto.Models.Geslacht> GetGeslachten();
+        System.Collections.Generic.List<CRMSanto.Models.Karaktertrek> GetKaraktertrekken();
     }
 }
