@@ -23,6 +23,7 @@ namespace CRMSanto.Migrations
             SeedSoortAfspraak(context);
             SeedWerksituatie(context);
             SeedKaraktertrek(context);
+            seedProducten(context);
 
         }
             public void SeedGeslacht(ApplicationDbContext context)
@@ -95,6 +96,13 @@ namespace CRMSanto.Migrations
                 context.Karaktertrek.AddOrUpdate<Karaktertrek>(k => k.Naam, new Karaktertrek() { Naam = "Zorgzaam" });
                 context.Karaktertrek.AddOrUpdate<Karaktertrek>(k => k.Naam, new Karaktertrek() { Naam = "Zuinig" });
             }
+
+            public void seedProducten(ApplicationDbContext context)
+            {
+                context.Product.AddOrUpdate<Product>(p => p.Naam, new Product() { Naam = "Buikzalfje", Prijs = 100, Inhoud = 200, Foto = "http://www.zwitsal.nl/Images/1380/1380-366083-zwitsal%20mama%20buikbalsem.png", Barcode = "12548456" });
+                context.Product.AddOrUpdate<Product>(p => p.Naam, new Product() { Naam = "Uierzalfje", Prijs = 3000, Inhoud = 10, Foto = "http://www.medigros.nl/media/catalog/product/u/i/uierzalf_700_gr.jpg", Barcode = "65959595" });
+            }
+
             public void seedGemeentes(ApplicationDbContext context)
             {
                 using (StreamReader sr = new StreamReader(pathGemeentes))
