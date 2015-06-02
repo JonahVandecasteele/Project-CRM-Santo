@@ -15,14 +15,16 @@ namespace CRMSanto.BusinessLayer.Services
         private IGenericRepository<Geslacht> repoGeslacht = null;
         private IGenericRepository<Gemeente> repoGemeente = null;
         private IGenericRepository<Werksituatie> repoWerksituatie = null;
+        private IGenericRepository<Karaktertrek> repoKaraktertrek = null;
 
 
-        public KlantService(IGenericRepository<Mutualiteit> repoMutualiteit, IGenericRepository<Geslacht> repoGeslacht, IGenericRepository<Gemeente> repoGemeente, IGenericRepository<Werksituatie> repoWerksituatie)
+        public KlantService(IGenericRepository<Mutualiteit> repoMutualiteit, IGenericRepository<Geslacht> repoGeslacht, IGenericRepository<Gemeente> repoGemeente, IGenericRepository<Werksituatie> repoWerksituatie, IGenericRepository<Karaktertrek> repoKaraktertrek)
         {
             this.repoMutualiteit = repoMutualiteit;
             this.repoGeslacht = repoGeslacht;
             this.repoGemeente = repoGemeente;
             this.repoWerksituatie = repoWerksituatie;
+            this.repoKaraktertrek = repoKaraktertrek;
         }
         public List<Klant> GetKlanten()
         {
