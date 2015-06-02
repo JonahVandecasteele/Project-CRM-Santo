@@ -72,7 +72,7 @@ namespace CRMSanto.Controllers
                         Match match = Regex.Match(input, @"^(.+)\s(\d+(\s*[^\d\s]+)*)$", RegexOptions.IgnoreCase);
                         if (match.Success)
 	                    {
-                            klant.Adres = new Adres() { Straat = match.Groups[1].Value, Nummer = match.Groups[2].Value,  Postbus = match.Groups[3].Value, Postcode = fetchResponse.Attributes["http://axschema.org/contact/postalCode/home"].Values[0], Gemeente = fetchResponse.Attributes["http://axschema.org/contact/city/home"].Values[0] };
+                            klant.Adres = new Adres() { Straat = match.Groups[1].Value, Nummer = match.Groups[2].Value,  Postbus = match.Groups[3].Value, Postcode = fetchResponse.Attributes["http://axschema.org/contact/postalCode/home"].Values[0]/*, Gemeente = fetchResponse.Attributes["http://axschema.org/contact/city/home"].Values[0]*/ };
 	                    }
                         
 
