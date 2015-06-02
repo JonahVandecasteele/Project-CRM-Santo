@@ -247,19 +247,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\Adres.cs" />
-    <Compile Include="Models\Afspraak.cs" />
-    <Compile Include="Models\Geslacht.cs" />
     <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\Karaktertrek.cs" />
-    <Compile Include="Models\Klant.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\Mutualiteit.cs" />
-    <Compile Include="Models\Product.cs" />
-    <Compile Include="Models\Productregistratie.cs" />
-    <Compile Include="Models\Sessie.cs" />
-    <Compile Include="Models\SoortAfspraak.cs" />
-    <Compile Include="Models\Werksituatie.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -330,6 +319,16 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CRMSanto.BusinessLayer\CRMSanto.BusinessLayer.csproj">
+      <Project>{c187c4ca-428f-463a-a45f-5250f50d7e26}</Project>
+      <Name>CRMSanto.BusinessLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CRMSanto.Models\CRMSanto.Models.csproj">
+      <Project>{4e71dfd7-6f50-4cb6-b39a-c4ed702b2dbd}</Project>
+      <Name>CRMSanto.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
