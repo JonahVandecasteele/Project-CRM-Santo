@@ -5,18 +5,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using CRMSanto.BusinessLayer.Services;
 
 namespace CRMSanto.Controllers
 {
     public class KlantController : Controller
     {
-        MutualiteitenRepository mr = new MutualiteitenRepository();
+        private IKlantService ks;
+        public KlantController(IKlantService ks)
+        {
+            this.ks = ks;
+        }
         // GET: Klant
         public ActionResult Index()
         {
-            List<Mutualiteit> items = mr.GetMutualiteiten();
-
-            return View(items);
+            return View(ks.GetMutualiteiten());
         }
     }
 }

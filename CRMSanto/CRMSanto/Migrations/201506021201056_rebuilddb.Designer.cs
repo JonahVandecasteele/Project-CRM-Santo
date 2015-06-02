@@ -7,13 +7,13 @@ namespace CRMSanto.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.1-30610")]
-    public sealed partial class gemeentes : IMigrationMetadata
+    public sealed partial class rebuilddb : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(gemeentes));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(rebuilddb));
         
         string IMigrationMetadata.Id
         {
-            get { return "201506020918536_gemeentes"; }
+            get { return "201506021201056_rebuilddb"; }
         }
         
         string IMigrationMetadata.Source

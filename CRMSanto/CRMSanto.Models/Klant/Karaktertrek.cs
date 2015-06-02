@@ -9,5 +9,6 @@ namespace CRMSanto.Models
     {
         public int ID { get; set; }
         public string Naam { get; set; }
+        public List<Klant> Klanten { get; set; }
     }
 }

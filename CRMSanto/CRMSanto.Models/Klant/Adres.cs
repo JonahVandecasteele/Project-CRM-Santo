@@ -12,6 +12,6 @@ namespace CRMSanto.Models
         public string Nummer { get; set; }
         public string Postbus { get; set; }
         public string Postcode { get; set; }
-        public string Gemeente { get; set; }
+        public virtual Gemeente Gemeente { get; set; }
     }
 }
