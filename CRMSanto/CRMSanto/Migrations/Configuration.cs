@@ -17,15 +17,17 @@ namespace CRMSanto.Migrations
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(CRMSanto.Models.ApplicationDbContext context)
+        protected override void SeedGeslacht(CRMSanto.Models.ApplicationDbContext context)
         {
             //seedGemeentes(context);
             //GESLACHT
             context.Geslacht.AddOrUpdate<Geslacht>(g => g.Naam, new Geslacht() { Naam = "M" });
             context.Geslacht.AddOrUpdate<Geslacht>(g => g.Naam, new Geslacht() { Naam = "V" });
             context.Geslacht.AddOrUpdate<Geslacht>(g => g.Naam, new Geslacht() { Naam = "X" });
-
+        }
             //MUTUALITEIT
+        protected override void SeedMutualiteiten(CRMSanto.Models.ApplicationDbContext context)
+        {
             context.Mutualiteit.AddOrUpdate<Mutualiteit>(m => m.Naam, new Mutualiteit() { Naam = "Christelijke Mutualiteit" });
             context.Mutualiteit.AddOrUpdate<Mutualiteit>(m => m.Naam, new Mutualiteit() { Naam = "Socialistische Mutualiteit" });
             context.Mutualiteit.AddOrUpdate<Mutualiteit>(m => m.Naam, new Mutualiteit() { Naam = "Liberale Mutualiteit" });
@@ -35,6 +37,9 @@ namespace CRMSanto.Migrations
             context.Mutualiteit.AddOrUpdate<Mutualiteit>(m => m.Naam, new Mutualiteit() { Naam = "Vlaams & Neutraal Ziekenfonds" });
             context.Mutualiteit.AddOrUpdate<Mutualiteit>(m => m.Naam, new Mutualiteit() { Naam = "Symbio" });
             context.Mutualiteit.AddOrUpdate<Mutualiteit>(m => m.Naam, new Mutualiteit() { Naam = "Neutraal Ziekenfonds Vlaanderen" });
+        }
+        protected override void SeedSoortAfspraak(CRMSanto.Models.ApplicationDbContext context)
+        {
 
             //SOORT AFSPRAAK
             context.SoortAfspraak.AddOrUpdate<SoortAfspraak>(s => s.Naam, new SoortAfspraak() { Naam = "Massage met etherische olie", Omschrijving = "De massage duurt 60 tot 75 minuten, discreet uitgevoerd met olie op de blote huid, op een massagetafel.", Duur = 60, Prijs = 50, Verplaatsingmogelijk = true });
@@ -43,7 +48,9 @@ namespace CRMSanto.Migrations
             context.SoortAfspraak.AddOrUpdate<SoortAfspraak>(s => s.Naam, new SoortAfspraak() { Naam = "Fibromyssage", Omschrijving = "Wij starten altijd met een intake gesprek. Hierna zullen we jou ’plaatselijk behandelen’ én/of masseren. Hierbij gaan we samen met jou op zoek naar waar je pijn vandaan komt en/of zich situeert, en tegelijk zoeken we samen naar je pijngrens.", Duur = 30, Prijs = 30, Verplaatsingmogelijk = true });
             context.SoortAfspraak.AddOrUpdate<SoortAfspraak>(s => s.Naam, new SoortAfspraak() { Naam = "Shiatsu", Omschrijving = "Shiatsu is een massagevorm uit Japan, letterlijk vertaald ‘Vingerdruk’ en komt voort uit een lange traditie van de Oosterse Natuurlijke Geneeswijzen. Deze drukpuntmassage werkt in op de stroom van de meridianen of energiebanen in het lichaam, stimuleert de zelfhelende kracht van het lichaam en helpt om terug gezond te worden en te blijven.", Duur = 60, Prijs = 50, Verplaatsingmogelijk = true });
             context.SoortAfspraak.AddOrUpdate<SoortAfspraak>(s => s.Naam, new SoortAfspraak() { Naam = "Lomi-Lomi massage", Omschrijving = "De Lomi-Lomi massage of Hawaïaanse lichaamsmassage heeft tot doel je energiesysteem in balans te brengen. Het is een krachtige, innemende massage, vloeiend en ritmisch tegelijk als de dansende golven op de zwarte zandstranden, soms zacht en soms krachtig.", Duur = 60, Prijs = 60, Verplaatsingmogelijk = true });
-
+        }
+        protected override void SeedWerksituatie(CRMSanto.Models.ApplicationDbContext context)
+        {
             //WERKSITUATIE
             context.Werksituatie.AddOrUpdate<Werksituatie>(w => w.Naam, new Werksituatie() { Naam = "Leerling" });
             context.Werksituatie.AddOrUpdate<Werksituatie>(w => w.Naam, new Werksituatie() { Naam = "Student" });
@@ -51,7 +58,9 @@ namespace CRMSanto.Migrations
             context.Werksituatie.AddOrUpdate<Werksituatie>(w => w.Naam, new Werksituatie() { Naam = "Bediende" });
             context.Werksituatie.AddOrUpdate<Werksituatie>(w => w.Naam, new Werksituatie() { Naam = "Gepensioneerd" });
             context.Werksituatie.AddOrUpdate<Werksituatie>(w => w.Naam, new Werksituatie() { Naam = "Werkzoekend" });
-
+        }
+        protected override void SeedKaraktertrekken(CRMSanto.Models.ApplicationDbContext context)
+        {
             //KARAKTERTREK
             context.Karaktertrek.AddOrUpdate<Karaktertrek>(k => k.Naam, new Karaktertrek() { Naam = "Attent" });
             context.Karaktertrek.AddOrUpdate<Karaktertrek>(k => k.Naam, new Karaktertrek() { Naam = "Bescheiden" });
@@ -102,5 +111,7 @@ namespace CRMSanto.Migrations
             }
             context.SaveChanges();
         }
+
+        
     }
 }
