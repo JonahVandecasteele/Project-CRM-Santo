@@ -23,5 +23,10 @@ namespace CRMSanto.Controllers
             
             return View(ks.GetMutualiteiten());
         }
+        public ActionResult AllKlanten()
+        {
+
+            return View(ks.GetKlanten());
+        }
     }
 }

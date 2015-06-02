@@ -332,6 +332,7 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Home\EIDTest.cshtml" />
     <Content Include="Views\Klant\Index.cshtml" />
+    <Content Include="Views\Klant\AllKlanten.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
