@@ -250,6 +250,10 @@
     <Compile Include="Migrations\201506020839173_aanmaken.Designer.cs">
       <DependentUpon>201506020839173_aanmaken.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201506020918536_gemeentes.cs" />
+    <Compile Include="Migrations\201506020918536_gemeentes.Designer.cs">
+      <DependentUpon>201506020918536_gemeentes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -336,6 +340,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201506020839173_aanmaken.resx">
       <DependentUpon>201506020839173_aanmaken.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506020918536_gemeentes.resx">
+      <DependentUpon>201506020918536_gemeentes.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
