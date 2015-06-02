@@ -7,7 +7,7 @@
 <h2>EIDTest</h2>
 
 <div>
-    <h4>@Html.Raw(ViewBag.Name)</h4>
+    <h4>Klant</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -24,7 +24,6 @@
 
         <dd>
             @Html.DisplayFor(model => model.Voornaam)
-            
         </dd>
 
         <dt>
@@ -68,11 +67,19 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Extra)
+            @Html.DisplayNameFor(model => model.Medicatie)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Extra)
+            @Html.DisplayFor(model => model.Medicatie)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Spijsvertering)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Spijsvertering)
         </dd>
 
         <dt>
@@ -92,18 +99,50 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.AndereMedische)
+            @Html.DisplayNameFor(model => model.OperatiesZiektes)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.AndereMedische)
+            @Html.DisplayFor(model => model.OperatiesZiektes)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Voedingssupplementen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Voedingssupplementen)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GezinRelatie)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GezinRelatie)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Voedingspatroon)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Voedingspatroon)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HuidigeKlachten)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HuidigeKlachten)
         </dd>
 
     </dl>
 </div>
 @using (Html.BeginForm("EIDTest", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
-<p>
-    <input type="submit" name="nl" value="Login" class="btn btn-default" />
-</p>
+    <p>
+        <input type="submit" name="nl" value="Login" class="btn btn-default" />
+    </p>
 }
