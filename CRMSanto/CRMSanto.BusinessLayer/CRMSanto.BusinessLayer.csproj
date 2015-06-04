@@ -89,6 +89,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Repository\ProductenRepository.cs" />
+    <Compile Include="Services\AfspraakService.cs" />
+    <Compile Include="Services\IAfspraakService.cs" />
     <Compile Include="Services\IKlantService.cs" />
     <Compile Include="Services\IProductService.cs" />
     <Compile Include="Services\KlantService.cs" />

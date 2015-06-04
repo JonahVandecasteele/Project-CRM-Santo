@@ -19,5 +19,11 @@ namespace CRMSanto.BusinessLayer.Repository
             var query = (from a in context.Afspraak.Include(k => k.Klant) select a);
             return query.ToList<Afspraak>();
         }
+
+        public override Afspraak GetByID(object id)
+        {
+            var query = (from a in context.Afspraak.Include(k => k.Klant) select a);
+            return query.SingleOrDefault<Afspraak>();
+        }
     }
 }
