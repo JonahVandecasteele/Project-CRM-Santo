@@ -34,7 +34,7 @@ namespace CRMSanto.Controllers
            
             NieuweAfspraakPM pm = new NieuweAfspraakPM();
 
-            pm.Klanten = new SelectList(ks.GetKlanten(), "ID", "Name");
+            pm.Klanten = new SelectList(ks.GetKlanten(), "ID", "Naam");
 
             pm.Afspraak = new Afspraak();
             return View(pm);
