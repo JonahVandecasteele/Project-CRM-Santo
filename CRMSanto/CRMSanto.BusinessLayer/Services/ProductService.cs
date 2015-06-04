@@ -17,6 +17,7 @@ namespace CRMSanto.BusinessLayer.Services
             this.repoProducten = repoProducten;
             this.repoProduct = repoProduct;
         }
+
         public List<Product> GetProducten()
         {
             return repoProduct.All().ToList<Product>();
@@ -36,6 +37,12 @@ namespace CRMSanto.BusinessLayer.Services
         public void AddProduct(Product p)
         {
             repoProduct.Insert(p);
+            repoProduct.SaveChanges();
+        }
+
+        public void DeleteProduct(Product p)
+        {
+            repoProduct.Delete(p);
             repoProduct.SaveChanges();
         }
 
