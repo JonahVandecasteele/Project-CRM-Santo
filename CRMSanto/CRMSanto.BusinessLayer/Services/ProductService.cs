@@ -30,5 +30,11 @@ namespace CRMSanto.BusinessLayer.Services
             repoProduct.Update(p);
             repoProduct.SaveChanges();
         }
+
+        public void AddProduct(Product p)
+        {
+            repoProduct.Insert(p);
+            repoProduct.SaveChanges();
+        }
     }
 }
