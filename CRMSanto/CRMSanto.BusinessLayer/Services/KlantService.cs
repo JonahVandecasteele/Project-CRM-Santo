@@ -47,7 +47,7 @@ namespace CRMSanto.BusinessLayer.Services
         }
         public Klant InsertKlant(Klant klant,Stream Image)
         {
-            StorageHelper.AddImage("StorageConnectionString", "images", Image, System.Guid.NewGuid().ToString());
+           StorageHelper.AddImage("StorageConnectionString", "images", Image, System.Guid.NewGuid().ToString());
            Klant result = repoKlant.Insert(klant);
            repoKlant.SaveChanges();
            return result;
