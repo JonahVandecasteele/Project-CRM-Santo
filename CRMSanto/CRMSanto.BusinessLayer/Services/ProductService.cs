@@ -10,11 +10,14 @@ namespace CRMSanto.BusinessLayer.Services
 {
     public class ProductService : CRMSanto.BusinessLayer.Services.IProductService
     {
+        private IProductenRepository repoProducten = null;
         private IGenericRepository<Product> repoProduct = null;
-        public ProductService(IGenericRepository<Product> repoProduct)
+        public ProductService(IProductenRepository repoProducten,IGenericRepository<Product> repoProduct)
         {
+            this.repoProducten = repoProducten;
             this.repoProduct = repoProduct;
         }
+
         public List<Product> GetProducten()
         {
             return repoProduct.All().ToList<Product>();
@@ -35,6 +38,17 @@ namespace CRMSanto.BusinessLayer.Services
         {
             repoProduct.Insert(p);
             repoProduct.SaveChanges();
+        }
+
+        public void DeleteProduct(Product p)
+        {
+            repoProduct.Delete(p);
+            repoProduct.SaveChanges();
+        }
+
+        public List<Productregistratie> GetProductregistraties()
+        {
+            return repoProducten.All().ToList<Productregistratie>();
         }
     }
 }
