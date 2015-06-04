@@ -45,9 +45,9 @@ namespace CRMSanto.BusinessLayer.Services
             repoKlant.Update(klant);
             repoKlant.SaveChanges();
         }
-        public Klant InsertKlant(Klant klant,Stream Image)
+        public Klant InsertKlant(Klant klant)
         {
-            StorageHelper.AddImage("StorageConnectionString", "images", Image, System.Guid.NewGuid().ToString());
+           // StorageHelper.AddImage("StorageConnectionString", "images", Image, System.Guid.NewGuid().ToString());
            Klant result = repoKlant.Insert(klant);
            repoKlant.SaveChanges();
            return result;
@@ -67,6 +67,10 @@ namespace CRMSanto.BusinessLayer.Services
         public List<Werksituatie> GetWerkSituaties()
         {
             return repoWerksituatie.All().ToList<Werksituatie>();
+        }
+        public List<Karaktertrek> GetKaraktertreken()
+        {
+            return repoKaraktertrek.All().ToList<Karaktertrek>();
         }
     }
 }

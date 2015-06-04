@@ -31,14 +31,14 @@ namespace CRMSanto.BusinessLayer.Repository
         }
         public override Klant Insert(Klant entity)
         {
-            context.Adres.Attach(entity.Adres);
-            context.Geslacht.Attach(entity.Geslacht);
+            context.Adres.Add(entity.Adres);
+            context.Geslacht.Add(entity.Geslacht);
             foreach (Karaktertrek kar in entity.Karaktertrek)
             {
                 context.Karaktertrek.Attach(kar);
             }
-            context.MedischeFiche.Attach(entity.MedischeFiche);
-            context.PersoonlijkeFiche.Attach(entity.PersoonlijkeFiche);
+            context.MedischeFiche.Add(entity.MedischeFiche);
+            context.PersoonlijkeFiche.Add(entity.PersoonlijkeFiche);
             Klant klant = context.Klant.Add(entity);
             return klant;
         }
@@ -52,7 +52,7 @@ namespace CRMSanto.BusinessLayer.Repository
             }
             context.MedischeFiche.Attach(entityToUpdate.MedischeFiche);
             context.PersoonlijkeFiche.Attach(entityToUpdate.PersoonlijkeFiche);
-            Klant klant = context.Klant.Add(entityToUpdate);
+            Klant klant = context.Klant.Attach(entityToUpdate);
 
             context.Entry(entityToUpdate).State = EntityState.Modified;
         }
