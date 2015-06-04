@@ -391,10 +391,11 @@
     <Content Include="Views\Shared\EditorTemplates\PersoonlijkeFiche.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\MedischeFiche.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Karaktertrek.cshtml" />
+    <Content Include="Views\Afspraak\New.cshtml" />
+    <Content Include="Views\Product\NewProductRegistration.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Afspraak\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
