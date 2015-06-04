@@ -50,7 +50,7 @@ namespace CRMSanto.Controllers
         }
 
         [HttpGet]
-        public ActionResult NewProductRegistration(Productregistratie pr)
+        public ActionResult NewProductRegistration()
         {
             NieuweProductRegistratiePM pm = new NieuweProductRegistratiePM();
 
@@ -59,5 +59,19 @@ namespace CRMSanto.Controllers
             pm.Productregistratie = new Productregistratie();
             return View(pm);
         }
+
+        //[HttpPost]
+        //public ActionResult NewProductRegistration(NieuweProductRegistratiePM nprpm)
+        //{
+        //    nprpm.Klanten = new SelectList(ks.GetKlanten(), "ID", "Naam");
+        //    nprpm.Producten = new SelectList(ps.GetProducten(), "ID", "Naam");
+
+        //    Productregistratie pr = new Productregistratie();
+        //    pr = nprpm.Productregistratie;
+
+        //    pr.DatumTijdstip = DateTime.Now;
+        //}
+
+
     }
 }
