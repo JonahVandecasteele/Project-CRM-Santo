@@ -83,6 +83,7 @@
     <Compile Include="Repository\GenericRepository.cs" />
     <Compile Include="Repository\IGenericRepository.cs" />
     <Compile Include="Repository\IKlantenRepository.cs" />
+    <Compile Include="Repository\IProductenRepository.cs" />
     <Compile Include="Repository\KlantenRepository.cs" />
   </ItemGroup>
   <ItemGroup>
