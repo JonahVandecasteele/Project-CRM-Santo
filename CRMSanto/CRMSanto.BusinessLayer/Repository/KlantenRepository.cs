@@ -19,6 +19,14 @@ namespace CRMSanto.BusinessLayer.Repository
             var query = (from k in context.Klant.Include(g => g.Geslacht).Include(kar => kar.Karaktertrek).Include(m => m.MedischeFiche).Include(p => p.PersoonlijkeFiche) select k);
             return query.ToList<Klant>();
         }
-        
+        public override Klant GetByID(object id)
+        {
+            var query = (from k in context.Klant.Include(g => g.Geslacht).Include(kar => kar.Karaktertrek).Include(m => m.MedischeFiche).Include(p => p.PersoonlijkeFiche) where k.ID==(int)id select k);
+            return query.Single<Klant>();
+        }
+        /*public Klant GetByPostCode(string postcode)
+        {
+            ///var query = (from k in context.Klant)
+        }*/
     }
 }
