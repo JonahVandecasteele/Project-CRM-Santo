@@ -1,24 +1,155 @@
 ﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+  font-family: 'Lato', sans-serif;
 }
 
-/* Set padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+.navbar-brand {
+	padding: 7px 15px 0 15px;
 }
 
-/* Override the default bootstrap behavior where horizontal description lists 
-   will truncate terms that are too long to fit in the left column 
-*/
-.dl-horizontal dt {
-    white-space: normal;
+.navbar , .navbar-inverse.navbar{
+  background-color: #381d10;
+  border-color: #d9166e;
+  border-radius: 0;
+}
+.navbar .navbar-brand {
+  color: #fdf4f8;
+}
+.navbar .navbar-brand:hover, .navbar .navbar-brand:focus {
+  color: #fdf4f8;
+}
+.navbar .navbar-text {
+  color: #fdf4f8;
+}
+.navbar .navbar-nav > li > a {
+  color: #fdf4f8;
+}
+.navbar .navbar-nav > li > a:hover, .navbar .navbar-nav > li > a:focus {
+  color: #fdf4f8;
+  background-color: #d9166e;
+}
+.navbar .navbar-nav > li > .dropdown-menu {
+  background-color: #381d10;
+}
+.navbar .navbar-nav > li > .dropdown-menu > li > a {
+  color: #fdf4f8;
+}
+.navbar .navbar-nav > li > .dropdown-menu > li > a:hover,
+.navbar .navbar-nav > li > .dropdown-menu > li > a:focus {
+  color: #fdf4f8;
+  background-color: #d9166e;
+}
+.navbar .navbar-nav > li > .dropdown-menu > li > .divider {
+  background-color: #381d10;
+}
+.navbar .navbar-nav > .active > a, .navbar .navbar-nav > .active > a:hover, .navbar .navbar-nav > .active > a:focus {
+  color: #fdf4f8;
+  background-color: #d9166e;
+}
+.navbar .navbar-nav > .open > a, .navbar .navbar-nav > .open > a:hover, .navbar .navbar-nav > .open > a:focus {
+  color: #fdf4f8;
+  background-color: #d9166e;
+}
+.navbar .navbar-toggle {
+  border-color: #fdf4f8;
+}
+.navbar .navbar-toggle:hover, .navbar .navbar-toggle:focus {
+  background-color: #d9166e;
+}
+.navbar .navbar-toggle .icon-bar {
+  background-color: #fdf4f8;
+}
+.navbar .navbar-collapse,
+.navbar .navbar-form {
+  border-color: #fdf4f8;
+}
+.navbar .navbar-link {
+  color: #fdf4f8;
 }
 
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 280px;
+.profilepic {
+	display: block;
+	height: 50px;
+}
+
+.customerpic {
+	display: inline-block;
+	height: 100px;
+	padding-bottom: 23px;
+}
+
+.shop-placeholder {
+	width: 100%;
+	border: 1px solid grey;
+}
+
+.customerheader h2 { 
+	display: inline-block;
+	margin-left: 23px;
+}
+
+.checkbox {margin-top: 0; margin-bottom: 0;}
+
+.panel-primary {
+  border-color: #381d10;
+}
+.panel-primary > .panel-heading {
+  color: #fdf4f8;
+  background-color: #381d10;
+  border-color: #381d10;
+}
+.panel-primary > .panel-heading + .panel-collapse > .panel-body {
+  border-top-color: #381d10;
+}
+.panel-primary > .panel-heading .badge {
+  color: #381d10;
+  background-color: #fdf4f8;
+}
+.panel-primary > .panel-footer + .panel-collapse > .panel-body {
+  border-bottom-color: #381d10;
+}
+
+.fancybox-lock {
+    overflow: hidden;
+    margin-right:0 !important;
+}
+
+.fancybox-lock .fancybox-overlay {
+    overflow: hidden;
+    overflow-y: hidden;
+}
+
+ .fancybox-skin {
+      background-color: #eee; /* or whatever */
+ }
+ 
+ #customh3 {
+	margin-top: 0;
+ }
+ 
+ .btn-fab {
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  padding: 30px;
+  font-size: 40px;
+  /*background: $warning;*/
+  position: fixed;
+  bottom: 20px; /* Adjust to where you want it */
+  right: 20px; /* Adjust to where you want it */
+  /*z-index: 9999;*/
+}
+
+ .fab2{
+	right: 80px;
+}
+ 
+@media (max-width:768px) {
+	h1{
+		font-size: 2.3em;
+	}
+	h2{
+		font-size: 1.9em;
+	}
 }

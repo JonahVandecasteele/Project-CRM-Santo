@@ -1,0 +1,67 @@
+﻿@model IEnumerable<CRMSanto.Models.Product>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "New")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Naam)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AankoopPrijs)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VerkoopPrijs)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Inhoud)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Foto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Omschrijving)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Barcode)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Naam)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AankoopPrijs)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VerkoopPrijs)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Inhoud)
+        </td>
+        <td>
+            <img height="300" src="@Html.DisplayFor(modelItem => item.Foto)"/>
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Omschrijving)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Barcode)
+        </td>
+        <td>
+            <a href="/Product/Edit/@item.ID" class="btn btn-primary">Edit</a>
+        </td>
+    </tr>
+}
+
+</table>

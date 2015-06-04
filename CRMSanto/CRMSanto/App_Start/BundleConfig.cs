@@ -23,8 +23,14 @@ namespace CRMSanto
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/material").Include(
+                      "~/Scripts/ripples.min.js.js",
+                      "~/Scripts/material.min.js"));
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
+                      "~/Content/material-fullpalette.min.css",
+                      "~/Content/ripples.min.css",
                       "~/Content/site.css"));
         }
     }
