@@ -53,6 +53,7 @@ namespace CRMSanto.Controllers
        
         public ActionResult EIDTest()
         {
+            
             Klant klant = new Klant();
             if (Request.Form["nl"] == null)
             {
@@ -72,7 +73,8 @@ namespace CRMSanto.Controllers
                         Match match = Regex.Match(input, @"^(.+)\s(\d+(\s*[^\d\s]+)*)$", RegexOptions.IgnoreCase);
                         if (match.Success)
 	                    {
-                            klant.Adres = new Adres() { Straat = match.Groups[1].Value, Nummer = match.Groups[2].Value,  Postbus = match.Groups[3].Value, Postcode = fetchResponse.Attributes["http://axschema.org/contact/postalCode/home"].Values[0]/*, Gemeente = fetchResponse.Attributes["http://axschema.org/contact/city/home"].Values[0]*/ };
+                            string[] straat = match.Groups[1].Value.Split('(');
+                            klant.Adres = new Adres() { Straat = straat[0], Nummer = match.Groups[2].Value, Postbus = match.Groups[3].Value, Postcode = fetchResponse.Attributes["http://axschema.org/contact/postalCode/home"].Values[0]/*, Gemeente = fetchResponse.Attributes["http://axschema.org/contact/city/home"].Values[0]*/ };
 	                    }
                         
 
@@ -86,6 +88,7 @@ namespace CRMSanto.Controllers
                         if (base64Photo.Length % 4 > 0)
                             base64Photo = base64Photo.PadRight(base64Photo.Length + 4 - base64Photo.Length % 4, '=');
                         TempData["PhotoURL"] = base64Photo;
+                        TempData["Local"] = klant.Adres;
                         klant.Foto = base64Photo;
                         
                     }
@@ -96,6 +99,12 @@ namespace CRMSanto.Controllers
                 }
                 else
                 {
+                    if (Request.Form["maps"] != null)
+                    {
+                        Adres add = (Adres)TempData["Local"];
+                        if(add != null)
+                        Response.Redirect("http://maps.google.com/maps?q=" + add.Straat + " " + add.Nummer + " " + add.Postcode);
+                    }
                     ViewBag.Name = "Not logged in yet.";
                 }
             }
