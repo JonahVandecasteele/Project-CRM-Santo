@@ -40,12 +40,13 @@ namespace CRMSanto.Controllers
             return View(pm);
         }
 
-        [HttpPost]
-        public ActionResult New(Afspraak a)
-        {
-            afs.AddAfspraak(a);
-            return View();
-        }
+        //[HttpPost]
+        //public ActionResult NieuweAfspraak(NieuweAfspraakPM napm)
+        //{
+        //    napm.Klanten = new SelectList(ks.GetKlanten(), "ID", "Naam");
+        //    napm.Afspraak = new Afspraak();
+        //    return View();
+        //}
 
 
     }
