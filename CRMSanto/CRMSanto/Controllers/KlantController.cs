@@ -45,7 +45,7 @@ namespace CRMSanto.Controllers
         {
             klant.Karaktertrek = new List<Karaktertrek>();
             ks.InsertKlant(klant);
-            return View(klant);
+            return View();
         }
 
         //[HttpPost]
