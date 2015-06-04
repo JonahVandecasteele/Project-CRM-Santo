@@ -276,6 +276,10 @@
     <Compile Include="Migrations\201506021341571_productenaanpassen2.Designer.cs">
       <DependentUpon>201506021341571_productenaanpassen2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201506041243468_roles.cs" />
+    <Compile Include="Migrations\201506041243468_roles.Designer.cs">
+      <DependentUpon>201506041243468_roles.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -419,6 +423,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201506021341571_productenaanpassen2.resx">
       <DependentUpon>201506021341571_productenaanpassen2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506041243468_roles.resx">
+      <DependentUpon>201506041243468_roles.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -1,12 +1,14 @@
 namespace CRMSanto.Migrations
 {
     using CRMSanto.Models;
-    using System;
-    using System.Collections.Generic;
-    using System.Data.Entity;
-    using System.Data.Entity.Migrations;
-    using System.IO;
-    using System.Linq;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using System;
+using System.Collections.Generic;
+using System.Data.Entity;
+using System.Data.Entity.Migrations;
+using System.IO;
+using System.Linq;
 
     internal sealed class Configuration : DbMigrationsConfiguration<CRMSanto.Models.ApplicationDbContext>
     {
@@ -18,6 +20,7 @@ namespace CRMSanto.Migrations
         }
         protected override void Seed(CRMSanto.Models.ApplicationDbContext context)
         {
+            SeedAccounts(context);
             SeedGeslacht(context);
             SeedMutualiteiten(context);
             SeedSoortAfspraak(context);
@@ -25,6 +28,44 @@ namespace CRMSanto.Migrations
             SeedKaraktertrek(context);
             seedProducten(context);
 
+        }
+
+        public void SeedAccounts(ApplicationDbContext context)
+        {            
+            string roleAdmin = "Admin";
+            string roleUser = "User";
+
+            IdentityResult roleResult;
+
+            var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
+
+            if(!roleManager.RoleExists(roleAdmin))
+            {
+                roleResult = roleManager.Create(new IdentityRole(roleAdmin));
+            }
+
+            if(!roleManager.RoleExists(roleUser))
+            {
+                roleResult = roleManager.Create(new IdentityRole(roleUser));
+            }
+
+            if(!context.Users.Any(u=>u.Email.Equals("sandrine@massage-santo.be")))
+            {
+                var store = new UserStore<ApplicationUser>(context);
+                var manager = new UserManager<ApplicationUser>(store);
+                var user = new ApplicationUser()
+                {
+                    Name = "Christiaens",
+                    FirstName = "Sandrine",
+                    Email = "sandrine@massage-santo.be",
+                    UserName = "sandrine@massage-santo.be",
+                    Address = "Burgemeester Hector Isebaertstraat 17",
+                    City = "Deerlijk",
+                    ZipCode = "8540"
+                };
+                manager.Create(user, "-Password1");
+                manager.AddToRole(user.Id, roleAdmin);
+            }
         }
             public void SeedGeslacht(ApplicationDbContext context)
             {
@@ -96,13 +137,11 @@ namespace CRMSanto.Migrations
                 context.Karaktertrek.AddOrUpdate<Karaktertrek>(k => k.Naam, new Karaktertrek() { Naam = "Zorgzaam" });
                 context.Karaktertrek.AddOrUpdate<Karaktertrek>(k => k.Naam, new Karaktertrek() { Naam = "Zuinig" });
             }
-
             public void seedProducten(ApplicationDbContext context)
             {
                 context.Product.AddOrUpdate<Product>(p => p.Naam, new Product() { Naam = "Buikzalfje", AankoopPrijs = 100,VerkoopPrijs=200, Inhoud = 200, Foto = "http://www.zwitsal.nl/Images/1380/1380-366083-zwitsal%20mama%20buikbalsem.png", Barcode = "12548456",Omschrijving="Ideaal voor buikje groot of klein."});
                 context.Product.AddOrUpdate<Product>(p => p.Naam, new Product() { Naam = "Uierzalfje", AankoopPrijs = 3000,VerkoopPrijs=5000, Inhoud = 10, Foto = "http://www.medigros.nl/media/catalog/product/u/i/uierzalf_700_gr.jpg", Barcode = "65959595", Omschrijving="Heerlijke uierzalf"});
             }
-
             public void seedGemeentes(ApplicationDbContext context)
             {
                 using (StreamReader sr = new StreamReader(pathGemeentes))
