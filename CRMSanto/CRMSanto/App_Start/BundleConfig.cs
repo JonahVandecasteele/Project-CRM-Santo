@@ -29,6 +29,7 @@ namespace CRMSanto
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
+
                       "~/Content/material-fullpalette.min.css",
                       "~/Content/ripples.min.css",
                       "~/Content/site.css"));
