@@ -8,12 +8,12 @@ using CRMSanto.Models;
 
 namespace CRMSanto.BusinessLayer.Services
 {
-    public class AfspraakService : CRMSanto.BusinessLayer.Services.IAfspraakService
+    public class AfspraakService : CRMSanto.BusinessLayer.Services.IAfspraakService 
     {
-        private IAfsprakenRepository repoAfspraak = null;
-        //private IGenericRepository<Afspraak> repoAfspraak = null;
+        //private IAfsprakenRepository repoAfspraak = null;
+        private IGenericRepository<Afspraak> repoAfspraak = null;
 
-        public AfspraakService(IAfsprakenRepository repoAfspraak)
+        public AfspraakService(IGenericRepository<Afspraak> repoAfspraak)
         {
             this.repoAfspraak = repoAfspraak;
         }
@@ -26,6 +26,12 @@ namespace CRMSanto.BusinessLayer.Services
         public Afspraak GetAfspraakByID(int? id)
         {
             return repoAfspraak.GetByID(id.Value);
+        }
+
+        public void AddAfspraak(Afspraak a)
+        {
+            repoAfspraak.Insert(a);
+            repoAfspraak.SaveChanges();
         }
     }
 }
