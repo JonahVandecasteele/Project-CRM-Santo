@@ -34,16 +34,23 @@ namespace CRMSanto.BusinessLayer.Services
         }
         public Klant GetKlantByID(int id)
         {
-            return new Klant();
+            return repoKlant.GetByID(id);
         }
         public List<Klant> GetKlantenByPostCode(Adres Add)
         {
-            return new List<Klant>();
+            return repoKlant.GetByPostCode(Add.Postcode).ToList<Klant>();
         }
-        public Klant AddKlant(Klant klant,Stream Image)
+        public void UpdateKlant(Klant klant)
+        {
+            repoKlant.Update(klant);
+            repoKlant.SaveChanges();
+        }
+        public Klant InsertKlant(Klant klant,Stream Image)
         {
             StorageHelper.AddImage("StorageConnectionString", "images", Image, System.Guid.NewGuid().ToString());
-            return klant;
+           Klant result = repoKlant.Insert(klant);
+           repoKlant.SaveChanges();
+           return result;
         }
         public List<Mutualiteit> GetMutualiteiten()
         {

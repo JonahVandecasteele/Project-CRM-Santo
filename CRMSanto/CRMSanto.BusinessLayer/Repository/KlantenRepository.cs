@@ -24,9 +24,38 @@ namespace CRMSanto.BusinessLayer.Repository
             var query = (from k in context.Klant.Include(g => g.Geslacht).Include(kar => kar.Karaktertrek).Include(m => m.MedischeFiche).Include(p => p.PersoonlijkeFiche) where k.ID==(int)id select k);
             return query.Single<Klant>();
         }
-        /*public Klant GetByPostCode(string postcode)
+        public IEnumerable<Klant> GetByPostCode(string postcode)
         {
-            ///var query = (from k in context.Klant)
-        }*/
+            var query = (from k in context.Klant.Include(g => g.Geslacht).Include(kar => kar.Karaktertrek).Include(m => m.MedischeFiche).Include(p => p.PersoonlijkeFiche) where k.Adres.Postcode == postcode select k);
+            return query.ToList<Klant>();
+        }
+        public override Klant Insert(Klant entity)
+        {
+            context.Adres.Attach(entity.Adres);
+            context.Geslacht.Attach(entity.Geslacht);
+            foreach (Karaktertrek kar in entity.Karaktertrek)
+            {
+                context.Karaktertrek.Attach(kar);
+            }
+            context.MedischeFiche.Attach(entity.MedischeFiche);
+            context.PersoonlijkeFiche.Attach(entity.PersoonlijkeFiche);
+            Klant klant = context.Klant.Add(entity);
+            return klant;
+        }
+        public override void Update(Klant entityToUpdate)
+        {
+            context.Adres.Attach(entityToUpdate.Adres);
+            context.Geslacht.Attach(entityToUpdate.Geslacht);
+            foreach (Karaktertrek kar in entityToUpdate.Karaktertrek)
+            {
+                context.Karaktertrek.Attach(kar);
+            }
+            context.MedischeFiche.Attach(entityToUpdate.MedischeFiche);
+            context.PersoonlijkeFiche.Attach(entityToUpdate.PersoonlijkeFiche);
+            Klant klant = context.Klant.Add(entityToUpdate);
+
+            context.Entry(entityToUpdate).State = EntityState.Modified;
+        }
+
     }
 }
