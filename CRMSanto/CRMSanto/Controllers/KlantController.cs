@@ -6,6 +6,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using CRMSanto.BusinessLayer.Services;
+using System.IO;
+using CRMSanto.ViewModels;
 
 namespace CRMSanto.Controllers
 {
@@ -27,6 +29,23 @@ namespace CRMSanto.Controllers
         {
 
             return View(ks.GetKlanten());
+        }
+
+        public ActionResult New()
+        {
+            KlantViewModel model = new KlantViewModel();
+            model.Geslachten = ks.GetGeslachten();
+            model.Mutualiteiten = ks.GetMutualiteiten();
+            model.Werksituaties = ks.GetWerkSituaties();
+            model.Karaktertreken = ks.GetKaraktertreken();
+            return View(model);
+        }
+        [HttpPost]
+        public ActionResult New(Klant klant)
+        {
+            klant.Karaktertrek = new List<Karaktertrek>();
+            ks.InsertKlant(klant);
+            return View();
         }
 
         //[HttpPost]

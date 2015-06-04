@@ -276,11 +276,16 @@
     <Compile Include="Migrations\201506021341571_productenaanpassen2.Designer.cs">
       <DependentUpon>201506021341571_productenaanpassen2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201506041243468_roles.cs" />
+    <Compile Include="Migrations\201506041243468_roles.Designer.cs">
+      <DependentUpon>201506041243468_roles.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\KlantViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\android-icon-144x144.png" />
@@ -386,6 +391,12 @@
     <Content Include="Views\Home\EIDTest.cshtml" />
     <Content Include="Views\Product\Index.old.cshtml" />
     <Content Include="Views\Shared\_Layout.old.cshtml" />
+    <Content Include="Views\Klant\New.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Adres.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Geslacht.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\PersoonlijkeFiche.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\MedischeFiche.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Karaktertrek.cshtml" />
     <Content Include="Views\Afspraak\New.cshtml" />
     <Content Include="Views\Product\NewProductRegistration.cshtml" />
   </ItemGroup>
@@ -421,6 +432,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201506021341571_productenaanpassen2.resx">
       <DependentUpon>201506021341571_productenaanpassen2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506041243468_roles.resx">
+      <DependentUpon>201506041243468_roles.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
