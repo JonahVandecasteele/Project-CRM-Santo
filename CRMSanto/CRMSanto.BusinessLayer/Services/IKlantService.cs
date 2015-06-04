@@ -11,5 +11,6 @@ namespace CRMSanto.BusinessLayer.Services
         System.Collections.Generic.List<CRMSanto.Models.Klant> GetKlantenByPostCode(CRMSanto.Models.Adres Add);
         System.Collections.Generic.List<CRMSanto.Models.Mutualiteit> GetMutualiteiten();
         System.Collections.Generic.List<CRMSanto.Models.Werksituatie> GetWerkSituaties();
+
     }
 }

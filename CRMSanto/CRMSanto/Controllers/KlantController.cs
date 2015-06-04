@@ -28,5 +28,12 @@ namespace CRMSanto.Controllers
 
             return View(ks.GetKlanten());
         }
+
+        //[HttpPost]
+        //public ActionResult New(Klant k)
+        //{
+        //    ks.AddKlant(k);
+        //    return View();
+        //}
     }
 }
