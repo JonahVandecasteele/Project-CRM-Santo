@@ -1,5 +1,6 @@
 ﻿using CRMSanto.BusinessLayer.Services;
 using CRMSanto.Models;
+using CRMSanto.Models.PresentationModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,9 +12,11 @@ namespace CRMSanto.Controllers
     public class ProductController : Controller
     {
         private IProductService ps;
-        public ProductController(IProductService ps)
+        private IKlantService ks;
+        public ProductController(IProductService ps,IKlantService ks)
         {
             this.ps = ps;
+            this.ks = ks;
         }
         // GET: Product
         public ActionResult Index()
@@ -44,6 +47,17 @@ namespace CRMSanto.Controllers
         {
             ps.AddProduct(p);
             return View();
+        }
+
+        [HttpGet]
+        public ActionResult NewProductRegistration(Productregistratie pr)
+        {
+            NieuweProductRegistratiePM pm = new NieuweProductRegistratiePM();
+
+            pm.Producten = new SelectList(ps.GetProducten(),"ID","Naam");
+            pm.Klanten = new SelectList(ks.GetKlanten(), "ID", "Naam");
+            pm.Productregistratie = new Productregistratie();
+            return View(pm);
         }
     }
 }

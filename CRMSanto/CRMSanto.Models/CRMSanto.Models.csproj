@@ -91,6 +91,7 @@
     <Compile Include="Klant\Mutualiteit.cs" />
     <Compile Include="Klant\PersoonlijkeFiche.cs" />
     <Compile Include="PresentationModels\NieuweAfspraakPM.cs" />
+    <Compile Include="PresentationModels\NieuweProductRegistratiePM.cs" />
     <Compile Include="Product\Product.cs" />
     <Compile Include="Product\Productregistratie.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
