@@ -1,8 +1,9 @@
 ﻿using System;
 namespace CRMSanto.BusinessLayer.Repository
 {
-     public interface IAfsprakenRepository
+    public interface IAfsprakenRepository
     {
         System.Collections.Generic.IEnumerable<CRMSanto.Models.Afspraak> All();
+        CRMSanto.Models.Afspraak GetByID(object id);
     }
 }

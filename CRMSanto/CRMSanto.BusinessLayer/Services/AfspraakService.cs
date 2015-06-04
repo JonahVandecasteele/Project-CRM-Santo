@@ -23,9 +23,9 @@ namespace CRMSanto.BusinessLayer.Services
             return repoAfspraak.All().ToList<Afspraak>();
         }
 
-        //public Afspraak GetAfspraakByID(int id)
-        //{
-        //    return repoAfspraak
-        //}
+        public Afspraak GetAfspraakByID(int? id)
+        {
+            return repoAfspraak.GetByID(id.Value);
+        }
     }
 }
