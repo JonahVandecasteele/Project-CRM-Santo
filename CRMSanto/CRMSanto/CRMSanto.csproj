@@ -260,6 +260,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="HtmlHelpers\HtmlHelperExtensions.cs" />
     <Compile Include="Migrations\201506021156584_rebuilddatabase.cs" />
     <Compile Include="Migrations\201506021156584_rebuilddatabase.Designer.cs">
       <DependentUpon>201506021156584_rebuilddatabase.cs</DependentUpon>
@@ -382,7 +383,6 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Klant\Index.cshtml" />
     <Content Include="Views\Klant\AllKlanten.cshtml" />
     <Content Include="Views\Product\Index.cshtml" />
     <Content Include="Views\Product\Edit.cshtml" />

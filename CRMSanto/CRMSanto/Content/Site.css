@@ -144,6 +144,10 @@
  .fab2{
 	right: 80px;
 }
+
+.checkbox label {
+    font-weight: bold;
+}
  
 @media (max-width:768px) {
 	h1{

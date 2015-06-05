@@ -10,7 +10,8 @@
 </ul>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm("New", "Product", FormMethod.Post,
+ new { @id = "frmProduct" }))
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -71,7 +72,8 @@
 
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="+" class="btn btn-success btn-fab btn-raised mdi-content-save" />
+                        <a onclick="$('#frmProduct').submit();" href="#" class="btn btn-success btn-fab btn-raised mdi-content-save"></a>
+                        <a onclick="$('#frmProduct').reset();" href="#" class="btn btn-warning btn-fab btn-raised mdi-action-delete fab2"></a>
                     </div>
                 </div>
             </div>
