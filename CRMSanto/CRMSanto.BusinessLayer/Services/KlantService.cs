@@ -64,13 +64,25 @@ namespace CRMSanto.BusinessLayer.Services
         {
             return repoGeslacht.All().ToList<Geslacht>();
         }
+        public Geslacht GetGeslachtByID(int id)
+        {
+            return repoGeslacht.GetByID(id);
+        }
         public List<Werksituatie> GetWerkSituaties()
         {
             return repoWerksituatie.All().ToList<Werksituatie>();
         }
+        public Werksituatie GetWerkSituatieByID(int id)
+        {
+            return repoWerksituatie.GetByID(id);
+        }
         public List<Karaktertrek> GetKaraktertreken()
         {
             return repoKaraktertrek.All().ToList<Karaktertrek>();
+        }
+        public Karaktertrek GetKaraktertrekByID(int id)
+        {
+            return repoKaraktertrek.GetByID(id);
         }
     }
 }

@@ -1,14 +1,19 @@
 ﻿@model CRMSanto.Models.Karaktertrek
 
+    @*@List<CRMSanto.Models.Geslacht> list = (List<CRMSanto.Models.Geslacht>)ViewData["Geslachten"];*@
+    @{
+        List<CRMSanto.Models.Karaktertrek> list = (List<CRMSanto.Models.Karaktertrek>)ViewData["Geslachten"];
+    }
+
     <div class="form-horizontal">
-        <h4>Karaktertrek</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            @Html.LabelFor(model => model.Naam, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Naam, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Naam, "", new { @class = "text-danger" })
+
+                @Html.DropDownListFor(model => model.ID, new SelectList(list, "ID", "Naam"))
+                @Html.ValidationMessageFor(model => model.ID, "", new { @class = "text-danger" })
             </div>
         </div>
     </div>

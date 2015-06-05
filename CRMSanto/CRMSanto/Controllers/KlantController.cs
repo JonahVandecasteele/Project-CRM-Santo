@@ -43,9 +43,15 @@ namespace CRMSanto.Controllers
         [HttpPost]
         public ActionResult New(Klant klant)
         {
+            klant.Geslacht = ks.GetGeslachtByID(klant.Geslacht.ID);
             klant.Karaktertrek = new List<Karaktertrek>();
             ks.InsertKlant(klant);
-            return View();
+            KlantViewModel model = (KlantViewModel)klant;
+            model.Geslachten = ks.GetGeslachten();
+            model.Mutualiteiten = ks.GetMutualiteiten();
+            model.Werksituaties = ks.GetWerkSituaties();
+            model.Karaktertreken = ks.GetKaraktertreken();
+            return View(model);
         }
 
         //[HttpPost]
