@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
 using CRMSanto.Models;
+using System.Web;
 
 namespace CRMSanto.BusinessLayer.Repository
 {
@@ -18,6 +19,11 @@ namespace CRMSanto.BusinessLayer.Repository
         {
             var query = (from pr in context.Productregistratie.Include(k => k.Klant).Include(p=>p.Product) select pr);
             return query.ToList<Productregistratie>();
+        }
+
+        public void SaveImage(HttpPostedFileBase p)
+        {
+            StorageHelper.AddImage("StorageConnectionString", "images", p.InputStream, p.FileName);
         }
     }
 }

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace CRMSanto.BusinessLayer.Services
 {
@@ -38,6 +39,11 @@ namespace CRMSanto.BusinessLayer.Services
         {
             repoProduct.Insert(p);
             repoProduct.SaveChanges();
+        }
+
+        public void SaveImage(HttpPostedFileBase p)
+        {
+            repoProducten.SaveImage(p);
         }
 
         public void DeleteProduct(Product p)
