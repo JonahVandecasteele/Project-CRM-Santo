@@ -11,7 +11,7 @@ using System.Linq;
 
     internal sealed class Configuration : DbMigrationsConfiguration<CRMSanto.Models.ApplicationDbContext>
     {
-        private string pathGemeentes = AppDomain.CurrentDomain.BaseDirectory + "..\\Data\\zipcodes.txt";
+        private string pathGemeentes = AppDomain.CurrentDomain.BaseDirectory + "..\\..\\Data\\zipcodes.txt";
         List<Gemeente> gemeentes = new List<Gemeente>();
 
         public Configuration()
@@ -28,6 +28,7 @@ using System.Linq;
             SeedKaraktertrek(context);
             seedProducten(context);
             //SeedAccounts(context);
+            //seedGemeentes(context);
         }
 
         public void SeedAccounts(ApplicationDbContext context)
@@ -69,7 +70,6 @@ using System.Linq;
         }
             public void SeedGeslacht(ApplicationDbContext context)
             {
-                //seedGemeentes(context);
                 //GESLACHT
                 context.Geslacht.AddOrUpdate<Geslacht>(g => g.Naam, new Geslacht() { Naam = "M" });
                 context.Geslacht.AddOrUpdate<Geslacht>(g => g.Naam, new Geslacht() { Naam = "V" });

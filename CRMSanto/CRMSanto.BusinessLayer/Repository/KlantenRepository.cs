@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Data.Entity;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace CRMSanto.BusinessLayer.Repository
 {
@@ -56,6 +57,11 @@ namespace CRMSanto.BusinessLayer.Repository
 
             context.Entry(entityToUpdate).State = EntityState.Modified;
         }
+
+        //public void SaveImage(HttpPostedFileBase p)
+        //{
+        //    StorageHelper.AddImage()
+        //}
 
     }
 }
