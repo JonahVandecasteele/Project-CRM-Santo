@@ -73,13 +73,12 @@
         </div>
 
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Afspraak.Geannuleerd, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.Afspraak.Geannuleerd)
+        <div class="form-group col-md-3">
+            <div class="checkbox">
+                <label>
+                    @Html.EditorFor(model => model.Afspraak.Geannuleerd) Duo?
                     @Html.ValidationMessageFor(model => model.Afspraak.Geannuleerd, "", new { @class = "text-danger" })
-                </div>
+                </label>
             </div>
         </div>
 
