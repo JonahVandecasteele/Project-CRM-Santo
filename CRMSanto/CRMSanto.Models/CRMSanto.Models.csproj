@@ -90,6 +90,15 @@
     <Compile Include="Klant\MedischeFiche.cs" />
     <Compile Include="Klant\Mutualiteit.cs" />
     <Compile Include="Klant\PersoonlijkeFiche.cs" />
+    <Compile Include="Migrations\201506050831017_init.cs" />
+    <Compile Include="Migrations\201506050831017_init.Designer.cs">
+      <DependentUpon>201506050831017_init.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201506050835510_seed.cs" />
+    <Compile Include="Migrations\201506050835510_seed.Designer.cs">
+      <DependentUpon>201506050835510_seed.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="PresentationModels\NieuweAfspraakPM.cs" />
     <Compile Include="PresentationModels\NieuweProductRegistratiePM.cs" />
     <Compile Include="Product\Product.cs" />
@@ -102,6 +111,14 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201506050831017_init.resx">
+      <DependentUpon>201506050831017_init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506050835510_seed.resx">
+      <DependentUpon>201506050835510_seed.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

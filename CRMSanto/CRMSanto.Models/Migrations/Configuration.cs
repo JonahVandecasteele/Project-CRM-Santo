@@ -1,7 +1,6 @@
-namespace CRMSanto.Migrations
+namespace CRMSanto.Models.Migrations
 {
-    using CRMSanto.Models;
-using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
@@ -14,20 +13,21 @@ using System.Linq;
     {
         private string pathGemeentes = AppDomain.CurrentDomain.BaseDirectory + "..\\Data\\zipcodes.txt";
         List<Gemeente> gemeentes = new List<Gemeente>();
+
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
+
         protected override void Seed(CRMSanto.Models.ApplicationDbContext context)
         {
-            SeedAccounts(context);
             SeedGeslacht(context);
             SeedMutualiteiten(context);
             SeedSoortAfspraak(context);
             SeedWerksituatie(context);
             SeedKaraktertrek(context);
             seedProducten(context);
-
+            //SeedAccounts(context);
         }
 
         public void SeedAccounts(ApplicationDbContext context)
@@ -167,6 +167,5 @@ using System.Linq;
                 context.SaveChanges();
             }
     }
-    }
-    
+        }
 
