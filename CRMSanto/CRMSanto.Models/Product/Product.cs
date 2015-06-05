@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -17,5 +18,7 @@ namespace CRMSanto.Models
         public string Foto { get; set; }
         public string Omschrijving { get; set; }
         public string Barcode { get; set; }
+        [NotMapped]
+        public HttpPostedFileBase Upload { get; set; }
     }
 }
