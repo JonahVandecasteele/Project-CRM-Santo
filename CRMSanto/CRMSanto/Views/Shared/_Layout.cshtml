@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Santo - @ViewBag.Title</title>
+    <title>@ViewBag.Title - Santo</title>
 
     <link rel="apple-touch-icon" sizes="57x57" href="/Content/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="/Content/apple-icon-60x60.png">
@@ -44,9 +44,9 @@
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li><a href="index.html">Start</a></li>
-                    <li><a href="afspraken.html">Afspraken</a></li>
+                    <li class="@Html.ActivePage("Afspraak", "Index")"><a href="">Afspraken</a></li>
                     <li><a href="klanten.html">Klanten</a></li>
-                    <li class="active"><a href="producten.html">Producten</a></li>
+                    <li class="@Html.ActivePage("Product", "Index")"><a href="producten.html">Producten</a></li>
                 </ul>
             </div>
         </div>
