@@ -1,6 +1,8 @@
 ﻿@model CRMSanto.Models.MedischeFiche
+@{
+    List<CRMSanto.Models.Mutualiteit> list = (List<CRMSanto.Models.Mutualiteit>)ViewData["Mutualiteiten"];
+}
 
-    <div class="form-horizontal">
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
@@ -26,4 +28,11 @@
                 @Html.ValidationMessageFor(model => model.HuidigeKlachten, "", new { @class = "text-danger" })
             </div>
         </div>
-    </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+
+                @Html.DropDownListFor(model => model.Mutualiteit.ID, new SelectList(list, "ID", "Naam"))
+                @Html.ValidationMessageFor(model => model.Mutualiteit, "", new { @class = "text-danger" })
+            </div>
+        </div>

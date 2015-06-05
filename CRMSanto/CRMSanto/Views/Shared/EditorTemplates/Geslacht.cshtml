@@ -6,7 +6,6 @@
         List<CRMSanto.Models.Geslacht> list = (List<CRMSanto.Models.Geslacht>)ViewData["Geslachten"];
     }
     
-    <div class="form-horizontal">
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
@@ -17,5 +16,5 @@
                 @Html.ValidationMessageFor(model => model.ID, "", new { @class = "text-danger" })
             </div>
         </div>
-    </div>
+
 

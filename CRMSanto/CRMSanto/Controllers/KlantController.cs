@@ -41,17 +41,34 @@ namespace CRMSanto.Controllers
             return View(model);
         }
         [HttpPost]
-        public ActionResult New(Klant klant)
+        public ActionResult New(KlantViewModel klant)
         {
-            klant.Geslacht = ks.GetGeslachtByID(klant.Geslacht.ID);
-            klant.Karaktertrek = new List<Karaktertrek>();
-            ks.InsertKlant(klant);
-            KlantViewModel model = (KlantViewModel)klant;
-            model.Geslachten = ks.GetGeslachten();
-            model.Mutualiteiten = ks.GetMutualiteiten();
-            model.Werksituaties = ks.GetWerkSituaties();
-            model.Karaktertreken = ks.GetKaraktertreken();
-            return View(model);
+            if (Request.Form["Create"] != null)
+            {
+                if(klant.Geslacht.ID!=0)
+                klant.Geslacht = ks.GetGeslachtByID(klant.Geslacht.ID);
+                if(klant.MedischeFiche.Mutualiteit.ID!=0)
+                klant.MedischeFiche.Mutualiteit = ks.GetMutualiteitByID(klant.MedischeFiche.Mutualiteit.ID);
+                ks.InsertKlant(klant);
+                return RedirectToAction("AllKlanten");
+            }
+            else if(Request.Form["addkar"] != null)
+            {
+                KlantViewModel model = klant;
+                Karaktertrek trek = ks.GetKaraktertrekByID(model.SelectedKaracter.ID);
+                if (model.Karaktertrek == null)
+                {
+                    model.Karaktertrek = new List<Karaktertrek>();
+                }
+                model.Karaktertrek.Add(trek);
+                model.Geslachten = ks.GetGeslachten();
+                model.Mutualiteiten = ks.GetMutualiteiten();
+                model.Werksituaties = ks.GetWerkSituaties();
+                model.Karaktertreken = ks.GetKaraktertreken();
+                return View(model);
+            }
+            return View();
+            
         }
 
         //[HttpPost]

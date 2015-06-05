@@ -1,19 +1,33 @@
 ﻿@model CRMSanto.Models.Karaktertrek
-
-    @*@List<CRMSanto.Models.Geslacht> list = (List<CRMSanto.Models.Geslacht>)ViewData["Geslachten"];*@
-    @{
-        List<CRMSanto.Models.Karaktertrek> list = (List<CRMSanto.Models.Karaktertrek>)ViewData["Geslachten"];
+@{
+    List<CRMSanto.Models.Karaktertrek> list = (List<CRMSanto.Models.Karaktertrek>)ViewData["Karaktertreken"];
+    List<CRMSanto.Models.Karaktertrek> currentlist = (List<CRMSanto.Models.Karaktertrek>)ViewData["Karaktertrek"];
+    if (currentlist == null)
+    {
+        currentlist = new List<CRMSanto.Models.Karaktertrek>();
     }
+        
+}
 
-    <div class="form-horizontal">
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
 
-                @Html.DropDownListFor(model => model.ID, new SelectList(list, "ID", "Naam"))
-                @Html.ValidationMessageFor(model => model.ID, "", new { @class = "text-danger" })
-            </div>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(model => model, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+
+            @Html.DropDownListFor(model => model.ID, new SelectList(list, "ID", "Naam"))
+            @Html.ValidationMessageFor(model => model.ID, "", new { @class = "text-danger" })
+            <p>
+                <input type="submit" name="addkar" value="+" class="btn btn-default" />
+            </p>
         </div>
+        @*@for (var i = 0; i < currentlist.Count(); i++)
+        {
+            @Html.HiddenFor(model => currentlist[i].Naam)
+            @Html.HiddenFor(model => currentlist[i].ID)
+            <label>@currentlist[i].Naam</label>
+        }*@
+
     </div>
+

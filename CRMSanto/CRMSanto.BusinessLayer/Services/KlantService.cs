@@ -56,9 +56,17 @@ namespace CRMSanto.BusinessLayer.Services
         {
             return repoMutualiteit.All().ToList<Mutualiteit>();
         }
+        public Mutualiteit GetMutualiteitByID(int id)
+        {
+            return repoMutualiteit.GetByID(id);
+        }
         public List<Gemeente> GetGemeentes()
         {
             return repoGemeente.All().ToList<Gemeente>();
+        }
+        public Gemeente GetGemeenteByID(int id)
+        {
+            return repoGemeente.GetByID(id);
         }
         public List<Geslacht> GetGeslachten()
         {
