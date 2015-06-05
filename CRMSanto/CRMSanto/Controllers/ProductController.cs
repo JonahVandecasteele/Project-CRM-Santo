@@ -46,7 +46,7 @@ namespace CRMSanto.Controllers
         public ActionResult New(Product p)
         {
             ps.AddProduct(p);
-            return View();
+            return View("Index");
         }
 
         [HttpGet]
@@ -54,8 +54,10 @@ namespace CRMSanto.Controllers
         {
             NieuweProductRegistratiePM pm = new NieuweProductRegistratiePM();
 
+            var values = ks.GetKlanten().Select(u => new { ID = u.ID, Naam = u.Naam + " " + u.Voornaam });
+            
             pm.Producten = new SelectList(ps.GetProducten(),"ID","Naam");
-            pm.Klanten = new SelectList(ks.GetKlanten(), "ID", "Naam");
+            pm.Klanten = new SelectList(values, "ID", "Naam");
             pm.Productregistratie = new Productregistratie();
             return View(pm);
         }
