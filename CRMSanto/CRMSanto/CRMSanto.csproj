@@ -260,27 +260,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201506021156584_rebuilddatabase.cs" />
-    <Compile Include="Migrations\201506021156584_rebuilddatabase.Designer.cs">
-      <DependentUpon>201506021156584_rebuilddatabase.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201506021201056_rebuilddb.cs" />
-    <Compile Include="Migrations\201506021201056_rebuilddb.Designer.cs">
-      <DependentUpon>201506021201056_rebuilddb.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201506021312127_seedproducten.cs" />
-    <Compile Include="Migrations\201506021312127_seedproducten.Designer.cs">
-      <DependentUpon>201506021312127_seedproducten.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201506021341571_productenaanpassen2.cs" />
-    <Compile Include="Migrations\201506021341571_productenaanpassen2.Designer.cs">
-      <DependentUpon>201506021341571_productenaanpassen2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201506041243468_roles.cs" />
-    <Compile Include="Migrations\201506041243468_roles.Designer.cs">
-      <DependentUpon>201506041243468_roles.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -419,23 +398,6 @@
       <Project>{4e71dfd7-6f50-4cb6-b39a-c4ed702b2dbd}</Project>
       <Name>CRMSanto.Models</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201506021156584_rebuilddatabase.resx">
-      <DependentUpon>201506021156584_rebuilddatabase.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201506021201056_rebuilddb.resx">
-      <DependentUpon>201506021201056_rebuilddb.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201506021312127_seedproducten.resx">
-      <DependentUpon>201506021312127_seedproducten.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201506021341571_productenaanpassen2.resx">
-      <DependentUpon>201506021341571_productenaanpassen2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201506041243468_roles.resx">
-      <DependentUpon>201506041243468_roles.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

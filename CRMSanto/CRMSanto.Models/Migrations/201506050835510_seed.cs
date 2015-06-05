@@ -1,9 +1,9 @@
-namespace CRMSanto.Migrations
+namespace CRMSanto.Models.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class seedproducten : DbMigration
+    public partial class seed : DbMigration
     {
         public override void Up()
         {
