@@ -16,9 +16,7 @@
     
     <div class="form-horizontal">
         <h4>Afspraak</h4>
-        <hr />
-        @Html.LabelFor(model => model.Klanten)
-        @Html.DropDownListFor(model => model.Afspraak.Klant.Naam, Model.Klanten)
+        
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
                 @Html.LabelFor(model => model.Klanten, htmlAttributes: new { @class = "control-label col-md-2" })
