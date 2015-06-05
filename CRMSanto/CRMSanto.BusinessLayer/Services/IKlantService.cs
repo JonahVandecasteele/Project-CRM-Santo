@@ -3,6 +3,7 @@ namespace CRMSanto.BusinessLayer.Services
 {
     public interface IKlantService
     {
+        CRMSanto.Models.Gemeente GetGemeenteByID(int id);
         System.Collections.Generic.List<CRMSanto.Models.Gemeente> GetGemeentes();
         CRMSanto.Models.Geslacht GetGeslachtByID(int id);
         System.Collections.Generic.List<CRMSanto.Models.Geslacht> GetGeslachten();
@@ -11,6 +12,7 @@ namespace CRMSanto.BusinessLayer.Services
         CRMSanto.Models.Klant GetKlantByID(int id);
         System.Collections.Generic.List<CRMSanto.Models.Klant> GetKlanten();
         System.Collections.Generic.List<CRMSanto.Models.Klant> GetKlantenByPostCode(CRMSanto.Models.Adres Add);
+        CRMSanto.Models.Mutualiteit GetMutualiteitByID(int id);
         System.Collections.Generic.List<CRMSanto.Models.Mutualiteit> GetMutualiteiten();
         CRMSanto.Models.Werksituatie GetWerkSituatieByID(int id);
         System.Collections.Generic.List<CRMSanto.Models.Werksituatie> GetWerkSituaties();
