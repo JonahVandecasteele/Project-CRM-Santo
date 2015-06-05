@@ -58,10 +58,5 @@ namespace CRMSanto.BusinessLayer.Repository
             context.Entry(entityToUpdate).State = EntityState.Modified;
         }
 
-        //public void SaveImage(HttpPostedFileBase p)
-        //{
-        //    StorageHelper.AddImage()
-        //}
-
     }
 }
