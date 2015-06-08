@@ -44,9 +44,9 @@ namespace CRMSanto.Controllers
         }
 
         [HttpPost]
-        public ActionResult NieuweAfspraak(Afspraak a)
+        public ActionResult New(Afspraak a)
         {
-            if (Request.Form["Create"] != null)
+            if (Request.Form["New"] != null)
             {
                 if (a.Klant.ID != 0)
                 {
