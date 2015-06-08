@@ -40,7 +40,7 @@ namespace CRMSanto.Controllers
         }
 
         [HttpPost]
-        public ActionResult New(NieuweAfspraakPM a)
+        public ActionResult New(Afspraak a)
         {
             /*if (Request.Form["New"] != null)
             {*/
@@ -48,7 +48,6 @@ namespace CRMSanto.Controllers
                 {
                     a.Klant = ks.GetKlantByID(a.Klant.ID);
                 }
-                a.DatumTijdstip = a.DatumTijdstip.Date + a.Tijdstip.TimeOfDay;
                 if (a.DatumTijdstip == DateTime.MinValue)
                     a.DatumTijdstip = (DateTime)SqlDateTime.MinValue;
 
