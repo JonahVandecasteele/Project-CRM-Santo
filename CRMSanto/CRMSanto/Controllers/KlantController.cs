@@ -20,12 +20,12 @@ namespace CRMSanto.Controllers
             this.ks = ks;
         }
         // GET: Klant
-        public ActionResult Index()
-        {
+        //public ActionResult Index()
+        //{
             
-            return View(ks.GetMutualiteiten());
-        }
-        public ActionResult AllKlanten()
+        //    return View(ks.GetMutualiteiten());
+        //}
+        public ActionResult Index()
         {
 
             return View(ks.GetKlanten());
@@ -50,7 +50,7 @@ namespace CRMSanto.Controllers
                 if(klant.MedischeFiche.Mutualiteit.ID!=0)
                 klant.MedischeFiche.Mutualiteit = ks.GetMutualiteitByID(klant.MedischeFiche.Mutualiteit.ID);
                 ks.InsertKlant(klant);
-                return RedirectToAction("AllKlanten");
+                return RedirectToAction("Index");
             }
             else if(Request.Form["addkar"] != null)
             {
