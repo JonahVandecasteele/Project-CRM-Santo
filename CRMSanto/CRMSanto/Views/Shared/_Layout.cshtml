@@ -49,6 +49,9 @@
                     <li class="@Html.ActivePage("Klant", "Index")">@Html.ActionLink("Klanten", "Index", "Klant", null, null)</li>
                     <li class="@Html.ActivePage("Product", "Index")">@Html.ActionLink("Producten", "Index", "Product", null, null)</li>
                 </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="active"><a id="clock" href="javascript: void(0)"></a></li>
+                </ul>
             </div>
         </div>
     </nav>
@@ -61,8 +64,26 @@
     @RenderSection("scripts", required: false)
 
     <script>
+        function updateClock() {
+            var currentTime = new Date();
+            var currentHours = currentTime.getHours();
+            var currentMinutes = currentTime.getMinutes();
+            var currentSeconds = currentTime.getSeconds();
+
+            // Pad the minutes and seconds with leading zeros, if required
+            currentMinutes = (currentMinutes < 10 ? "0" : "") + currentMinutes;
+            currentSeconds = (currentSeconds < 10 ? "0" : "") + currentSeconds;
+
+            // Compose the string for display
+            var currentTimeString = currentHours + ":" + currentMinutes + ":" + currentSeconds;
+
+
+            $("#clock").html(currentTimeString);
+
+        }
     $(document).ready(function () {
         $.material.init();
+        setInterval('updateClock()', 1000);
     });
     </script>
 </body>

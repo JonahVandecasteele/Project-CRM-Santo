@@ -4,55 +4,52 @@
     ViewBag.Title = "Afspraken";
 }
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.DatumTijdstip)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Verplaatsing)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Notitie)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Duur)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SoloDuo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Geannuleerd)
-        </th>
-        <th></th>
-    </tr>
+<div class="col-md-3">
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.DatumTijdstip)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Verplaatsing)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Notitie)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Duur)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SoloDuo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Geannuleerd)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-        </td>
-    </tr>
-}
+</div>
+<div class="col-md-9">
+    <div class="table-responsive">
+        <table class="table table-striped table-hover">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.DatumTijdstip)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Verplaatsing)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Notitie)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Duur)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SoloDuo)
+                </th>   
+            </tr>
 
-</table>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DatumTijdstip)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Verplaatsing)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Notitie)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Duur)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SoloDuo)
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
+
+@Html.ActionLink(" ", "New", "Afspraak", null, new Dictionary<string, object> { { "class", "btn btn-success btn-fab btn-raised mdi-content-add" } })

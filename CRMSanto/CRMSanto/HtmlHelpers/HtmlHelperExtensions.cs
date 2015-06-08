@@ -23,6 +23,13 @@ namespace CRMSanto.HtmlHelpers
             return classValue;
         }
 
+        public static string GetPhotoURL(this HtmlHelper helper, string photo)
+        {
+            string photoURL = "/Content/img/profile.jpg";
+            if (photo != "") photoURL = "http://massagesanto.blob.core.windows.net/images/" + photo;
+            return photoURL;
+        }
+
         public static string FormatPhoneNumber(this HtmlHelper helper, string phoneNumber) 
         {
             string formattedNumber = phoneNumber;
