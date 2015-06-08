@@ -28,8 +28,8 @@ namespace CRMSanto.Controllers
         //}
         public ActionResult Index()
         {
-            
-            return View(ks.GetKlanten());
+            List<Klant> klanten = ks.GetKlanten();
+            return View(klanten);
         }
 
         public ActionResult New()
