@@ -65,17 +65,21 @@ namespace CRMSanto.Controllers
             return View(pm);
         }
 
-        //[HttpPost]
-        //public ActionResult NewProductRegistration(NieuweProductRegistratiePM nprpm)
-        //{
-        //    nprpm.Klanten = new SelectList(ks.GetKlanten(), "ID", "Naam");
-        //    nprpm.Producten = new SelectList(ps.GetProducten(), "ID", "Naam");
+        [HttpPost]
+        public ActionResult NewProductRegistration(NieuweProductRegistratiePM nprpm)
+        {
+            nprpm.Klanten = new SelectList(ks.GetKlanten(), "ID", "Naam");
+            nprpm.Producten = new SelectList(ps.GetProducten(), "ID", "Naam");
 
-        //    Productregistratie pr = new Productregistratie();
-        //    pr = nprpm.Productregistratie;
+            Productregistratie pr = new Productregistratie();
+            pr = nprpm.Productregistratie;
+            pr.DatumTijdstip = DateTime.Now;
+            pr.Klant = ks.GetKlantByID(nprpm.KlantID);
+            pr.Product = ps.GetProductByID(nprpm.ProductID);
 
-        //    pr.DatumTijdstip = DateTime.Now;
-        //}
+            ps.InsertProductregistration(pr);
+            return View("Index");
+        }
 
 
     }

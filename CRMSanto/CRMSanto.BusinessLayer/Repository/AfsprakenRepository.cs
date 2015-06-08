@@ -28,6 +28,14 @@ namespace CRMSanto.BusinessLayer.Repository
             return query.ToList<Afspraak>();
         }
 
+        public override Afspraak Insert(Afspraak entity)
+        {
+            context.Klant.Attach(entity.Klant);
+
+            Afspraak afspraak = context.Afspraak.Add(entity);
+            return afspraak;
+        }
+
         public override Afspraak GetByID(object id)
         {
             var query = (from a in context.Afspraak.Include(k => k.Klant) select a);

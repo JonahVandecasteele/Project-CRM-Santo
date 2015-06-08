@@ -55,6 +55,7 @@ namespace CRMSanto.Controllers
                     tempKlant.Geboortedatum = (DateTime)SqlDateTime.MinValue;
                 else
                     tempKlant.Geboortedatum = klant.Geboortedatum;
+                tempKlant.Karaktertrek = (List<Karaktertrek>)TempData["KarTrek"];
                 ks.InsertKlant(tempKlant);
                 return RedirectToAction("Index");
             }
@@ -67,6 +68,7 @@ namespace CRMSanto.Controllers
                     model.Karaktertrek = new List<Karaktertrek>();
                 }
                 model.Karaktertrek.Add(trek);
+                TempData["KarTrek"] = model.Karaktertrek;
                 model.Geslachten = ks.GetGeslachten();
                 model.Mutualiteiten = ks.GetMutualiteiten();
                 model.Werksituaties = ks.GetWerkSituaties();

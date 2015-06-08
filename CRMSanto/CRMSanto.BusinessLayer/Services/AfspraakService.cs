@@ -12,10 +12,12 @@ namespace CRMSanto.BusinessLayer.Services
     {
         private IAfsprakenRepository repoAfspraken = null;
         private IGenericRepository<Afspraak> repoAfspraak = null;
+        private IGenericRepository<Masseur> repoMasseur = null;
 
-        public AfspraakService(IGenericRepository<Afspraak> repoAfspraak)
+        public AfspraakService(IGenericRepository<Afspraak> repoAfspraak, IGenericRepository<Masseur> repoMasseur)
         {
             this.repoAfspraak = repoAfspraak;
+            this.repoMasseur = repoMasseur;
         }
 
         public List<Afspraak> GetAfspraken()
@@ -35,8 +37,23 @@ namespace CRMSanto.BusinessLayer.Services
 
         public void AddAfspraak(Afspraak a)
         {
-            repoAfspraak.Insert(a);
+            //ApplicationDbContext context = new ApplicationDbContext();
+
+            //context.Klant.Add(a.Klant);
+            //context.Entry<Klant>(a.Klant).State = System.Data.Entity.EntityState.Unchanged;
+            
+
+            repoAfspraken.Insert(a);
             repoAfspraak.SaveChanges();
+        }
+
+        public List<Masseur> GetMasseurs()
+        {
+            return repoMasseur.All().ToList<Masseur>();
+        }
+        public Masseur GetMasseurByID(int id)
+        {
+            return repoMasseur.GetByID(id);
         }
     }
 }

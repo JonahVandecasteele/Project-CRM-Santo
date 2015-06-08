@@ -34,11 +34,14 @@ namespace CRMSanto.BusinessLayer.Repository
         public override Klant Insert(Klant entity)
         {
             context.Adres.Add(entity.Adres);
-            context.Geslacht.Add(entity.Geslacht);
-            foreach (Karaktertrek kar in entity.Karaktertrek)
+            context.Geslacht.Attach(entity.Geslacht);
+            foreach (Karaktertrek item in entity.Karaktertrek)
             {
-                context.Karaktertrek.Attach(kar);
+                context.Karaktertrek.Attach(item);
             }
+            context.Mutualiteit.Attach(entity.MedischeFiche.Mutualiteit);
+            if (entity.PersoonlijkeFiche.Werksituatie != null)
+            context.Werksituatie.Attach(entity.PersoonlijkeFiche.Werksituatie);
             context.MedischeFiche.Add(entity.MedischeFiche);
             context.PersoonlijkeFiche.Add(entity.PersoonlijkeFiche);
             Klant klant = context.Klant.Add(entity);

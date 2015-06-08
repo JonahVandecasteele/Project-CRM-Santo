@@ -7,5 +7,7 @@ namespace CRMSanto.BusinessLayer.Services
         CRMSanto.Models.Afspraak GetAfspraakByID(int? id);
         System.Collections.Generic.List<CRMSanto.Models.Afspraak> GetAfspraken();
         System.Collections.Generic.List<CRMSanto.Models.Afspraak> GetAfsprakenToday();
+        CRMSanto.Models.Masseur GetMasseurByID(int id);
+        System.Collections.Generic.List<CRMSanto.Models.Masseur> GetMasseurs();
     }
 }

@@ -38,12 +38,15 @@ namespace CRMSanto.Controllers
             pm.Afspraak.DatumTijdstip = DateTime.Now;
             pm.Datum = DateTime.Now;
             pm.Tijdstip = DateTime.Now;
+            pm.Masseurs = new SelectList(afs.GetMasseurs().Select(m => new { ID = m.ID, Naam = m.Naam }), "ID", "Naam");
+           
             return View(pm);
         }
 
         [HttpPost]
         public ActionResult New(NieuweAfspraakPM a)
         {
+           
             /*if (Request.Form["New"] != null)
             {*/
                 if (a.Afspraak.Klant.ID != 0)
@@ -57,8 +60,9 @@ namespace CRMSanto.Controllers
                 afs.AddAfspraak(a.Afspraak);
                 return RedirectToAction("Index");
          //   }
-            a.Klanten = new SelectList(ks.GetKlanten().Select(u => new { ID = u.ID, Naam = u.Naam + " " + u.Voornaam }), "ID", "Naam");
-            return View(a);
+            NieuweAfspraakPM pm = (NieuweAfspraakPM)a;
+            pm.Klanten = new SelectList(ks.GetKlanten().Select(u => new { ID = u.ID, Naam = u.Naam + " " + u.Voornaam }), "ID", "Naam");
+            return View(pm);
         }
 
 
