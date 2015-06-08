@@ -9,13 +9,21 @@ using System.Web.Mvc;
 
 namespace CRMSanto.Models.PresentationModels
 {
-    public class NieuweAfspraakPM : Afspraak
+    public class NieuweAfspraakPM
     {
         public string VolledigeNaam { get; set; }
+        public Afspraak Afspraak { get; set; }
+
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
+        [Display(Name = "Datum")]
+        public DateTime Datum { get; set; }
+
         [DataType(DataType.Time)]
-        [DisplayFormat(DataFormatString = "{0:H:mm}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:HH:mm}", ApplyFormatInEditMode = true)]
         [Display(Name = "Tijdstip")]
         public DateTime Tijdstip { get; set; }
+
         public int KlantID { get; set; }
         public SelectList Klanten { get; set; }
         public SelectList Masseurs { get; set; }

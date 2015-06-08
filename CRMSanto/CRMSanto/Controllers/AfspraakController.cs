@@ -35,35 +35,34 @@ namespace CRMSanto.Controllers
            
             NieuweAfspraakPM pm = new NieuweAfspraakPM();
             pm.Klanten = new SelectList(ks.GetKlanten().Select(u => new { ID = u.ID, Naam = u.Naam + " " + u.Voornaam }), "ID", "Naam");
+            pm.Afspraak.DatumTijdstip = DateTime.Now;
+            pm.Datum = DateTime.Now;
+            pm.Tijdstip = DateTime.Now;
             pm.Masseurs = new SelectList(afs.GetMasseurs().Select(m => new { ID = m.ID, Naam = m.Naam }), "ID", "Naam");
            
             return View(pm);
         }
 
         [HttpPost]
-        public ActionResult New(Afspraak a)
+        public ActionResult New(NieuweAfspraakPM a)
         {
            
             /*if (Request.Form["New"] != null)
             {*/
-            
-                if (a.Klant.ID != 0)
+                if (a.Afspraak.Klant.ID != 0)
                 {
-                    a.Klant = ks.GetKlantByID(a.Klant.ID);
+                    a.Afspraak.Klant = ks.GetKlantByID(a.Afspraak.Klant.ID);
                 }
-                if (a.DatumTijdstip == DateTime.MinValue)
-                    a.DatumTijdstip = (DateTime)SqlDateTime.MinValue;
+                a.Afspraak.DatumTijdstip = a.Datum.Date + a.Tijdstip.TimeOfDay;
+                if (a.Afspraak.DatumTijdstip == DateTime.MinValue)
+                    a.Afspraak.DatumTijdstip = (DateTime)SqlDateTime.MinValue;
 
-                afs.AddAfspraak(a);
+                afs.AddAfspraak(a.Afspraak);
                 return RedirectToAction("Index");
-                //   }
-
-                NieuweAfspraakPM pm = (NieuweAfspraakPM)a;
-                pm.Klanten = new SelectList(ks.GetKlanten().Select(u => new { ID = u.ID, Naam = u.Naam + " " + u.Voornaam }), "ID", "Naam");
-            
-
+         //   }
+            NieuweAfspraakPM pm = (NieuweAfspraakPM)a;
+            pm.Klanten = new SelectList(ks.GetKlanten().Select(u => new { ID = u.ID, Naam = u.Naam + " " + u.Voornaam }), "ID", "Naam");
             return View(pm);
-                
         }
 
 
