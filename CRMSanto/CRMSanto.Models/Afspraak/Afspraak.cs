@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CRMSanto.Models;
+using CRMSanto.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -23,5 +25,6 @@ namespace CRMSanto.Models
         public Boolean SoloDuo { get; set; }
         public Adres Adres { get; set; }
         public Boolean Geannuleerd { get; set; }
+        public Masseur Masseur { get; set; }
     }
 }
