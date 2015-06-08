@@ -22,5 +22,22 @@ namespace CRMSanto.HtmlHelpers
 
             return classValue;
         }
+
+        public static string FormatPhoneNumber(this HtmlHelper helper, string phoneNumber) 
+        {
+            string formattedNumber = phoneNumber;
+            //GSM
+            if (phoneNumber.Length == 10)
+            {
+                formattedNumber = String.Format("{0:#### ## ## ##}", phoneNumber);
+            }
+            //THUIS
+            if (phoneNumber.Length == 9) 
+            {
+                formattedNumber = String.Format("{0:### ## ## ##}", phoneNumber);
+            }
+            formattedNumber = "TO DO: format number";
+            return formattedNumber;
+        }
     }
 }
