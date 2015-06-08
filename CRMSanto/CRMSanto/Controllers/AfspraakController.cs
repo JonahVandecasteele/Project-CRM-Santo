@@ -35,6 +35,7 @@ namespace CRMSanto.Controllers
            
             NieuweAfspraakPM pm = new NieuweAfspraakPM();
             pm.Klanten = new SelectList(ks.GetKlanten().Select(u => new { ID = u.ID, Naam = u.Naam + " " + u.Voornaam }), "ID", "Naam");
+            pm.Masseurs = new SelectList(afs.GetMasseurs().Select(m => new { ID = m.ID, Naam = m.Naam }), "ID", "Naam");
            
             return View(pm);
         }
@@ -42,8 +43,10 @@ namespace CRMSanto.Controllers
         [HttpPost]
         public ActionResult New(Afspraak a)
         {
+           
             /*if (Request.Form["New"] != null)
             {*/
+            
                 if (a.Klant.ID != 0)
                 {
                     a.Klant = ks.GetKlantByID(a.Klant.ID);
@@ -53,10 +56,14 @@ namespace CRMSanto.Controllers
 
                 afs.AddAfspraak(a);
                 return RedirectToAction("Index");
-         //   }
-            NieuweAfspraakPM pm = (NieuweAfspraakPM)a;
-            pm.Klanten = new SelectList(ks.GetKlanten().Select(u => new { ID = u.ID, Naam = u.Naam + " " + u.Voornaam }), "ID", "Naam");
+                //   }
+
+                NieuweAfspraakPM pm = (NieuweAfspraakPM)a;
+                pm.Klanten = new SelectList(ks.GetKlanten().Select(u => new { ID = u.ID, Naam = u.Naam + " " + u.Voornaam }), "ID", "Naam");
+            
+
             return View(pm);
+                
         }
 
 
