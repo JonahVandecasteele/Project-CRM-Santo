@@ -52,10 +52,12 @@ namespace CRMSanto.Controllers
                 {
                     a.Klant = ks.GetKlantByID(a.Klant.ID);
                 }
-            }
-            
 
-            afs.AddAfspraak(a);
+                afs.AddAfspraak(a);
+                return RedirectToAction("Index");
+            }
+                
+            
             return View();
         }
 
