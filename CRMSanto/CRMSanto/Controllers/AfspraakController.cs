@@ -3,6 +3,7 @@ using CRMSanto.Models;
 using CRMSanto.Models.PresentationModels;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlTypes;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -33,32 +34,29 @@ namespace CRMSanto.Controllers
         {
            
             NieuweAfspraakPM pm = new NieuweAfspraakPM();
-
-            var values = ks.GetKlanten().Select(u => new { ID = u.ID, Naam = u.Naam + " " + u.Voornaam });
-            pm.Klanten = new SelectList(values, "ID", "Naam");
-            
-
-            pm.Afspraak = new Afspraak();
+            pm.Klanten = new SelectList(ks.GetKlanten().Select(u => new { ID = u.ID, Naam = u.Naam + " " + u.Voornaam }), "ID", "Naam");
            
             return View(pm);
         }
 
         [HttpPost]
-        public ActionResult NieuweAfspraak(Afspraak a)
+        public ActionResult New(Afspraak a)
         {
-            if (Request.Form["Create"] != null)
-            {
+            /*if (Request.Form["New"] != null)
+            {*/
                 if (a.Klant.ID != 0)
                 {
                     a.Klant = ks.GetKlantByID(a.Klant.ID);
                 }
+                if (a.DatumTijdstip == DateTime.MinValue)
+                    a.DatumTijdstip = (DateTime)SqlDateTime.MinValue;
 
                 afs.AddAfspraak(a);
                 return RedirectToAction("Index");
-            }
-                
-            
-            return View();
+         //   }
+            NieuweAfspraakPM pm = (NieuweAfspraakPM)a;
+            pm.Klanten = new SelectList(ks.GetKlanten().Select(u => new { ID = u.ID, Naam = u.Naam + " " + u.Voornaam }), "ID", "Naam");
+            return View(pm);
         }
 
 

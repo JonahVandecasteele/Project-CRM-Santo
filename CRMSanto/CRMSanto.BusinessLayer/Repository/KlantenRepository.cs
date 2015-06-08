@@ -39,7 +39,7 @@ namespace CRMSanto.BusinessLayer.Repository
                 context.Karaktertrek.Attach(kar);
             }
             context.MedischeFiche.Add(entity.MedischeFiche);
-            context.PersoonlijkeFiche.Add(entity.PersoonlijkeFiche);
+            context.PersoonlijkeFiche.Add(entity.PersoonlijkeFiche);            
             Klant klant = context.Klant.Add(entity);
             return klant;
         }

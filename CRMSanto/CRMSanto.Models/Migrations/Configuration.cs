@@ -28,7 +28,7 @@ using System.Linq;
             SeedKaraktertrek(context);
             seedProducten(context);
             SeedMasseur(context);
-            SeedKlant(context);
+           // SeedKlant(context);
             //SeedAccounts(context);
             //seedGemeentes(context);
         }

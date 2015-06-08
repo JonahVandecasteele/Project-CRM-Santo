@@ -266,6 +266,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\KlantViewModel.cs" />
+    <Compile Include="ViewModels\NieuweAfspraakPM.cs" />
+    <Compile Include="ViewModels\NieuweProductRegistratiePM.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\android-icon-144x144.png" />

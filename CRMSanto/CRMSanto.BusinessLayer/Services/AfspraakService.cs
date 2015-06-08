@@ -10,7 +10,7 @@ namespace CRMSanto.BusinessLayer.Services
 {
     public class AfspraakService : CRMSanto.BusinessLayer.Services.IAfspraakService 
     {
-        //private IAfsprakenRepository repoAfspraak = null;
+        private IAfsprakenRepository repoAfspraken = null;
         private IGenericRepository<Afspraak> repoAfspraak = null;
 
         public AfspraakService(IGenericRepository<Afspraak> repoAfspraak)
@@ -21,6 +21,11 @@ namespace CRMSanto.BusinessLayer.Services
         public List<Afspraak> GetAfspraken()
         {
             return repoAfspraak.All().ToList<Afspraak>();
+        }
+
+        public List<Afspraak> GetAfsprakenToday()
+        {
+            return repoAfspraken.Today().ToList<Afspraak>();
         }
 
         public Afspraak GetAfspraakByID(int? id)
