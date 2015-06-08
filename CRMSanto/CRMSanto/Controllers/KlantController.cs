@@ -20,9 +20,14 @@ namespace CRMSanto.Controllers
             this.ks = ks;
         }
         // GET: Klant
+        //public ActionResult Index()
+        //{
+            
+        //    return View(ks.GetMutualiteiten());
+        //}
         public ActionResult Index()
         {
-
+            
             return View(ks.GetKlanten());
         }
 
