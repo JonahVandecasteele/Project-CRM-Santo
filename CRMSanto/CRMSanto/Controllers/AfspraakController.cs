@@ -44,10 +44,11 @@ namespace CRMSanto.Controllers
         }
 
         //[HttpPost]
-        //public ActionResult NieuweAfspraak(NieuweAfspraakPM napm)
+        //public ActionResult NieuweAfspraak(Afspraak a)
         //{
-        //    napm.Klanten = new SelectList(ks.GetKlanten(), "ID", "Naam");
-        //    napm.Afspraak = new Afspraak();
+        //    a.Klant = new SelectList(ks.GetKlanten(), "ID", "Naam");
+            
+        //    afs.AddAfspraak(napm);
         //    return View();
         //}
 
