@@ -35,11 +35,11 @@ namespace CRMSanto.Controllers
            
             NieuweAfspraakPM pm = new NieuweAfspraakPM();
             pm.Klanten = new SelectList(ks.GetKlanten().Select(u => new { ID = u.ID, Naam = u.Naam + " " + u.Voornaam }), "ID", "Naam");
+            pm.Masseurs = new SelectList(afs.GetMasseurs().Select(m => new { ID = m.ID, Naam = m.Naam }), "ID", "Naam");
+            pm.Afspraak = new Afspraak();
             pm.Afspraak.DatumTijdstip = DateTime.Now;
             pm.Datum = DateTime.Now;
             pm.Tijdstip = DateTime.Now;
-            pm.Masseurs = new SelectList(afs.GetMasseurs().Select(m => new { ID = m.ID, Naam = m.Naam }), "ID", "Naam");
-           
             return View(pm);
         }
 
