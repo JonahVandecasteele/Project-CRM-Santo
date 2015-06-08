@@ -21,6 +21,15 @@ namespace CRMSanto.BusinessLayer.Repository
             return query.ToList<Afspraak>();
         }
 
+        public List<Afspraak> AfsprakenVandaag() 
+        {
+            DateTime dt = DateTime.Now;
+            var query = (from a in context.Afspraak.Include(k => k.Klant).Include(m => m.Masseur)
+                         where a.Geannuleerd == false && SqlFunctions.DateDiff("DAY",dt.Date, a.DatumTijdstip.Date) == 0
+                         select a);
+            return query.ToList<Afspraak>();
+        }
+
         public List<Afspraak> LopendeAfspraken()
         {
             var query = (from a in context.Afspraak.Include(k => k.Klant).Include(m=>m.Masseur)
