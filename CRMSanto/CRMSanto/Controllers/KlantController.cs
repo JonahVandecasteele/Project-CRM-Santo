@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using CRMSanto.BusinessLayer.Services;
 using System.IO;
 using CRMSanto.ViewModels;
+using System.Data.SqlTypes;
 
 namespace CRMSanto.Controllers
 {
@@ -49,7 +50,12 @@ namespace CRMSanto.Controllers
                 klant.Geslacht = ks.GetGeslachtByID(klant.Geslacht.ID);
                 if(klant.MedischeFiche.Mutualiteit.ID!=0)
                 klant.MedischeFiche.Mutualiteit = ks.GetMutualiteitByID(klant.MedischeFiche.Mutualiteit.ID);
-                ks.InsertKlant(klant);
+                Klant tempKlant = new Klant() { Voornaam = klant.Voornaam, Naam = klant.Naam, Adres = klant.Adres, Email = klant.Email,  Karaktertrek = klant.Karaktertrek, Telefoon = klant.Telefoon, Foto = klant.Foto, Geslacht = klant.Geslacht, ID = klant.ID, MedischeFiche = klant.MedischeFiche, PersoonlijkeFiche = klant.PersoonlijkeFiche };
+                if (klant.Geboortedatum == DateTime.MinValue)
+                    tempKlant.Geboortedatum = (DateTime)SqlDateTime.MinValue;
+                else
+                    tempKlant.Geboortedatum = klant.Geboortedatum;
+                ks.InsertKlant(tempKlant);
                 return RedirectToAction("Index");
             }
             else if(Request.Form["addkar"] != null)

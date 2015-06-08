@@ -33,12 +33,8 @@ namespace CRMSanto.Controllers
         {
            
             NieuweAfspraakPM pm = new NieuweAfspraakPM();
-
             var values = ks.GetKlanten().Select(u => new { ID = u.ID, Naam = u.Naam + " " + u.Voornaam });
             pm.Klanten = new SelectList(values, "ID", "Naam");
-            
-
-            pm.Afspraak = new Afspraak();
            
             return View(pm);
         }

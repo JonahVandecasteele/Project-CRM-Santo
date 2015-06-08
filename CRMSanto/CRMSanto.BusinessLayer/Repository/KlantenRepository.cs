@@ -39,10 +39,8 @@ namespace CRMSanto.BusinessLayer.Repository
                 context.Karaktertrek.Attach(kar);
             }
             context.MedischeFiche.Add(entity.MedischeFiche);
-            context.PersoonlijkeFiche.Add(entity.PersoonlijkeFiche);
-            Klant tempKlant = new Klant() { Voornaam = entity.Voornaam, Naam = entity.Naam, Adres = entity.Adres, Email = entity.Email, Geboortedatum = entity.Geboortedatum, Karaktertrek = entity.Karaktertrek, Telefoon = entity.Telefoon, Foto = entity.Foto, Geslacht = entity.Geslacht, ID = entity.ID, MedischeFiche = entity.MedischeFiche, PersoonlijkeFiche = entity.PersoonlijkeFiche };
-            
-            Klant klant = context.Klant.Add(tempKlant);
+            context.PersoonlijkeFiche.Add(entity.PersoonlijkeFiche);            
+            Klant klant = context.Klant.Add(entity);
             return klant;
         }
         public override void Update(Klant entityToUpdate)
