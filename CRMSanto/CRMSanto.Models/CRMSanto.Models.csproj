@@ -81,6 +81,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Afspraak\Masseur.cs" />
     <Compile Include="Klant\Adres.cs" />
     <Compile Include="Afspraak\Afspraak.cs" />
     <Compile Include="Klant\Gemeente.cs" />
@@ -98,6 +99,10 @@
     <Compile Include="Migrations\201506050835510_seed.cs" />
     <Compile Include="Migrations\201506050835510_seed.Designer.cs">
       <DependentUpon>201506050835510_seed.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201506080800274_masseurs.cs" />
+    <Compile Include="Migrations\201506080800274_masseurs.Designer.cs">
+      <DependentUpon>201506080800274_masseurs.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="PresentationModels\NieuweAfspraakPM.cs" />
@@ -119,6 +124,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201506050835510_seed.resx">
       <DependentUpon>201506050835510_seed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506080800274_masseurs.resx">
+      <DependentUpon>201506080800274_masseurs.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

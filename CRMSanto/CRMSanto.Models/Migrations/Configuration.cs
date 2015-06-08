@@ -27,6 +27,7 @@ using System.Linq;
             SeedWerksituatie(context);
             SeedKaraktertrek(context);
             seedProducten(context);
+            SeedMasseur(context);
             //SeedAccounts(context);
             //seedGemeentes(context);
         }
@@ -68,6 +69,13 @@ using System.Linq;
                 manager.AddToRole(user.Id, roleAdmin);
             }
         }
+
+            public void SeedMasseur(ApplicationDbContext context)
+            {
+                context.Masseur.AddOrUpdate<Masseur>(m => m.Naam, new Masseur() { Naam = "Sandrine" });
+                context.Masseur.AddOrUpdate<Masseur>(m => m.Naam, new Masseur() { Naam = "Tom" });
+                context.Masseur.AddOrUpdate<Masseur>(m => m.Naam, new Masseur() { Naam = "Beide" });
+            }
             public void SeedGeslacht(ApplicationDbContext context)
             {
                 //GESLACHT
