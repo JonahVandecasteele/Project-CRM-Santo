@@ -46,7 +46,7 @@ namespace CRMSanto.Models
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
-            
+            this.Configuration.ProxyCreationEnabled = false;
         }
 
         public static ApplicationDbContext Create()
