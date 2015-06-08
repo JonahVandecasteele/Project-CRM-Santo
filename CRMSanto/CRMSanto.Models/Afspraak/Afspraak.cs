@@ -12,9 +12,9 @@ namespace CRMSanto.Models
     public class Afspraak
     {
         public int ID { get; set; }
-        [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
-        [Display(Name="Datum")]
+        
+        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy HH:mm}", ApplyFormatInEditMode = true)]
+        [Display(Name = "Tijdstip")]
         public DateTime DatumTijdstip { get; set; }
         public Klant Klant { get; set; }
         public Boolean Verplaatsing { get; set; }
