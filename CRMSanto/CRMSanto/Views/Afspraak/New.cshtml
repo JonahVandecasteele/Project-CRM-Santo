@@ -73,6 +73,12 @@
         </div>
 
         <div class="form-group">
+            <div class="col-md-10">
+                <div class="slider shor slider-material-orange"></div>
+            </div>
+        </div>
+
+        <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <a onclick="$('#frmAfspraak')[0].submit();" href="#" class="btn btn-success btn-fab btn-raised mdi-content-save"></a>
                 <a onclick="$('#frmAfspraak')[0].reset();" href="#" class="btn btn-warning btn-fab btn-raised mdi-navigation-refresh fab2"></a>
@@ -84,8 +90,18 @@
 
 
 
-<div>
-</div>
+<script>
+    $(document).ready(function () {
+        $(".slider").noUiSlider({
+            start: [20, 80],
+            connect: true,
+            range: {
+                'min': 0,
+                'max': 100
+            }
+        });
+    });
+</script>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

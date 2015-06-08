@@ -24,7 +24,8 @@
     <meta name="theme-color" content="#ffffff">
 
     <link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
-
+    
+    @Scripts.Render("~/bundles/jquery")
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
@@ -43,7 +44,7 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="index.html">Start</a></li>
+                    <li class="@Html.ActivePage("Home", "Index")">@Html.ActionLink("Start", "Index", "Home", null, null)</li>
                     <li class="@Html.ActivePage("Afspraak", "Index")">@Html.ActionLink("Afspraken", "Index", "Afspraak", null, null)</li>
                     <li class="@Html.ActivePage("Klant", "Index")">@Html.ActionLink("Klanten", "Index", "Klant", null, null)</li>
                     <li class="@Html.ActivePage("Product", "Index")">@Html.ActionLink("Producten", "Index", "Product", null, null)</li>
@@ -55,7 +56,6 @@
         @RenderBody()
     </div>
 
-    @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/material")
     @RenderSection("scripts", required: false)
