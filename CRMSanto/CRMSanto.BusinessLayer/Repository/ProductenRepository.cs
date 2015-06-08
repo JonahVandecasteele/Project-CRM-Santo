@@ -21,6 +21,15 @@ namespace CRMSanto.BusinessLayer.Repository
             return query.ToList<Productregistratie>();
         }
 
+        public override Productregistratie Insert(Productregistratie entity)
+        {
+            context.Klant.Attach(entity.Klant);
+            context.Product.Attach(entity.Product);
+
+            Productregistratie pr = context.Productregistratie.Add(entity);
+            return pr;
+        }
+
         public void SaveImage(HttpPostedFileBase p)
         {
             StorageHelper.AddImage("StorageConnectionString", "images", p.InputStream, p.FileName);

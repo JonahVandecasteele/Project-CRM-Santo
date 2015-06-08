@@ -85,9 +85,9 @@
     <Compile Include="Repository\IAfsprakenRepository.cs" />
     <Compile Include="Repository\IGenericRepository.cs" />
     <Compile Include="Repository\IKlantenRepository.cs" />
-    <Compile Include="Repository\IProductenRepository.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Repository\IProductenRepository.cs" />
     <Compile Include="Repository\KlantenRepository.cs" />
     <Compile Include="Repository\ProductenRepository.cs" />
     <Compile Include="Services\AfspraakService.cs" />
