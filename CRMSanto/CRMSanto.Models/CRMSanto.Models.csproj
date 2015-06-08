@@ -104,6 +104,14 @@
     <Compile Include="Migrations\201506080800274_masseurs.Designer.cs">
       <DependentUpon>201506080800274_masseurs.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201506080831348_eenklant.cs" />
+    <Compile Include="Migrations\201506080831348_eenklant.Designer.cs">
+      <DependentUpon>201506080831348_eenklant.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201506080832264_eenklant1.cs" />
+    <Compile Include="Migrations\201506080832264_eenklant1.Designer.cs">
+      <DependentUpon>201506080832264_eenklant1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="PresentationModels\NieuweAfspraakPM.cs" />
     <Compile Include="PresentationModels\NieuweProductRegistratiePM.cs" />
@@ -127,6 +135,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201506080800274_masseurs.resx">
       <DependentUpon>201506080800274_masseurs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506080831348_eenklant.resx">
+      <DependentUpon>201506080831348_eenklant.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506080832264_eenklant1.resx">
+      <DependentUpon>201506080832264_eenklant1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

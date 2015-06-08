@@ -28,6 +28,7 @@ using System.Linq;
             SeedKaraktertrek(context);
             seedProducten(context);
             SeedMasseur(context);
+            SeedKlant(context);
             //SeedAccounts(context);
             //seedGemeentes(context);
         }
@@ -69,6 +70,10 @@ using System.Linq;
                 manager.AddToRole(user.Id, roleAdmin);
             }
         }
+            public void SeedKlant(ApplicationDbContext context)
+            {
+                context.Klant.AddOrUpdate<Klant>(k => k.Naam, new Klant() { Naam = "Butseraen", Voornaam = "Jim", Telefoon = "051655", Geboortedatum = DateTime.Now });
+            }
 
             public void SeedMasseur(ApplicationDbContext context)
             {
