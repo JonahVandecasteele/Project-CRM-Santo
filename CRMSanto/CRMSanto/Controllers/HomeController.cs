@@ -1,4 +1,5 @@
-﻿using CRMSanto.Models;
+﻿using CRMSanto.BusinessLayer.Services;
+using CRMSanto.Models;
 using DotNetOpenAuth.OpenId.Extensions.AttributeExchange;
 using DotNetOpenAuth.OpenId.RelyingParty;
 using System;
@@ -15,10 +16,17 @@ namespace CRMSanto.Controllers
 {
     public class HomeController : Controller
     {
+        private IAfspraakService afs;
+
+        public HomeController(IAfspraakService afs)
+        {
+            this.afs = afs;
+        }
         
         public ActionResult Index()
         {
-            return View();
+            List<Afspraak> afspraken = afs.GetAfspraken();
+            return View(afspraken);
         }
 
         public ActionResult About()
