@@ -8,11 +8,10 @@ using System.Web.Mvc;
 
 namespace CRMSanto.Models.PresentationModels
 {
-    public class NieuweAfspraakPM
+    public class NieuweAfspraakPM : Afspraak
     {
         public string VolledigeNaam { get; set; }
         public int KlantID { get; set; }
         public SelectList Klanten { get; set; }
-        public Afspraak Afspraak { get; set; }
     }
 }
