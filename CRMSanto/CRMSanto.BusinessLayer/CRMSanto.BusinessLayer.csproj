@@ -84,11 +84,15 @@
     <Compile Include="Repository\GenericRepository.cs" />
     <Compile Include="Repository\IAfsprakenRepository.cs" />
     <Compile Include="Repository\IGenericRepository.cs" />
+    <Compile Include="Repository\IKaraktertrekRepository.cs" />
     <Compile Include="Repository\IKlantenRepository.cs" />
     <Compile Include="Repository\IProductenRepository.cs" />
+    <Compile Include="Repository\KaraktertrekRepository.cs" />
     <Compile Include="Repository\KlantenRepository.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Repository\IProductenRepository.cs" />
+    <Compile Include="Repository\KlantenRepository.cs" />
     <Compile Include="Repository\ProductenRepository.cs" />
     <Compile Include="Services\AfspraakService.cs" />
     <Compile Include="Services\IAfspraakService.cs" />

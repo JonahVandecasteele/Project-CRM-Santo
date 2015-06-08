@@ -11,7 +11,8 @@ namespace CRMSanto.BusinessLayer.Repository
 {
     public class KlantenRepository : GenericRepository<Klant>, IKlantenRepository
     {
-        public KlantenRepository(ApplicationDbContext context) : base(context)
+        public KlantenRepository(ApplicationDbContext context)
+            : base(context)
         {
 
         }
@@ -22,7 +23,7 @@ namespace CRMSanto.BusinessLayer.Repository
         }
         public override Klant GetByID(object id)
         {
-            var query = (from k in context.Klant.Include(g => g.Geslacht).Include(kar => kar.Karaktertrek).Include(m => m.MedischeFiche).Include(p => p.PersoonlijkeFiche) where k.ID==(int)id select k);
+            var query = (from k in context.Klant.Include(g => g.Geslacht).Include(kar => kar.Karaktertrek).Include(m => m.MedischeFiche).Include(p => p.PersoonlijkeFiche) where k.ID == (int)id select k);
             return query.SingleOrDefault<Klant>();
         }
         public IEnumerable<Klant> GetByPostCode(string postcode)
@@ -33,13 +34,16 @@ namespace CRMSanto.BusinessLayer.Repository
         public override Klant Insert(Klant entity)
         {
             context.Adres.Add(entity.Adres);
-            context.Geslacht.Add(entity.Geslacht);
-            foreach (Karaktertrek kar in entity.Karaktertrek)
+            context.Geslacht.Attach(entity.Geslacht);
+            foreach (Karaktertrek item in entity.Karaktertrek)
             {
-                context.Karaktertrek.Attach(kar);
+                context.Karaktertrek.Attach(item);
             }
+            context.Mutualiteit.Attach(entity.MedischeFiche.Mutualiteit);
+            if (entity.PersoonlijkeFiche.Werksituatie != null)
+            context.Werksituatie.Attach(entity.PersoonlijkeFiche.Werksituatie);
             context.MedischeFiche.Add(entity.MedischeFiche);
-            context.PersoonlijkeFiche.Add(entity.PersoonlijkeFiche);            
+            context.PersoonlijkeFiche.Add(entity.PersoonlijkeFiche);
             Klant klant = context.Klant.Add(entity);
             return klant;
         }

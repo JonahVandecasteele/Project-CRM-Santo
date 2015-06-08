@@ -296,6 +296,7 @@
     <Content Include="Content\favicon-96x96.png" />
     <Content Include="Content\favicon.ico" />
     <Content Include="Content\img\logo.png" />
+    <Content Include="Content\img\profile.jpg" />
     <Content Include="Content\material-fullpalette.min.css" />
     <Content Include="Content\ms-icon-144x144.png" />
     <Content Include="Content\ms-icon-150x150.png" />

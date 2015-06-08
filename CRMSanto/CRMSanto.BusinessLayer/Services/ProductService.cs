@@ -56,5 +56,11 @@ namespace CRMSanto.BusinessLayer.Services
         {
             return repoProducten.All().ToList<Productregistratie>();
         }
+        public Productregistratie InsertProductregistration(Productregistratie productregistratie)
+        {
+            Productregistratie result = repoProducten.Insert(productregistratie);
+            repoProducten.SaveChanges();
+            return result;
+        }
     }
 }
