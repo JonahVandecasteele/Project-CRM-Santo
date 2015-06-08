@@ -25,8 +25,8 @@ namespace CRMSanto.Controllers
 
         // GET: Afspraak
         public ActionResult Index()
-        {
-            return View(afs.GetAfspraken());
+        {      
+            return View(afs.GetLopendeAfspraken());
         }
 
         [HttpGet]

@@ -8,21 +8,25 @@ using CRMSanto.Models;
 
 namespace CRMSanto.BusinessLayer.Services
 {
-    public class AfspraakService : CRMSanto.BusinessLayer.Services.IAfspraakService 
+    public class AfspraakService : CRMSanto.BusinessLayer.Services.IAfspraakService
     {
         private IAfsprakenRepository repoAfspraken = null;
-        private IGenericRepository<Afspraak> repoAfspraak = null;
         private IGenericRepository<Masseur> repoMasseur = null;
 
-        public AfspraakService(IGenericRepository<Afspraak> repoAfspraak, IGenericRepository<Masseur> repoMasseur)
+        public AfspraakService(IAfsprakenRepository repoAfspraken, IGenericRepository<Masseur> repoMasseur)
         {
-            this.repoAfspraak = repoAfspraak;
+            this.repoAfspraken = repoAfspraken;
             this.repoMasseur = repoMasseur;
         }
 
         public List<Afspraak> GetAfspraken()
         {
-            return repoAfspraak.All().ToList<Afspraak>();
+            return repoAfspraken.All().ToList<Afspraak>();
+        }
+
+        public List<Afspraak> GetLopendeAfspraken()
+        {
+            return repoAfspraken.LopendeAfspraken().ToList<Afspraak>();
         }
 
         public List<Afspraak> GetAfsprakenToday()
@@ -32,7 +36,7 @@ namespace CRMSanto.BusinessLayer.Services
 
         public Afspraak GetAfspraakByID(int? id)
         {
-            return repoAfspraak.GetByID(id.Value);
+            return repoAfspraken.GetByID(id.Value);
         }
 
         public void AddAfspraak(Afspraak a)
@@ -44,7 +48,7 @@ namespace CRMSanto.BusinessLayer.Services
             
 
             repoAfspraken.Insert(a);
-            repoAfspraak.SaveChanges();
+            repoAfspraken.SaveChanges();
         }
 
         public List<Masseur> GetMasseurs()

@@ -25,9 +25,7 @@ namespace CRMSanto.Controllers
         
         public ActionResult Index()
         {
-            List<Afspraak> afspraken = afs.GetAfspraken();
-            var afsprakenVandaag = afspraken.Where(i => i.DatumTijdstip.Date == DateTime.Now.Date);
-            return View(afsprakenVandaag);
+            return View(afs.GetAfsprakenToday());
         }
 
         public ActionResult About()
