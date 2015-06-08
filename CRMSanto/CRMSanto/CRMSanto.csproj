@@ -378,6 +378,7 @@
     <Content Include="Views\Afspraak\New.cshtml" />
     <Content Include="Views\Product\NewProductRegistration.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Karaktertrek.cshtml" />
+    <Content Include="Views\Afspraak\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
