@@ -112,9 +112,11 @@
     <Compile Include="Migrations\201506080832264_eenklant1.Designer.cs">
       <DependentUpon>201506080832264_eenklant1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201506080950566_Test.cs" />
+    <Compile Include="Migrations\201506080950566_Test.Designer.cs">
+      <DependentUpon>201506080950566_Test.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="PresentationModels\NieuweAfspraakPM.cs" />
-    <Compile Include="PresentationModels\NieuweProductRegistratiePM.cs" />
     <Compile Include="Product\Product.cs" />
     <Compile Include="Product\Productregistratie.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -141,6 +143,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201506080832264_eenklant1.resx">
       <DependentUpon>201506080832264_eenklant1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506080950566_Test.resx">
+      <DependentUpon>201506080950566_Test.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
