@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
+using System.Data.Entity.SqlServer;
 
 namespace CRMSanto.BusinessLayer.Repository
 {
@@ -29,11 +30,11 @@ namespace CRMSanto.BusinessLayer.Repository
             return query.ToList<Afspraak>();
         }
 
-        public List<Afspraak> Today()
+        public List<Afspraak> AfsprakenVandaag()
         {
-            var dt = DateTime.Now;
+            DateTime dt = DateTime.Now;
             var query = (from a in context.Afspraak.Include(k => k.Klant).Include(m => m.Masseur)
-                         where a.DatumTijdstip == dt.Date
+                         where a.Geannuleerd == false && SqlFunctions.DateDiff("DAY", dt.Date, a.DatumTijdstip.Date) == 0
                          select a);
             return query.ToList<Afspraak>();
         }

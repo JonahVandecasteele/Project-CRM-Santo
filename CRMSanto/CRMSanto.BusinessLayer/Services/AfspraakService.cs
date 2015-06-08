@@ -31,7 +31,7 @@ namespace CRMSanto.BusinessLayer.Services
 
         public List<Afspraak> GetAfsprakenToday()
         {
-            return repoAfspraken.Today().ToList<Afspraak>();
+            return repoAfspraken.AfsprakenVandaag().ToList<Afspraak>();
         }
 
         public Afspraak GetAfspraakByID(int? id)
