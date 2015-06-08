@@ -44,9 +44,9 @@
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li><a href="index.html">Start</a></li>
-                    <li class="@Html.ActivePage("Afspraak", "Index")"><a href="">Afspraken</a></li>
-                    <li><a href="klanten.html">Klanten</a></li>
-                    <li class="@Html.ActivePage("Product", "Index")"><a href="producten.html">Producten</a></li>
+                    <li class="@Html.ActivePage("Afspraak", "Index")">@Html.ActionLink("Afspraken", "Index", "Afspraak", null, null)</li>
+                    <li class="@Html.ActivePage("Klant", "Index")">@Html.ActionLink("Klanten", "Index", "Klant", null, null)</li>
+                    <li class="@Html.ActivePage("Product", "Index")">@Html.ActionLink("Producten", "Index", "Product", null, null)</li>
                 </ul>
             </div>
         </div>
