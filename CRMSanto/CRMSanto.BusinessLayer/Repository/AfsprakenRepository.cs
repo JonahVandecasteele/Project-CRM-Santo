@@ -30,7 +30,7 @@ namespace CRMSanto.BusinessLayer.Repository
         }
         public List<Afspraak> LopendeAfspraken()
         {
-            var query = (from a in context.Afspraak.Include(k => k.Klant).Include(m=>m.Masseur)
+            var query = (from a in context.Afspraak.Include(k => k.Klant).Include(m=>m.Masseur).Include(ms=>ms.SoortAfspraak).Include(k=>k.Klant.Adres)
                          where a.Geannuleerd == false
                          select a);
 
