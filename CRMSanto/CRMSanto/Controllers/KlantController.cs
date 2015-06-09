@@ -28,8 +28,34 @@ namespace CRMSanto.Controllers
         //}
         public ActionResult Index()
         {
-            List<Klant> klanten = ks.GetKlanten();
+            //List<Klant> klanten = ks.GetKlanten();
+            //return View(klanten);
+
+            if (Request.Form["submit"] != null)
+            {
+                string zoeken = Request.Form["Search"];
+                //return View(ps.GetProducten());
+                List<Klant> klant = ks.GetKlanten();
+                //List<Klant> klanten = ks.GetKlanten().Where(x => x.Naam.ToLower().Contains(zoeken.ToLower())).ToList();
+                var klanten = from klants in klant
+                              where klants.Naam.ToLower().Contains(zoeken.ToLower()) || klants.Voornaam.ToLower().Contains(zoeken.ToLower())
+                                    || (klants.Naam + " " + klants.Voornaam).ToLower().Contains(zoeken.ToLower()) || (klants.Voornaam + " " + klants.Naam).ToLower().Contains(zoeken.ToLower())
+                              select klants;
             return View(klanten);
+        }
+            else
+            {
+                return View(ks.GetKlanten());
+            }
+        }
+
+        public ActionResult Details(int? id) 
+        {
+            if (id == null) { return RedirectToAction("Index"); }
+            int id2 = (int) id;
+            Klant klant = ks.GetKlantByID(id2);
+            if (klant == null) { return RedirectToAction("Index"); }
+            return View(klant);
         }
 
         public ActionResult New()
@@ -50,18 +76,20 @@ namespace CRMSanto.Controllers
                 if (TempData["NewKlantM"]==null)
                 {
                     if (klant.Geslacht.ID != 0)
-                        klant.Geslacht = ks.GetGeslachtByID(klant.Geslacht.ID);
+                klant.Geslacht = ks.GetGeslachtByID(klant.Geslacht.ID);
 
                     if (klant.MedischeFiche.Mutualiteit.ID != 0)
-                        klant.MedischeFiche.Mutualiteit = ks.GetMutualiteitByID(klant.MedischeFiche.Mutualiteit.ID);
+                klant.MedischeFiche.Mutualiteit = ks.GetMutualiteitByID(klant.MedischeFiche.Mutualiteit.ID);
+                HttpPostedFileBase photo = klant.Upload;
+                klant.Foto = photo.FileName;
+                ks.SaveImage(photo);
+                Klant tempKlant = new Klant() { Voornaam = klant.Voornaam, Naam = klant.Naam, Adres = klant.Adres, Email = klant.Email,  Karaktertrek = klant.Karaktertrek, Telefoon = klant.Telefoon, Foto = klant.Foto, Geslacht = klant.Geslacht, ID = klant.ID, MedischeFiche = klant.MedischeFiche, PersoonlijkeFiche = klant.PersoonlijkeFiche };
+                if (klant.Geboortedatum == DateTime.MinValue)
+                    tempKlant.Geboortedatum = (DateTime)SqlDateTime.MinValue;
+                else
+                    tempKlant.Geboortedatum = klant.Geboortedatum;
 
-                    tempKlant = new Klant() { Voornaam = klant.Voornaam, Naam = klant.Naam, Adres = klant.Adres, Email = klant.Email, Karaktertrek = klant.Karaktertrek, Telefoon = klant.Telefoon, Foto = klant.Foto, Geslacht = klant.Geslacht, ID = klant.ID, MedischeFiche = klant.MedischeFiche, PersoonlijkeFiche = klant.PersoonlijkeFiche };
-                    if (klant.Geboortedatum == DateTime.MinValue)
-                        tempKlant.Geboortedatum = (DateTime)SqlDateTime.MinValue;
-                    else
-                        tempKlant.Geboortedatum = klant.Geboortedatum;
-
-                    tempKlant.Karaktertrek = (List<Karaktertrek>)TempData["KarTrek"];
+                tempKlant.Karaktertrek = (List<Karaktertrek>)TempData["KarTrek"];
 
                     List<Gemeente> gemeentelist = new List<Gemeente>();
                     if (tempKlant.Adres.Gemeente == null)

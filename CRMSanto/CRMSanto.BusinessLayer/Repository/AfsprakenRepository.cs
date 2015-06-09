@@ -17,36 +17,35 @@ namespace CRMSanto.BusinessLayer.Repository
         }
         public override IEnumerable<Afspraak> All()
         {
-            var query = (from a in context.Afspraak.Include(k => k.Klant).Include(m=>m.Masseur) select a);
+            var query = (from a in context.Afspraak.Include(k => k.Klant).Include(m=>m.Masseur).Include(ms=>ms.SoortAfspraak) select a);
             return query.ToList<Afspraak>();
         }
-
         public List<Afspraak> AfsprakenVandaag() 
         {
             DateTime dt = DateTime.Now;
-            var query = (from a in context.Afspraak.Include(k => k.Klant).Include(m => m.Masseur)
+            var query = (from a in context.Afspraak.Include(k => k.Klant).Include(m => m.Masseur).Include(ms=>ms.SoortAfspraak).Include(k=>k.Klant.Adres)
                          where a.Geannuleerd == false && SqlFunctions.DateDiff("DAY",dt.Date, DbFunctions.TruncateTime(a.DatumTijdstip)) == 0
                          select a);
             return query.ToList<Afspraak>();
         }
-
         public List<Afspraak> LopendeAfspraken()
         {
-            var query = (from a in context.Afspraak.Include(k => k.Klant).Include(m=>m.Masseur)
+            var query = (from a in context.Afspraak.Include(k => k.Klant).Include(m=>m.Masseur).Include(ms=>ms.SoortAfspraak).Include(k=>k.Klant.Adres)
                          where a.Geannuleerd == false
                          select a);
 
             return query.ToList<Afspraak>();
         }
-
         public override Afspraak Insert(Afspraak entity)
         {
             context.Klant.Attach(entity.Klant);
+            context.Masseur.Attach(entity.Masseur);
+            context.SoortAfspraak.Attach(entity.SoortAfspraak);
+            //context.Adres.Attach(entity.Adres);
 
             Afspraak afspraak = context.Afspraak.Add(entity);
             return afspraak;
         }
-
         public override Afspraak GetByID(object id)
         {
             var query = (from a in context.Afspraak.Include(k => k.Klant) select a);

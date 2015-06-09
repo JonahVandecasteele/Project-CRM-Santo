@@ -34,5 +34,7 @@ namespace CRMSanto.BusinessLayer.Repository
         {
             StorageHelper.AddImage("StorageConnectionString", "images", p.InputStream, p.FileName);
         }
+
+        
     }
 }

@@ -18,6 +18,7 @@ namespace CRMSanto.BusinessLayer.Services
         CRMSanto.Models.Werksituatie GetWerkSituatieByID(int id);
         System.Collections.Generic.List<CRMSanto.Models.Werksituatie> GetWerkSituaties();
         CRMSanto.Models.Klant InsertKlant(CRMSanto.Models.Klant klant);
+        void SaveImage(System.Web.HttpPostedFileBase p);
         void UpdateKlant(CRMSanto.Models.Klant klant);
     }
 }

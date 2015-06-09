@@ -14,6 +14,6 @@ namespace CRMSanto.ViewModels
         public List<Werksituatie> Werksituaties { get; set; }
         public List<Gemeente> Gemeentes { get; set; }
         public Karaktertrek SelectedKaracter { get;set;}
-
+        public HttpPostedFileBase Upload { get; set; }
     }
 }

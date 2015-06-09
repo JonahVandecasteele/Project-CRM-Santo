@@ -6,10 +6,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CRMSanto.BusinessLayer.Repository;
+using System.Web;
 
 namespace CRMSanto.BusinessLayer.Services
 {
-    public class KlantService : IKlantService
+    public class KlantService : CRMSanto.BusinessLayer.Services.IKlantService
     {
         private IGenericRepository<Mutualiteit> repoMutualiteit = null;
         private IGenericRepository<Geslacht> repoGeslacht = null;
@@ -51,6 +52,10 @@ namespace CRMSanto.BusinessLayer.Services
            Klant result = repoKlant.Insert(klant);
            repoKlant.SaveChanges();
            return result;
+        }
+        public void SaveImage(HttpPostedFileBase p)
+        {
+            repoKlant.SaveImage(p);
         }
         public List<Mutualiteit> GetMutualiteiten()
         {

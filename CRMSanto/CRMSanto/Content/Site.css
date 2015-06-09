@@ -67,7 +67,7 @@
 }
 
 .profilepic {
-	display: block;
+	display: inline-block;
 	height: 50px;
     width: 50px;
     object-fit: cover;
@@ -76,12 +76,6 @@
 
 .table thead > tr > th, .table tbody > tr > th, .table tfoot > tr > th, .table thead > tr > td, .table tbody > tr > td, .table tfoot > tr > td {
     vertical-align:middle;
-}
-
-.customerpic {
-	display: inline-block;
-	height: 100px;
-	padding-bottom: 23px;
 }
 
 .shop-placeholder {
@@ -167,6 +161,18 @@
 	h2{
 		font-size: 1.9em;
 	}
+    .navbar .navbar-brand {
+        padding: 0 15px;
+    }
+}
+
+    @media only screen and (max-width : 768px) {
+        .navbar .navbar-brand {
+            padding: 0 15px;
+        }
+    }
+
+@media only screen and (max-width : 992px) {
     .navbar .navbar-brand {
         padding: 0 15px;
     }
