@@ -41,8 +41,8 @@ namespace CRMSanto.Controllers
                               where klants.Naam.ToLower().Contains(zoeken.ToLower()) || klants.Voornaam.ToLower().Contains(zoeken.ToLower())
                                     || (klants.Naam + " " + klants.Voornaam).ToLower().Contains(zoeken.ToLower()) || (klants.Voornaam + " " + klants.Naam).ToLower().Contains(zoeken.ToLower())
                               select klants;
-                return View(klanten);
-            }
+            return View(klanten);
+        }
             else
             {
                 return View(ks.GetKlanten());
@@ -72,19 +72,44 @@ namespace CRMSanto.Controllers
         {
             if (Request.Form["Create"] != null)
             {
-                if(klant.Geslacht.ID!=0)
+                Klant tempKlant = new Klant();
+                if (TempData["NewKlantM"]==null)
+                {
+                    if (klant.Geslacht.ID != 0)
                 klant.Geslacht = ks.GetGeslachtByID(klant.Geslacht.ID);
-                if(klant.MedischeFiche.Mutualiteit.ID!=0)
+
+                    if (klant.MedischeFiche.Mutualiteit.ID != 0)
                 klant.MedischeFiche.Mutualiteit = ks.GetMutualiteitByID(klant.MedischeFiche.Mutualiteit.ID);
                 HttpPostedFileBase photo = klant.Upload;
                 klant.Foto = photo.FileName;
                 ks.SaveImage(photo);
-                Klant tempKlant = new Klant() { Voornaam = klant.Voornaam, Naam = klant.Naam, Adres = klant.Adres, Email = klant.Email,  Karaktertrek = klant.Karaktertrek, Telefoon = klant.Telefoon, Foto = klant.Foto, Geslacht = klant.Geslacht, ID = klant.ID, MedischeFiche = klant.MedischeFiche, PersoonlijkeFiche = klant.PersoonlijkeFiche };
+                tempKlant = new Klant() { Voornaam = klant.Voornaam, Naam = klant.Naam, Adres = klant.Adres, Email = klant.Email,  Karaktertrek = klant.Karaktertrek, Telefoon = klant.Telefoon, Foto = klant.Foto, Geslacht = klant.Geslacht, ID = klant.ID, MedischeFiche = klant.MedischeFiche, PersoonlijkeFiche = klant.PersoonlijkeFiche };
                 if (klant.Geboortedatum == DateTime.MinValue)
                     tempKlant.Geboortedatum = (DateTime)SqlDateTime.MinValue;
                 else
                     tempKlant.Geboortedatum = klant.Geboortedatum;
+
                 tempKlant.Karaktertrek = (List<Karaktertrek>)TempData["KarTrek"];
+
+                    List<Gemeente> gemeentelist = new List<Gemeente>();
+                    if (tempKlant.Adres.Gemeente == null)
+                    {
+                        gemeentelist = ks.GetGemeentesByPostCode(tempKlant.Adres.Postcode);
+                        if (gemeentelist.Count > 1)
+                        {
+                            TempData["NewKlantM"] = klant;
+                            KlantViewModel model = klant;
+                            model.Gemeentes = gemeentelist;
+                            return View(model);
+                        }
+                    }
+                }
+                else
+                {
+                    tempKlant = (Klant)TempData["NewKlantM"];
+                    tempKlant.Adres.Gemeente = ks.GetGemeenteByID(klant.Adres.Gemeente.ID);
+                }
+                                    
                 ks.InsertKlant(tempKlant);
                 return RedirectToAction("Index");
             }
@@ -92,6 +117,7 @@ namespace CRMSanto.Controllers
             {
                 KlantViewModel model = klant;
                 Karaktertrek trek = ks.GetKaraktertrekByID(model.SelectedKaracter.ID);
+                model.Karaktertrek = (List<Karaktertrek>)TempData["KarTrek"];
                 if (model.Karaktertrek == null)
                 {
                     model.Karaktertrek = new List<Karaktertrek>();

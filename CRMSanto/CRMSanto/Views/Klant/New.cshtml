@@ -7,6 +7,8 @@
 
 @using (Html.BeginForm("New", "Klant", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
+if(Model.Gemeentes==null)
+{ 
     if (Model.Karaktertrek == null)
     {
         Model.Karaktertrek = new List<CRMSanto.Models.Karaktertrek>();
@@ -135,6 +137,18 @@
             </div>
         </div>
     </div>
+}
+else
+{
+    <h3>Meer dan 1 overeenstemende gemeente gevonden</h3>
+    <p>Selecteer de passende gemeente :</p>
+    @Html.DropDownListFor(model => model.Adres.Gemeente.ID, new SelectList(Model.Gemeentes, "ID", "Plaatsnaam"))
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Finish" name="Create" class="btn btn-default" />
+        </div>
+    </div>
+}
 }
 
 <div>

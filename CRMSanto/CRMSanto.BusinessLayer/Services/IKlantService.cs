@@ -4,6 +4,7 @@ namespace CRMSanto.BusinessLayer.Services
     public interface IKlantService
     {
         CRMSanto.Models.Gemeente GetGemeenteByID(int id);
+        System.Collections.Generic.List<CRMSanto.Models.Gemeente> GetGemeentesByPostCode(string id);
         System.Collections.Generic.List<CRMSanto.Models.Gemeente> GetGemeentes();
         CRMSanto.Models.Geslacht GetGeslachtByID(int id);
         System.Collections.Generic.List<CRMSanto.Models.Geslacht> GetGeslachten();

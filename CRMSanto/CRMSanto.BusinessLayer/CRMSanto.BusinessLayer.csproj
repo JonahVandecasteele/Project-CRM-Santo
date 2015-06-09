@@ -81,8 +81,10 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\AfsprakenRepository.cs" />
+    <Compile Include="Repository\GemeenteRepository.cs" />
     <Compile Include="Repository\GenericRepository.cs" />
     <Compile Include="Repository\IAfsprakenRepository.cs" />
+    <Compile Include="Repository\IGemeenteRepository.cs" />
     <Compile Include="Repository\IGenericRepository.cs" />
     <Compile Include="Repository\IKaraktertrekRepository.cs" />
     <Compile Include="Repository\IKlantenRepository.cs" />

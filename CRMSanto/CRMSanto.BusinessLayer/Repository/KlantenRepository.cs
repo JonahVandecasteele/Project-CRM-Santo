@@ -39,6 +39,7 @@ namespace CRMSanto.BusinessLayer.Repository
             {
                 context.Karaktertrek.Attach(item);
             }
+            context.Gemeente.Attach(entity.Adres.Gemeente);
             context.Mutualiteit.Attach(entity.MedischeFiche.Mutualiteit);
             if (entity.PersoonlijkeFiche.Werksituatie != null)
             context.Werksituatie.Attach(entity.PersoonlijkeFiche.Werksituatie);
