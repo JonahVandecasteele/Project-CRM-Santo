@@ -92,6 +92,10 @@
     <Compile Include="Klant\MedischeFiche.cs" />
     <Compile Include="Klant\Mutualiteit.cs" />
     <Compile Include="Klant\PersoonlijkeFiche.cs" />
+    <Compile Include="Migrations\201506090738451_seed.cs" />
+    <Compile Include="Migrations\201506090738451_seed.Designer.cs">
+      <DependentUpon>201506090738451_seed.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Product\Product.cs" />
     <Compile Include="Product\Productregistratie.cs" />
@@ -106,6 +110,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Data\zipcodes.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201506090738451_seed.resx">
+      <DependentUpon>201506090738451_seed.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
