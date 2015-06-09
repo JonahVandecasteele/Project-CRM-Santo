@@ -39,6 +39,9 @@ namespace CRMSanto.BusinessLayer.Repository
         public override Afspraak Insert(Afspraak entity)
         {
             context.Klant.Attach(entity.Klant);
+            context.Masseur.Attach(entity.Masseur);
+            context.SoortAfspraak.Attach(entity.SoortAfspraak);
+            //context.Adres.Attach(entity.Adres);
 
             Afspraak afspraak = context.Afspraak.Add(entity);
             return afspraak;
