@@ -20,7 +20,6 @@ namespace CRMSanto.BusinessLayer.Repository
             var query = (from a in context.Afspraak.Include(k => k.Klant).Include(m=>m.Masseur).Include(ms=>ms.SoortAfspraak) select a);
             return query.ToList<Afspraak>();
         }
-
         public List<Afspraak> AfsprakenVandaag() 
         {
             DateTime dt = DateTime.Now;
@@ -29,7 +28,6 @@ namespace CRMSanto.BusinessLayer.Repository
                          select a);
             return query.ToList<Afspraak>();
         }
-
         public List<Afspraak> LopendeAfspraken()
         {
             var query = (from a in context.Afspraak.Include(k => k.Klant).Include(m=>m.Masseur)
@@ -38,7 +36,6 @@ namespace CRMSanto.BusinessLayer.Repository
 
             return query.ToList<Afspraak>();
         }
-
         public override Afspraak Insert(Afspraak entity)
         {
             context.Klant.Attach(entity.Klant);
@@ -46,7 +43,6 @@ namespace CRMSanto.BusinessLayer.Repository
             Afspraak afspraak = context.Afspraak.Add(entity);
             return afspraak;
         }
-
         public override Afspraak GetByID(object id)
         {
             var query = (from a in context.Afspraak.Include(k => k.Klant) select a);
