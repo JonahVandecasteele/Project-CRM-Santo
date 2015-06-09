@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.Entity;
 using CRMSanto.BusinessLayer.Repository;
 using CRMSanto.Models;
 
@@ -26,6 +27,11 @@ namespace CRMSanto.BusinessLayer.Services
         public List<Afspraak> GetAfspraken()
         {
             return repoAfspraken.All().ToList<Afspraak>();
+        }
+
+        public List<Afspraak> GetAfsprakenByKlantenID(int id) 
+        {
+            return repoAfspraken.GetAfsprakenByKlantenID(id);
         }
 
         public List<Afspraak> GetLopendeAfspraken()

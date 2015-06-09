@@ -10,5 +10,6 @@ namespace CRMSanto.ViewModels
     {
         public Klant Klant;
         public List<Productregistratie> Producten;
+        public List<Afspraak> Afspraken;
     }
 }

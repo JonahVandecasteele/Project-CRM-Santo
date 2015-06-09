@@ -11,3 +11,17 @@
         <h3><i class="mdi-communication-location-on"></i>@Html.DisplayFor(model => model.Klant.Adres.Gemeente.Plaatsnaam)</h3>
     </div>
 </div>
+
+<div class="row">
+    <div class="col-md-12">
+        <h2>TESTJES</h2>
+        <!-- AANTAL AFSPRAKEN: SIMPELE COUNT -->
+        <p>Aantal afspraken: @Html.DisplayFor(model => model.Afspraken.Count)</p>
+
+        <!-- AANTAL PRODUCTEN: FOREACH REGISTRATIE -> AANTAL VERKOCHT TOEVOEGEN -->
+        @{int producten = 0;}
+        @for (var i = 0; i < Model.Producten.Count; i++)
+        { producten = producten + Model.Producten[i].Aantal; }
+        <p>Aantal gekochte producten: @producten</p>
+    </div>
+</div>

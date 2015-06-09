@@ -6,6 +6,7 @@ namespace CRMSanto.BusinessLayer.Services
         void AddAfspraak(CRMSanto.Models.Afspraak a);
         CRMSanto.Models.Afspraak GetAfspraakByID(int? id);
         System.Collections.Generic.List<CRMSanto.Models.Afspraak> GetAfspraken();
+        System.Collections.Generic.List<CRMSanto.Models.Afspraak> GetAfsprakenByKlantenID(int id);
         System.Collections.Generic.List<CRMSanto.Models.Afspraak> GetAfsprakenToday();
         System.Collections.Generic.List<CRMSanto.Models.Afspraak> GetLopendeAfspraken();
         CRMSanto.Models.SoortAfspraak GetMassageByID(int id);
