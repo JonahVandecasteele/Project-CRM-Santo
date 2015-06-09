@@ -37,6 +37,11 @@ namespace CRMSanto.Controllers
                 //return View(ps.GetProducten());
                 List<Klant> klant = ks.GetKlanten();
                 //List<Klant> klanten = ks.GetKlanten().Where(x => x.Naam.ToLower().Contains(zoeken.ToLower())).ToList();
+
+                var klantOpAdres = from klants in klant
+                                   where klants.Adres.Gemeente.Provincie.ToLower().Contains(zoeken.ToLower())
+                                   select klants;
+
                 var klanten = from klants in klant
                               where klants.Naam.ToLower().Contains(zoeken.ToLower()) || klants.Voornaam.ToLower().Contains(zoeken.ToLower())
                                     || (klants.Naam + " " + klants.Voornaam).ToLower().Contains(zoeken.ToLower()) || (klants.Voornaam + " " + klants.Naam).ToLower().Contains(zoeken.ToLower())
