@@ -45,7 +45,7 @@
                     <a href="Klant/Details/@Html.DisplayFor(modelItem => item.Klant.ID)" ><img src="@Html.GetPhotoURL(Html.DisplayFor(modelItem => item.Klant.Foto).ToString())" alt="" class="profilepic shadow-z-1" /></a> <a href="Klant/Details/@Html.DisplayFor(modelItem => item.Klant.ID)">@Html.DisplayFor(modelItem => item.Klant.Naam) @Html.DisplayFor(modelItem => item.Klant.Voornaam)</a>
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.SoortAfspraak)
+                    @Html.DisplayFor(modelItem => item.SoortAfspraak.Naam)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.SoloDuo)
@@ -54,8 +54,10 @@
                     @Html.DisplayFor(modelItem => item.Verplaatsing)
                 </td>
                 <td>
-                    TEST: @Html.DisplayFor(modelItem => item.Klant.Adres.Straat)
-                    <a title="Klik om te navigeren" href="#" onclick="routeLink(@Html.DisplayFor(modelItem => item.Klant.Adres.Straat), @Html.DisplayFor(modelItem => item.Klant.Adres.Nummer), @Html.DisplayFor(modelItem => item.Klant.Adres.Postcode), @Html.DisplayFor(modelItem => item.Klant.Adres.Gemeente));return false;"><i class="mdi-maps-navigation"></i></a>
+                    @if (item.Verplaatsing)
+                    { 
+                        @Html.DisplayFor(modelItem => item.Klant.Adres.Gemeente) <a title="Klik om te navigeren" href="#" onclick="routeLink('@Html.DisplayFor(modelItem => item.Klant.Adres.Straat)', '@Html.DisplayFor(modelItem => item.Klant.Adres.Nummer)', '@Html.DisplayFor(modelItem => item.Klant.Adres.Postcode)', 'Waregem');return false;"><i class="mdi-maps-navigation"></i></a>
+                    }
                 </td>
             </tr>
         }
@@ -64,11 +66,13 @@
     </div>
 
 <script>	
-// ROUTE NAAR KLANT //
+    // ROUTE NAAR KLANT //
+    var lat, lon, address;
+    var strLink;
+
     function routeLink(straat, nummer, postcode, gemeente) {
     //var x = document.getElementById("warning");//
-        var lat, lon, address;
-        var strLink;	
+        address = straat + " " + nummer + ", " + postcode + " " + gemeente;
         getLocation();
     }
 
@@ -82,7 +86,6 @@
     function showPosition(position) {
         lat = position.coords.latitude;
         lon = position.coords.longitude;
-        address = straat + " " + nummer + ", " + postcode + " " + gemeente;
         strLink = "http://maps.google.com/maps?saddr=" + lat + "," + lon + "&daddr=" + address;
         window.open(strLink);
     }
