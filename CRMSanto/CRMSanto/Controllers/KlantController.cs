@@ -32,6 +32,15 @@ namespace CRMSanto.Controllers
             return View(klanten);
         }
 
+        public ActionResult Details(int? id) 
+        {
+            if (id == null) { return RedirectToAction("Index"); }
+            int id2 = (int) id;
+            Klant klant = ks.GetKlantByID(id2);
+            if (klant == null) { return RedirectToAction("Index"); }
+            return View(klant);
+        }
+
         public ActionResult New()
         {
             KlantViewModel model = new KlantViewModel();

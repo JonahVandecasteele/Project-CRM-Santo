@@ -25,7 +25,8 @@ namespace CRMSanto.Controllers
         
         public ActionResult Index()
         {
-            return View(afs.GetAfsprakenToday());
+            List<Afspraak> afspraken = afs.GetAfsprakenToday();
+            return View(afspraken);
         }
 
         public ActionResult About()
