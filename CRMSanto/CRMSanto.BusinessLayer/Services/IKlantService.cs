@@ -4,8 +4,8 @@ namespace CRMSanto.BusinessLayer.Services
     public interface IKlantService
     {
         CRMSanto.Models.Gemeente GetGemeenteByID(int id);
-        System.Collections.Generic.List<CRMSanto.Models.Gemeente> GetGemeentesByPostCode(string id);
         System.Collections.Generic.List<CRMSanto.Models.Gemeente> GetGemeentes();
+        System.Collections.Generic.List<CRMSanto.Models.Gemeente> GetGemeentesByPostCode(string id);
         CRMSanto.Models.Geslacht GetGeslachtByID(int id);
         System.Collections.Generic.List<CRMSanto.Models.Geslacht> GetGeslachten();
         CRMSanto.Models.Karaktertrek GetKaraktertrekByID(int id);
@@ -18,7 +18,7 @@ namespace CRMSanto.BusinessLayer.Services
         CRMSanto.Models.Werksituatie GetWerkSituatieByID(int id);
         System.Collections.Generic.List<CRMSanto.Models.Werksituatie> GetWerkSituaties();
         CRMSanto.Models.Klant InsertKlant(CRMSanto.Models.Klant klant);
-        void SaveImage(System.Web.HttpPostedFileBase p);
+        void SaveImage(System.Web.HttpPostedFileBase p, string filename);
         void UpdateKlant(CRMSanto.Models.Klant klant);
     }
 }

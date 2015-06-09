@@ -81,10 +81,18 @@ namespace CRMSanto.Controllers
                     if (klant.MedischeFiche.Mutualiteit.ID != 0)
                 klant.MedischeFiche.Mutualiteit = ks.GetMutualiteitByID(klant.MedischeFiche.Mutualiteit.ID);
                 HttpPostedFileBase photo = klant.Upload;
-                if (photo!=null)
+                klant.Foto = Guid.NewGuid().ToString();
+                if (photo==null)
                 {
-                    klant.Foto = photo.FileName;
-                    ks.SaveImage(photo);
+                    if (TempData["Photo"]!=null)
+                    {
+                        photo = (HttpPostedFileBase)TempData["Photo"];
+                        ks.SaveImage(photo,klant.Foto);
+                    }
+                }
+                else
+                {
+                    ks.SaveImage(photo, klant.Foto);
                 }
                 
                 tempKlant = new Klant() { Voornaam = klant.Voornaam, Naam = klant.Naam, Adres = klant.Adres, Email = klant.Email,  Karaktertrek = klant.Karaktertrek, Telefoon = klant.Telefoon, Foto = klant.Foto, Geslacht = klant.Geslacht, ID = klant.ID, MedischeFiche = klant.MedischeFiche, PersoonlijkeFiche = klant.PersoonlijkeFiche };
@@ -126,6 +134,7 @@ namespace CRMSanto.Controllers
             else if(Request.Form["addkar"] != null)
             {
                 KlantViewModel model = klant;
+                TempData["Photo"] = klant.Upload;
                 Karaktertrek trek = ks.GetKaraktertrekByID(model.SelectedKaracter.ID);
                 model.Karaktertrek = (List<Karaktertrek>)TempData["KarTrek"];
                 if (model.Karaktertrek == null)
@@ -142,6 +151,20 @@ namespace CRMSanto.Controllers
             }
             return View();
             
+        }
+        public ActionResult Photo()
+        {
+            if (TempData["Photo"] != null)
+            {
+                HttpPostedFileBase file = (HttpPostedFileBase)TempData["Photo"];
+                TempData["Photo"] = file;
+                var stream = file.InputStream;
+                return new FileStreamResult(stream, file.ContentType);
+            }
+            else
+            {
+                return new EmptyResult();
+            }
         }
 
         //[HttpPost]

@@ -9,7 +9,7 @@ using System.Web;
 
 namespace CRMSanto.BusinessLayer.Repository
 {
-    public class KlantenRepository : GenericRepository<Klant>, CRMSanto.BusinessLayer.Repository.IKlantenRepository
+    public class KlantenRepository : GenericRepository<Klant>, IKlantenRepository
     {
         public KlantenRepository(ApplicationDbContext context)
             : base(context)
@@ -62,9 +62,9 @@ namespace CRMSanto.BusinessLayer.Repository
 
             context.Entry(entityToUpdate).State = EntityState.Modified;
         }
-        public void SaveImage(HttpPostedFileBase p)
+        public void SaveImage(HttpPostedFileBase p,string filename)
         {
-            StorageHelper.AddImage("StorageConnectionString", "images", p.InputStream, p.FileName);
+            StorageHelper.AddImage("StorageConnectionString", "images", p.InputStream, filename);
         }
     }
 }
