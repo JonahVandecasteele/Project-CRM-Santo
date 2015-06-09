@@ -89,11 +89,13 @@
     <Compile Include="Repository\IKaraktertrekRepository.cs" />
     <Compile Include="Repository\IKlantenRepository.cs" />
     <Compile Include="Repository\IProductenRepository.cs" />
+    <Compile Include="Repository\ISessieRepository.cs" />
     <Compile Include="Repository\KaraktertrekRepository.cs" />
     <Compile Include="Repository\KlantenRepository.cs" />
     <Compile Include="Repository\ProductenRepository.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Repository\SessieRepository.cs" />
     <Compile Include="Services\AfspraakService.cs" />
     <Compile Include="Services\IAfspraakService.cs" />
     <Compile Include="Services\IKlantService.cs" />
