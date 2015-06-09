@@ -10,6 +10,9 @@
     <table class="table table-striped table-hover">
         <tr>
             <th>
+
+            </th>            
+            <th>
                 @Html.DisplayNameFor(model => model.DatumTijdstip)
             </th>
             <th>
@@ -27,15 +30,25 @@
             <th>
                 Op verplaatsing
             </th>
-            <th>
 
-            </th>
         </tr>
 
         @foreach (var item in Model)
         {
-            <tr>
+            
+            var style = "";
+            if (item.Masseur.ID == 8) { style = "success"; };
+            if (item.Masseur.ID == 9) { style = "info"; };
+            if (item.Masseur.ID == 10) { style = "warning"; };
+            
+            <tr class='@style'>
                 <td>
+                    @if (item.Verplaatsing)
+                    {
+                        <button class="btn btn-fab-mini btn-raised btn-sm btn-material-pink" onclick="routeLink('@Html.DisplayFor(modelItem => item.Klant.Adres.Straat)', '@Html.DisplayFor(modelItem => item.Klant.Adres.Nummer)', '@Html.DisplayFor(modelItem => item.Klant.Adres.Postcode)', '@Html.DisplayFor(modelItem => item.Klant.Adres.Gemeente)');return false;"><i class="mdi-maps-navigation"></i></button>
+                    }
+                </td>
+                <td>    
                     @item.DatumTijdstip.ToString("HH:mm") - @item.DatumTijdstip.AddMinutes(item.Duur).ToString("HH:mm")
                 </td>
                 <td>
@@ -52,12 +65,6 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Verplaatsing)
-                </td>
-                <td>
-                    @if (item.Verplaatsing)
-                    { 
-                        @Html.DisplayFor(modelItem => item.Klant.Adres.Gemeente) <a title="Klik om te navigeren" href="#" onclick="routeLink('@Html.DisplayFor(modelItem => item.Klant.Adres.Straat)', '@Html.DisplayFor(modelItem => item.Klant.Adres.Nummer)', '@Html.DisplayFor(modelItem => item.Klant.Adres.Postcode)', 'Waregem');return false;"><i class="mdi-maps-navigation"></i></a>
-                    }
                 </td>
             </tr>
         }
