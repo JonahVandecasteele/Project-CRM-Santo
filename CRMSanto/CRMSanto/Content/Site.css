@@ -165,3 +165,9 @@
         padding: 0 15px;
     }
 }
+
+    @media only screen and (min-width : 768px) {
+    .navbar .navbar-brand {
+        padding: 0 15px;
+    }
+    }
