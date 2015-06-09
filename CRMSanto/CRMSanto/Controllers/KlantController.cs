@@ -28,8 +28,24 @@ namespace CRMSanto.Controllers
         //}
         public ActionResult Index()
         {
-            List<Klant> klanten = ks.GetKlanten();
-            return View(klanten);
+            //List<Klant> klanten = ks.GetKlanten();
+            //return View(klanten);
+
+            if (Request.Form["submit"] != null)
+            {
+                string zoeken = Request.Form["Search"];
+                //return View(ps.GetProducten());
+                List<Klant> klant = ks.GetKlanten();
+                //List<Klant> klanten = ks.GetKlanten().Where(x => x.Naam.ToLower().Contains(zoeken.ToLower())).ToList();
+                var klanten = from klants in klant
+                              where klants.Naam.ToLower().Contains(zoeken.ToLower()) || klants.Voornaam.ToLower().Contains(zoeken.ToLower())
+                              select klants;
+                return View(klanten);
+            }
+            else
+            {
+                return View(ks.GetKlanten());
+            }
         }
 
         public ActionResult New()
