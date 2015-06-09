@@ -26,6 +26,9 @@ namespace CRMSanto.Models.PresentationModels
 
         public int KlantID { get; set; }
         public SelectList Klanten { get; set; }
+        public int MasseurID { get; set; }
         public SelectList Masseurs { get; set; }
+        public int SoortAfspraakID { get; set; }
+        public SelectList SoortAfspraken { get; set; }
     }
 }

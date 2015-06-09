@@ -36,6 +36,7 @@ namespace CRMSanto.Controllers
             NieuweAfspraakPM pm = new NieuweAfspraakPM();
             pm.Klanten = new SelectList(ks.GetKlanten().Select(u => new { ID = u.ID, Naam = u.Naam + " " + u.Voornaam }), "ID", "Naam");
             pm.Masseurs = new SelectList(afs.GetMasseurs().Select(m => new { ID = m.ID, Naam = m.Naam }), "ID", "Naam");
+            pm.SoortAfspraken = new SelectList(afs.GetMassages().Select(ms => new {ID=ms.ID, Naam = ms.Naam}), "ID","Naam");
             pm.Afspraak = new Afspraak();
             pm.Afspraak.DatumTijdstip = DateTime.Now;
             pm.Datum = DateTime.Now;
@@ -53,6 +54,8 @@ namespace CRMSanto.Controllers
                 {
                     a.Afspraak.Klant = ks.GetKlantByID(a.Afspraak.Klant.ID);
                 }
+                a.Afspraak.Masseur = afs.GetMasseurByID(a.Afspraak.Masseur.ID);
+                a.Afspraak.SoortAfspraak = afs.GetMassageByID(a.Afspraak.SoortAfspraak.ID);
                 a.Afspraak.DatumTijdstip = a.Datum.Date + a.Tijdstip.TimeOfDay;
                 if (a.Afspraak.DatumTijdstip == DateTime.MinValue)
                     a.Afspraak.DatumTijdstip = (DateTime)SqlDateTime.MinValue;
@@ -60,9 +63,9 @@ namespace CRMSanto.Controllers
                 afs.AddAfspraak(a.Afspraak);
                 return RedirectToAction("Index");
          //   }
-            NieuweAfspraakPM pm = (NieuweAfspraakPM)a;
-            pm.Klanten = new SelectList(ks.GetKlanten().Select(u => new { ID = u.ID, Naam = u.Naam + " " + u.Voornaam }), "ID", "Naam");
-            return View(pm);
+            //NieuweAfspraakPM pm = (NieuweAfspraakPM)a;
+            //pm.Klanten = new SelectList(ks.GetKlanten().Select(u => new { ID = u.ID, Naam = u.Naam + " " + u.Voornaam }), "ID", "Naam");
+            //return View(pm);
         }
 
 

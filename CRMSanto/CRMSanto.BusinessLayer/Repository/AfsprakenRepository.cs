@@ -17,7 +17,7 @@ namespace CRMSanto.BusinessLayer.Repository
         }
         public override IEnumerable<Afspraak> All()
         {
-            var query = (from a in context.Afspraak.Include(k => k.Klant).Include(m=>m.Masseur) select a);
+            var query = (from a in context.Afspraak.Include(k => k.Klant).Include(m=>m.Masseur).Include(ms=>ms.SoortAfspraak) select a);
             return query.ToList<Afspraak>();
         }
 

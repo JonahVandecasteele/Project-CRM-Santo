@@ -25,13 +25,15 @@ namespace CRMSanto
             container.RegisterType<IKaraktertrekRepository, KaraktertrekRepository>();
             container.RegisterType<IGenericRepository<Werksituatie>, GenericRepository<Werksituatie>>();
             container.RegisterType<IGenericRepository<Gemeente>, GenericRepository<Gemeente>>();
+            container.RegisterType<IGenericRepository<Masseur>, GenericRepository<Masseur>>();
+            container.RegisterType<IGenericRepository<SoortAfspraak>, GenericRepository<SoortAfspraak>>();
             container.RegisterType<IAfsprakenRepository, AfsprakenRepository>();
             container.RegisterType<IAfspraakService, AfspraakService>();
             container.RegisterType<IProductenRepository, ProductenRepository>();
             container.RegisterType<IProductService, ProductService>();
             container.RegisterType<IKlantenRepository, KlantenRepository>();
             container.RegisterType<IKlantService, KlantService>();
-            container.RegisterType<IGenericRepository<Masseur>, GenericRepository<Masseur>>();
+            
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
         }
     }
