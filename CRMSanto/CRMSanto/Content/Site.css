@@ -75,13 +75,33 @@
 }
 
 .large {
-	height: 150px;
-    width: 150px;
+	height: 115px;
+    width: 115px;
 }
 
 .clienttitle {
-    font-size: 5em;
+    font-size: 3em;
     margin-left: 25px;
+}
+
+.profilepagecenter {
+    text-align: center;
+    color: white;
+    width: 50%; 
+    padding-top:30px;
+}
+
+.icon-bar {
+    color: #fdf4f8;
+}
+
+#customerheader {
+    height: 300px;
+     background: url(/Content/img/header.jpg) no-repeat center center fixed; 
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
 }
 
 .table > thead > tr > td.material-pink-300, .table > tbody > tr > td.material-pink-300, .table > tfoot > tr > td.material-pink-300, .table > thead > tr > th.material-pink-300, .table > tbody > tr > th.material-pink-300, .table > tfoot > tr > th.material-pink-300, .table > thead > tr.material-pink-300 > td, .table > tbody > tr.material-pink-300 > td, .table > tfoot > tr.success > td, .table > thead > tr.material-pink-300 > th, .table > tbody > tr.material-pink-300 > th, .table > tfoot > tr.material-pink-300 > th

@@ -23,7 +23,7 @@ namespace CRMSanto.BusinessLayer.Repository
         }
         public override Klant GetByID(object id)
         {
-            var query = (from k in context.Klant.Include(g => g.Geslacht).Include(kar => kar.Karaktertrek).Include(m => m.MedischeFiche).Include(p => p.PersoonlijkeFiche).Include(a => a.Adres) where k.ID == (int)id select k);
+            var query = (from k in context.Klant.Include(g => g.Geslacht).Include(kar => kar.Karaktertrek).Include(m => m.MedischeFiche).Include(p => p.PersoonlijkeFiche).Include(a => a.Adres).Include(g => g.Adres.Gemeente) where k.ID == (int)id select k);
             return query.SingleOrDefault<Klant>();
         }
         public IEnumerable<Klant> GetByPostCode(string postcode)
