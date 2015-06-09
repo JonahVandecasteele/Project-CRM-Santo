@@ -24,6 +24,11 @@ namespace CRMSanto.BusinessLayer.Services
             return repoProduct.All().ToList<Product>();
         }
 
+        public List<Productregistratie> GetProductregistratiesByKlantenID(int id) 
+        {
+            return repoProducten.GetProductregistratiesByKlantenID(id);
+        }
+
         public Product GetProductByID(int? id)
         {
             return repoProduct.GetByID(id.Value);

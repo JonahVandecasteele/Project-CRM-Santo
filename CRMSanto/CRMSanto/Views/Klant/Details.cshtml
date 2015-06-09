@@ -1,66 +1,18 @@
-﻿@model CRMSanto.Models.Klant
+﻿@model CRMSanto.ViewModels.KlantDetailsPM
 
 @{
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
-
-<div>
-    <h4>Klant</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Naam)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Naam)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Voornaam)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Voornaam)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Foto)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Foto)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Telefoon)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Telefoon)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Email)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Geboortedatum)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Geboortedatum)
-        </dd>
-
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+<table>
+    <tbody>
+    <tr>
+        <td>
+            <img src="@Html.GetPhotoURL(Html.DisplayFor(model => model.Klant.Foto).ToString())" alt="" class="profilepic shadow-z-1 large" />
+        </td>
+        <td>
+            <h1 class="clienttitle">@Html.DisplayFor(model => model.Klant.Naam) @Html.DisplayFor(model => model.Klant.Voornaam)</h1>
+        </td>
+        </tr>
+    </tbody>
+</table>       
