@@ -63,9 +63,9 @@ namespace CRMSanto.Controllers
                 afs.AddAfspraak(a.Afspraak);
                 return RedirectToAction("Index");
          //   }
-            NieuweAfspraakPM pm = (NieuweAfspraakPM)a;
-            pm.Klanten = new SelectList(ks.GetKlanten().Select(u => new { ID = u.ID, Naam = u.Naam + " " + u.Voornaam }), "ID", "Naam");
-            return View(pm);
+            //NieuweAfspraakPM pm = (NieuweAfspraakPM)a;
+            //pm.Klanten = new SelectList(ks.GetKlanten().Select(u => new { ID = u.ID, Naam = u.Naam + " " + u.Voornaam }), "ID", "Naam");
+            //return View(pm);
         }
 
 
