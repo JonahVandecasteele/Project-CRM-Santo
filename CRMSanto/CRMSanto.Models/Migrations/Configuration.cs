@@ -26,11 +26,8 @@ using System.Linq;
             SeedSoortAfspraak(context);
             SeedWerksituatie(context);
             SeedKaraktertrek(context);
-            seedProducten(context);
             SeedMasseur(context);
-           // SeedKlant(context);
-            //SeedAccounts(context);
-            //seedGemeentes(context);
+            seedGemeentes(context);
         }
 
         public void SeedAccounts(ApplicationDbContext context)
@@ -69,11 +66,7 @@ using System.Linq;
                 manager.Create(user, "-Password1");
                 manager.AddToRole(user.Id, roleAdmin);
             }
-        }
-            public void SeedKlant(ApplicationDbContext context)
-            {
-                context.Klant.AddOrUpdate<Klant>(k => k.Naam, new Klant() { Naam = "Butseraen", Voornaam = "Jim", Telefoon = "051655", Geboortedatum = DateTime.Now });
-            }
+        }            
 
             public void SeedMasseur(ApplicationDbContext context)
             {
@@ -88,7 +81,6 @@ using System.Linq;
                 context.Geslacht.AddOrUpdate<Geslacht>(g => g.Naam, new Geslacht() { Naam = "V" });
                 context.Geslacht.AddOrUpdate<Geslacht>(g => g.Naam, new Geslacht() { Naam = "X" });
             }
-                //MUTUALITEIT
             public void SeedMutualiteiten(CRMSanto.Models.ApplicationDbContext context)
             {
                 context.Mutualiteit.AddOrUpdate<Mutualiteit>(m => m.Naam, new Mutualiteit() { Naam = "Christelijke Mutualiteit" });
@@ -103,8 +95,6 @@ using System.Linq;
             }
             public void SeedSoortAfspraak(CRMSanto.Models.ApplicationDbContext context)
             {
-
-                //SOORT AFSPRAAK
                 context.SoortAfspraak.AddOrUpdate<SoortAfspraak>(s => s.Naam, new SoortAfspraak() { Naam = "Massage met etherische olie", Omschrijving = "De massage duurt 60 tot 75 minuten, discreet uitgevoerd met olie op de blote huid, op een massagetafel.", Duur = 60, Prijs = 50, Verplaatsingmogelijk = true });
                 context.SoortAfspraak.AddOrUpdate<SoortAfspraak>(s => s.Naam, new SoortAfspraak() { Naam = "Kaarsmassage", Omschrijving = "De ontspannende kaarsmassage is een relaxerende gehele lichaamsmassage uitgevoerd met een kaars, gemaakt van een gestolde biologische etherische oliënolie in een rustige, aangenaam verwarmde ruimte.", Duur = 60, Prijs = 60, Verplaatsingmogelijk = true });
                 context.SoortAfspraak.AddOrUpdate<SoortAfspraak>(s => s.Naam, new SoortAfspraak() { Naam = "Japanse gezichtsmassage", Omschrijving = "De massage duurt 60 minuten met gebruik van hoogwaardige producten van biologische kwaliteit van Ahava.", Duur = 60, Prijs = 50, Verplaatsingmogelijk = true });
@@ -114,7 +104,6 @@ using System.Linq;
             }
             public void SeedWerksituatie(CRMSanto.Models.ApplicationDbContext context)
             {
-                //WERKSITUATIE
                 context.Werksituatie.AddOrUpdate<Werksituatie>(w => w.Naam, new Werksituatie() { Naam = "Leerling" });
                 context.Werksituatie.AddOrUpdate<Werksituatie>(w => w.Naam, new Werksituatie() { Naam = "Student" });
                 context.Werksituatie.AddOrUpdate<Werksituatie>(w => w.Naam, new Werksituatie() { Naam = "Arbeider" });
@@ -124,7 +113,6 @@ using System.Linq;
             }
             public void SeedKaraktertrek(CRMSanto.Models.ApplicationDbContext context)
             {
-                //KARAKTERTREK
                 context.Karaktertrek.AddOrUpdate<Karaktertrek>(k => k.Naam, new Karaktertrek() { Naam = "Attent" });
                 context.Karaktertrek.AddOrUpdate<Karaktertrek>(k => k.Naam, new Karaktertrek() { Naam = "Bescheiden" });
                 context.Karaktertrek.AddOrUpdate<Karaktertrek>(k => k.Naam, new Karaktertrek() { Naam = "Betrouwbaar" });
@@ -149,11 +137,6 @@ using System.Linq;
                 context.Karaktertrek.AddOrUpdate<Karaktertrek>(k => k.Naam, new Karaktertrek() { Naam = "Volhardend" });
                 context.Karaktertrek.AddOrUpdate<Karaktertrek>(k => k.Naam, new Karaktertrek() { Naam = "Zorgzaam" });
                 context.Karaktertrek.AddOrUpdate<Karaktertrek>(k => k.Naam, new Karaktertrek() { Naam = "Zuinig" });
-            }
-            public void seedProducten(ApplicationDbContext context)
-            {
-                context.Product.AddOrUpdate<Product>(p => p.Naam, new Product() { Naam = "Buikzalfje", AankoopPrijs = 100,VerkoopPrijs=200, Inhoud = 200, Foto = "http://www.zwitsal.nl/Images/1380/1380-366083-zwitsal%20mama%20buikbalsem.png", Barcode = "12548456",Omschrijving="Ideaal voor buikje groot of klein."});
-                context.Product.AddOrUpdate<Product>(p => p.Naam, new Product() { Naam = "Uierzalfje", AankoopPrijs = 3000,VerkoopPrijs=5000, Inhoud = 10, Foto = "http://www.medigros.nl/media/catalog/product/u/i/uierzalf_700_gr.jpg", Barcode = "65959595", Omschrijving="Heerlijke uierzalf"});
             }
             public void seedGemeentes(ApplicationDbContext context)
             {
