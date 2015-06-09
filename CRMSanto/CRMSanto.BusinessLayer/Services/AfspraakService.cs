@@ -13,12 +13,14 @@ namespace CRMSanto.BusinessLayer.Services
         private IAfsprakenRepository repoAfspraken = null;
         private IGenericRepository<Masseur> repoMasseur = null;
         private IGenericRepository<SoortAfspraak> repoMassage = null;
+        private ISessieRepository repoSessie = null;
 
-        public AfspraakService(IAfsprakenRepository repoAfspraken, IGenericRepository<Masseur> repoMasseur,IGenericRepository<SoortAfspraak> repoMassage)
+        public AfspraakService(IAfsprakenRepository repoAfspraken, IGenericRepository<Masseur> repoMasseur, IGenericRepository<SoortAfspraak> repoMassage, ISessieRepository repoSessie)
         {
             this.repoAfspraken = repoAfspraken;
             this.repoMasseur = repoMasseur;
             this.repoMassage = repoMassage;
+            this.repoSessie = repoSessie;
         }
 
         public List<Afspraak> GetAfspraken()
@@ -49,7 +51,20 @@ namespace CRMSanto.BusinessLayer.Services
             //context.Entry<Klant>(a.Klant).State = System.Data.Entity.EntityState.Unchanged;
             //Sessie s = new Sessie {Klant=a.Klant,AantalSessies=1 };
             //s.AantalSessies.Add(s);
+            try
+            {
+                Sessie k = repoSessie.GetByKlantID(a.Klant.ID);
+                k.AantalSessies++;
+                repoSessie.Update(k);
+                repoSessie.SaveChanges();
+            }
+            catch(Exception ex)
+            {
 
+                repoSessie.Insert(new Sessie() { AantalSessies = 1, Klant = a.Klant });
+                repoSessie.SaveChanges();
+
+            }         
             repoAfspraken.Insert(a);
             repoAfspraken.SaveChanges();
         } 
