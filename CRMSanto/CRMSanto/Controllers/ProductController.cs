@@ -21,7 +21,21 @@ namespace CRMSanto.Controllers
         // GET: Product
         public ActionResult Index()
         {
-            return View(ps.GetProducten());
+            
+            //if (Request.Form["zoeken"] != null)
+            if(Request.Form["submit"] != null)
+            {
+                string zoeken = Request.Form["Search"];
+                //return View(ps.GetProducten());
+                List<Product> producten = ps.GetProducten().Where(x => x.Naam.ToLower().Contains(zoeken.ToLower())).ToList();
+                return View(producten);
+            }
+            else
+            {
+                return View(ps.GetProducten());
+            }
+            
+            
         }
 
         [HttpGet]
@@ -49,7 +63,7 @@ namespace CRMSanto.Controllers
             p.Foto = photo.FileName;
             ps.SaveImage(photo);
             ps.AddProduct(p);
-            return View("Index");
+            return RedirectToAction("Index");
         }
 
         [HttpGet]
@@ -78,8 +92,23 @@ namespace CRMSanto.Controllers
             pr.Product = ps.GetProductByID(nprpm.ProductID);
 
             ps.InsertProductregistration(pr);
-            return View("Index");
+            return RedirectToAction("Index");
         }
+
+        //public ActionResult SearchForProduct(string product)
+        //{
+        //    ApplicationDbContext context = new ApplicationDbContext();
+
+        //    var query = (from pr in context.Product select pr);
+
+        //    if (!String.IsNullOrEmpty(product))
+        //    {
+        //        query = query.Where(q => q.Naam.Contains(product));
+        //    }
+
+
+
+        //}
 
 
     }
