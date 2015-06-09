@@ -15,10 +15,12 @@ namespace CRMSanto.Controllers
     public class KlantController : Controller
     {
         private IKlantService ks;
+        private IProductService ps;
         
-        public KlantController(IKlantService ks)
+        public KlantController(IKlantService ks, IProductService ps)
         {
             this.ks = ks;
+            this.ps = ps;
         }
         // GET: Klant
         //public ActionResult Index()
@@ -55,7 +57,11 @@ namespace CRMSanto.Controllers
             int id2 = (int) id;
             Klant klant = ks.GetKlantByID(id2);
             if (klant == null) { return RedirectToAction("Index"); }
-            return View(klant);
+            List<Productregistratie> producten = ps.GetProductregistratiesByKlantenID(klant.ID);
+            KlantDetailsPM kdpm = new KlantDetailsPM();
+            kdpm.Klant = klant;
+            kdpm.Producten = producten;
+            return View(kdpm);
         }
 
         public ActionResult New()

@@ -9,6 +9,7 @@ namespace CRMSanto.BusinessLayer.Services
         CRMSanto.Models.Product GetProductByID(int? id);
         System.Collections.Generic.List<CRMSanto.Models.Product> GetProducten();
         System.Collections.Generic.List<CRMSanto.Models.Productregistratie> GetProductregistraties();
+        System.Collections.Generic.List<CRMSanto.Models.Productregistratie> GetProductregistratiesByKlantenID(int id);
         CRMSanto.Models.Productregistratie InsertProductregistration(CRMSanto.Models.Productregistratie productregistratie);
         void SaveImage(System.Web.HttpPostedFileBase p);
     }

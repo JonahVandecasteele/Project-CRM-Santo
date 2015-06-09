@@ -21,6 +21,14 @@ namespace CRMSanto.BusinessLayer.Repository
             return query.ToList<Productregistratie>();
         }
 
+        public List<Productregistratie> GetProductregistratiesByKlantenID(int id)
+        {
+            var query = (from pr in context.Productregistratie.Include(k => k.Klant).Include(p => p.Product) 
+                         where pr.Klant.ID == id
+                         select pr);
+            return query.ToList<Productregistratie>();
+        }
+
         public override Productregistratie Insert(Productregistratie entity)
         {
             context.Klant.Attach(entity.Klant);
@@ -34,7 +42,6 @@ namespace CRMSanto.BusinessLayer.Repository
         {
             StorageHelper.AddImage("StorageConnectionString", "images", p.InputStream, p.FileName);
         }
-
         
     }
 }

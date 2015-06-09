@@ -265,6 +265,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\KlantDetailsPM.cs" />
     <Compile Include="ViewModels\KlantViewModel.cs" />
     <Compile Include="ViewModels\NieuweAfspraakPM.cs" />
     <Compile Include="ViewModels\NieuweProductRegistratiePM.cs" />
@@ -383,6 +384,7 @@
     <Content Include="Views\Shared\EditorTemplates\Karaktertrek.cshtml" />
     <Content Include="Views\Afspraak\Index.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Klant\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

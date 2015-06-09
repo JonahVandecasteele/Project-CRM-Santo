@@ -74,6 +74,21 @@
     border-radius: 100%;
 }
 
+.large {
+	height: 150px;
+    width: 150px;
+}
+
+.clienttitle {
+    font-size: 5em;
+    margin-left: 25px;
+}
+
+.table > thead > tr > td.material-pink-300, .table > tbody > tr > td.material-pink-300, .table > tfoot > tr > td.material-pink-300, .table > thead > tr > th.material-pink-300, .table > tbody > tr > th.material-pink-300, .table > tfoot > tr > th.material-pink-300, .table > thead > tr.material-pink-300 > td, .table > tbody > tr.material-pink-300 > td, .table > tfoot > tr.success > td, .table > thead > tr.material-pink-300 > th, .table > tbody > tr.material-pink-300 > th, .table > tfoot > tr.material-pink-300 > th
+{
+    background-color: #ecf1b2;
+}
+
 .table thead > tr > th, .table tbody > tr > th, .table tfoot > tr > th, .table thead > tr > td, .table tbody > tr > td, .table tfoot > tr > td {
     vertical-align:middle;
 }
