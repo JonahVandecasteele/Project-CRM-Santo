@@ -47,11 +47,12 @@ namespace CRMSanto.BusinessLayer.Services
 
             //context.Klant.Add(a.Klant);
             //context.Entry<Klant>(a.Klant).State = System.Data.Entity.EntityState.Unchanged;
-            
+            //Sessie s = new Sessie {Klant=a.Klant,AantalSessies=1 };
+            //s.AantalSessies.Add(s);
 
             repoAfspraken.Insert(a);
             repoAfspraken.SaveChanges();
-        }
+        } 
 
         public List<Masseur> GetMasseurs()
         {

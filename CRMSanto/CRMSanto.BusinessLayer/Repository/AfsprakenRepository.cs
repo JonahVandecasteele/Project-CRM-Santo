@@ -25,6 +25,7 @@ namespace CRMSanto.BusinessLayer.Repository
             DateTime dt = DateTime.Now;
             var query = (from a in context.Afspraak.Include(k => k.Klant).Include(m => m.Masseur).Include(ms=>ms.SoortAfspraak).Include(k=>k.Klant.Adres)
                          where a.Geannuleerd == false && SqlFunctions.DateDiff("DAY",dt.Date, DbFunctions.TruncateTime(a.DatumTijdstip)) == 0
+                         orderby a.DatumTijdstip ascending
                          select a);
             return query.ToList<Afspraak>();
         }

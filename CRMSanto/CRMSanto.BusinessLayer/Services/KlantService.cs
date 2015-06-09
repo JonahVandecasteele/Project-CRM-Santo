@@ -10,7 +10,7 @@ using System.Web;
 
 namespace CRMSanto.BusinessLayer.Services
 {
-    public class KlantService : CRMSanto.BusinessLayer.Services.IKlantService
+    public class KlantService : IKlantService
     {
         private IGenericRepository<Mutualiteit> repoMutualiteit = null;
         private IGenericRepository<Geslacht> repoGeslacht = null;
@@ -53,9 +53,9 @@ namespace CRMSanto.BusinessLayer.Services
            repoKlant.SaveChanges();
            return result;
         }
-        public void SaveImage(HttpPostedFileBase p)
+        public void SaveImage(HttpPostedFileBase p,string filename)
         {
-            repoKlant.SaveImage(p);
+            repoKlant.SaveImage(p, filename);
         }
         public List<Mutualiteit> GetMutualiteiten()
         {
