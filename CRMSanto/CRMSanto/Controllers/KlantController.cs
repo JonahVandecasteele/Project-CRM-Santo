@@ -81,8 +81,12 @@ namespace CRMSanto.Controllers
                     if (klant.MedischeFiche.Mutualiteit.ID != 0)
                 klant.MedischeFiche.Mutualiteit = ks.GetMutualiteitByID(klant.MedischeFiche.Mutualiteit.ID);
                 HttpPostedFileBase photo = klant.Upload;
-                klant.Foto = photo.FileName;
-                ks.SaveImage(photo);
+                if (photo!=null)
+                {
+                    klant.Foto = photo.FileName;
+                    ks.SaveImage(photo);
+                }
+                
                 tempKlant = new Klant() { Voornaam = klant.Voornaam, Naam = klant.Naam, Adres = klant.Adres, Email = klant.Email,  Karaktertrek = klant.Karaktertrek, Telefoon = klant.Telefoon, Foto = klant.Foto, Geslacht = klant.Geslacht, ID = klant.ID, MedischeFiche = klant.MedischeFiche, PersoonlijkeFiche = klant.PersoonlijkeFiche };
                 if (klant.Geboortedatum == DateTime.MinValue)
                     tempKlant.Geboortedatum = (DateTime)SqlDateTime.MinValue;
@@ -102,6 +106,12 @@ namespace CRMSanto.Controllers
                             model.Gemeentes = gemeentelist;
                             return View(model);
                         }
+                        else
+                        {
+
+                            tempKlant.Adres.Gemeente = gemeentelist.First();
+                        }
+                            
                     }
                 }
                 else
