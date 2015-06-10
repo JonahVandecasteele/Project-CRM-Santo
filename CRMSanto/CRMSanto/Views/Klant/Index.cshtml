@@ -48,14 +48,14 @@
             {
                 <tr>
                     <td>
-                        <img src="@Html.GetPhotoURL(Html.DisplayFor(modelItem => item.Foto).ToString())" alt="" class="profilepic shadow-z-1" />
-                    </td>
+                        <a href="Details/@Html.DisplayFor(modelItem => item.ID)"><img src="@Html.GetPhotoURL(Html.DisplayFor(modelItem => item.Foto).ToString())" alt="" class="profilepic shadow-z-1" /></a>
+</td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Naam)
-                    </td>
+                        <a href="Details/@Html.DisplayFor(modelItem => item.ID)">@Html.DisplayFor(modelItem => item.Naam)</a>
+</td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Voornaam)
-                    </td>
+                        <a href="Details/@Html.DisplayFor(modelItem => item.ID)">@Html.DisplayFor(modelItem => item.Voornaam)</a>
+</td>
                     <td>
                         @Html.FormatPhoneNumber(Html.DisplayFor(modelItem => item.Telefoon).ToString())
                     </td>
