@@ -125,6 +125,10 @@
 
 .checkbox {margin-top: 0; margin-bottom: 0;}
 
+.upper {
+    text-transform: uppercase;
+}
+
 .panel-primary {
   border-color: #381d10;
 }
