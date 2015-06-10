@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CRMSanto.BusinessLayer", "C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mailinblue", "mailinblue\mailinblue.csproj", "{DBB4E106-C340-4351-BD76-70576C82D0C0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VerjaardagWebJob", "VerjaardagWebJob\VerjaardagWebJob.csproj", "{72CB128B-3446-43E8-8BDB-25F117BABFB2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{DBB4E106-C340-4351-BD76-70576C82D0C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DBB4E106-C340-4351-BD76-70576C82D0C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DBB4E106-C340-4351-BD76-70576C82D0C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72CB128B-3446-43E8-8BDB-25F117BABFB2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72CB128B-3446-43E8-8BDB-25F117BABFB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72CB128B-3446-43E8-8BDB-25F117BABFB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72CB128B-3446-43E8-8BDB-25F117BABFB2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
