@@ -21,6 +21,7 @@ namespace CRMSanto
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
+                      "~/Scripts/bootstrap-combobox.js",
                       "~/Scripts/respond.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/material").Include(
@@ -31,6 +32,7 @@ namespace CRMSanto
                       "~/Content/bootstrap.css",
                       "~/Content/material-fullpalette.min.css",
                       "~/Content/ripples.min.css",
+                      "~/Content/bootstrap-combobox.css",
                       "~/Content/site.css"));
         }
     }
