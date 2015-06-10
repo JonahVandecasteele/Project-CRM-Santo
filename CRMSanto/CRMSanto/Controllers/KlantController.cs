@@ -99,9 +99,9 @@ namespace CRMSanto.Controllers
                 klant.Foto = Guid.NewGuid().ToString();
                 if (photo==null)
                 {
-                    if (TempData["Photo"]!=null)
+                    if (Session["PhotoUpload"] != null)
                     {
-                        photo = (HttpPostedFileBase)TempData["Photo"];
+                        photo = (HttpPostedFileBase)Session["PhotoUpload"];
                         ks.SaveImage(photo,klant.Foto);
                     }
                 }
@@ -149,7 +149,7 @@ namespace CRMSanto.Controllers
             else if(Request.Form["addkar"] != null)
             {
                 KlantViewModel model = klant;
-                TempData["Photo"] = klant.Upload;
+                Session["PhotoUpload"] = klant.Upload;
                 Karaktertrek trek = ks.GetKaraktertrekByID(model.SelectedKaracter.ID);
                 model.Karaktertrek = (List<Karaktertrek>)TempData["KarTrek"];
                 if (model.Karaktertrek == null)
@@ -169,10 +169,10 @@ namespace CRMSanto.Controllers
         }
         public ActionResult Photo()
         {
-            if (TempData["Photo"] != null)
+            if (Session["PhotoUpload"] != null)
             {
-                HttpPostedFileBase file = (HttpPostedFileBase)TempData["Photo"];
-                TempData["Photo"] = file;
+                HttpPostedFileBase file = (HttpPostedFileBase)Session["PhotoUpload"];
+                //TempData["Photo"] = file;
                 var stream = file.InputStream;
                 return new FileStreamResult(stream, file.ContentType);
             }
