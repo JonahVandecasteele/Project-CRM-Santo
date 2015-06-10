@@ -34,7 +34,6 @@ namespace CRMSanto.Controllers
         {
             //List<Klant> klanten = ks.GetKlanten();
             //return View(klanten);
-
             if (Request.Form["submit"] != null)
             {
                 string zoeken = Request.Form["Search"];
@@ -144,6 +143,7 @@ namespace CRMSanto.Controllers
                 }
                                     
                 ks.InsertKlant(tempKlant);
+                ks.Mails();
                 return RedirectToAction("Index");
             }
             else if(Request.Form["addkar"] != null)

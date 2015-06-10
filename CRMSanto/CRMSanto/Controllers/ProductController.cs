@@ -21,7 +21,6 @@ namespace CRMSanto.Controllers
         // GET: Product
         public ActionResult Index()
         {
-            
             //if (Request.Form["zoeken"] != null)
             if(Request.Form["submit"] != null)
             {

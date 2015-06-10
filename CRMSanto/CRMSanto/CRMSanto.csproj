@@ -330,6 +330,7 @@
     <Content Include="Content\apple-icon-76x76.png" />
     <Content Include="Content\apple-icon-precomposed.png" />
     <Content Include="Content\apple-icon.png" />
+    <Content Include="Content\bootstrap-combobox.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
@@ -354,6 +355,7 @@
     <Content Include="fonts\Material-Design-Icons.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\bootstrap-combobox.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Content\manifest.json" />
@@ -428,6 +430,7 @@
     <Content Include="Views\Afspraak\Index.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Klant\Details.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Werksituatie.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -447,6 +450,10 @@
     <ProjectReference Include="..\CRMSanto.Models\CRMSanto.Models.csproj">
       <Project>{4e71dfd7-6f50-4cb6-b39a-c4ed702b2dbd}</Project>
       <Name>CRMSanto.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\mailinblue\mailinblue.csproj">
+      <Project>{dbb4e106-c340-4351-bd76-70576c82d0c0}</Project>
+      <Name>mailinblue</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
