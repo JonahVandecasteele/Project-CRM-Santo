@@ -1,5 +1,9 @@
 ﻿@model CRMSanto.ViewModels.KlantViewModel
 
+@{
+    ViewBag.Title = "Klant toevoegen";
+}
+
 <ul class="breadcrumb">
     <li><a href="afspraken.html">Klanten</a></li>
     <li class="active">Toevoegen</li>
@@ -27,9 +31,10 @@ if(Model.Gemeentes==null)
                 <div id="collapse2" class="panel-collapse collapse in">
                     <div class="panel-body">
                         <div class="form-group">
-                            <div class="col-md-10">
-                                <input type="file" name="Upload" id="Upload" />
-                                <img src="/Klant/Photo" class="shop-placeholder" width="140" height="200" />
+                                @Html.LabelFor(model => model.Foto, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10"> 
+                                <img src="/Klant/Photo" class="shop-placeholder" id="uploadPreview" />
+                                <input type="file" name="Upload" id="Upload" onchange="PreviewImage();" class="form-control">
                                 @*<img src="/Content/img/profile.jpg" class="shop-placeholder" />*@
                             </div>
                         </div>
@@ -155,3 +160,18 @@ else
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
+
+<script type="text/javascript">
+    function PreviewImage() {
+        var oFReader = new FileReader();
+        oFReader.readAsDataURL(document.getElementById("Upload").files[0]);
+
+        oFReader.onload = function (oFREvent) {
+            document.getElementById("uploadPreview").src = oFREvent.target.result;
+        };
+    };
+
+    $(document).ready(function () {
+    });
+
+</script>
