@@ -5,6 +5,9 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using CRMSanto.Models;
 using System.Data.Entity.ModelConfiguration.Conventions;
+using System;
+using System.ComponentModel.DataAnnotations;
+using System.Data.Entity;
 
 namespace CRMSanto.Models
 {
@@ -42,6 +45,16 @@ namespace CRMSanto.Models
         public DbSet<Sessie> Sessie { get; set; }
         public DbSet<Productregistratie> Productregistratie { get; set; }
         public DbSet<Product> Product { get; set; }
+        public DbSet<UserTokenCache> UserTokenCacheList { get; set; }
+
+        public class UserTokenCache
+        {
+            [Key]
+            public int UserTokenCacheId { get; set; }
+            public string webUserUniqueId { get; set; }
+            public byte[] cacheBits { get; set; }
+            public DateTime LastWrite { get; set; }
+        }
 
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
