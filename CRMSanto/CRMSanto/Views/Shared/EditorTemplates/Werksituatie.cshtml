@@ -1,0 +1,17 @@
+﻿@model CRMSanto.Models.Werksituatie
+
+
+@*@List<CRMSanto.Models.Geslacht> list = (List<CRMSanto.Models.Geslacht>)ViewData["Geslachten"];*@
+@{
+    List<CRMSanto.Models.Werksituatie> list = (List<CRMSanto.Models.Werksituatie>)ViewData["Werksituaties"];
+}
+
+<hr />
+@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+<div class="form-group">
+    <div class="col-md-10">
+
+        @Html.DropDownListFor(model => model.ID, new SelectList(list, "ID", "Naam"))
+        @Html.ValidationMessageFor(model => model.ID, "", new { @class = "text-danger" })
+    </div>
+</div>
