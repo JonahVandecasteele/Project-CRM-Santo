@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CRMSanto.Models", "CRMSanto
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CRMSanto.BusinessLayer", "CRMSanto.BusinessLayer\CRMSanto.BusinessLayer.csproj", "{C187C4CA-428F-463A-A45F-5250F50D7E26}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mailinblue", "mailinblue\mailinblue.csproj", "{DBB4E106-C340-4351-BD76-70576C82D0C0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{C187C4CA-428F-463A-A45F-5250F50D7E26}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C187C4CA-428F-463A-A45F-5250F50D7E26}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C187C4CA-428F-463A-A45F-5250F50D7E26}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DBB4E106-C340-4351-BD76-70576C82D0C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DBB4E106-C340-4351-BD76-70576C82D0C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DBB4E106-C340-4351-BD76-70576C82D0C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DBB4E106-C340-4351-BD76-70576C82D0C0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

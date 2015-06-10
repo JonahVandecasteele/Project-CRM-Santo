@@ -79,6 +79,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Mailing\SendinBlue.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\AfsprakenRepository.cs" />
     <Compile Include="Repository\GemeenteRepository.cs" />
@@ -108,6 +109,10 @@
     <ProjectReference Include="..\CRMSanto.Models\CRMSanto.Models.csproj">
       <Project>{4e71dfd7-6f50-4cb6-b39a-c4ed702b2dbd}</Project>
       <Name>CRMSanto.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\mailinblue\mailinblue.csproj">
+      <Project>{dbb4e106-c340-4351-bd76-70576c82d0c0}</Project>
+      <Name>mailinblue</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

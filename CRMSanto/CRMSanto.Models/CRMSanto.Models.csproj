@@ -96,6 +96,10 @@
     <Compile Include="Migrations\201506090738451_seed.Designer.cs">
       <DependentUpon>201506090738451_seed.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201506100901411_Fixy.cs" />
+    <Compile Include="Migrations\201506100901411_Fixy.Designer.cs">
+      <DependentUpon>201506100901411_Fixy.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Product\Product.cs" />
     <Compile Include="Product\Productregistratie.cs" />
@@ -114,6 +118,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201506090738451_seed.resx">
       <DependentUpon>201506090738451_seed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506100901411_Fixy.resx">
+      <DependentUpon>201506100901411_Fixy.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
