@@ -48,7 +48,7 @@
             {
                 <tr>
                     <td>
-                        <img src="@Html.GetPhotoURL(Html.DisplayFor(modelItem => item.Foto).ToString())" alt="" class="profilepic shadow-z-1" />
+                        <a href="Klant/Details/@Html.DisplayFor(modelItem => item.ID)"><img src="@Html.GetPhotoURL(Html.DisplayFor(modelItem => item.Foto).ToString())" alt="" class="profilepic shadow-z-1" /></a>
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Naam)
