@@ -39,6 +39,7 @@ namespace CRMSanto.Controllers
                 string zoeken = Request.Form["Search"];
                 //return View(ps.GetProducten());
                 List<Klant> klant = ks.GetKlanten();
+
                 //List<Klant> klanten = ks.GetKlanten().Where(x => x.Naam.ToLower().Contains(zoeken.ToLower())).ToList();
 
                 var klantOpAdres = from klants in klant
@@ -49,6 +50,7 @@ namespace CRMSanto.Controllers
                               where klants.Naam.ToLower().Contains(zoeken.ToLower()) || klants.Voornaam.ToLower().Contains(zoeken.ToLower())
                                     || (klants.Naam + " " + klants.Voornaam).ToLower().Contains(zoeken.ToLower()) || (klants.Voornaam + " " + klants.Naam).ToLower().Contains(zoeken.ToLower())
                               select klants;
+                
             return View(klanten);
         }
             else
@@ -56,7 +58,6 @@ namespace CRMSanto.Controllers
                 return View(ks.GetKlanten());
             }
         }
-
         public ActionResult Details(int? id) 
         {
             if (id == null) { return RedirectToAction("Index"); }
@@ -71,7 +72,6 @@ namespace CRMSanto.Controllers
             kdpm.Afspraken = afspraken;
             return View(kdpm);
         }
-
         public ActionResult New()
         {
             KlantViewModel model = new KlantViewModel();
