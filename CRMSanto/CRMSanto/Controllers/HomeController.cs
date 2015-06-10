@@ -9,8 +9,16 @@ using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.Office365.Discovery;
+using Microsoft.Office365.OutlookServices;
+using Microsoft.IdentityModel.Clients.ActiveDirectory;
+using CRMSanto.Utils;
+using System.Security.Claims;
+using System.Web.Mvc.Filters;
+
 
 namespace CRMSanto.Controllers
 {
@@ -22,7 +30,7 @@ namespace CRMSanto.Controllers
         {
             this.afs = afs;
         }
-        
+
         public ActionResult Index()
         {
             List<Afspraak> afspraken = afs.GetAfsprakenToday();
@@ -139,6 +147,66 @@ namespace CRMSanto.Controllers
                 request.RedirectToProvider();
             }
             return View(klant);
+        }
+        public async Task<ActionResult> Office()
+        {
+            List<MyContact> myContacts = new List<MyContact>();
+
+            var signInUserId = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
+            var userObjectId = ClaimsPrincipal.Current.FindFirst("http://schemas.microsoft.com/identity/claims/objectidentifier").Value;
+
+            Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext authContext = new Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext(SettingsHelper.Authority, new ADALTokenCache(signInUserId));
+
+            try
+            {
+                DiscoveryClient discClient = new DiscoveryClient(SettingsHelper.DiscoveryServiceEndpointUri,
+                    async () =>
+                    {
+                        var authResult = await authContext.AcquireTokenSilentAsync(SettingsHelper.DiscoveryServiceResourceId, new ClientCredential(SettingsHelper.ClientId, SettingsHelper.AppKey), new UserIdentifier(userObjectId, UserIdentifierType.UniqueId));
+
+                        return authResult.AccessToken;
+                    });
+
+                var dcr = await discClient.DiscoverCapabilityAsync("Contacts");
+
+                OutlookServicesClient exClient = new OutlookServicesClient(dcr.ServiceEndpointUri,
+                    async () =>
+                    {
+                        var authResult = await authContext.AcquireTokenSilentAsync(dcr.ServiceResourceId, new ClientCredential(SettingsHelper.ClientId, SettingsHelper.AppKey), new UserIdentifier(userObjectId, UserIdentifierType.UniqueId));
+
+                        return authResult.AccessToken;
+                    });
+
+                var contactsResult = await exClient.Me.Contacts.ExecuteAsync();
+
+                do
+                {
+                    var contacts = contactsResult.CurrentPage;
+                    foreach (var contact in contacts)
+                    {
+                        myContacts.Add(new MyContact { Name = contact.DisplayName });
+                    }
+
+                    contactsResult = await contactsResult.GetNextPageAsync();
+
+                } while (contactsResult != null);
+            }
+            catch (AdalException exception)
+            {
+                //handle token acquisition failure
+                if (exception.ErrorCode == AdalError.FailedToAcquireTokenSilently)
+                {
+                    authContext.TokenCache.Clear();
+
+                    //handle token acquisition failure
+                }
+            }
+
+            return View(myContacts);
+        }
+        public class MyContact
+        {
+            public string Name { get; set; }
         }
     }
 }
