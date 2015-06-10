@@ -7,7 +7,6 @@ using CRMSanto.Models;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System;
 using System.ComponentModel.DataAnnotations;
-using System.Data.Entity;
 
 namespace CRMSanto.Models
 {

@@ -79,7 +79,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Mailing\SendinBlue.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\AfsprakenRepository.cs" />
     <Compile Include="Repository\GemeenteRepository.cs" />
