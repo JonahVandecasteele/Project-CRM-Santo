@@ -117,21 +117,6 @@
     <Content Include="Data\zipcodes.txt" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201506090738451_seed.resx">
-      <DependentUpon>201506090738451_seed.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201506100901411_Fixy.resx">
-      <DependentUpon>201506100901411_Fixy.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201506111222210_productentoevoegen.resx">
-      <DependentUpon>201506111222210_productentoevoegen.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201506111212449_Fixy2.resx">
-      <DependentUpon>201506111212449_Fixy2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201506111249079_feest.resx">
-      <DependentUpon>201506111249079_feest.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201506111433456_kustze.resx">
       <DependentUpon>201506111433456_kustze.cs</DependentUpon>
     </EmbeddedResource>
