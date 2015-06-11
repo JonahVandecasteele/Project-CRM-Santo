@@ -33,8 +33,14 @@ if(Model.Gemeentes==null)
                         <div class="form-group">
                                 @Html.LabelFor(model => model.Foto, htmlAttributes: new { @class = "control-label col-md-2" })
                             <div class="col-md-10"> 
-                                <img src="/Klant/Photo" class="shop-placeholder" id="uploadPreview" />
-                                <input type="file" name="Upload" id="Upload" onchange="PreviewImage();" class="form-control">
+                                <table>
+                                    <tbody>
+                                        <tr>
+                                            <td><img src="/Klant/Photo" class="" id="uploadPreview" /></td>
+                                            <td><input type="file" name="Upload" id="Upload" onchange="PreviewImage();" class=""></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                                 @*<img src="/Content/img/profile.jpg" class="shop-placeholder" />*@
                             </div>
                         </div>
@@ -77,6 +83,13 @@ if(Model.Gemeentes==null)
                                 @Html.ValidationMessageFor(model => model.Geboortedatum, "", new { @class = "text-danger" })
                             </div>
                         </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Geslacht, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Geslacht, new { htmlAttributes = new { @class = "form-control" }, Geslachten = Model.Geslachten })
+                                @Html.ValidationMessageFor(model => model.Geslacht, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -100,11 +113,18 @@ if(Model.Gemeentes==null)
                 </div>
             </div>
         </div>
-        <div class="form-group">
-            @Html.LabelFor(model => model.Geslacht, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Geslacht, new { htmlAttributes = new { @class = "form-control" }, Geslachten = Model.Geslachten })
-                @Html.ValidationMessageFor(model => model.Geslacht, "", new { @class = "text-danger" })
+        <div class="panel-group" id="accordion">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">Geslacht</a>
+                    </h4>
+                </div>
+                <div id="collapse2" class="panel-collapse collapse in">
+                    <div class="panel-body">
+
+                    </div>
+                </div>
             </div>
         </div>
         <div class="form-group">
