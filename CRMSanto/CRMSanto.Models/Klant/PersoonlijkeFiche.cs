@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CRMSanto.Models.Klant;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,7 +11,7 @@ namespace CRMSanto.Models
     {
         public int ID { get; set; }
         public string Hobby { get; set; }
-        public string Werksituatie { get; set; }
+        public Werksituatie Werksituatie { get; set; }
         public string Gezinssituatie { get; set; }
     }
 }

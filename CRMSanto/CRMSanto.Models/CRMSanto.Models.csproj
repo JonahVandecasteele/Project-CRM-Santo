@@ -92,6 +92,7 @@
     <Compile Include="Klant\MedischeFiche.cs" />
     <Compile Include="Klant\Mutualiteit.cs" />
     <Compile Include="Klant\PersoonlijkeFiche.cs" />
+    <Compile Include="Klant\Werksituatie.cs" />
     <Compile Include="Migrations\201506090738451_seed.cs" />
     <Compile Include="Migrations\201506090738451_seed.Designer.cs">
       <DependentUpon>201506090738451_seed.cs</DependentUpon>
