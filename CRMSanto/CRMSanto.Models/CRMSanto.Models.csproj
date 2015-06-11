@@ -94,13 +94,9 @@
     <Compile Include="Klant\PersoonlijkeFiche.cs" />
     <Compile Include="Klant\Voedingspatroon.cs" />
     <Compile Include="Klant\Werksituatie.cs" />
-    <Compile Include="Migrations\201506111435582_updateproducten.cs" />
-    <Compile Include="Migrations\201506111435582_updateproducten.Designer.cs">
-      <DependentUpon>201506111435582_updateproducten.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201506111433456_kustze.cs" />
-    <Compile Include="Migrations\201506111433456_kustze.Designer.cs">
-      <DependentUpon>201506111433456_kustze.cs</DependentUpon>
+    <Compile Include="Migrations\201506111440163_updateproducten.cs" />
+    <Compile Include="Migrations\201506111440163_updateproducten.Designer.cs">
+      <DependentUpon>201506111440163_updateproducten.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Product\Product.cs" />
@@ -117,34 +113,14 @@
     <Content Include="Data\zipcodes.txt" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201506090738451_seed.resx">
-      <DependentUpon>201506090738451_seed.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201506100901411_Fixy.resx">
-      <DependentUpon>201506100901411_Fixy.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201506111222210_productentoevoegen.resx">
-      <DependentUpon>201506111222210_productentoevoegen.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201506111212449_Fixy2.resx">
-      <DependentUpon>201506111212449_Fixy2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201506111249079_feest.resx">
-      <DependentUpon>201506111249079_feest.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201506111433456_kustze.resx">
-      <DependentUpon>201506111433456_kustze.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\mailinblue\mailinblue.csproj">
       <Project>{dbb4e106-c340-4351-bd76-70576c82d0c0}</Project>
       <Name>mailinblue</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201506111435582_updateproducten.resx">
-      <DependentUpon>201506111435582_updateproducten.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201506111440163_updateproducten.resx">
+      <DependentUpon>201506111440163_updateproducten.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
