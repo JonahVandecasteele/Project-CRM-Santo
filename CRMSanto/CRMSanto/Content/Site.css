@@ -6,6 +6,11 @@
 	padding: 7px 15px 0 15px;
 }
 
+.btn-search {
+    border-radius: 4px;
+    padding: 6px 12px;
+}
+
 .navbar , .navbar-inverse.navbar{
   background-color: #381d10;
   border-color: #d9166e;
@@ -90,6 +95,17 @@
 .large {
 	height: 115px;
     width: 115px;
+}
+
+.show {
+        display: block;
+}
+
+.body-content {
+margin-top: 70px;
+}
+.hide {
+        display: none;
 }
 
 .clienttitle {

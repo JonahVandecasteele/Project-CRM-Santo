@@ -1,5 +1,4 @@
 ﻿using CRMSanto.BusinessLayer.Services;
-using CRMSanto.Calendar;
 using CRMSanto.Models;
 using CRMSanto.Models.PresentationModels;
 using CRMSanto.ViewModels;
@@ -24,7 +23,6 @@ namespace CRMSanto.Controllers
 
         private IAfspraakService afs;
         private IKlantService ks;
-        private CalendarManager cm;
 
         private CalendarOperations _calenderOperations = new CalendarOperations();
         private const int NumberOfHoursBefore = 240;
@@ -32,11 +30,10 @@ namespace CRMSanto.Controllers
 
         private static bool _O365ServiceOperationFailed = false;
 
-        public AfspraakController(IAfspraakService afs, IKlantService ks, CalendarManager cm)
+        public AfspraakController(IAfspraakService afs, IKlantService ks)
         {
             this.afs = afs;
             this.ks = ks;
-            this.cm = cm;
         }
 
 
@@ -45,22 +42,9 @@ namespace CRMSanto.Controllers
         {
             AfspraakPM apm = new AfspraakPM();
             apm.Afspraken = afs.GetLopendeAfspraken();
-            apm.Kalender = cm.getCalender(DateTime.Now.Month, DateTime.Now.Year);
             return View(apm);
         }
 
-        public ActionResult AsyncUpdateCalender(int month, int year)
-        {
-            if (HttpContext.Request.IsAjaxRequest())
-            {
-                var model = cm.getCalender(month, year);
-                return Json(model, JsonRequestBehavior.AllowGet);
-            }
-            else
-            {
-                return View();
-            }
-        }
 
         [HttpGet]
         public ActionResult New()

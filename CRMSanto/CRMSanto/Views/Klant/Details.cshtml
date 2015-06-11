@@ -4,14 +4,6 @@
     ViewBag.Title = "Details";
 }
 
-<div class="row" id="customerheader">
-    <div class="col-md-6 col-md-offset-3 profilepagecenter">
-        <img src="@Html.GetPhotoURL(Html.DisplayFor(model => model.Klant.Foto).ToString())" alt="" class="profilepic shadow-z-2 large" />
-        <h1 class="clienttitle ">@Html.DisplayFor(model => model.Klant.Naam) @Html.DisplayFor(model => model.Klant.Voornaam)</h1>
-        <h3 class="upper"><i class="mdi-communication-location-on"></i>@Html.DisplayFor(model => model.Klant.Adres.Gemeente.Plaatsnaam)</h3>
-    </div>
-</div>
-
 <div class="row">
     <div class="col-md-12">
         <h2>TESTJES</h2>
