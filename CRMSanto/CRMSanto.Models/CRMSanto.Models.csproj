@@ -94,13 +94,17 @@
     <Compile Include="Klant\PersoonlijkeFiche.cs" />
     <Compile Include="Klant\Voedingspatroon.cs" />
     <Compile Include="Klant\Werksituatie.cs" />
-    <Compile Include="Migrations\201506111435582_updateproducten.cs" />
-    <Compile Include="Migrations\201506111435582_updateproducten.Designer.cs">
-      <DependentUpon>201506111435582_updateproducten.cs</DependentUpon>
+    <Compile Include="Migrations\201506111706448_voedingspatroon.cs" />
+    <Compile Include="Migrations\201506111706448_voedingspatroon.Designer.cs">
+      <DependentUpon>201506111706448_voedingspatroon.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201506111433456_kustze.cs" />
-    <Compile Include="Migrations\201506111433456_kustze.Designer.cs">
-      <DependentUpon>201506111433456_kustze.cs</DependentUpon>
+    <Compile Include="Migrations\201506111709202_minstock.cs" />
+    <Compile Include="Migrations\201506111709202_minstock.Designer.cs">
+      <DependentUpon>201506111709202_minstock.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201506111726161_seedproducten.cs" />
+    <Compile Include="Migrations\201506111726161_seedproducten.Designer.cs">
+      <DependentUpon>201506111726161_seedproducten.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Product\Product.cs" />
@@ -114,12 +118,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Data\producten.txt" />
     <Content Include="Data\zipcodes.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201506111433456_kustze.resx">
-      <DependentUpon>201506111433456_kustze.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\mailinblue\mailinblue.csproj">
@@ -128,8 +128,14 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201506111435582_updateproducten.resx">
-      <DependentUpon>201506111435582_updateproducten.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201506111706448_voedingspatroon.resx">
+      <DependentUpon>201506111706448_voedingspatroon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506111709202_minstock.resx">
+      <DependentUpon>201506111709202_minstock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506111726161_seedproducten.resx">
+      <DependentUpon>201506111726161_seedproducten.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
