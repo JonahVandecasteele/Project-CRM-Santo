@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CRMSanto.Models.Klant
+namespace CRMSanto.Models
 {
     public class Werksituatie
     {
