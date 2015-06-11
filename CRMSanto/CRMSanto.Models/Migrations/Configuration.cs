@@ -13,6 +13,7 @@ using System.Linq;
     {
         private string pathGemeentes = AppDomain.CurrentDomain.BaseDirectory + "..\\..\\Data\\zipcodes.txt";
         List<Gemeente> gemeentes = new List<Gemeente>();
+        List<Product> producten = new List<Product>();
 
         public Configuration()
         {
@@ -28,8 +29,42 @@ using System.Linq;
             SeedKaraktertrek(context);
             SeedMasseur(context);
             seedGemeentes(context);
+            SeedProducten(context);
         }
 
+        public void SeedProducten(ApplicationDbContext context)
+        {
+            using (StreamReader sr = new StreamReader(pathGemeentes))
+            {
+                string line = sr.ReadLine();
+                while (line != null)
+                {
+                    Product p = new Product();
+                    string aankoopprijs = line.Split(';')[3];
+                    aankoopprijs.Replace("€ ", "");
+                    string verkoopprijs = line.Split(';')[3];
+                    aankoopprijs.Replace("€ ", "");
+                    p.ID = Convert.ToInt32(line.Split(';')[0]);
+                    p.Naam = Convert.ToString(line.Split(';')[1]);
+                    p.Inhoud = Convert.ToInt32(line.Split(';')[2]);
+                    p.AankoopPrijs = Convert.ToDecimal(aankoopprijs);
+                    p.VerkoopPrijs = Convert.ToDecimal(verkoopprijs);
+                    //g.Postcode = Convert.ToString(line.Split(',')[0]);
+                    //g.Plaatsnaam = Convert.ToString(line.Split(',')[1]);
+                    //g.Provincie = Convert.ToString(line.Split(',')[2]);
+
+                    producten.Add(p);
+
+                    line = sr.ReadLine();
+                }
+                sr.Close();
+            }
+            foreach (Product p in producten)
+            {
+                context.Product.AddOrUpdate(p);
+            }
+            context.SaveChanges();
+        }
         public void SeedAccounts(ApplicationDbContext context)
         {            
             string roleAdmin = "Admin";
