@@ -1,82 +1,80 @@
-111005;Eye Make-Up Remover;125;9,95;19,90
-111010;Refreshing Cleansing Gel;100;11,40;22,80
-111020;All in 1 Toning Cleanser;250;14,00;28,00
-111021;Mineral Toning water;250;9,25;18,50
-111025;Facial Mud Exfoliator;100;13,15;26,30
-111030;Purifying Mud Mask;100;4,15;28,30
-111040;Dead Sea Osmoter™ Concentrate;30;25,00;50,00
-111041;Dead Sea Osmoter™ Concentrate Limited Edition;15;14,50;29,00
-111045;Dead Sea Osmoter™ Eye Concentrate;15;21,50;43,00
-112000;Dead Sea Osmoter™ Body Concentrate;100;20,00;40,00
-111050;Essential Day Moisturizer - Normal to dry skin;50;19,50;39,00
-111051;Essential Day Moisturizer - Combination skin;50;19,50;39,00
-111052;Essential Day Moisturizer -  Very dry skin;50;19,50;39,00
-111053;Essential Moisturizing Lotion (Broad Spectrum) SPF15;50;19,50;39,00
-111054;Active Moisture Gel Cream;50;19,50;39,00
-111055;Night Replenisher -  Normal to dry skin;50;20,50;41,00
-111060;Essential Reviving Serum;30;22,50;45,00
-111065;Gentle Eye cream;15;15,25;30,50
-111066;Hydration Cream Mask;100;17,50;35,00
-111070;Age control All Day Moisturizer SPF15;50;25,75;51,50
-116014;"Kit Duo Smooth Day & Eye
-";50+15;34,00;68,00
-111071;Age control Even Tone Moisturizer SPF20;50;27,25;54,50
-116034;"Smoother twogether
-";50+15;24,50;49,00
-111075;Age control Night Nourishment;50;27,25;54,50
-111076;Age control Even Tone Sleeping Cream;50;28,50;57,00
-111080;Age control Eye Cream;15;19,95;39,90
-111085;Age control Intensive Serum;30;27,25;54,50
-111072;Age control Brightening & Renewal Serum;30;28,50;57,00
-111087;Age Perfecting Hand Cream;75;13,10;26,20
-111090;Extreme Day Cream;50;33,50;67,00
-116035;Younger twogether;50+5;31,00;62,00
-111095;Extreme Night Treatment;30;34,95;69,90
-121095;Extreme Night Treatment SUPER SIZE Limited Edition min 3 stuks/pcs;50;42,50;85,00
-111096;Extreme Firming Eye Cream;15;24,00;48,00
-111097;Extreme Radiance Lifting Mask;75;21,95;43,90
-121045;Facial Renewal Peel;100;19,45;38,90
-121050;Comforting Cream;50;24,95;49,90
-111210;Exfoliating Cleansing Gel;100;11,40;22,80
-111220;Foam-free Shaving Cream;200;12,60;25,20
-111230;Soothing After-Shave Moisturizer;50;16,00;32,00
-111231;Age Control Moisturizing Cream Broad Spectrum SPF 15;50;18,90;37,80
-111235;Age Control All in 1 Eye Care;15;12,50;25,00
-112040;Mineral Body Lotion;250;14,70;29,40
-112045;Mineral Hand Cream;100;9,20;18,40
-112050;Mineral Foot Cream;100;9,20;18,40
-112051;Mineral Shower Gel;200;8,00;16,00
-112052;Mineral Body Exfoliator;200;11,95;23,90
-112080;Mineral Shampoo;400;13,25;26,50
-112085;Mineral Conditioner;400;13,25;26,50
-113310;Dermud Nourishing Body Cream;200;16,10;32,20
-113311;Dermud Intensive Hand Cream;100;12,00;24,00
-113312;Dermud Intensive Foot Cream;100;12,00;24,00
-112005;Gentle Body Exfoliator;200;13,45;26,90
-112010;Natural Dead Sea Body Mud;400;7,00;14,00
-112015;Purifying Mud Soap;100;4,00;8,00
-112021;Softening Butter Salt Scrub;235;16,50;33,00
-112025;Liquid Dead Sea Salt;200;9,50;19,00
-112030;Natural Dead Sea Bath Salts;1;9,50;19,00
-112035;Moisturizing Salt Soap;100;4,00;8,00
-112053;Smoothing Body Exfoliator;235;14,95;29,90
-112054;Firming Body Cream;200;20,95;41,90
-112055;Dry Oil - Mandarine and Cedarwood;100;17,00;34,00
-122055;Dry Oil - Mandarine and Cedarwood TRAVEL SIZE Limited Edition;30;7,45;14,90
-112056;Dry Oil - Pink Pepper & Cactus;100;17,00;34,00
-112060;Caressing Body Sorbet;235;17,00;34,00
-114403;Micro-Peeling  Water Lily & Guarana;500;11,00;22,00
-114404;Cream Wash Honeysuckle & Lavender;500;11,00;22,00
-114405;Cream Wash Lotus & Chestnut;500;11,00;22,00
-114407;Cream Wash Hibiscus & Fig;500;11,00;22,00
-114408;Cream Wash Pineapple & Peach;500;11,00;22,00
-114414;Velvet Body Lotion Honeysuckle & Lavender;400;13,75;27,50
-114415;Velvet Body Lotion Lotus & Chestnut;400;13,75;27,50
-114417;Velvet Body Lotion Hibiscus & Fig;400;13,75;27,50
-114418;Velvet Body Lotion Pineapple & Peach;400;13,75;27,50
-114424;Body Butter Honeysuckle & Lavender;235;16,00;32,00
-114425;Body Butter Lotus & Chestnut;235;16,00;32,00
-114427;Body Butter Hibiscus & Fig;235;16,00;32,00
-114428;Body Butter Pineapple & Peach;235;16,00;32,00
-111240;Mineral Hand Cream;100;9,20;18,40
-111245;Mineral Shower Gel;200;8,20;16,40
+111005,Eye Make-Up Remover,125,9.95,19.90
+111010,Refreshing Cleansing Gel,100,11.40,22.80
+111020,All in 1 Toning Cleanser,250,14.00,28.00
+111021,Mineral Toning water,250,9.25,18.50
+111025,Facial Mud Exfoliator,100,13.15,26.30
+111030,Purifying Mud Mask,100,14.15,28.30
+111040,Dead Sea Osmoter™ Concentrate,30,25.00,50.00
+111041,Dead Sea Osmoter™ Concentrate Limited Edition,15,14.50,29.00
+111045,Dead Sea Osmoter™ Eye Concentrate,15,21.50,43.00
+112000,Dead Sea Osmoter™ Body Concentrate,100,20.00,40.00
+111050,Essential Day Moisturizer - Normal to dry skin,50,19.50,39.00
+111051,Essential Day Moisturizer - Combination skin,50,19.50,39.00
+111052,Essential Day Moisturizer -  Very dry skin,50,19.50,39.00
+111053,Essential Moisturizing Lotion (Broad Spectrum) SPF15,50,19.50,39.00
+111054,Active Moisture Gel Cream,50,19.50,39.00
+111055,Night Replenisher -  Normal to dry skin,50,20.50,41.00
+111060,Essential Reviving Serum,30,22.50,45.00
+111065,Gentle Eye cream,15, 15.25,30.50
+111066,Hydration Cream Mask,100, 17.50,35.00
+111070,Age control All Day Moisturizer SPF15,50,25.75,51.50
+116014,Kit Duo Smooth Day & Eye,65,34.00,68.00
+111071,Age control Even Tone Moisturizer SPF20,50,27.25,54.50
+116034,Smoother twogether,65,24.50,49.00
+111075,Age control Night Nourishment,50,27.25,54.50
+111076,Age control Even Tone Sleeping Cream,50,28.50,57.00
+111080,Age control Eye Cream,15,19.95,39.90
+111085,Age control Intensive Serum,30,27.25,54.50
+111072,Age control Brightening & Renewal Serum,30,28.50,57.00
+111087,Age Perfecting Hand Cream,75, 13.10,26.20
+111090,Extreme Day Cream,50,33.50,67.00
+116035,Younger twogether,55,31.00,62.00
+111095,Extreme Night Treatment,30,34.95,69.90
+121095,Extreme Night Treatment SUPER SIZE Limited Edition min 3 stuks/pcs,50,42.50,85.00
+111096,Extreme Firming Eye Cream,15,24.00,48.00
+111097,Extreme Radiance Lifting Mask,75,21.95,43.90
+121045,Facial Renewal Peel,100,19.45,38.90
+121050,Comforting Cream,50,24.95,49.90
+111210,Exfoliating Cleansing Gel,100,11.40,22.80
+111220,Foam-free Shaving Cream,200,12.60,25.20
+111230,Soothing After-Shave Moisturizer,50,16.00,32.00
+111231,Age Control Moisturizing Cream Broad Spectrum SPF 15,50,18.90,37.80
+111235,Age Control All in 1 Eye Care,15,12.50,25.00
+112040,Mineral Body Lotion,250,14.70,29.40
+112045,Mineral Hand Cream,100,9.20,18.40
+112050,Mineral Foot Cream,100,9.20,18.40
+112051,Mineral Shower Gel,200,8.00,16.00
+112052,Mineral Body Exfoliator,200,11.95,23.90
+112080,Mineral Shampoo,400,13.25,26.50
+112085,Mineral Conditioner,400,13.25,26.50
+113310,Dermud Nourishing Body Cream,200,16.10,32.20
+113311,Dermud Intensive Hand Cream,100,12.00,24.00
+113312,Dermud Intensive Foot Cream,100,12.00,24.00
+112005,Gentle Body Exfoliator,200,13.45,26.90
+112010,Natural Dead Sea Body Mud,400,7.00,14.00
+112015,Purifying Mud Soap,100,4.00,8.00
+112021,Softening Butter Salt Scrub,235,16.50,33.00
+112025,Liquid Dead Sea Salt,200,9.50,19.00
+112030,Natural Dead Sea Bath Salts  ,1,9.50,19.00
+112035,Moisturizing Salt Soap,100,4.00,8.00
+112053,Smoothing Body Exfoliator,235,14.95,29.90
+112054,Firming Body Cream,200,20.95,41.90
+112055,Dry Oil - Mandarine and Cedarwood,100,17.00,34.00
+122055,Dry Oil - Mandarine and Cedarwood TRAVEL SIZE Limited Edition,30,7.45,14.90
+112056,Dry Oil - Pink Pepper & Cactus,100,17.00,34.00
+112060,Caressing Body Sorbet,235,17.00,34.00
+114403,Micro-Peeling  Water Lily & Guarana,500,11.00,22.00
+114404,Cream Wash Honeysuckle & Lavender,500,11.00,22.00
+114405,Cream Wash Lotus & Chestnut,500,11.00,22.00
+114407,Cream Wash Hibiscus & Fig,500,11.00,22.00
+114408,Cream Wash Pineapple & Peach,500,11.00,22.00
+114414,Velvet Body Lotion Honeysuckle & Lavender,400,13.75,27.50
+114415,Velvet Body Lotion Lotus & Chestnut,400,13.75,27.50
+114417,Velvet Body Lotion Hibiscus & Fig,400,13.75,27.50
+114418,Velvet Body Lotion Pineapple & Peach,400,13.75,27.50
+114424,Body Butter Honeysuckle & Lavender,235,16.00,32.00
+114425,Body Butter Lotus & Chestnut,235,16.00,32.00
+114427,Body Butter Hibiscus & Fig,235,16.00,32.00
+114428,Body Butter Pineapple & Peach,235,16.00,32.00
+111240,Mineral Hand Cream,100,9.20,18.40
+111245,Mineral Shower Gel,200,8.20,16.40
