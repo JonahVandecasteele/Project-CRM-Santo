@@ -39,6 +39,7 @@ namespace CRMSanto.Controllers
                 string zoeken = Request.Form["Search"];
                 //return View(ps.GetProducten());
                 List<Klant> klant = ks.GetKlanten();
+
                 //List<Klant> klanten = ks.GetKlanten().Where(x => x.Naam.ToLower().Contains(zoeken.ToLower())).ToList();
 
                 var klantOpAdres = from klants in klant
@@ -49,6 +50,7 @@ namespace CRMSanto.Controllers
                               where klants.Naam.ToLower().Contains(zoeken.ToLower()) || klants.Voornaam.ToLower().Contains(zoeken.ToLower())
                                     || (klants.Naam + " " + klants.Voornaam).ToLower().Contains(zoeken.ToLower()) || (klants.Voornaam + " " + klants.Naam).ToLower().Contains(zoeken.ToLower())
                               select klants;
+                
             return View(klanten);
         }
             else
@@ -56,7 +58,6 @@ namespace CRMSanto.Controllers
                 return View(ks.GetKlanten());
             }
         }
-
         public ActionResult Details(int? id) 
         {
             if (id == null) { return RedirectToAction("Index"); }
@@ -71,7 +72,6 @@ namespace CRMSanto.Controllers
             kdpm.Afspraken = afspraken;
             return View(kdpm);
         }
-
         public ActionResult New()
         {
             KlantViewModel model = new KlantViewModel();
@@ -98,9 +98,9 @@ namespace CRMSanto.Controllers
                 klant.Foto = Guid.NewGuid().ToString();
                 if (photo==null)
                 {
-                    if (TempData["Photo"]!=null)
+                    if (Session["PhotoUpload"] != null)
                     {
-                        photo = (HttpPostedFileBase)TempData["Photo"];
+                        photo = (HttpPostedFileBase)Session["PhotoUpload"];
                         ks.SaveImage(photo,klant.Foto);
                     }
                 }
@@ -149,7 +149,7 @@ namespace CRMSanto.Controllers
             else if(Request.Form["addkar"] != null)
             {
                 KlantViewModel model = klant;
-                TempData["Photo"] = klant.Upload;
+                Session["PhotoUpload"] = klant.Upload;
                 Karaktertrek trek = ks.GetKaraktertrekByID(model.SelectedKaracter.ID);
                 model.Karaktertrek = (List<Karaktertrek>)TempData["KarTrek"];
                 if (model.Karaktertrek == null)
@@ -169,10 +169,10 @@ namespace CRMSanto.Controllers
         }
         public ActionResult Photo()
         {
-            if (TempData["Photo"] != null)
+            if (Session["PhotoUpload"] != null)
             {
-                HttpPostedFileBase file = (HttpPostedFileBase)TempData["Photo"];
-                TempData["Photo"] = file;
+                HttpPostedFileBase file = (HttpPostedFileBase)Session["PhotoUpload"];
+                //TempData["Photo"] = file;
                 var stream = file.InputStream;
                 return new FileStreamResult(stream, file.ContentType);
             }

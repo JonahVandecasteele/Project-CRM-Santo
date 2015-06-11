@@ -34,6 +34,11 @@ namespace CRMSanto.BusinessLayer.Services
         {
             return repoKlant.All().ToList<Klant>();
         }
+
+        public List<Klant> GetJarigen()
+        {
+            return repoKlant.GetJarigen().ToList<Klant>();
+        }
         public Klant GetKlantByID(int id)
         {
             return repoKlant.GetByID(id);
@@ -102,7 +107,6 @@ namespace CRMSanto.BusinessLayer.Services
         {
             return repoGemeente.GetGemeentesByPostCode(id);
         }
-
         public void Mails()
         {
             List<Klant> klanten = new List<Klant>();

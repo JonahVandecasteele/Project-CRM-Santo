@@ -8,6 +8,7 @@ namespace CRMSanto.BusinessLayer.Services
         System.Collections.Generic.List<CRMSanto.Models.Gemeente> GetGemeentesByPostCode(string id);
         CRMSanto.Models.Geslacht GetGeslachtByID(int id);
         System.Collections.Generic.List<CRMSanto.Models.Geslacht> GetGeslachten();
+        System.Collections.Generic.List<CRMSanto.Models.Klant> GetJarigen();
         CRMSanto.Models.Karaktertrek GetKaraktertrekByID(int id);
         System.Collections.Generic.List<CRMSanto.Models.Karaktertrek> GetKaraktertreken();
         CRMSanto.Models.Klant GetKlantByID(int id);
