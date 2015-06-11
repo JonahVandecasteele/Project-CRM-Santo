@@ -438,6 +438,12 @@
     <Content Include="Views\Dienst\Index.cshtml" />
     <Content Include="Views\Dienst\New.cshtml" />
     <Content Include="Views\Dienst\Edit.cshtml" />
+    <Content Include="Views\Dienst\Index2.cshtml" />
+    <Content Include="Views\Dienst\New2.cshtml" />
+    <Content Include="Views\Dienst\Edit2.cshtml" />
+    <Content Include="Views\Dienst\Index3.cshtml" />
+    <Content Include="Views\Dienst\New3.cshtml" />
+    <Content Include="Views\Dienst\Edit3.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

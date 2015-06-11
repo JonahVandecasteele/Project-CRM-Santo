@@ -27,5 +27,8 @@ namespace CRMSanto.Models
         public Adres Adres { get; set; }
         public Boolean Geannuleerd { get; set; }
         public Masseur Masseur { get; set; }
+        public Arrangement Arrangement { get; set; }
+        public int AantalPersonen { get; set; }
+        public virtual List<Extra> Extra { get; set; }
     }
 }
