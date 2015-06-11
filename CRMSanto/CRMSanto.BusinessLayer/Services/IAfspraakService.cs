@@ -13,5 +13,7 @@ namespace CRMSanto.BusinessLayer.Services
         System.Collections.Generic.List<CRMSanto.Models.SoortAfspraak> GetMassages();
         CRMSanto.Models.Masseur GetMasseurByID(int id);
         System.Collections.Generic.List<CRMSanto.Models.Masseur> GetMasseurs();
+        CRMSanto.Models.SoortAfspraak InsertMassage(CRMSanto.Models.SoortAfspraak m);
+        void UpdateMassage(CRMSanto.Models.SoortAfspraak m);
     }
 }

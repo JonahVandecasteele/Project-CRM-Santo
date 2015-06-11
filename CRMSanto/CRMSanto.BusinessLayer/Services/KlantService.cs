@@ -34,7 +34,6 @@ namespace CRMSanto.BusinessLayer.Services
         {
             return repoKlant.All().ToList<Klant>();
         }
-
         public List<Klant> GetJarigen()
         {
             return repoKlant.GetJarigen().ToList<Klant>();

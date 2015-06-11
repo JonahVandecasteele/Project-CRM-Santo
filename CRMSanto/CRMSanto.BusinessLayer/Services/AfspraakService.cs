@@ -99,5 +99,16 @@ namespace CRMSanto.BusinessLayer.Services
         {
             return repoMassage.GetByID(id);
         }
+        public SoortAfspraak InsertMassage(SoortAfspraak m)
+        {
+            SoortAfspraak result = repoMassage.Insert(m);
+            repoMassage.SaveChanges();
+            return result;
+        }
+        public void UpdateMassage(SoortAfspraak m)
+        {
+            repoMassage.Update(m);
+            repoMassage.SaveChanges();
+        }
     }
 }

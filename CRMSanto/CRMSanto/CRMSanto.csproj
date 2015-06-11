@@ -296,8 +296,10 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AfspraakController.cs" />
+    <Compile Include="Controllers\DienstController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KlantController.cs" />
+    <Compile Include="Controllers\MassageController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\SettingController.cs" />
     <Compile Include="Global.asax.cs">
@@ -433,9 +435,13 @@
     <Content Include="Views\Shared\EditorTemplates\Werksituatie.cshtml" />
     <Content Include="Views\Setting\NewKaraktertrek.cshtml" />
     <Content Include="Views\Setting\NewWerksituatie.cshtml" />
+    <Content Include="Views\Dienst\Index.cshtml" />
+    <Content Include="Views\Dienst\New.cshtml" />
+    <Content Include="Views\Dienst\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Massage\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
