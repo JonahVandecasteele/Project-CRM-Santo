@@ -72,6 +72,7 @@ namespace CRMSanto.Controllers
                 }
                 a.Afspraak.Masseur = afs.GetMasseurByID(a.Afspraak.Masseur.ID);
                 a.Afspraak.SoortAfspraak = afs.GetMassageByID(a.Afspraak.SoortAfspraak.ID);
+                a.Afspraak.Duur = a.Afspraak.SoortAfspraak.Duur;
                 a.Afspraak.DatumTijdstip = a.Datum.Date + a.Tijdstip.TimeOfDay;
                 if (a.Afspraak.DatumTijdstip == DateTime.MinValue)
                     a.Afspraak.DatumTijdstip = (DateTime)SqlDateTime.MinValue;
