@@ -37,7 +37,6 @@ namespace CRMSanto
             container.RegisterType<IKlantService, KlantService>();
 
             container.RegisterType<AccountController>(new InjectionConstructor());
-            container.RegisterType<ManageController>(new InjectionConstructor());
             
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
         }
