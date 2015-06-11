@@ -9,6 +9,13 @@ using System.Data.SqlTypes;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.Office365.OutlookServices;
+using CRMSanto.Helpers;
+using System.Threading.Tasks;
+using model = CRMSanto.Models;
+using Microsoft.Owin.Security;
+using Microsoft.Owin.Security.OpenIdConnect;
+using Microsoft.IdentityModel.Clients.ActiveDirectory;
 
 namespace CRMSanto.Controllers
 {
@@ -18,6 +25,12 @@ namespace CRMSanto.Controllers
         private IAfspraakService afs;
         private IKlantService ks;
         private CalendarManager cm;
+
+        private CalendarOperations _calenderOperations = new CalendarOperations();
+        private const int NumberOfHoursBefore = 240;
+        private const int NumberOfHoursAfter = 240;
+
+        private static bool _O365ServiceOperationFailed = false;
 
         public AfspraakController(IAfspraakService afs, IKlantService ks, CalendarManager cm)
         {
@@ -65,7 +78,7 @@ namespace CRMSanto.Controllers
         }
 
         [HttpPost]
-        public ActionResult New(NieuweAfspraakPM a)
+        public async Task<ActionResult> New(NieuweAfspraakPM a)
         {
 
            
@@ -78,6 +91,17 @@ namespace CRMSanto.Controllers
                 a.Afspraak.DatumTijdstip = a.Datum.Date + a.Tijdstip.TimeOfDay;
                 if (a.Afspraak.DatumTijdstip == DateTime.MinValue)
                     a.Afspraak.DatumTijdstip = (DateTime)SqlDateTime.MinValue;
+
+                _O365ServiceOperationFailed = false;
+                String newEventID = "";
+                try
+                {
+                    newEventID = await _calenderOperations.AddCalendarEventAsync(a.Afspraak.Adres.ToString(), a.Afspraak.Klant.ToString(), a.Afspraak.Klant.Naam + " " + a.Afspraak.Klant.Voornaam, a.Afspraak.SoortAfspraak.Naam + " - " + a.Afspraak.Masseur.Naam, DateTimeOffset.Parse(a.Afspraak.DatumTijdstip.ToString()), DateTimeOffset.Parse(a.Afspraak.DatumTijdstip.ToString()));
+                }
+                catch (Exception)
+                {
+                    _O365ServiceOperationFailed = true;
+                }
 
                 afs.AddAfspraak(a.Afspraak);
                 return RedirectToAction("Index");
@@ -95,6 +119,30 @@ namespace CRMSanto.Controllers
             //NieuweAfspraakPM pm = (NieuweAfspraakPM)a;
             //pm.Klanten = new SelectList(ks.GetKlanten().Select(u => new { ID = u.ID, Naam = u.Naam + " " + u.Voornaam }), "ID", "Naam");
             //return View(pm);
+        }
+        public async Task<ActionResult> Create(FormCollection collection)
+        {
+            _O365ServiceOperationFailed = false;
+            String newEventID = "";
+
+            try
+            {
+
+
+                newEventID = await _calenderOperations.AddCalendarEventAsync(collection["Location"],
+                                                                                collection["Body"],
+                                                                                collection["Attendees"],
+                                                                                collection["Subject"],
+                                                                                DateTimeOffset.Parse(collection["StartDate"]),
+                                                                                DateTimeOffset.Parse(collection["EndDate"]));
+            }
+
+            catch (Exception)
+            {
+                _O365ServiceOperationFailed = true;
+            }
+
+            return RedirectToAction("Index", new { newid = newEventID });
         }
 
 

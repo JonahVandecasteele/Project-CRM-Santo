@@ -100,9 +100,17 @@
     <Compile Include="Migrations\201506100901411_Fixy.Designer.cs">
       <DependentUpon>201506100901411_Fixy.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201506111213222_producten.cs" />
+    <Compile Include="Migrations\201506111213222_producten.Designer.cs">
+      <DependentUpon>201506111213222_producten.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\201506111154572_producten.cs" />
     <Compile Include="Migrations\201506111154572_producten.Designer.cs">
       <DependentUpon>201506111154572_producten.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201506111212449_Fixy2.cs" />
+    <Compile Include="Migrations\201506111212449_Fixy2.Designer.cs">
+      <DependentUpon>201506111212449_Fixy2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Product\Product.cs" />
@@ -125,8 +133,14 @@
     <EmbeddedResource Include="Migrations\201506100901411_Fixy.resx">
       <DependentUpon>201506100901411_Fixy.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506111213222_producten.resx">
+      <DependentUpon>201506111213222_producten.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201506111154572_producten.resx">
       <DependentUpon>201506111154572_producten.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506111212449_Fixy2.resx">
+      <DependentUpon>201506111212449_Fixy2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
