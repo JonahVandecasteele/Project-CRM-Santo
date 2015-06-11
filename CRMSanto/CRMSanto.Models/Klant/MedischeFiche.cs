@@ -9,9 +9,13 @@ namespace CRMSanto.Models
     public class MedischeFiche
     {
         public int ID { get; set; }
+        public string Operaties { get; set; }
+        public string Ziektes { get; set; }
+        public string Voedingssupplementen { get; set; }
         public string Voedingspatroon { get; set; }
         public string Spijsvertering { get; set; }
         public string HuidigeKlachten { get; set; }
         public virtual Mutualiteit Mutualiteit { get; set; }
+
     }
 }
