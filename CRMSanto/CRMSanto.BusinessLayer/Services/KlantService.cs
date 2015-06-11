@@ -7,10 +7,11 @@ using System.Text;
 using System.Threading.Tasks;
 using CRMSanto.BusinessLayer.Repository;
 using System.Web;
+using mailinblue;
 
 namespace CRMSanto.BusinessLayer.Services
 {
-    public class KlantService : IKlantService
+    public class KlantService : CRMSanto.BusinessLayer.Services.IKlantService
     {
         private IGenericRepository<Mutualiteit> repoMutualiteit = null;
         private IGenericRepository<Geslacht> repoGeslacht = null;
@@ -33,6 +34,11 @@ namespace CRMSanto.BusinessLayer.Services
         {
             return repoKlant.All().ToList<Klant>();
         }
+
+        public List<Klant> GetJarigen()
+        {
+            return repoKlant.GetJarigen().ToList<Klant>();
+        }
         public Klant GetKlantByID(int id)
         {
             return repoKlant.GetByID(id);
@@ -48,12 +54,12 @@ namespace CRMSanto.BusinessLayer.Services
         }
         public Klant InsertKlant(Klant klant)
         {
-           // StorageHelper.AddImage("StorageConnectionString", "images", Image, System.Guid.NewGuid().ToString());
-           Klant result = repoKlant.Insert(klant);
-           repoKlant.SaveChanges();
-           return result;
+            // StorageHelper.AddImage("StorageConnectionString", "images", Image, System.Guid.NewGuid().ToString());
+            Klant result = repoKlant.Insert(klant);
+            repoKlant.SaveChanges();
+            return result;
         }
-        public void SaveImage(HttpPostedFileBase p,string filename)
+        public void SaveImage(HttpPostedFileBase p, string filename)
         {
             repoKlant.SaveImage(p, filename);
         }
@@ -100,6 +106,27 @@ namespace CRMSanto.BusinessLayer.Services
         public List<Gemeente> GetGemeentesByPostCode(string id)
         {
             return repoGemeente.GetGemeentesByPostCode(id);
+        }
+        public void Mails()
+        {
+            List<Klant> klanten = new List<Klant>();
+            klanten = GetKlanten();
+            API sendinBlue = new mailinblue.API("r0GZv13CEFbk8yVq");
+            foreach (Klant k in klanten)
+            {
+                Dictionary<string, string> attributes = new Dictionary<string, string>();
+                attributes.Add("NAME", k.Voornaam);
+                attributes.Add("SURNAME", k.Naam);
+                List<int> listid = new List<int>();
+                listid.Add(1);
+                listid.Add(4);
+                listid.Add(4);
+                List<int> listid_unlink = new List<int>();
+                listid_unlink.Add(2);
+                listid_unlink.Add(5);
+                Object createUpdatetUser = sendinBlue.create_update_user(k.Email, attributes, 0, listid, listid_unlink, 0);
+                Console.WriteLine(createUpdatetUser);
+            }
         }
     }
 }

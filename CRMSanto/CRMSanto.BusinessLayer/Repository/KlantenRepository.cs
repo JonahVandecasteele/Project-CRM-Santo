@@ -6,10 +6,11 @@ using System.Text;
 using System.Data.Entity;
 using System.Threading.Tasks;
 using System.Web;
+using System.Data.Entity.SqlServer;
 
 namespace CRMSanto.BusinessLayer.Repository
 {
-    public class KlantenRepository : GenericRepository<Klant>, IKlantenRepository
+    public class KlantenRepository : GenericRepository<Klant>, CRMSanto.BusinessLayer.Repository.IKlantenRepository
     {
         public KlantenRepository(ApplicationDbContext context)
             : base(context)
@@ -19,6 +20,15 @@ namespace CRMSanto.BusinessLayer.Repository
         public override IEnumerable<Klant> All()
         {
             var query = (from k in context.Klant.Include(g => g.Geslacht).Include(kar => kar.Karaktertrek).Include(m => m.MedischeFiche).Include(p => p.PersoonlijkeFiche).Include(a =>a.Adres) select k);
+            return query.ToList<Klant>();
+        }
+
+        public List<Klant> GetJarigen()
+        {
+            DateTime dt = DateTime.Now;
+            var query = (from k in context.Klant
+                         where ((SqlFunctions.DatePart("DAY", k.Geboortedatum) == SqlFunctions.DatePart("DAY", dt)) && (SqlFunctions.DatePart("MONTH", k.Geboortedatum) == SqlFunctions.DatePart("MONTH", dt)))
+                         select k);
             return query.ToList<Klant>();
         }
         public override Klant GetByID(object id)

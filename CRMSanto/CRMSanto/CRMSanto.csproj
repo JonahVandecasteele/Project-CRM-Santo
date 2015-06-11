@@ -430,6 +430,7 @@
     <Content Include="Views\Afspraak\Index.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Klant\Details.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Werksituatie.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -449,6 +450,10 @@
     <ProjectReference Include="..\CRMSanto.Models\CRMSanto.Models.csproj">
       <Project>{4e71dfd7-6f50-4cb6-b39a-c4ed702b2dbd}</Project>
       <Name>CRMSanto.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\mailinblue\mailinblue.csproj">
+      <Project>{dbb4e106-c340-4351-bd76-70576c82d0c0}</Project>
+      <Name>mailinblue</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

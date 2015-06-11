@@ -1,5 +1,4 @@
-﻿using CRMSanto.BusinessLayer.Mailing;
-using CRMSanto.BusinessLayer.Services;
+﻿using CRMSanto.BusinessLayer.Services;
 using CRMSanto.Models;
 using CRMSanto.Models.PresentationModels;
 using System;
@@ -22,7 +21,6 @@ namespace CRMSanto.Controllers
         // GET: Product
         public ActionResult Index()
         {
-            SendinBlue.Main();
             //if (Request.Form["zoeken"] != null)
             if(Request.Form["submit"] != null)
             {
