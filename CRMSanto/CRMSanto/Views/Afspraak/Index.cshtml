@@ -1,4 +1,4 @@
-﻿@model IEnumerable<CRMSanto.Models.Afspraak>
+﻿@model CRMSanto.ViewModels.AfspraakPM
 
 @{
     ViewBag.Title = "Afspraken";
@@ -10,29 +10,264 @@
 
 <div class="col-md-3">
 
+    <a id="@Model.Kalender.prevMonth" class="month" style="float:left;margin-left:10px;">Prev</a>
+    @DateTime.Now.ToString("MMM") @DateTime.Now.Year
+    <a id="@Model.Kalender.nextMonth" class="month" style="float:right;margin-right:10px;">Next</a>
+
+    <div class="table-responsive">
+        <table>
+            <thead>
+                <tr>
+                    <th>
+                        ma
+                    </th>
+                    <th>
+                        di
+                    </th>
+                    <th>
+                        wo
+                    </th>
+                    <th>
+                        do
+                    </th>
+                    <th>
+                        vr
+                    </th>
+                    <th>
+                        za
+                    </th>
+                    <th>
+                        zo
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr id="week1">
+                    @foreach (var item in Model.Kalender.Week1)
+                    {
+                        if (item != null)
+                        {
+                            if (item.daycolumn == 0 || item.daycolumn == 6)
+                            {
+                                <td class="weekend">
+                                    <a id="@item.dateStr"
+                                       class="dt"><h3>@item.dtDay</h3></a>
+                                </td>
+                            }
+                            else if (item.Date != DateTime.Today)
+                            {
+                                <td>
+                                    <a id="@item.dateStr"
+                                       class="dt"><h3>@item.dtDay</h3></a>
+                                </td>
+                            }
+                            else
+                            {
+                                <td class="selected">
+                                    <a id="@item.dateStr"
+                                       class="dt"><h3>@item.dtDay</h3></a>
+                                </td>
+                            }
+                        }
+                        else
+                        {
+                            <td></td>
+                        }
+                    }
+                </tr>
+                <tr id="week2">
+                    @foreach (var item in Model.Kalender.Week2)
+                    {
+                        if (item != null)
+                        {
+                            if (item.daycolumn == 0 || item.daycolumn == 6)
+                            {
+                                <td class="weekend">
+                                    <a id="@item.dateStr"
+                                       class="dt"><h3>@item.dtDay</h3></a>
+                                </td>
+                            }
+                            else if (item.Date != DateTime.Today)
+                            {
+                                <td>
+                                    <a id="@item.dateStr"
+                                       class="dt"><h3>@item.dtDay</h3></a>
+                                </td>
+                            }
+                            else
+                            {
+                                <td class="selected">
+                                    <a id="@item.dateStr"
+                                       class="dt"><h3>@item.dtDay</h3></a>
+                                </td>
+                            }
+                        }
+                        else
+                        {
+                            <td></td>
+                        }
+                    }
+                </tr>
+                <tr id="week3">
+                    @foreach (var item in Model.Kalender.Week3)
+                    {
+                        if (item != null)
+                        {
+                            if (item.daycolumn == 0 || item.daycolumn == 6)
+                            {
+                                <td class="weekend">
+                                    <a id="@item.dateStr"
+                                       class="dt"><h3>@item.dtDay</h3></a>
+                                </td>
+                            }
+                            else if (item.Date != DateTime.Today)
+                            {
+                                <td>
+                                    <a id="@item.dateStr"
+                                       class="dt"><h3>@item.dtDay</h3></a>
+                                </td>
+                            }
+                            else
+                            {
+                                <td class="selected">
+                                    <a id="@item.dateStr"
+                                       class="dt"><h3>@item.dtDay</h3></a>
+                                </td>
+                            }
+                        }
+                        else
+                        {
+                            <td></td>
+                        }
+                    }
+                </tr>
+                <tr id="week4">
+                    @foreach (var item in Model.Kalender.Week4)
+                    {
+                        if (item != null)
+                        {
+                            if (item.daycolumn == 0 || item.daycolumn == 6)
+                            {
+                                <td class="weekend">
+                                    <a id="@item.dateStr"
+                                       class="dt"><h3>@item.dtDay</h3></a>
+                                </td>
+                            }
+                            else if (item.Date != DateTime.Today)
+                            {
+                                <td>
+                                    <a id="@item.dateStr"
+                                       class="dt"><h3>@item.dtDay</h3></a>
+                                </td>
+                            }
+                            else
+                            {
+                                <td class="selected">
+                                    <a id="@item.dateStr"
+                                       class="dt"><h3>@item.dtDay</h3></a>
+                                </td>
+                            }
+                        }
+                        else
+                        {
+                            <td></td>
+                        }
+                    }
+                </tr>
+                <tr id="week5">
+                    @foreach (var item in Model.Kalender.Week5)
+                    {
+                        if (item != null)
+                        {
+                            if (item.daycolumn == 0 || item.daycolumn == 6)
+                            {
+                                <td class="weekend">
+                                    <a id="@item.dateStr"
+                                       class="dt"><h3>@item.dtDay</h3></a>
+                                </td>
+                            }
+                            else if (item.Date != DateTime.Today)
+                            {
+                                <td>
+                                    <a id="@item.dateStr"
+                                       class="dt"><h3>@item.dtDay</h3></a>
+                                </td>
+                            }
+                            else
+                            {
+                                <td class="selected">
+                                    <a id="@item.dateStr"
+                                       class="dt"><h3>@item.dtDay</h3></a>
+                                </td>
+                            }
+                        }
+                        else
+                        {
+                            <td></td>
+                        }
+                    }
+                </tr>
+                <tr id="week6">
+                    @if (Model.Kalender.Week6 != null)
+                    {
+                        foreach (var item in Model.Kalender.Week6)
+                        {
+                            if (item != null)
+                            {
+                                if (item.daycolumn == 0 || item.daycolumn == 6)
+                                {
+                                    <td class="weekend">
+                                        <a id="@item.dateStr"
+                                           class="dt"><h3>@item.dtDay</h3></a>
+                                    </td>
+                                }
+                                else if (item.Date != DateTime.Today)
+                                {
+                                    <td>
+                                        <a id="@item.dateStr"
+                                           class="dt"><h3>@item.dtDay</h3></a>
+                                    </td>
+                                }
+                                else
+                                {
+                                    <td class="selected">
+                                        <a id="@item.dateStr"
+                                           class="dt"><h3>@item.dtDay</h3></a>
+                                    </td>
+                                }
+                            }
+                            else
+                            {
+                                <td></td>
+                            }
+                        }
+                    }
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
 <div class="col-md-9">
     <div class="table-responsive">
         <table class="table table-striped table-hover">
             <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.DatumTijdstip)
+                    @Html.DisplayNameFor(model => model.Afspraken[0].DatumTijdstip)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Verplaatsing)
+                    @Html.DisplayNameFor(model => model.Afspraken[0].Verplaatsing)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Notitie)
+                    @Html.DisplayNameFor(model => model.Afspraken[0].Notitie)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Duur)
+                    @Html.DisplayNameFor(model => model.Afspraken[0].Duur)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.SoloDuo)
-                </th>   
+                    @Html.DisplayNameFor(model => model.Afspraken[0].SoloDuo)
+                </th>
             </tr>
-
-            @foreach (var item in Model)
+            @foreach (var item in Model.Afspraken)
             {
                 <tr>
                     <td>
@@ -57,3 +292,202 @@
 </div>
 
 @Html.ActionLink(" ", "New", "Afspraak", null, new Dictionary<string, object> { { "class", "btn btn-success btn-fab btn-raised mdi-content-add" } })
+
+<script>
+    $('body').on('click', '.month', function () {
+        var month = new Array();
+        month[0] = "January";
+        month[1] = "February";
+        month[2] = "March";
+        month[3] = "April";
+        month[4] = "May";
+        month[5] = "June";
+        month[6] = "July";
+        month[7] = "August";
+        month[8] = "September";
+        month[9] = "October";
+        month[10] = "November";
+        month[11] = "December";
+        var object = $(this).attr("id");
+        var str = object.split('/');
+        // str[0] contains "month"
+        // str[1] contains "year"
+        $.ajax
+        ({
+            url: '/Afspraak/AsyncUpdateCalender',
+            type: 'GET',
+            traditional: true,
+            contentType: 'application/json',
+            data: { month: str[0], year: str[1] },
+            success: function (result) {
+                if (!jQuery.isEmptyObject(result)) {
+                    var week1 = $("#week1");
+                    week1.empty();
+                    var week2 = $("#week2");
+                    week2.empty();
+                    var week3 = $("#week3");
+                    week3.empty();
+                    var week4 = $("#week4");
+                    week4.empty();
+                    var week5 = $("#week5");
+                    week5.empty();
+                    var week6 = $("#week6");
+                    week6.empty();
+                    console.log(str[0]);
+                    var newHeader = $('<a id=' + result.prevMonth + ' class="month" ' +
+                      'style="float:left">Prev</a>' + month[str[0] - 1] + ' ' +
+                      str[1] + '<a id=' + result.nextMonth +
+                      ' class="month" style="float:right">Next</a>');
+                    $("#component-header").empty();
+                    $("#component-header").append(newHeader);
+                    $.each(result.Week1, function (i, item) {
+                        var htmlStr = null;
+                        if (jQuery.isEmptyObject(item)) {
+                            htmlStr = $('<td></td>');
+                            week1.append(htmlStr);
+                        } else {
+                            if (item.daycolumn == 0 || item.daycolumn == 6) {
+                                htmlStr = $('<td class="weekend"></td>');
+                                htmlStr.append('<a   id=' + item.dateStr +
+                                  ' class="dt"><h3>' + item.dtDay + '</h3></a>');
+                            }
+
+                            else if (item._Date != getTodayDate()) {
+                                htmlStr = $('<td></td>');
+                                htmlStr.append('<a   id=' + item.dateStr +
+                                  ' class="dt"><h3>' + item.dtDay + '</h3></a>');
+                            } else {
+                                htmlStr = $('<td class="selected"></td>');
+                                htmlStr.append('<a   id=' + item.dateStr +
+                                  ' class="dt"><h3>' + item.dtDay + '</h3></a>');
+                            }
+                            week1.append(htmlStr);
+                        }
+                    });
+                    $.each(result.Week2, function (i, item) {
+                        var htmlStr = null;
+                        if (jQuery.isEmptyObject(item)) {
+                            htmlStr = $('<td></td>');
+                            week2.append(htmlStr);
+                        } else {
+                            if (item.daycolumn == 0 || item.daycolumn == 6) {
+                                htmlStr = $('<td class="weekend"></td>');
+                                htmlStr.append('<a   id=' + item.dateStr +
+                                  ' class="dt"><h3>' + item.dtDay + '</h3> </a>');
+                            }
+                            else if (item.Date != getTodayDate()) {
+                                htmlStr = $('<td></td>');
+                                htmlStr.append('<a   id=' + item.dateStr +
+                                  ' class="dt"><h3>' + item.dtDay + '</h3> </a>');
+                            } else {
+                                htmlStr = $('<td class="selected"></td>');
+                                htmlStr.append('<a   id=' + item.dateStr +
+                                  ' class="dt"><h3>' + item.dtDay + '</h3> </a>');
+                            }
+                            week2.append(htmlStr);
+                        }
+                    });
+                    $.each(result.Week3, function (i, item) {
+                        var htmlStr = null;
+                        if (jQuery.isEmptyObject(item)) {
+                            htmlStr = $('<td></td>');
+                            week3.append(htmlStr);
+                        } else {
+                            if (item.daycolumn == 0 || item.daycolumn == 6) {
+                                htmlStr = $('<td class="weekend"></td>');
+                                htmlStr.append('<a   id=' + item.dateStr +
+                                  ' class="dt"><h3>' + item.dtDay + '</h3> </a>');
+                            }
+                            else if (item.Date != getTodayDate()) {
+                                htmlStr = $('<td></td>');
+                                htmlStr.append('<a   id=' + item.dateStr +
+                                  ' class="dt"><h3>' + item.dtDay + '</h3> </a>');
+                            } else {
+                                htmlStr = $('<td class="selected"></td>');
+                                htmlStr.append('<a   id=' + item.dateStr +
+                                  ' class="dt"><h3>' +
+                                  item.dtDay + '</h3> </a>');
+                            }
+                            week3.append(htmlStr);
+                        }
+                    });
+                    $.each(result.Week4, function (i, item) {
+                        var htmlStr = null;
+                        if (jQuery.isEmptyObject(item)) {
+                            htmlStr = $('<td></td>');
+                            week4.append(htmlStr);
+                        } else {
+                            if (item.daycolumn == 0 || item.daycolumn == 6) {
+                                htmlStr = $('<td class="weekend"></td>');
+                                htmlStr.append('<a   id=' + item.dateStr +
+                                  ' class="dt"><h3>' + item.dtDay + '</h3> </a>');
+                            }
+                            else if (item.Date != getTodayDate()) {
+                                htmlStr = $('<td></td>');
+                                htmlStr.append('<a   id=' + item.dateStr +
+                                  ' class="dt"><h3>' + item.dtDay + '</h3> </a>');
+                            } else {
+                                htmlStr = $('<td class="selected"></td>');
+                                htmlStr.append('<a   id=' + item.dateStr +
+                                  ' class="dt"><h3>' + item.dtDay + '</h3> </a>');
+                            }
+                            week4.append(htmlStr);
+                        }
+                    });
+                    $.each(result.Week5, function (i, item) {
+                        var htmlStr = null;
+                        if (jQuery.isEmptyObject(item)) {
+                            htmlStr = $('<td></td>');
+                            week5.append(htmlStr);
+                        } else {
+                            if (item.daycolumn == 0 || item.daycolumn == 6) {
+                                htmlStr = $('<td class="weekend"></td>');
+                                htmlStr.append('<a   id=' + item.dateStr +
+                                  ' class="dt"><h3>' + item.dtDay + '</h3> </a>');
+                            }
+                            else if (item.Date != getTodayDate()) {
+                                htmlStr = $('<td></td>');
+                                htmlStr.append('<a   id=' + item.dateStr +
+                                  ' class="dt"><h3>' + item.dtDay + '</h3> </a>');
+                            } else {
+                                htmlStr = $('<td class="selected"></td>');
+                                htmlStr.append('<a   id=' + item.dateStr +
+                                  ' class="dt"><h3>' + item.dtDay + '</h3> </a>');
+                            }
+                            week5.append(htmlStr);
+                        }
+                    });
+                    $.each(result.Week6, function (i, item) {
+                        var htmlStr = null;
+                        if (jQuery.isEmptyObject(item)) {
+                            htmlStr = $('<td></td>');
+                            week6.append(htmlStr);
+                        } else {
+                            if (item.daycolumn == 0 || item.daycolumn == 6) {
+                                htmlStr = $('<td class="weekend"></td>');
+                                htmlStr.append('<a   id=' + item.dateStr +
+                                  ' class="dt"><h3>' + item.dtDay + '</h3> </a>');
+                            }
+                            else if (item.Date != getTodayDate()) {
+                                htmlStr = $('<td></td>');
+                                htmlStr.append('<a   id=' + item.dateStr +
+                                  ' class="dt"><h3>' + item.dtDay + '</h3> </a>');
+                            } else {
+                                htmlStr = $('<td class="selected"></td>');
+                                htmlStr.append('<a   id=' + item.dateStr +
+                                  ' class="dt"><h3>' + item.dtDay + '</h3> </a>');
+                            }
+                            week6.append(htmlStr);
+                        }
+                    });
+                    $("#component-table").trigger("update");
+                } else {
+                    alertMsg('Oops, errors occur in retrieving calender');
+                }
+            }
+        });
+    });
+    function getTodayDate() {
+        return Date.now();
+    }
+</script>
