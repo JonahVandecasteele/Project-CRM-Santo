@@ -74,6 +74,19 @@
     border-radius: 100%;
 }
 
+#uploadPreview {
+    display: block;
+	height: 150px;
+    width: 150px;
+    object-fit: cover;
+    border: 1px grey solid;
+    border-radius: 100%;
+}
+
+#Upload {
+    margin-left: 50px;
+}
+
 .large {
 	height: 115px;
     width: 115px;
@@ -107,15 +120,6 @@
 .table > thead > tr > td.material-pink-300, .table > tbody > tr > td.material-pink-300, .table > tfoot > tr > td.material-pink-300, .table > thead > tr > th.material-pink-300, .table > tbody > tr > th.material-pink-300, .table > tfoot > tr > th.material-pink-300, .table > thead > tr.material-pink-300 > td, .table > tbody > tr.material-pink-300 > td, .table > tfoot > tr.success > td, .table > thead > tr.material-pink-300 > th, .table > tbody > tr.material-pink-300 > th, .table > tfoot > tr.material-pink-300 > th
 {
     background-color: #ecf1b2;
-}
-
-.table thead > tr > th, .table tbody > tr > th, .table tfoot > tr > th, .table thead > tr > td, .table tbody > tr > td, .table tfoot > tr > td {
-    vertical-align:middle;
-}
-
-.shop-placeholder {
-	width: 100%;
-	border: 1px solid grey;
 }
 
 .customerheader h2 { 

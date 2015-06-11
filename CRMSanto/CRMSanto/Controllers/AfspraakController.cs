@@ -1,6 +1,8 @@
 ﻿using CRMSanto.BusinessLayer.Services;
+using CRMSanto.Calendar;
 using CRMSanto.Models;
 using CRMSanto.Models.PresentationModels;
+using CRMSanto.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlTypes;
@@ -15,18 +17,36 @@ namespace CRMSanto.Controllers
 
         private IAfspraakService afs;
         private IKlantService ks;
+        private CalendarManager cm;
 
-        public AfspraakController(IAfspraakService afs, IKlantService ks)
+        public AfspraakController(IAfspraakService afs, IKlantService ks, CalendarManager cm)
         {
             this.afs = afs;
             this.ks = ks;
+            this.cm = cm;
         }
 
 
         // GET: Afspraak
         public ActionResult Index()
-        {      
-            return View(afs.GetLopendeAfspraken());
+        {
+            AfspraakPM apm = new AfspraakPM();
+            apm.Afspraken = afs.GetLopendeAfspraken();
+            apm.Kalender = cm.getCalender(DateTime.Now.Month, DateTime.Now.Year);
+            return View(apm);
+        }
+
+        public ActionResult AsyncUpdateCalender(int month, int year)
+        {
+            if (HttpContext.Request.IsAjaxRequest())
+            {
+                var model = cm.getCalender(month, year);
+                return Json(model, JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                return View();
+            }
         }
 
         [HttpGet]
