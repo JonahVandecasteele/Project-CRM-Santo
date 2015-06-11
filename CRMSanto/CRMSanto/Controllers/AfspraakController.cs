@@ -1,6 +1,8 @@
 ﻿using CRMSanto.BusinessLayer.Services;
+using CRMSanto.Calendar;
 using CRMSanto.Models;
 using CRMSanto.Models.PresentationModels;
+using CRMSanto.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlTypes;
@@ -15,18 +17,36 @@ namespace CRMSanto.Controllers
 
         private IAfspraakService afs;
         private IKlantService ks;
+        private CalendarManager cm;
 
-        public AfspraakController(IAfspraakService afs, IKlantService ks)
+        public AfspraakController(IAfspraakService afs, IKlantService ks, CalendarManager cm)
         {
             this.afs = afs;
             this.ks = ks;
+            this.cm = cm;
         }
 
 
         // GET: Afspraak
         public ActionResult Index()
-        {      
-            return View(afs.GetLopendeAfspraken());
+        {
+            AfspraakPM apm = new AfspraakPM();
+            apm.Afspraken = afs.GetLopendeAfspraken();
+            apm.Kalender = cm.getCalender(DateTime.Now.Month, DateTime.Now.Year);
+            return View(apm);
+        }
+
+        public ActionResult AsyncUpdateCalender(int month, int year)
+        {
+            if (HttpContext.Request.IsAjaxRequest())
+            {
+                var model = cm.getCalender(month, year);
+                return Json(model, JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                return View();
+            }
         }
 
         [HttpGet]
@@ -47,9 +67,8 @@ namespace CRMSanto.Controllers
         [HttpPost]
         public ActionResult New(NieuweAfspraakPM a)
         {
+
            
-            /*if (Request.Form["New"] != null)
-            {*/
                 if (a.Afspraak.Klant.ID != 0)
                 {
                     a.Afspraak.Klant = ks.GetKlantByID(a.Afspraak.Klant.ID);
@@ -62,6 +81,16 @@ namespace CRMSanto.Controllers
 
                 afs.AddAfspraak(a.Afspraak);
                 return RedirectToAction("Index");
+           
+                 
+           
+               
+         
+                
+            
+            /*if (Request.Form["New"] != null)
+            {*/
+                
          //   }
             //NieuweAfspraakPM pm = (NieuweAfspraakPM)a;
             //pm.Klanten = new SelectList(ks.GetKlanten().Select(u => new { ID = u.ID, Naam = u.Naam + " " + u.Voornaam }), "ID", "Naam");

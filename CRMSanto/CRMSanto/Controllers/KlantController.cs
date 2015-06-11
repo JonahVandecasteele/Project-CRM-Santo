@@ -9,6 +9,9 @@ using CRMSanto.BusinessLayer.Services;
 using System.IO;
 using CRMSanto.ViewModels;
 using System.Data.SqlTypes;
+using System.Net;
+using System.Drawing;
+using System.Drawing.Imaging;
 
 namespace CRMSanto.Controllers
 {
@@ -178,8 +181,18 @@ namespace CRMSanto.Controllers
             }
             else
             {
-                return new EmptyResult();
+                Image photo = Image.FromStream( new MemoryStream(new WebClient().DownloadData(@"http://massagesanto.blob.core.windows.net/images/profile.jpg")));
+                var stream = ToStream(photo, ImageFormat.Jpeg);
+                return new FileStreamResult(stream, "image/jpeg");
             }
+        }
+
+        public Stream ToStream(Image image, ImageFormat formaw)
+        {
+            var stream = new System.IO.MemoryStream();
+            image.Save(stream, formaw);
+            stream.Position = 0;
+            return stream;
         }
 
         //[HttpPost]
