@@ -17,6 +17,7 @@ namespace CRMSanto.Models
         public int Inhoud { get; set; }
         public string Foto { get; set; }
         public string Omschrijving { get; set; }
+        public int MinimumStock { get; set; }
         public string Barcode { get; set; }
         [NotMapped]
         public HttpPostedFileBase Upload { get; set; }
