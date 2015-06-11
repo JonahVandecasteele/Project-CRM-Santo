@@ -9,6 +9,9 @@ using CRMSanto.BusinessLayer.Services;
 using System.IO;
 using CRMSanto.ViewModels;
 using System.Data.SqlTypes;
+using System.Net;
+using System.Drawing;
+using System.Drawing.Imaging;
 
 namespace CRMSanto.Controllers
 {
@@ -39,6 +42,7 @@ namespace CRMSanto.Controllers
                 string zoeken = Request.Form["Search"];
                 //return View(ps.GetProducten());
                 List<Klant> klant = ks.GetKlanten();
+
                 //List<Klant> klanten = ks.GetKlanten().Where(x => x.Naam.ToLower().Contains(zoeken.ToLower())).ToList();
 
                 var klantOpAdres = from klants in klant
@@ -49,6 +53,7 @@ namespace CRMSanto.Controllers
                               where klants.Naam.ToLower().Contains(zoeken.ToLower()) || klants.Voornaam.ToLower().Contains(zoeken.ToLower())
                                     || (klants.Naam + " " + klants.Voornaam).ToLower().Contains(zoeken.ToLower()) || (klants.Voornaam + " " + klants.Naam).ToLower().Contains(zoeken.ToLower())
                               select klants;
+                
             return View(klanten);
         }
             else
@@ -56,7 +61,6 @@ namespace CRMSanto.Controllers
                 return View(ks.GetKlanten());
             }
         }
-
         public ActionResult Details(int? id) 
         {
             if (id == null) { return RedirectToAction("Index"); }
@@ -71,7 +75,6 @@ namespace CRMSanto.Controllers
             kdpm.Afspraken = afspraken;
             return View(kdpm);
         }
-
         public ActionResult New()
         {
             KlantViewModel model = new KlantViewModel();
@@ -178,8 +181,18 @@ namespace CRMSanto.Controllers
             }
             else
             {
-                return new EmptyResult();
+                Image photo = Image.FromStream( new MemoryStream(new WebClient().DownloadData(@"http://massagesanto.blob.core.windows.net/images/profile.jpg")));
+                var stream = ToStream(photo, ImageFormat.Jpeg);
+                return new FileStreamResult(stream, "image/jpeg");
             }
+        }
+
+        public Stream ToStream(Image image, ImageFormat formaw)
+        {
+            var stream = new System.IO.MemoryStream();
+            image.Save(stream, formaw);
+            stream.Position = 0;
+            return stream;
         }
 
         //[HttpPost]
