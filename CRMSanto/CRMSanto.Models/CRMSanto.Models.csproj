@@ -92,10 +92,15 @@
     <Compile Include="Klant\MedischeFiche.cs" />
     <Compile Include="Klant\Mutualiteit.cs" />
     <Compile Include="Klant\PersoonlijkeFiche.cs" />
+    <Compile Include="Klant\Voedingspatroon.cs" />
     <Compile Include="Klant\Werksituatie.cs" />
     <Compile Include="Migrations\201506111435582_updateproducten.cs" />
     <Compile Include="Migrations\201506111435582_updateproducten.Designer.cs">
       <DependentUpon>201506111435582_updateproducten.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201506111433456_kustze.cs" />
+    <Compile Include="Migrations\201506111433456_kustze.Designer.cs">
+      <DependentUpon>201506111433456_kustze.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Product\Product.cs" />
@@ -110,6 +115,26 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Data\zipcodes.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201506090738451_seed.resx">
+      <DependentUpon>201506090738451_seed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506100901411_Fixy.resx">
+      <DependentUpon>201506100901411_Fixy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506111222210_productentoevoegen.resx">
+      <DependentUpon>201506111222210_productentoevoegen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506111212449_Fixy2.resx">
+      <DependentUpon>201506111212449_Fixy2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506111249079_feest.resx">
+      <DependentUpon>201506111249079_feest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506111433456_kustze.resx">
+      <DependentUpon>201506111433456_kustze.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\mailinblue\mailinblue.csproj">

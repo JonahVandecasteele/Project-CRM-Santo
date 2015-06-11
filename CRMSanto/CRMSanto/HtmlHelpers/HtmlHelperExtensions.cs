@@ -36,14 +36,13 @@ namespace CRMSanto.HtmlHelpers
             //GSM
             if (phoneNumber.Length == 10)
             {
-                formattedNumber = String.Format("{0:#### ## ## ##}", phoneNumber);
+                formattedNumber = phoneNumber.Substring(0, 4) + " " + phoneNumber.Substring(4, 2) + " " + phoneNumber.Substring(6, 2) + " " + phoneNumber.Substring(8, 2);
             }
             //THUIS
             if (phoneNumber.Length == 9) 
             {
-                formattedNumber = String.Format("{0:### ## ## ##}", phoneNumber);
+                formattedNumber = phoneNumber.Substring(0,3) + " " + phoneNumber.Substring(3,2) + " " + phoneNumber.Substring(5,2) + " " + phoneNumber.Substring(7,2);
             }
-            formattedNumber = "TO DO: format number";
             return formattedNumber;
         }
     }

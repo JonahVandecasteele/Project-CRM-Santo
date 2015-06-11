@@ -78,6 +78,13 @@ using System.Linq;
                 context.Masseur.AddOrUpdate<Masseur>(m => m.Naam, new Masseur() { Naam = "Tom" });
                 context.Masseur.AddOrUpdate<Masseur>(m => m.Naam, new Masseur() { Naam = "Beide" });
             }
+
+        public void SeedVoedingspatroon(ApplicationDbContext context)
+            {
+                context.Voedingspatroon.AddOrUpdate<Voedingspatroon>(m => m.Naam, new Voedingspatroon() { Naam = "Klassiek" });
+                context.Voedingspatroon.AddOrUpdate<Voedingspatroon>(m => m.Naam, new Voedingspatroon() { Naam = "Vegetarisch" });
+                context.Voedingspatroon.AddOrUpdate<Voedingspatroon>(m => m.Naam, new Voedingspatroon() { Naam = "Veganistisch" });
+            }
             public void SeedGeslacht(ApplicationDbContext context)
             {
                 //GESLACHT
