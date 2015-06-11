@@ -104,13 +104,16 @@
     <Compile Include="Migrations\201506111222210_productentoevoegen.Designer.cs">
       <DependentUpon>201506111222210_productentoevoegen.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201506111212449_Fixy2.cs" />
+    <Compile Include="Migrations\201506111212449_Fixy2.Designer.cs">
+      <DependentUpon>201506111212449_Fixy2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Product\Product.cs" />
     <Compile Include="Product\Productregistratie.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Afspraak\Sessie.cs" />
     <Compile Include="Afspraak\SoortAfspraak.cs" />
-    <Compile Include="Klant\Werksituatie.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -128,6 +131,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201506111222210_productentoevoegen.resx">
       <DependentUpon>201506111222210_productentoevoegen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506111212449_Fixy2.resx">
+      <DependentUpon>201506111212449_Fixy2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
