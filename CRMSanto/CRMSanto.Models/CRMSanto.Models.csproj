@@ -93,25 +93,9 @@
     <Compile Include="Klant\Mutualiteit.cs" />
     <Compile Include="Klant\PersoonlijkeFiche.cs" />
     <Compile Include="Klant\Werksituatie.cs" />
-    <Compile Include="Migrations\201506090738451_seed.cs" />
-    <Compile Include="Migrations\201506090738451_seed.Designer.cs">
-      <DependentUpon>201506090738451_seed.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201506100901411_Fixy.cs" />
-    <Compile Include="Migrations\201506100901411_Fixy.Designer.cs">
-      <DependentUpon>201506100901411_Fixy.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201506111222210_productentoevoegen.cs" />
-    <Compile Include="Migrations\201506111222210_productentoevoegen.Designer.cs">
-      <DependentUpon>201506111222210_productentoevoegen.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201506111212449_Fixy2.cs" />
-    <Compile Include="Migrations\201506111212449_Fixy2.Designer.cs">
-      <DependentUpon>201506111212449_Fixy2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201506111249079_feest.cs" />
-    <Compile Include="Migrations\201506111249079_feest.Designer.cs">
-      <DependentUpon>201506111249079_feest.cs</DependentUpon>
+    <Compile Include="Migrations\201506111435582_updateproducten.cs" />
+    <Compile Include="Migrations\201506111435582_updateproducten.Designer.cs">
+      <DependentUpon>201506111435582_updateproducten.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Product\Product.cs" />
@@ -128,27 +112,15 @@
     <Content Include="Data\zipcodes.txt" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201506090738451_seed.resx">
-      <DependentUpon>201506090738451_seed.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201506100901411_Fixy.resx">
-      <DependentUpon>201506100901411_Fixy.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201506111222210_productentoevoegen.resx">
-      <DependentUpon>201506111222210_productentoevoegen.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201506111212449_Fixy2.resx">
-      <DependentUpon>201506111212449_Fixy2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201506111249079_feest.resx">
-      <DependentUpon>201506111249079_feest.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\mailinblue\mailinblue.csproj">
       <Project>{dbb4e106-c340-4351-bd76-70576c82d0c0}</Project>
       <Name>mailinblue</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201506111435582_updateproducten.resx">
+      <DependentUpon>201506111435582_updateproducten.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

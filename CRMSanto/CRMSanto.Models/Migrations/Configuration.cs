@@ -12,6 +12,7 @@ using System.Linq;
     internal sealed class Configuration : DbMigrationsConfiguration<CRMSanto.Models.ApplicationDbContext>
     {
         private string pathGemeentes = AppDomain.CurrentDomain.BaseDirectory + "..\\..\\Data\\zipcodes.txt";
+        private string pathProducten = AppDomain.CurrentDomain.BaseDirectory + "..\\..\\Data\\producten.txt";
         List<Gemeente> gemeentes = new List<Gemeente>();
         List<Product> producten = new List<Product>();
 
@@ -22,51 +23,16 @@ using System.Linq;
 
         protected override void Seed(CRMSanto.Models.ApplicationDbContext context)
         {
-            SeedGeslacht(context);
-            SeedMutualiteiten(context);
-            SeedSoortAfspraak(context);
-            SeedWerksituatie(context);
-            SeedKaraktertrek(context);
-            SeedMasseur(context);
-            seedGemeentes(context);
+            if (System.Diagnostics.Debugger.IsAttached == false)
+                System.Diagnostics.Debugger.Launch();
+            //SeedGeslacht(context);
+            //SeedMutualiteiten(context);
+            //SeedSoortAfspraak(context);
+            //SeedWerksituatie(context);
+            //SeedKaraktertrek(context);
+            //SeedMasseur(context);
+            //seedGemeentes(context);
             SeedProducten(context);
-        }
-
-        public void SeedProducten(ApplicationDbContext context)
-        {
-            using (StreamReader sr = new StreamReader(pathGemeentes))
-            {
-                string line = sr.ReadLine();
-                while (line != null)
-                {
-                    Product p = new Product();
-                    string aankoopprijs = line.Split(';')[3];
-                    aankoopprijs.Replace("€ ", "");
-                    string verkoopprijs = line.Split(';')[3];
-                    aankoopprijs.Replace("€ ", "");
-                    string id = line.Split(';')[0];
-                    id.Replace(" ", "");
-                    p.ID = Convert.ToInt32(id);
-                    p.Naam = Convert.ToString(line.Split(';')[1]);
-                    p.Inhoud = Convert.ToInt32(line.Split(';')[2]);
-                    p.AankoopPrijs = Convert.ToDecimal(aankoopprijs);
-                    p.VerkoopPrijs = Convert.ToDecimal(verkoopprijs);
-                    p.MinimumStock = 1;
-                    //g.Postcode = Convert.ToString(line.Split(',')[0]);
-                    //g.Plaatsnaam = Convert.ToString(line.Split(',')[1]);
-                    //g.Provincie = Convert.ToString(line.Split(',')[2]);
-
-                    producten.Add(p);
-
-                    line = sr.ReadLine();
-                }
-                sr.Close();
-            }
-            foreach (Product p in producten)
-            {
-                context.Product.AddOrUpdate(p);
-            }
-            context.SaveChanges();
         }
         public void SeedAccounts(ApplicationDbContext context)
         {            
@@ -197,6 +163,61 @@ using System.Linq;
                 foreach(Gemeente g in gemeentes)
                 {
                     context.Gemeente.AddOrUpdate(g);
+                }
+                context.SaveChanges();
+            }
+
+            public void SeedProducten(ApplicationDbContext context)
+            {
+                using (StreamReader sr = new StreamReader(pathProducten))
+                {
+                    string line = sr.ReadLine();
+                    while (line != null)
+                    {
+                        Product p = new Product();
+                        
+                        string[] prijs = line.Split(';');
+                        if (prijs.Length == 5)
+                        {
+                            string aankoopprijs = prijs[3];
+                            string verkoopprijs = prijs[4];
+                            
+                            //verkoopprijs.Replace("€ ", string.Empty);
+                            //verkoopprijs.Replace(",", ".");
+                            string id = prijs[0];
+                            p.ID = Convert.ToInt32(id);
+                            p.Naam = prijs[1];
+                            p.Inhoud = Convert.ToInt32(prijs[2].Split('+')[0]);
+                            p.AankoopPrijs = Convert.ToDecimal(aankoopprijs);
+                            p.VerkoopPrijs = Convert.ToDecimal(verkoopprijs);
+                            p.MinimumStock = 1;
+
+                            producten.Add(p);
+
+                            
+                        }
+                        else
+                        {
+                            Console.WriteLine("fout bij if");
+                        }
+                        line = sr.ReadLine();
+                        //aankoopprijs.Replace("€ ", string.Empty);
+                        //aankoopprijs.Replace(",", ".");
+                        
+                    }
+                    sr.Close();
+                }
+                foreach (Product p in producten)
+                {
+                    try
+                    {
+                        context.Product.AddOrUpdate(p);
+                    }
+                    
+                    catch(Exception ex)
+                    {
+                        Console.WriteLine("fout bij add or update");
+                    }
                 }
                 context.SaveChanges();
             }
