@@ -1,5 +1,4 @@
-﻿using CRMSanto.Models;
-using System;
+﻿using System;
 namespace CRMSanto.BusinessLayer.Services
 {
     public interface IKlantService
@@ -17,9 +16,11 @@ namespace CRMSanto.BusinessLayer.Services
         System.Collections.Generic.List<CRMSanto.Models.Klant> GetKlantenByPostCode(CRMSanto.Models.Adres Add);
         CRMSanto.Models.Mutualiteit GetMutualiteitByID(int id);
         System.Collections.Generic.List<CRMSanto.Models.Mutualiteit> GetMutualiteiten();
-        Werksituatie GetWerkSituatieByID(int id);
-        System.Collections.Generic.List<Werksituatie> GetWerkSituaties();
+        CRMSanto.Models.Werksituatie GetWerkSituatieByID(int id);
+        System.Collections.Generic.List<CRMSanto.Models.Werksituatie> GetWerkSituaties();
+        CRMSanto.Models.Karaktertrek InsertKaraktertrek(CRMSanto.Models.Karaktertrek k);
         CRMSanto.Models.Klant InsertKlant(CRMSanto.Models.Klant klant);
+        CRMSanto.Models.Werksituatie InsertWerkSituatie(CRMSanto.Models.Werksituatie w);
         void Mails();
         void SaveImage(System.Web.HttpPostedFileBase p, string filename);
         void UpdateKlant(CRMSanto.Models.Klant klant);
