@@ -8,6 +8,8 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using System.Globalization;
 using System.Threading;
+using System.Web.Helpers;
+using System.IdentityModel.Claims;
 
 namespace CRMSanto
 {
@@ -30,7 +32,8 @@ namespace CRMSanto
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-            UnityConfig.RegisterComponents();   
+            UnityConfig.RegisterComponents();
+            AntiForgeryConfig.UniqueClaimTypeIdentifier = ClaimTypes.NameIdentifier;
         }
     }
 }
