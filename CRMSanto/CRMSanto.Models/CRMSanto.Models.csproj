@@ -109,6 +109,10 @@
     <Compile Include="Migrations\201506111212449_Fixy2.Designer.cs">
       <DependentUpon>201506111212449_Fixy2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201506111249079_feest.cs" />
+    <Compile Include="Migrations\201506111249079_feest.Designer.cs">
+      <DependentUpon>201506111249079_feest.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Product\Product.cs" />
     <Compile Include="Product\Productregistratie.cs" />
@@ -135,6 +139,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201506111212449_Fixy2.resx">
       <DependentUpon>201506111212449_Fixy2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506111249079_feest.resx">
+      <DependentUpon>201506111249079_feest.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
