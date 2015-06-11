@@ -6,6 +6,7 @@ using CRMSanto.Utils;
 using System.Security.Claims;
 using System.Web;
 using System.Web.Mvc;
+using System;
 
 namespace CRMSanto.Controllers
 {
@@ -14,6 +15,7 @@ namespace CRMSanto.Controllers
     {
         public void SignIn()
         {
+            // Send an OpenID Connect sign-in request.
             if (!Request.IsAuthenticated)
             {
                 HttpContext.GetOwinContext().Authentication.Challenge(new AuthenticationProperties { RedirectUri = "/" }, OpenIdConnectAuthenticationDefaults.AuthenticationType);
@@ -21,6 +23,7 @@ namespace CRMSanto.Controllers
         }
         public void SignOut()
         {
+            // Remove all cache entries for this user and send an OpenID Connect sign-out request.
             string callbackUrl = Url.Action("SignOutCallback", "Account", routeValues: null, protocol: Request.Url.Scheme);
 
             HttpContext.GetOwinContext().Authentication.SignOut(
@@ -37,6 +40,13 @@ namespace CRMSanto.Controllers
             }
 
             return View();
+        }
+
+        public void RefreshSession()
+        {
+            string strRedirectController = Request.QueryString["redirect"];
+
+            HttpContext.GetOwinContext().Authentication.Challenge(new AuthenticationProperties { RedirectUri = String.Format("/{0}", strRedirectController) }, OpenIdConnectAuthenticationDefaults.AuthenticationType);
         }
     }
 }

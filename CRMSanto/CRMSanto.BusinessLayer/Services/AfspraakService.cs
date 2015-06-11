@@ -57,22 +57,30 @@ namespace CRMSanto.BusinessLayer.Services
             //context.Entry<Klant>(a.Klant).State = System.Data.Entity.EntityState.Unchanged;
             //Sessie s = new Sessie {Klant=a.Klant,AantalSessies=1 };
             //s.AantalSessies.Add(s);
-            try
-            {
-                Sessie k = repoSessie.GetByKlantID(a.Klant.ID);
-                k.AantalSessies++;
-                repoSessie.Update(k);
-                repoSessie.SaveChanges();
-            }
-            catch(Exception ex)
-            {
+            
+            //List<Afspraak> afspraken = repoAfspraken.LopendeAfspraken();
+            //bool nieuweAfspraakBookable = !afspraken.Any(x => x.DatumTijdstip <= a.DatumTijdstip.AddHours(a.Duur/60) && x.DatumTijdstip.AddHours(x.Duur/60) >= a.DatumTijdstip);
+            //bool nieuweAfspraakBookable = !repoAfspraken.LopendeAfspraken().Any(x => x.DatumTijdstip >= a.DatumTijdstip.AddHours(a.Duur / 60) && x.DatumTijdstip.AddHours(x.Duur / 60) <= a.DatumTijdstip);
+             //if (nieuweAfspraakBookable == true)
+             //{
+                 repoAfspraken.Insert(a);
+                 repoAfspraken.SaveChanges();
 
-                repoSessie.Insert(new Sessie() { AantalSessies = 1, Klant = a.Klant });
-                repoSessie.SaveChanges();
+                 try
+                 {
+                     Sessie k = repoSessie.GetByKlantID(a.Klant.ID);
+                     k.AantalSessies++;
+                     repoSessie.Update(k);
+                     repoSessie.SaveChanges();
+                 }
+                 catch (Exception ex)
+                 {
 
-            }         
-            repoAfspraken.Insert(a);
-            repoAfspraken.SaveChanges();
+                     repoSessie.Insert(new Sessie() { AantalSessies = 1, Klant = a.Klant });
+                     repoSessie.SaveChanges();
+
+                 }
+             //}
         } 
 
         public List<Masseur> GetMasseurs()

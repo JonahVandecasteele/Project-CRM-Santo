@@ -9,13 +9,13 @@ namespace CRMSanto.Utils
     public class SettingsHelper
     {
         private static string _clientId = ConfigurationManager.AppSettings["ida:ClientId"] ?? ConfigurationManager.AppSettings["ida:ClientID"];
-        private static string _appKey = ConfigurationManager.AppSettings["ida:ClientSecret"] ?? ConfigurationManager.AppSettings["ida:AppKey"] ?? ConfigurationManager.AppSettings["ida:Password"];
+        private static string _clientSecret = ConfigurationManager.AppSettings["ida:ClientSecret"];
+        private static string _authorizationUri = ConfigurationManager.AppSettings["ida:AADInstance"];
+        private static string _graphResourceId = ConfigurationManager.AppSettings["ida:GraphResourceId"];
+        private static string _tenantId = ConfigurationManager.AppSettings["ida:TenantID"];
 
-        private static string _tenantId = ConfigurationManager.AppSettings["ida:TenantId"];
-        private static string _authorizationUri = "https://login.windows.net";
-        private static string _authority = "https://login.windows.net/{0}/";
+        private static string _authority = "https://login.windows.net/" + _tenantId;
 
-        private static string _graphResourceId = "https://graph.windows.net";
         private static string _discoverySvcResourceId = "https://api.office.com/discovery/";
         private static string _discoverySvcEndpointUri = "https://api.office.com/discovery/v1.0/me/";
 
@@ -27,19 +27,11 @@ namespace CRMSanto.Utils
             }
         }
 
-        public static string AppKey
+        public static string ClientSecret
         {
             get
             {
-                return _appKey;
-            }
-        }
-
-        public static string TenantId
-        {
-            get
-            {
-                return _tenantId;
+                return _clientSecret;
             }
         }
 
@@ -55,7 +47,7 @@ namespace CRMSanto.Utils
         {
             get
             {
-                return String.Format(_authority, _tenantId);
+                return _authority;
             }
         }
 
