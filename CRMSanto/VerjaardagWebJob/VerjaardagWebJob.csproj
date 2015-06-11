@@ -79,6 +79,16 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CRMSanto.BusinessLayer\CRMSanto.BusinessLayer.csproj">
+      <Project>{c187c4ca-428f-463a-a45f-5250f50d7e26}</Project>
+      <Name>CRMSanto.BusinessLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CRMSanto.Models\CRMSanto.Models.csproj">
+      <Project>{4e71dfd7-6f50-4cb6-b39a-c4ed702b2dbd}</Project>
+      <Name>CRMSanto.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -104,6 +104,10 @@
     <Compile Include="Migrations\201506111213222_producten.Designer.cs">
       <DependentUpon>201506111213222_producten.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201506111154572_producten.cs" />
+    <Compile Include="Migrations\201506111154572_producten.Designer.cs">
+      <DependentUpon>201506111154572_producten.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Product\Product.cs" />
     <Compile Include="Product\Productregistratie.cs" />
@@ -128,6 +132,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201506111213222_producten.resx">
       <DependentUpon>201506111213222_producten.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506111154572_producten.resx">
+      <DependentUpon>201506111154572_producten.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

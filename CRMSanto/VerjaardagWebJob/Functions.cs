@@ -5,6 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Azure.WebJobs;
+using CRMSanto.BusinessLayer.Repository;
+using CRMSanto.BusinessLayer.Services;
+using CRMSanto.Models;
 
 namespace VerjaardagWebJob
 {
@@ -14,6 +17,7 @@ namespace VerjaardagWebJob
         // on an Azure Queue called queue.
         public static void ProcessQueueMessage([QueueTrigger("queue")] string message, TextWriter log)
         {
+
             log.WriteLine(message);
         }
     }
