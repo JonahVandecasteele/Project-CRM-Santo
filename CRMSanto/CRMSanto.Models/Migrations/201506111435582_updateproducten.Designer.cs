@@ -7,13 +7,13 @@ namespace CRMSanto.Models.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class seed : IMigrationMetadata
+    public sealed partial class updateproducten : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(seed));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(updateproducten));
         
         string IMigrationMetadata.Id
         {
-            get { return "201506090738451_seed"; }
+            get { return "201506111435582_updateproducten"; }
         }
         
         string IMigrationMetadata.Source
