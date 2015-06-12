@@ -81,6 +81,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Afspraak\Arrangement.cs" />
+    <Compile Include="Afspraak\Extra.cs" />
     <Compile Include="Afspraak\Masseur.cs" />
     <Compile Include="Klant\Adres.cs" />
     <Compile Include="Afspraak\Afspraak.cs" />
@@ -101,6 +103,14 @@
     <Compile Include="Migrations\201506111726161_seedproducten.cs" />
     <Compile Include="Migrations\201506111726161_seedproducten.Designer.cs">
       <DependentUpon>201506111726161_seedproducten.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201506111930084_probeerselarrangementen.cs" />
+    <Compile Include="Migrations\201506111930084_probeerselarrangementen.Designer.cs">
+      <DependentUpon>201506111930084_probeerselarrangementen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201506112000011_decimalfix.cs" />
+    <Compile Include="Migrations\201506112000011_decimalfix.Designer.cs">
+      <DependentUpon>201506112000011_decimalfix.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Product\Product.cs" />
@@ -129,6 +139,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201506111726161_seedproducten.resx">
       <DependentUpon>201506111726161_seedproducten.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506111930084_probeerselarrangementen.resx">
+      <DependentUpon>201506111930084_probeerselarrangementen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506112000011_decimalfix.resx">
+      <DependentUpon>201506112000011_decimalfix.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

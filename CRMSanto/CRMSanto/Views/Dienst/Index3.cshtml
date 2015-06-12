@@ -1,0 +1,37 @@
+﻿@model IEnumerable<CRMSanto.Models.Extra>
+
+@{
+    ViewBag.Title = "Index3";
+}
+
+<h2>Index3</h2>
+
+<p>
+    @Html.ActionLink("Create New", "New3")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Naam)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Prijs)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Naam)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Prijs)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit3", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

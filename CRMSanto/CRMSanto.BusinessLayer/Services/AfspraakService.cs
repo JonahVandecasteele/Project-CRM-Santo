@@ -14,13 +14,17 @@ namespace CRMSanto.BusinessLayer.Services
         private IAfsprakenRepository repoAfspraken = null;
         private IGenericRepository<Masseur> repoMasseur = null;
         private IGenericRepository<SoortAfspraak> repoMassage = null;
+        private IGenericRepository<Arrangement> repoArrangement = null;
+        private IGenericRepository<Extra> repoExtra = null;
         private ISessieRepository repoSessie = null;
 
-        public AfspraakService(IAfsprakenRepository repoAfspraken, IGenericRepository<Masseur> repoMasseur, IGenericRepository<SoortAfspraak> repoMassage, ISessieRepository repoSessie)
+        public AfspraakService(IAfsprakenRepository repoAfspraken, IGenericRepository<Masseur> repoMasseur, IGenericRepository<SoortAfspraak> repoMassage,IGenericRepository<Arrangement> repoArrangement,IGenericRepository<Extra> repoExtra, ISessieRepository repoSessie)
         {
             this.repoAfspraken = repoAfspraken;
             this.repoMasseur = repoMasseur;
             this.repoMassage = repoMassage;
+            this.repoArrangement = repoArrangement;
+            this.repoExtra = repoExtra;
             this.repoSessie = repoSessie;
         }
 
@@ -98,6 +102,55 @@ namespace CRMSanto.BusinessLayer.Services
         public SoortAfspraak GetMassageByID(int id)
         {
             return repoMassage.GetByID(id);
+        }
+        public SoortAfspraak InsertMassage(SoortAfspraak m)
+        {
+            SoortAfspraak result = repoMassage.Insert(m);
+            repoMassage.SaveChanges();
+            return result;
+        }
+        public void UpdateMassage(SoortAfspraak m)
+        {
+            repoMassage.Update(m);
+            repoMassage.SaveChanges();
+        }
+        public List<Arrangement> GetArrangementen()
+        {
+            return repoArrangement.All().ToList<Arrangement>();
+        }
+        public Arrangement GetArrangementByID(int id)
+        {
+            return repoArrangement.GetByID(id);
+        }
+        public Arrangement InsertArrangement(Arrangement a)
+        {
+            Arrangement result = repoArrangement.Insert(a);
+            repoArrangement.SaveChanges();
+            return result;
+        }
+        public void UpdateArrangement(Arrangement a)
+        {
+            repoArrangement.Update(a);
+            repoArrangement.SaveChanges();
+        }
+        public List<Extra> GetExtras()
+        {
+            return repoExtra.All().ToList<Extra>();
+        }
+        public Extra GetExtraByID(int id)
+        {
+            return repoExtra.GetByID(id);
+        }
+        public Extra InsertExtra(Extra e)
+        {
+            Extra result = repoExtra.Insert(e);
+            repoExtra.SaveChanges();
+            return result;
+        }
+        public void UpdateExtra(Extra e)
+        {
+            repoExtra.Update(e);
+            repoExtra.SaveChanges();
         }
     }
 }

@@ -45,6 +45,8 @@ namespace CRMSanto.Models
         public DbSet<Sessie> Sessie { get; set; }
         public DbSet<Productregistratie> Productregistratie { get; set; }
         public DbSet<Product> Product { get; set; }
+        public DbSet<Arrangement> Arrangement { get; set; }
+        public DbSet<Extra> Extra { get; set; }
         public DbSet<UserTokenCache> UserTokenCacheList { get; set; }
 
         public class UserTokenCache

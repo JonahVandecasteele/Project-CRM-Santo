@@ -34,7 +34,6 @@ namespace CRMSanto.BusinessLayer.Services
         {
             return repoKlant.All().ToList<Klant>();
         }
-
         public List<Klant> GetJarigen()
         {
             return repoKlant.GetJarigen().ToList<Klant>();
@@ -95,6 +94,12 @@ namespace CRMSanto.BusinessLayer.Services
         {
             return repoWerksituatie.GetByID(id);
         }
+        public Werksituatie InsertWerkSituatie(Werksituatie w)
+        {
+           Werksituatie result = repoWerksituatie.Insert(w);
+           repoWerksituatie.SaveChanges();
+           return result;
+        }
         public List<Karaktertrek> GetKaraktertreken()
         {
             return repoKaraktertrek.All().ToList<Karaktertrek>();
@@ -102,6 +107,12 @@ namespace CRMSanto.BusinessLayer.Services
         public Karaktertrek GetKaraktertrekByID(int id)
         {
             return repoKaraktertrek.GetByID(id);
+        }
+        public Karaktertrek InsertKaraktertrek(Karaktertrek k)
+        {
+            Karaktertrek result = repoKaraktertrek.Insert(k);
+            repoKaraktertrek.SaveChanges();
+            return result;
         }
         public List<Gemeente> GetGemeentesByPostCode(string id)
         {

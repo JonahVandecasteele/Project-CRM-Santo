@@ -29,6 +29,8 @@ namespace CRMSanto
             container.RegisterType<IGenericRepository<Gemeente>, GenericRepository<Gemeente>>();
             container.RegisterType<IGenericRepository<Masseur>, GenericRepository<Masseur>>();
             container.RegisterType<IGenericRepository<SoortAfspraak>, GenericRepository<SoortAfspraak>>();
+            container.RegisterType<IGenericRepository<Arrangement>, GenericRepository<Arrangement>>();
+            container.RegisterType<IGenericRepository<Extra>, GenericRepository<Extra>>();
             container.RegisterType<IAfsprakenRepository, AfsprakenRepository>();
             container.RegisterType<IAfspraakService, AfspraakService>();
             container.RegisterType<IProductenRepository, ProductenRepository>();
