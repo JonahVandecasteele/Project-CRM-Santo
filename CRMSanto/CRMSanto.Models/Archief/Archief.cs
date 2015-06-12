@@ -10,19 +10,17 @@ namespace CRMSanto.Models
     public class Archief
     {
         public int ID { get; set; }
-        public Afspraak Afspraak { get; set; }
         public DateTime DatumTijdstip { get; set; }
-        public Klant Klant { get; set; }
+        public int KlantID { get; set; }
         public Boolean Verplaatsing { get; set; }
         public String Notitie { get; set; }
-        public SoortAfspraak SoortAfspraak { get; set; }
+        public int SoortAfspraakID { get; set; }
         public int Duur { get; set; }
         public Boolean SoloDuo { get; set; }
-        public Adres Adres { get; set; }
+        public int AdresID { get; set; }
         public Boolean Geannuleerd { get; set; }
-        public Masseur Masseur { get; set; }
-        public Arrangement Arrangement { get; set; }
+        public int MasseurID { get; set; }
+        public int ArrangementID { get; set; }
         public int AantalPersonen { get; set; }
-        public virtual List<Extra> Extra { get; set; }
     }
 }

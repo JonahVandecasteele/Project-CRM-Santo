@@ -80,6 +80,6 @@
     </div>
 Aantal resultaten: @Model.Count()
 
-
-
-@Html.ActionLink(" ", "New", "Klant", null, new Dictionary<string, object> { { "class", "btn btn-success btn-fab btn-raised mdi-content-add" } })
+<div class="fixed-action-btn">
+    <a href='@Url.Action("New", "Klant")' class="btn-floating btn-large waves-effect waves-light red"><i class="mdi-content-add"></i></a>
+</div>

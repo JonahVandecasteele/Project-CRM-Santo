@@ -92,20 +92,15 @@
     <Compile Include="IdentityModels.cs" />
     <Compile Include="Klant\Karaktertrek.cs" />
     <Compile Include="Klant\Klant.cs" />
+    <Compile Include="Klant\KlantRelatie.cs" />
     <Compile Include="Klant\MedischeFiche.cs" />
     <Compile Include="Klant\Mutualiteit.cs" />
     <Compile Include="Klant\PersoonlijkeFiche.cs" />
-    <Compile Include="Klant\Relatie.cs" />
-    <Compile Include="Klant\RelatieKlant.cs" />
     <Compile Include="Klant\Voedingspatroon.cs" />
     <Compile Include="Klant\Werksituatie.cs" />
-    <Compile Include="Migrations\201506120925384_DropFix.cs" />
-    <Compile Include="Migrations\201506120925384_DropFix.Designer.cs">
-      <DependentUpon>201506120925384_DropFix.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201506120929469_DropFix2.cs" />
-    <Compile Include="Migrations\201506120929469_DropFix2.Designer.cs">
-      <DependentUpon>201506120929469_DropFix2.cs</DependentUpon>
+    <Compile Include="Migrations\201506120923316_allegow.cs" />
+    <Compile Include="Migrations\201506120923316_allegow.Designer.cs">
+      <DependentUpon>201506120923316_allegow.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Product\Product.cs" />
@@ -130,11 +125,11 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201506120925384_DropFix.resx">
-      <DependentUpon>201506120925384_DropFix.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201506120923316_allegow.resx">
+      <DependentUpon>201506120923316_allegow.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201506120929469_DropFix2.resx">
-      <DependentUpon>201506120929469_DropFix2.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201506120842335_Changes.resx">
+      <DependentUpon>201506120842335_Changes.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
