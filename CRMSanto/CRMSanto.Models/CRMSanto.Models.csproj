@@ -116,6 +116,10 @@
     <Compile Include="Migrations\201506120725245_winkelmand.Designer.cs">
       <DependentUpon>201506120725245_winkelmand.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201506120733147_winkelmand2.cs" />
+    <Compile Include="Migrations\201506120733147_winkelmand2.Designer.cs">
+      <DependentUpon>201506120733147_winkelmand2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Product\Product.cs" />
     <Compile Include="Product\Productregistratie.cs" />
@@ -153,6 +157,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201506120725245_winkelmand.resx">
       <DependentUpon>201506120725245_winkelmand.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506120733147_winkelmand2.resx">
+      <DependentUpon>201506120733147_winkelmand2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

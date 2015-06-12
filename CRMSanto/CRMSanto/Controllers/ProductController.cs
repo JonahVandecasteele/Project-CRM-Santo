@@ -86,8 +86,8 @@ namespace CRMSanto.Controllers
 
             Productregistratie pr = new Productregistratie();
             pr = nprpm.Productregistratie;
-            pr.DatumTijdstip = DateTime.Now;
-            pr.Klant = ks.GetKlantByID(nprpm.KlantID);
+            pr.Winkelmand.DatumTijdstip = DateTime.Now;
+            pr.Winkelmand.Klant = ks.GetKlantByID(nprpm.KlantID);
             pr.Product = ps.GetProductByID(nprpm.ProductID);
 
             ps.InsertProductregistration(pr);

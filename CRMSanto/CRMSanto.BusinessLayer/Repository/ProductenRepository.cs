@@ -17,21 +17,21 @@ namespace CRMSanto.BusinessLayer.Repository
         }
         public override IEnumerable<Productregistratie> All()
         {
-            var query = (from pr in context.Productregistratie.Include(k => k.Klant).Include(p=>p.Product) select pr);
+            var query = (from pr in context.Productregistratie.Include(w=>w.Winkelmand.Klant).Include(p=>p.Product) select pr);
             return query.ToList<Productregistratie>();
         }
 
         public List<Productregistratie> GetProductregistratiesByKlantenID(int id)
         {
-            var query = (from pr in context.Productregistratie.Include(k => k.Klant).Include(p => p.Product) 
-                         where pr.Klant.ID == id
+            var query = (from pr in context.Productregistratie.Include(w => w.Winkelmand.Klant).Include(p => p.Product) 
+                         where pr.Winkelmand.Klant.ID == id
                          select pr);
             return query.ToList<Productregistratie>();
         }
 
         public override Productregistratie Insert(Productregistratie entity)
         {
-            context.Klant.Attach(entity.Klant);
+            context.Klant.Attach(entity.Winkelmand.Klant);
             context.Product.Attach(entity.Product);
 
             Productregistratie pr = context.Productregistratie.Add(entity);

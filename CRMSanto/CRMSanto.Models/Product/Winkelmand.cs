@@ -10,6 +10,6 @@ namespace CRMSanto.Models
     {
         public int ID { get; set; }
         public Klant Klant { get; set; }
-        public List<Productregistratie> Productregistratie { get; set; }
+        public DateTime DatumTijdstip { get; set; }
     }
 }

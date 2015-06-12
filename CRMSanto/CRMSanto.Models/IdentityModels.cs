@@ -48,7 +48,7 @@ namespace CRMSanto.Models
         public DbSet<Arrangement> Arrangement { get; set; }
         public DbSet<Extra> Extra { get; set; }
         public DbSet<UserTokenCache> UserTokenCacheList { get; set; }
-
+        public DbSet<Winkelmand> Winkelmand { get; set; }
         public class UserTokenCache
         {
             [Key]
