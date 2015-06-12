@@ -32,9 +32,7 @@ nav ul a, nav ul a:hover, nav ul a:active {
     border-radius: 100%;
 }
 
-/*
-    MATERIAL DESIGN ICONS
-*/
+/*#region MATERIAL DESIGN ICONS */
 
 [class^="mdi-"],
 [class*="mdi-"] {
@@ -2546,3 +2544,4 @@ nav ul a, nav ul a:hover, nav ul a:active {
 .mdi-toggle-star:before {
   content: "\e8f5";
 }
+/*#endregion */
