@@ -92,9 +92,11 @@
     <Compile Include="IdentityModels.cs" />
     <Compile Include="Klant\Karaktertrek.cs" />
     <Compile Include="Klant\Klant.cs" />
+    <Compile Include="Klant\KlantRelatie.cs" />
     <Compile Include="Klant\MedischeFiche.cs" />
     <Compile Include="Klant\Mutualiteit.cs" />
     <Compile Include="Klant\PersoonlijkeFiche.cs" />
+    <Compile Include="Klant\Relatie.cs" />
     <Compile Include="Klant\Voedingspatroon.cs" />
     <Compile Include="Klant\Werksituatie.cs" />
     <Compile Include="Migrations\201506120923316_allegow.cs" />
@@ -104,6 +106,10 @@
     <Compile Include="Migrations\201506120941437_Testy.cs" />
     <Compile Include="Migrations\201506120941437_Testy.Designer.cs">
       <DependentUpon>201506120941437_Testy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201506120953270_Relaties-Final.cs" />
+    <Compile Include="Migrations\201506120953270_Relaties-Final.Designer.cs">
+      <DependentUpon>201506120953270_Relaties-Final.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Product\Product.cs" />
@@ -133,6 +139,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201506120941437_Testy.resx">
       <DependentUpon>201506120941437_Testy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506120953270_Relaties-Final.resx">
+      <DependentUpon>201506120953270_Relaties-Final.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
