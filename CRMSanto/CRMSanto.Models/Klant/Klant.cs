@@ -9,7 +9,9 @@ namespace CRMSanto.Models
     public class Klant
     {
         public int ID { get; set; }
+        [Required]
         public string Naam { get; set; }
+        [Required]
         public string Voornaam { get; set; }
         public virtual Adres Adres { get; set; }
         public string Foto { get; set; }
