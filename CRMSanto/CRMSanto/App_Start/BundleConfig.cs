@@ -25,15 +25,20 @@ namespace CRMSanto
                       "~/Scripts/respond.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/material").Include(
-                      "~/Scripts/ripples.min.js",
-                      "~/Scripts/material.min.js"));
+                      "~/Scripts/materialize.min.js"));
+            //                      "~/Scripts/ripples.min.js",
+
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
-                      "~/Content/material-fullpalette.min.css",
-                      "~/Content/ripples.min.css",
-                      "~/Content/bootstrap-combobox.css",
-                      "~/Content/site.css"));
+                "~/Content/bootstrap.css",      
+                "~/Content/materialize.min.css",
+                "~/Content/Santo.css"
+                      ));
+            //                      
+
+            //"~/Content/site.css"
+           //                       "~/Content/ripples.min.css",
+             //         "~/Content/bootstrap-combobox.css"
         }
     }
 }

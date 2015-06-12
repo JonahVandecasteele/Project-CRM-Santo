@@ -31,35 +31,28 @@
 
 </head>
 <body>
-    <nav class="navbar navbar-inverse">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#"><img src="/Content/img/logo.png" alt=""></a>
-            </div>
-            <div id="navbar" class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
+    <div class="navbar-fixed">
+        <nav class="santo-brown-bg">
+            <div class="nav-wrapper container">
+                <a href="#!" class="brand-logo right"><img src="/Content/img/logo.png" alt=""></a>
+                <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+                <ul class="left hide-on-med-and-down">
                     <li class="@Html.ActivePage("Home", "Index")">@Html.ActionLink("Start", "Index", "Home", null, null)</li>
                     <li class="@Html.ActivePage("Afspraak", "Index")">@Html.ActionLink("Afspraken", "Index", "Afspraak", null, null)</li>
                     <li class="@Html.ActivePage("Klant", "Index")">@Html.ActionLink("Klanten", "Index", "Klant", null, null)</li>
                     <li class="@Html.ActivePage("Product", "Index")">@Html.ActionLink("Producten", "Index", "Product", null, null)</li>
                 </ul>
-                <div class="hidden-sm">
-                    <ul class="nav navbar-nav navbar-right">
-                        <li class="@Html.ActivePage("Instellingen", "Index")">@Html.ActionLink("Instellingen", "Index", "Instellingen", null, null)</li>
-                        <li class="active klok"><a id="clock"><span>00:00:00</span></a></li>
-                    </ul>
-                </div>
-                @Html.Partial("_LoginPartial")
-            </div>           
-        </div>
-    </nav>
-    <div class="container body-content">
+                <ul class="side-nav" id="mobile-demo">
+                    <li><a href="sass.html">Sass</a></li>
+                    <li><a href="components.html">Components</a></li>
+                    <li><a href="javascript.html">Javascript</a></li>
+                    <li><a href="mobile.html">Mobile</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+    <div class="container">
         @RenderBody()
     </div>
 
@@ -87,8 +80,7 @@
         }
         $(document).ready(function () {
             setInterval('updateClock()', 1000);
-            $.material.init();
-            $('.combobox').combobox();
+            $(".button-collapse").sideNav();
     });
     </script>
 </body>
