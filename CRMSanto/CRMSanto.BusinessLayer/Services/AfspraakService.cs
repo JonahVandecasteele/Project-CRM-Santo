@@ -157,7 +157,6 @@ namespace CRMSanto.BusinessLayer.Services
             repoExtra.Update(e);
             repoExtra.SaveChanges();
         }
-
         public void InsertArchief(DateTime van, DateTime tot)
         {
             List<Afspraak> afspraken = repoAfspraken.TussenTweeDatums(van, tot);

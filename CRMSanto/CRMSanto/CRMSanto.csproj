@@ -299,7 +299,6 @@
     <Compile Include="Controllers\DienstController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KlantController.cs" />
-    <Compile Include="Controllers\MassageController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\SettingController.cs" />
     <Compile Include="Global.asax.cs">
