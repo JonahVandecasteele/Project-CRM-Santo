@@ -10,76 +10,76 @@
 
 @using (Html.BeginForm("Index", "Klant", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
-        <div class="input-group">
-            <input type="text" value="@ViewBag.Search" name="Search" class="form-control" placeholder="Zoeken...">
-            <span class="input-group-btn">
-                    <button class="btn btn-primary btn-search" name="submit" type="submit" tabindex="-1">
-                        <i class="mdi-action-search"></i>
-                    </button>
-                <button class="btn btn-danger @(@ViewBag.Search == null ? "hide" : "") btn-search" name="clear" type="submit" tabindex="-1">
-                    <i class=" mdi-content-clear"></i>
-                </button>
-                @*<input class="btn btn-primary" name="submit" type="submit"><span class="glyphicon glyphicon-search"></span> />*@
-            </span>
-        </div>
+    <div class="input-group">
+        <input type="text" value="@ViewBag.Search" name="Search" class="form-control" placeholder="Zoeken...">
+        <span class="input-group-btn">
+            <button class="btn btn-primary btn-search" name="submit" type="submit" tabindex="-1">
+                <i class="mdi-action-search"></i>
+            </button>
+            <button class="btn btn-danger @(@ViewBag.Search == null ? "hide" : "") btn-search" name="clear" type="submit" tabindex="-1">
+                <i class=" mdi-content-clear"></i>
+            </button>
+            @*<input class="btn btn-primary" name="submit" type="submit"><span class="glyphicon glyphicon-search"></span> />*@
+        </span>
+    </div>
 }
 
-    <div class="table-responsive">
-        <table class="table table-striped table-hover">
+<div class="table-responsive">
+    <table class="table table-striped table-hover">
+        <tr>
+            <th> </th>
+            <th>
+                @*@Html.DisplayNameFor(model => model.Naam)*@
+                @Html.ActionLink(Html.DisplayNameFor(model => model.Naam).ToString(), "Index", new { sortOrder = ViewBag.NameSortParm })
+            </th>
+            <th>
+                @*@Html.DisplayNameFor(model => model.Voornaam)*@
+                @Html.ActionLink(Html.DisplayNameFor(model => model.Voornaam).ToString(), "Index", new { sortOrder = ViewBag.FirstNameSortParm })
+            </th>
+            <th>
+                @*@Html.DisplayNameFor(model => model.Telefoon)*@
+                @Html.ActionLink(Html.DisplayNameFor(model => model.Telefoon).ToString(), "Index", new { sortOrder = ViewBag.PhoneSortParm })
+            </th>
+            <th>
+                @*@Html.DisplayNameFor(model => model.Email)*@
+                @Html.ActionLink(Html.DisplayNameFor(model => model.Email).ToString(), "Index", new { sortOrder = ViewBag.EmailSortParm })
+            </th>
+            <th>
+                @*@Html.DisplayNameFor(model => model.Adres)*@
+                @Html.ActionLink(Html.DisplayNameFor(model => model.Adres).ToString(), "Index", new { sortOrder = ViewBag.AdresSortParm })
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
             <tr>
-                <th> </th>
-                <th>
-                    @*@Html.DisplayNameFor(model => model.Naam)*@
-                    @Html.ActionLink(Html.DisplayNameFor(model => model.Naam).ToString(), "Index", new { sortOrder = ViewBag.NameSortParm })
-                </th>
-                <th>
-                    @*@Html.DisplayNameFor(model => model.Voornaam)*@
-                    @Html.ActionLink(Html.DisplayNameFor(model => model.Voornaam).ToString(), "Index", new { sortOrder = ViewBag.FirstNameSortParm })
-                </th>
-                <th>
-                    @*@Html.DisplayNameFor(model => model.Telefoon)*@
-                    @Html.ActionLink(Html.DisplayNameFor(model => model.Telefoon).ToString(), "Index", new { sortOrder = ViewBag.PhoneSortParm })
-                </th>
-                <th>
-                    @*@Html.DisplayNameFor(model => model.Email)*@
-                    @Html.ActionLink(Html.DisplayNameFor(model => model.Email).ToString(), "Index", new { sortOrder = ViewBag.EmailSortParm })
-                </th>
-                <th>
-                    @*@Html.DisplayNameFor(model => model.Adres)*@
-                    @Html.ActionLink(Html.DisplayNameFor(model => model.Adres).ToString(), "Index", new { sortOrder = ViewBag.AdresSortParm })
-                </th>
+                <td>
+                    <a href="Klant/Details/@Html.DisplayFor(modelItem => item.ID)"><img src="@Html.GetPhotoURL(Html.DisplayFor(modelItem => item.Foto).ToString())" alt="" class="profilepic shadow-z-1" /></a>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Naam)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Voornaam)
+                </td>
+                <td>
+                    @Html.FormatPhoneNumber(Html.DisplayFor(modelItem => item.Telefoon).ToString())
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Adres.Straat) @Html.DisplayFor(modelItem => item.Adres.Nummer) @Html.DisplayFor(modelItem => item.Adres.Postbus)<br />
+                    @Html.DisplayFor(modelItem => item.Adres.Postcode) @Html.DisplayFor(modelItem => item.Adres.Gemeente)
+
+                </td>
             </tr>
+        }
 
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        <a href="Klant/Details/@Html.DisplayFor(modelItem => item.ID)"><img src="@Html.GetPhotoURL(Html.DisplayFor(modelItem => item.Foto).ToString())" alt="" class="profilepic shadow-z-1" /></a>
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Naam)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Voornaam)
-                    </td>
-                    <td>
-                        @Html.FormatPhoneNumber(Html.DisplayFor(modelItem => item.Telefoon).ToString())
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Email)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Adres.Straat) @Html.DisplayFor(modelItem => item.Adres.Nummer) @Html.DisplayFor(modelItem => item.Adres.Postbus)<br />
-                        @Html.DisplayFor(modelItem => item.Adres.Postcode) @Html.DisplayFor(modelItem => item.Adres.Gemeente)
-                        
-                    </td>
-                </tr>
-            }
-
-        </table>
-    </div>
+    </table>
+</div>
 Aantal resultaten: @Model.Count()
 
 <div class="fixed-action-btn">
-    <a href='@Url.Action("New", "Klant")' class="btn-floating btn-large waves-effect waves-light red"><i class="mdi-content-add"></i></a>
+    <a href='@Url.Action("New", "Klant")' class="btn-floating btn-large waves-effect waves-light green"><i class="mdi-content-add"></i></a>
 </div>

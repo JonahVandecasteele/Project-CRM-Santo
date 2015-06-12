@@ -11,13 +11,8 @@
 
 <ul class="breadcrumb">
     <li class="active">Producten</li>
-</ul>
-
-<div class="row">
-    <div class="col-lg-12">
-       
+</ul>       
         
-        <div class="form-group">
             <div class="input-group">
                 <input type="text" name="Search" class="form-control" placeholder="Zoeken...">
                 <span class="input-group-btn">
@@ -25,18 +20,16 @@
                     @*<input class="btn btn-primary" name="submit" type="submit"><span class="glyphicon glyphicon-search"></span> />*@
                 </span>
             </div>
-        </div>
             @*<b>Search by:</b>
             @Html.TextBox("Search");<input type="submit" value="Search" />*@
        
-        <span class="help-block"></span>
         <div class="table-responsive">
             <table class="table table-striped table-hover">
                 <thead>
                     <tr>
                         <th>Productnaam</th>
                         <th>Inhoud</th>
-                        <th>Aantal verkocht</th>
+                        <th>Verkocht</th>
                         <th>Aankoopprijs</th>
                         <th>Verkoopprijs</th>
                         <th></th>
@@ -50,15 +43,20 @@
                         <td>3</td>
                         <td>€ @Html.DisplayFor(modelItem => item.AankoopPrijs)</td>
                         <td>€ @Html.DisplayFor(modelItem => item.VerkoopPrijs)</td>
-                        <td><button class="btn btn-fab-mini btn-raised btn-sm btn-material-green"><i class="mdi-editor-mode-edit"></i></button> <button class="btn btn-fab-mini btn-raised btn-sm btn-material-red"><i class="mdi-content-remove-circle"></i></button></td>
+                        <td>
+                            <nobr>
+                                <a class="btn-floating waves-effect waves-light orange inline-btn"><i class="mdi-editor-mode-edit"></i></a>
+                                <a class="btn-floating waves-effect waves-light red inline-btn"><i class="mdi-content-remove-circle"></i></a>
+                            </nobr>
+                        </td>
                     </tr>
                 }
                 </tbody>
             </table>
         </div>
-    </div>
-</div>
 }
 Aantal resultaten: @Model.Count()
-@Html.ActionLink(" ", "NewProductRegistration", "Product", null, new Dictionary<string, object> { { "class", "btn btn-success btn-fab btn-raised mdi-action-shopping-cart" } })
-@Html.ActionLink(" ", "New", "Product", null, new Dictionary<string, object> { { "class", "btn btn-warning btn-fab btn-raised mdi-content-add fab2" } })
+<div class="fixed-action-btn">
+    <a href='@Url.Action("NewProductRegistration", "Product")' class="btn-floating btn-large waves-effect waves-light red"><i class="mdi-action-shopping-cart"></i></a>
+    <a href='@Url.Action("New", "Product")' class="btn-floating btn-large waves-effect waves-light green"><i class="mdi-content-add"></i></a>
+</div>
