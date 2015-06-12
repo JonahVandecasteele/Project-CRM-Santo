@@ -112,9 +112,14 @@
     <Compile Include="Migrations\201506112000011_decimalfix.Designer.cs">
       <DependentUpon>201506112000011_decimalfix.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201506120725245_winkelmand.cs" />
+    <Compile Include="Migrations\201506120725245_winkelmand.Designer.cs">
+      <DependentUpon>201506120725245_winkelmand.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Product\Product.cs" />
     <Compile Include="Product\Productregistratie.cs" />
+    <Compile Include="Product\Winkelmand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Afspraak\Sessie.cs" />
     <Compile Include="Afspraak\SoortAfspraak.cs" />
@@ -145,6 +150,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201506112000011_decimalfix.resx">
       <DependentUpon>201506112000011_decimalfix.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506120725245_winkelmand.resx">
+      <DependentUpon>201506120725245_winkelmand.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

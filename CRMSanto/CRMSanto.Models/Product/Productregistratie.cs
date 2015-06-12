@@ -14,5 +14,6 @@ namespace CRMSanto.Models
         [Display(Name="Datum")]
         public DateTime DatumTijdstip { get; set; }
         public int Aantal { get; set; }
+        public virtual List<Winkelmand> Winkelmand { get; set; }
     }
 }
