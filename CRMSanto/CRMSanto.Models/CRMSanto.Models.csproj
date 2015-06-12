@@ -129,6 +129,10 @@
     <Compile Include="Migrations\201506120751247_nogmaalseeden.Designer.cs">
       <DependentUpon>201506120751247_nogmaalseeden.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201506120838549_archief.cs" />
+    <Compile Include="Migrations\201506120838549_archief.Designer.cs">
+      <DependentUpon>201506120838549_archief.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Product\Product.cs" />
     <Compile Include="Product\Productregistratie.cs" />
@@ -175,6 +179,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201506120751247_nogmaalseeden.resx">
       <DependentUpon>201506120751247_nogmaalseeden.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506120838549_archief.resx">
+      <DependentUpon>201506120838549_archief.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

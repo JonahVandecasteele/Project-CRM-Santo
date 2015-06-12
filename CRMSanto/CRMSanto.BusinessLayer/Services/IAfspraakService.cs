@@ -20,6 +20,7 @@ namespace CRMSanto.BusinessLayer.Services
         CRMSanto.Models.Arrangement InsertArrangement(CRMSanto.Models.Arrangement a);
         CRMSanto.Models.Extra InsertExtra(CRMSanto.Models.Extra e);
         CRMSanto.Models.SoortAfspraak InsertMassage(CRMSanto.Models.SoortAfspraak m);
+        System.Collections.Generic.List<CRMSanto.Models.Afspraak> TussenTweeDatums(DateTime van, DateTime tot);
         void UpdateArrangement(CRMSanto.Models.Arrangement a);
         void UpdateExtra(CRMSanto.Models.Extra e);
         void UpdateMassage(CRMSanto.Models.SoortAfspraak m);

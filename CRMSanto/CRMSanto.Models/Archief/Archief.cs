@@ -5,11 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CRMSanto.Models.Archief
+namespace CRMSanto.Models
 {
     public class Archief
     {
-        [Key]
+        public int ID { get; set; }
         public Afspraak Afspraak { get; set; }
         public DateTime DatumTijdstip { get; set; }
         public Klant Klant { get; set; }

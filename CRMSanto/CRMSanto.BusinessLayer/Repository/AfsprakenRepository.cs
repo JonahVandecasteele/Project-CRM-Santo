@@ -29,6 +29,14 @@ namespace CRMSanto.BusinessLayer.Repository
                          select a);
             return query.ToList<Afspraak>();
         }
+        public List<Afspraak> TussenTweeDatums(DateTime van,DateTime tot)
+        {
+            var query = (from a in context.Afspraak.Include(k=>k.Klant).Include(m=>m.Masseur).Include(ms=>ms.SoortAfspraak).Include(k=>k.Klant.Adres).Include(e=>e.Extra).Include(ar=>ar.Arrangement)
+                         where a.DatumTijdstip>=van && a.DatumTijdstip<=tot
+                         select a);
+
+            return query.ToList<Afspraak>();
+        }
         public List<Afspraak> LopendeAfspraken()
         {
             DateTime dt = DateTime.Now;
