@@ -18,7 +18,8 @@ namespace CRMSanto.Models
         public string Telefoon { get; set; }
         public string Email { get; set; }
         public virtual Geslacht Geslacht { get; set; }
-        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         public DateTime Geboortedatum { get; set; }
         public virtual List<Karaktertrek> Karaktertrek { get; set; }
         public virtual MedischeFiche MedischeFiche { get; set; }
