@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using System.Data.Entity;
 using CRMSanto.BusinessLayer.Repository;
 using CRMSanto.Models;
-using CRMSanto.Models.Archief;
 
 namespace CRMSanto.BusinessLayer.Services
 {

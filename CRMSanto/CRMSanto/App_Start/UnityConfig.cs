@@ -37,6 +37,7 @@ namespace CRMSanto
             container.RegisterType<IProductService, ProductService>();
             container.RegisterType<IKlantenRepository, KlantenRepository>();
             container.RegisterType<IKlantService, KlantService>();
+            container.RegisterType<IGenericRepository<Archief>, GenericRepository<Archief>>();
 
             container.RegisterType<AccountController>(new InjectionConstructor());
             
