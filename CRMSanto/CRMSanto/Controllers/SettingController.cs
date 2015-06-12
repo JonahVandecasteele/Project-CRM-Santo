@@ -61,11 +61,11 @@ namespace CRMSanto.Controllers
         {
             return View();
         }
-        [HttpPost]
-        public ActionResult NewMutualiteit(Mutualiteit m)
-        {
-            ks.InsertMutualiteit(m);
-            return View();
-        }
+      //[HttpPost]
+      //public ActionResult NewMutualiteit(Mutualiteit m)
+      //{
+      //    ks.InsertMutualiteit(m);
+      //    return View();
+      //}
     }
 }
