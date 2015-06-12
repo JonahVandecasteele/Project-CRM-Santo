@@ -37,11 +37,19 @@ namespace CRMSanto.Controllers
         }
 
 
-        // GET: Afspraak
+        [HttpGet]
         public ActionResult Index()
         {
             AfspraakPM apm = new AfspraakPM();
             apm.Afspraken = afs.GetLopendeAfspraken();
+            return View(apm);
+        }
+
+        [HttpPost]
+        public ActionResult Index(DateTime vanaf)
+        {
+            AfspraakPM apm = new AfspraakPM();
+            apm.Afspraken = afs.VanafAfspraken(vanaf);
             return View(apm);
         }
 

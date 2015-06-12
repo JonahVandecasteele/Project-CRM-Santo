@@ -49,6 +49,16 @@ namespace CRMSanto.BusinessLayer.Services
         {
             return repoAfspraken.AfsprakenVandaag().ToList<Afspraak>();
         }
+
+        public List<Afspraak> AfsprakenSpecifiekeDag(DateTime dag)
+        {
+            return repoAfspraken.AfsprakenSpecifiekeDag(dag);
+        }
+
+        public List<Afspraak> VanafAfspraken(DateTime vanaf)
+        {
+            return repoAfspraken.VanafAfspraken(vanaf).ToList<Afspraak>();
+        }
         public List<Afspraak> TussenTweeDatums(DateTime van,DateTime tot)
         {
             return repoAfspraken.TussenTweeDatums(van, tot);
