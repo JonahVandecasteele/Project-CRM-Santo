@@ -18,45 +18,37 @@ namespace CRMSanto.BusinessLayer.Services
             this.repoProducten = repoProducten;
             this.repoProduct = repoProduct;
         }
-
         public List<Product> GetProducten()
         {
             return repoProduct.All().ToList<Product>();
         }
-
         public List<Productregistratie> GetProductregistratiesByKlantenID(int id) 
         {
             return repoProducten.GetProductregistratiesByKlantenID(id);
         }
-
         public Product GetProductByID(int? id)
         {
             return repoProduct.GetByID(id.Value);
         }
-
         public void EditProduct(Product p)
         {
             repoProduct.Update(p);
             repoProduct.SaveChanges();
         }
-
         public void AddProduct(Product p)
         {
             repoProduct.Insert(p);
             repoProduct.SaveChanges();
         }
-
         public void SaveImage(HttpPostedFileBase p)
         {
             repoProducten.SaveImage(p);
         }
-
         public void DeleteProduct(Product p)
         {
             repoProduct.Delete(p);
             repoProduct.SaveChanges();
         }
-
         public List<Productregistratie> GetProductregistraties()
         {
             return repoProducten.All().ToList<Productregistratie>();

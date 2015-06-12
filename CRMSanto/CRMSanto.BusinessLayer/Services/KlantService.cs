@@ -114,6 +114,12 @@ namespace CRMSanto.BusinessLayer.Services
             repoKaraktertrek.SaveChanges();
             return result;
         }
+        public Mutualiteit InsertMutualiteit(Mutualiteit m)
+        {
+            Mutualiteit result = repoMutualiteit.Insert(m);
+            repoMutualiteit.SaveChanges();
+            return result;
+        }
         public List<Gemeente> GetGemeentesByPostCode(string id)
         {
             return repoGemeente.GetGemeentesByPostCode(id);
@@ -138,6 +144,13 @@ namespace CRMSanto.BusinessLayer.Services
                 Object createUpdatetUser = sendinBlue.create_update_user(k.Email, attributes, 0, listid, listid_unlink, 0);
                 Console.WriteLine(createUpdatetUser);
             }
+        }
+        public void SendMail()
+        {
+	        {
+                API sendinBlue = new mailinblue.API("r0GZv13CEFbk8yVq");
+	            
+	        }
         }
     }
 }
