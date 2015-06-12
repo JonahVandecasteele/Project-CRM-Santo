@@ -98,10 +98,6 @@
     <Compile Include="Migrations\201506111706448_voedingspatroon.Designer.cs">
       <DependentUpon>201506111706448_voedingspatroon.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201506111709202_minstock.cs" />
-    <Compile Include="Migrations\201506111709202_minstock.Designer.cs">
-      <DependentUpon>201506111709202_minstock.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\201506111726161_seedproducten.cs" />
     <Compile Include="Migrations\201506111726161_seedproducten.Designer.cs">
       <DependentUpon>201506111726161_seedproducten.cs</DependentUpon>
@@ -130,9 +126,6 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201506111706448_voedingspatroon.resx">
       <DependentUpon>201506111706448_voedingspatroon.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201506111709202_minstock.resx">
-      <DependentUpon>201506111709202_minstock.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201506111726161_seedproducten.resx">
       <DependentUpon>201506111726161_seedproducten.cs</DependentUpon>
