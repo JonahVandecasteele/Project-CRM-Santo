@@ -128,9 +128,6 @@
     <EmbeddedResource Include="Migrations\201506120923316_allegow.resx">
       <DependentUpon>201506120923316_allegow.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201506120842335_Changes.resx">
-      <DependentUpon>201506120842335_Changes.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

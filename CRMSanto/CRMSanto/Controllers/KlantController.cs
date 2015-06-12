@@ -55,6 +55,9 @@ namespace CRMSanto.Controllers
                     var klanten = from klants in klant
                                   where klants.Naam.ToLower().Contains(zoeken.ToLower()) || klants.Voornaam.ToLower().Contains(zoeken.ToLower())
                                         || (klants.Naam + " " + klants.Voornaam).ToLower().Contains(zoeken.ToLower()) || (klants.Voornaam + " " + klants.Naam).ToLower().Contains(zoeken.ToLower())
+                                        //|| klants.Adres.Gemeente.Plaatsnaam.ToLower().Contains(zoeken.ToLower())
+                                        //|| klants.Adres.Gemeente.Provincie.ToLower().Contains(zoeken.ToLower())
+                                        //|| klants.Adres.Gemeente.Postcode.ToLower().Contains(zoeken.ToLower())
                                   select klants;
 
                     return View(klanten);
