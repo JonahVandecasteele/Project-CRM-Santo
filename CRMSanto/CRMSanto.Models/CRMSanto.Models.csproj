@@ -120,6 +120,14 @@
     <Compile Include="Migrations\201506120733147_winkelmand2.Designer.cs">
       <DependentUpon>201506120733147_winkelmand2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201506120746262_requireds.cs" />
+    <Compile Include="Migrations\201506120746262_requireds.Designer.cs">
+      <DependentUpon>201506120746262_requireds.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201506120751247_nogmaalseeden.cs" />
+    <Compile Include="Migrations\201506120751247_nogmaalseeden.Designer.cs">
+      <DependentUpon>201506120751247_nogmaalseeden.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Product\Product.cs" />
     <Compile Include="Product\Productregistratie.cs" />
@@ -160,6 +168,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201506120733147_winkelmand2.resx">
       <DependentUpon>201506120733147_winkelmand2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506120746262_requireds.resx">
+      <DependentUpon>201506120746262_requireds.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506120751247_nogmaalseeden.resx">
+      <DependentUpon>201506120751247_nogmaalseeden.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

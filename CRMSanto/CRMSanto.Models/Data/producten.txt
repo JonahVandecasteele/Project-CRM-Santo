@@ -1,13 +1,13 @@
-111005,Eye Make-Up Remover,125,9.95,19.90
+ï»¿111005,Eye Make-Up Remover,125,9.95,19.90
 111010,Refreshing Cleansing Gel,100,11.40,22.80
 111020,All in 1 Toning Cleanser,250,14.00,28.00
 111021,Mineral Toning water,250,9.25,18.50
 111025,Facial Mud Exfoliator,100,13.15,26.30
 111030,Purifying Mud Mask,100,14.15,28.30
-111040,Dead Sea Osmoter™ Concentrate,30,25.00,50.00
-111041,Dead Sea Osmoter™ Concentrate Limited Edition,15,14.50,29.00
-111045,Dead Sea Osmoter™ Eye Concentrate,15,21.50,43.00
-112000,Dead Sea Osmoter™ Body Concentrate,100,20.00,40.00
+111040,Dead Sea Osmoterâ„¢ Concentrate,30,25.00,50.00
+111041,Dead Sea Osmoterâ„¢ Concentrate Limited Edition,15,14.50,29.00
+111045,Dead Sea Osmoterâ„¢ Eye Concentrate,15,21.50,43.00
+112000,Dead Sea Osmoterâ„¢ Body Concentrate,100,20.00,40.00
 111050,Essential Day Moisturizer - Normal to dry skin,50,19.50,39.00
 111051,Essential Day Moisturizer - Combination skin,50,19.50,39.00
 111052,Essential Day Moisturizer -  Very dry skin,50,19.50,39.00
