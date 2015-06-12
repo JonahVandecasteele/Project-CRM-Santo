@@ -37,16 +37,16 @@
                 <a href="#!" class="brand-logo right"><img src="/Content/img/logo.png" alt=""></a>
                 <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
                 <ul class="left hide-on-med-and-down">
+                    <li class="@Html.ActivePage("Home", "Index") waves-effect waves-light">@Html.ActionLink("Start", "Index", "Home", null, null)</li>
+                    <li class="@Html.ActivePage("Afspraak", "Index") waves-effect waves-light">@Html.ActionLink("Afspraken", "Index", "Afspraak", null, null)</li>
+                    <li class="@Html.ActivePage("Klant", "Index") waves-effect waves-light">@Html.ActionLink("Klanten", "Index", "Klant", null, null)</li>
+                    <li class="@Html.ActivePage("Product", "Index") waves-effect waves-light">@Html.ActionLink("Producten", "Index", "Product", null, null)</li>
+                </ul>
+                <ul class="side-nav" id="mobile-demo">
                     <li class="@Html.ActivePage("Home", "Index")">@Html.ActionLink("Start", "Index", "Home", null, null)</li>
                     <li class="@Html.ActivePage("Afspraak", "Index")">@Html.ActionLink("Afspraken", "Index", "Afspraak", null, null)</li>
                     <li class="@Html.ActivePage("Klant", "Index")">@Html.ActionLink("Klanten", "Index", "Klant", null, null)</li>
                     <li class="@Html.ActivePage("Product", "Index")">@Html.ActionLink("Producten", "Index", "Product", null, null)</li>
-                </ul>
-                <ul class="side-nav" id="mobile-demo">
-                    <li><a href="sass.html">Sass</a></li>
-                    <li><a href="components.html">Components</a></li>
-                    <li><a href="javascript.html">Javascript</a></li>
-                    <li><a href="mobile.html">Mobile</a></li>
                 </ul>
             </div>
         </nav>
