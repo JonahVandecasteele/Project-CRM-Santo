@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Data.Entity;
 using CRMSanto.BusinessLayer.Repository;
 using CRMSanto.Models;
+using CRMSanto.Models.Archief;
 
 namespace CRMSanto.BusinessLayer.Services
 {
@@ -15,15 +16,17 @@ namespace CRMSanto.BusinessLayer.Services
         private IGenericRepository<Masseur> repoMasseur = null;
         private IGenericRepository<SoortAfspraak> repoMassage = null;
         private IGenericRepository<Arrangement> repoArrangement = null;
+        private IGenericRepository<Archief> repoArchief = null;
         private IGenericRepository<Extra> repoExtra = null;
         private ISessieRepository repoSessie = null;
 
-        public AfspraakService(IAfsprakenRepository repoAfspraken, IGenericRepository<Masseur> repoMasseur, IGenericRepository<SoortAfspraak> repoMassage,IGenericRepository<Arrangement> repoArrangement,IGenericRepository<Extra> repoExtra, ISessieRepository repoSessie)
+        public AfspraakService(IAfsprakenRepository repoAfspraken, IGenericRepository<Masseur> repoMasseur, IGenericRepository<SoortAfspraak> repoMassage,IGenericRepository<Arrangement> repoArrangement,IGenericRepository<Archief> repoArchief,IGenericRepository<Extra> repoExtra, ISessieRepository repoSessie)
         {
             this.repoAfspraken = repoAfspraken;
             this.repoMasseur = repoMasseur;
             this.repoMassage = repoMassage;
             this.repoArrangement = repoArrangement;
+            this.repoArchief = repoArchief;
             this.repoExtra = repoExtra;
             this.repoSessie = repoSessie;
         }
@@ -152,5 +155,9 @@ namespace CRMSanto.BusinessLayer.Services
             repoExtra.Update(e);
             repoExtra.SaveChanges();
         }
+
+        //public Archief InsertArchief(DateTime van, DateTime tot)
+        //{
+        //}
     }
 }
