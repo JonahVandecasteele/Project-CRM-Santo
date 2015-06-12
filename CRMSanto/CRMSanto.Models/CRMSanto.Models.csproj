@@ -111,6 +111,22 @@
     <Compile Include="Migrations\201506120953270_Relaties-Final.Designer.cs">
       <DependentUpon>201506120953270_Relaties-Final.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201506121001169_Relaties-Final2.cs" />
+    <Compile Include="Migrations\201506121001169_Relaties-Final2.Designer.cs">
+      <DependentUpon>201506121001169_Relaties-Final2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201506121005588_Relaties-Final3.cs" />
+    <Compile Include="Migrations\201506121005588_Relaties-Final3.Designer.cs">
+      <DependentUpon>201506121005588_Relaties-Final3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201506121006392_Relaties-Final4.cs" />
+    <Compile Include="Migrations\201506121006392_Relaties-Final4.Designer.cs">
+      <DependentUpon>201506121006392_Relaties-Final4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201506121008185_Relaties-Final5.cs" />
+    <Compile Include="Migrations\201506121008185_Relaties-Final5.Designer.cs">
+      <DependentUpon>201506121008185_Relaties-Final5.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Product\Product.cs" />
     <Compile Include="Product\Productregistratie.cs" />
@@ -142,6 +158,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201506120953270_Relaties-Final.resx">
       <DependentUpon>201506120953270_Relaties-Final.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506121001169_Relaties-Final2.resx">
+      <DependentUpon>201506121001169_Relaties-Final2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506121005588_Relaties-Final3.resx">
+      <DependentUpon>201506121005588_Relaties-Final3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506121006392_Relaties-Final4.resx">
+      <DependentUpon>201506121006392_Relaties-Final4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506121008185_Relaties-Final5.resx">
+      <DependentUpon>201506121008185_Relaties-Final5.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
