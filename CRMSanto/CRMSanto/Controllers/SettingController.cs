@@ -17,7 +17,10 @@ namespace CRMSanto.Controllers
             this.ks = ks;
             this.afs = afs;
         }
-        
+        public ActionResult Index()
+        {
+            return View();
+        }
         [HttpGet]
         public ActionResult NewKaraktertrek()
         {
@@ -50,6 +53,18 @@ namespace CRMSanto.Controllers
         public ActionResult OpkuisAfspraken(DateTime van, DateTime tot)
         {
             afs.InsertArchief(van,tot);
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult NewMutualiteit()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult NewMutualiteit(Mutualiteit m)
+        {
+            ks.InsertMutualiteit(m);
             return View();
         }
     }
