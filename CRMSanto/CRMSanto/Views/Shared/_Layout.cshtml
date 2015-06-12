@@ -34,9 +34,9 @@
     <div class="navbar-fixed">
         <nav class="santo-brown-bg">
             <div class="nav-wrapper container">
-                <a href="#!" class="brand-logo right"><img src="/Content/img/logo.png" alt=""></a>
-                <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
-                <ul class="left hide-on-med-and-down">
+                <a href="#!" class="brand-logo left"><img src="/Content/img/logo.png" alt=""></a>
+                <a href="@Url.Action("Home", "Index")" data-activates="mobile-demo" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+                <ul class="left hide-on-med-and-down" style="margin-left: 174px;">
                     <li class="@Html.ActivePage("Home", "Index") waves-effect waves-light">@Html.ActionLink("Start", "Index", "Home", null, null)</li>
                     <li class="@Html.ActivePage("Afspraak", "Index") waves-effect waves-light">@Html.ActionLink("Afspraken", "Index", "Afspraak", null, null)</li>
                     <li class="@Html.ActivePage("Klant", "Index") waves-effect waves-light">@Html.ActionLink("Klanten", "Index", "Klant", null, null)</li>
@@ -48,11 +48,14 @@
                     <li class="@Html.ActivePage("Klant", "Index")">@Html.ActionLink("Klanten", "Index", "Klant", null, null)</li>
                     <li class="@Html.ActivePage("Product", "Index")">@Html.ActionLink("Producten", "Index", "Product", null, null)</li>
                 </ul>
+                <ul class="right hide-on-med-and-down">
+                    <li class="@Html.ActivePage("Instellingen", "Index") waves-effect waves-light"><a href='@Url.Action("New", "Klant")'><i class="mdi-action-settings"></i></a></li>
+                </ul>
             </div>
         </nav>
     </div>
 
-    <div class="container">
+    <div class="container body-content">
         @RenderBody()
     </div>
 

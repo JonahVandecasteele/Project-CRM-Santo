@@ -13,7 +13,7 @@
     <li class="active">Producten</li>
 </ul>       
         
-            <div class="input-group">
+            <div class="input-group search">
                 <input type="text" name="Search" class="form-control" placeholder="Zoeken...">
                 <span class="input-group-btn">
                     <button class="btn btn-primary" name="submit" type="submit"><span class="glyphicon glyphicon-search"></span></button>
@@ -37,7 +37,7 @@
                 </thead>
                 <tbody>
                 @foreach (var item in Model) {
-                    <tr>
+                    <tr class="product">
                         <td>@Html.DisplayFor(modelItem => item.Naam)</td>
                         <td>@Html.DisplayFor(modelItem => item.Inhoud)</td>
                         <td>3</td>
