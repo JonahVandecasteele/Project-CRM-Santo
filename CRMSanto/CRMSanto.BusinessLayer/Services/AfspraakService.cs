@@ -158,14 +158,28 @@ namespace CRMSanto.BusinessLayer.Services
             repoExtra.SaveChanges();
         }
 
-        public void InsertArchief(DateTime van, DateTime tot,Archief a)
+        public void InsertArchief(DateTime van, DateTime tot)
         {
             List<Afspraak> afspraken = repoAfspraken.TussenTweeDatums(van, tot);
-            foreach(Afspraak afspraak in afspraken)
+            foreach(Afspraak a in afspraken)
             {
-                repoArchief.Insert(a);
+                Archief ar = new Archief();
+                ar.AdresID = a.Adres.ID;
+                ar.KlantID = a.Klant.ID;
+                ar.MasseurID = a.Masseur.ID;
+                ar.Notitie = a.Notitie;
+                ar.SoloDuo = a.SoloDuo;
+                ar.SoortAfspraakID = a.SoortAfspraak.ID;
+                ar.Verplaatsing = a.Verplaatsing;
+                ar.AantalPersonen = a.AantalPersonen;
+                ar.ArrangementID = a.Arrangement.ID;
+                ar.DatumTijdstip = a.DatumTijdstip;
+                ar.Duur = a.Duur;
+                repoArchief.Insert(ar);
+                repoAfspraken.Delete(a);
             }
             repoArchief.SaveChanges();
+            repoAfspraken.SaveChanges();
         }
     }
 }

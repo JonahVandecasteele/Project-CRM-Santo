@@ -444,6 +444,7 @@
     <Content Include="Views\Dienst\Index3.cshtml" />
     <Content Include="Views\Dienst\New3.cshtml" />
     <Content Include="Views\Dienst\Edit3.cshtml" />
+    <Content Include="Views\Setting\OpkuisAfspraken.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
