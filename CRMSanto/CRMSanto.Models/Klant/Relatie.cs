@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace CRMSanto.Models
 {
-    public class KlantRelatie
+    public class Relatie
     {
         public int ID { get; set; }
-        public Klant KlantA { get; set; }
-        public Klant KlantB { get; set; }
+        public string Naam { get; set; }
     }
 }

@@ -23,6 +23,6 @@ namespace CRMSanto.Models
         public virtual List<Karaktertrek> Karaktertrek { get; set; }
         public virtual MedischeFiche MedischeFiche { get; set; }
         public virtual PersoonlijkeFiche PersoonlijkeFiche { get; set; }
-        public virtual List<KlantRelatie> KlantRelaties { get; set; }
+        public virtual List<RelatieKlant> KlantRelaties { get; set; }
     }
 }

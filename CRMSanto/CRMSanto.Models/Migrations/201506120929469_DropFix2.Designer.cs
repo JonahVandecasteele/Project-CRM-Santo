@@ -7,13 +7,13 @@ namespace CRMSanto.Models.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class KlantRelatie : IMigrationMetadata
+    public sealed partial class DropFix2 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(KlantRelatie));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(DropFix2));
         
         string IMigrationMetadata.Id
         {
-            get { return "201506120821530_KlantRelatie"; }
+            get { return "201506120929469_DropFix2"; }
         }
         
         string IMigrationMetadata.Source
