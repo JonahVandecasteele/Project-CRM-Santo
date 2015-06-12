@@ -10,7 +10,7 @@
 
 @using (Html.BeginForm("Index", "Klant", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
-    <div class="input-group">
+    <div class="input-group search">
         <input type="text" value="@ViewBag.Search" name="Search" class="form-control" placeholder="Zoeken...">
         <span class="input-group-btn">
             <button class="btn btn-primary btn-search" name="submit" type="submit" tabindex="-1">
@@ -50,36 +50,42 @@
             </th>
         </tr>
 
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    <a href="Klant/Details/@Html.DisplayFor(modelItem => item.ID)"><img src="@Html.GetPhotoURL(Html.DisplayFor(modelItem => item.Foto).ToString())" alt="" class="profilepic shadow-z-1" /></a>
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Naam)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Voornaam)
-                </td>
-                <td>
-                    @Html.FormatPhoneNumber(Html.DisplayFor(modelItem => item.Telefoon).ToString())
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Email)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Adres.Straat) @Html.DisplayFor(modelItem => item.Adres.Nummer) @Html.DisplayFor(modelItem => item.Adres.Postbus)<br />
-                    @Html.DisplayFor(modelItem => item.Adres.Postcode) @Html.DisplayFor(modelItem => item.Adres.Gemeente)
+                @foreach (var item in Model)
+                {
+                    <tr class ='clickable-row' data-href='Klant/Details/@Html.DisplayFor(modelItem => item.ID)'>
+                        <td>
+                            <img src="@Html.GetPhotoURL(Html.DisplayFor(modelItem => item.Foto).ToString())" alt="" class="profilepic shadow-z-1" />
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Naam)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Voornaam)
+                        </td>
+                        <td>
+                            @Html.FormatPhoneNumber(Html.DisplayFor(modelItem => item.Telefoon).ToString())
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Email)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Adres.Straat) @Html.DisplayFor(modelItem => item.Adres.Nummer) @Html.DisplayFor(modelItem => item.Adres.Postbus)<br />
+                            @Html.DisplayFor(modelItem => item.Adres.Postcode) @Html.DisplayFor(modelItem => item.Adres.Gemeente)
 
-                </td>
-            </tr>
-        }
+                        </td>
+                        </tr>
+                }
 
-    </table>
+</table>
 </div>
 Aantal resultaten: @Model.Count()
 
 <div class="fixed-action-btn">
     <a href='@Url.Action("New", "Klant")' class="btn-floating btn-large waves-effect waves-light green"><i class="mdi-content-add"></i></a>
 </div>
+
+<script>
+    $(".clickable-row").click(function () {
+        window.document.location = $(this).data("href");
+    });
+</script>

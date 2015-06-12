@@ -1,6 +1,22 @@
 ﻿body {
 }
 
+.body-content{
+    padding: 10px;
+}
+
+.clickable-row {
+    cursor: pointer;
+}
+
+.search {
+    margin-bottom: 15px;
+}
+
+    .table tbody > tr.clickable-row > td, .table tbody > tr.product > td {
+        vertical-align: middle;
+    }
+
 nav ul a, nav ul a:hover, nav ul a:active {
   text-decoration: none; 
   color: white;

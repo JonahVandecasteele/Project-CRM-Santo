@@ -19,7 +19,7 @@ namespace CRMSanto.Controllers
             this.ks = ks;
         }
         // GET: Product
-        public ActionResult Index()
+        public ActionResult Index(string sortOrder)
         {
             //if (Request.Form["zoeken"] != null)
             if(Request.Form["submit"] != null)
@@ -31,7 +31,46 @@ namespace CRMSanto.Controllers
             }
             else
             {
-                return View(ps.GetProducten());
+                ViewBag.NameSortParm = sortOrder == "name_desc" ? "name" : "name_desc";
+                ViewBag.InhoudSortParm = sortOrder == "inhoud" ? "inhoud_desc" : "inhoud";
+                ViewBag.APSortParm = sortOrder == "aankoopprijs" ? "aankoopprijs_desc" : "aankoopprijs";
+                ViewBag.VPSortParm = sortOrder == "verkoopprijs" ? "verkoopprijs_desc" : "verkoopprijs";
+             
+                List<Product> producten = ps.GetProducten();
+                ViewBag.Search = null;
+                switch (sortOrder)
+                {
+                    case "name":
+                        producten = producten.OrderBy(s => s.Naam).ToList();
+                        break;
+                    case "name_desc":
+                        producten = producten.OrderByDescending(s => s.Naam).ToList();
+                        break;
+                    case "inhoud":
+                        producten = producten.OrderBy(s => s.Inhoud).ToList();
+                        break;
+                    case "inhoud_desc":
+                        producten = producten.OrderByDescending(s => s.Inhoud).ToList();
+                        break;
+                    case "aankoopprijs":
+                        producten = producten.OrderBy(s => s.AankoopPrijs).ToList();
+                        break;
+                    case "aankoopprijs_desc":
+                        producten = producten.OrderByDescending(s => s.AankoopPrijs).ToList();
+                        break;
+                    case "verkoopprijs":
+                        producten = producten.OrderBy(s => s.VerkoopPrijs).ToList();
+                        break;
+                    case "verkoopprijs_desc":
+                        producten = producten.OrderByDescending(s => s.VerkoopPrijs).ToList();
+                        break;
+                    
+                    default:
+                        producten = producten.OrderBy(s => s.Naam).ToList();
+                        break;
+
+                }
+                return View(producten);
             }
             
             
