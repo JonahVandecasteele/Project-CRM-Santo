@@ -27,11 +27,11 @@
             <table class="table table-striped table-hover">
                 <thead>
                     <tr>
-                        <th>Productnaam</th>
-                        <th>Inhoud</th>
+                        <th>@Html.ActionLink(Html.DisplayNameFor(model => model.Naam).ToString(), "Index", new { sortOrder = ViewBag.NameSortParm })</th>
+                        <th>@Html.ActionLink(Html.DisplayNameFor(model => model.Inhoud).ToString(), "Index", new { sortOrder = ViewBag.InhoudSortParm })</th>
                         <th>Verkocht</th>
-                        <th>Aankoopprijs</th>
-                        <th>Verkoopprijs</th>
+                        <th>@Html.ActionLink(Html.DisplayNameFor(model => model.AankoopPrijs).ToString(), "Index", new { sortOrder = ViewBag.APSortParm })</th>
+                        <th>@Html.ActionLink(Html.DisplayNameFor(model => model.VerkoopPrijs).ToString(), "Index", new { sortOrder = ViewBag.VPSortParm })</th>
                         <th></th>
                     </tr>
                 </thead>
