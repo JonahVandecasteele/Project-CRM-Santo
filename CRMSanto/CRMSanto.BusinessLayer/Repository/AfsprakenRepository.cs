@@ -39,7 +39,6 @@ namespace CRMSanto.BusinessLayer.Repository
 
             return query.ToList<Afspraak>();
         }
-
         public List<Afspraak> GetAfsprakenByKlantenID(int id)
         {
             var query = (from a in context.Afspraak.Include(k => k.Klant).Include(m => m.Masseur).Include(ms => ms.SoortAfspraak).Include(k => k.Klant.Adres)
@@ -48,7 +47,6 @@ namespace CRMSanto.BusinessLayer.Repository
 
             return query.ToList<Afspraak>();
         }
-
         public override Afspraak Insert(Afspraak entity)
         {
             context.Klant.Attach(entity.Klant);

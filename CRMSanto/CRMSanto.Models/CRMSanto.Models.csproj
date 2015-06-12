@@ -84,6 +84,7 @@
     <Compile Include="Afspraak\Arrangement.cs" />
     <Compile Include="Afspraak\Extra.cs" />
     <Compile Include="Afspraak\Masseur.cs" />
+    <Compile Include="Archief\Archief.cs" />
     <Compile Include="Klant\Adres.cs" />
     <Compile Include="Afspraak\Afspraak.cs" />
     <Compile Include="Klant\Gemeente.cs" />
