@@ -49,7 +49,10 @@ namespace CRMSanto.BusinessLayer.Services
         {
             return repoAfspraken.AfsprakenVandaag().ToList<Afspraak>();
         }
-
+        public List<Afspraak> TussenTweeDatums(DateTime van,DateTime tot)
+        {
+            return repoAfspraken.TussenTweeDatums(van, tot);
+        }
         public Afspraak GetAfspraakByID(int? id)
         {
             return repoAfspraken.GetByID(id.Value);
@@ -155,8 +158,14 @@ namespace CRMSanto.BusinessLayer.Services
             repoExtra.SaveChanges();
         }
 
-        //public Archief InsertArchief(DateTime van, DateTime tot)
-        //{
-        //}
+        public void InsertArchief(DateTime van, DateTime tot,Archief a)
+        {
+            List<Afspraak> afspraken = repoAfspraken.TussenTweeDatums(van, tot);
+            foreach(Afspraak afspraak in afspraken)
+            {
+                repoArchief.Insert(a);
+            }
+            repoArchief.SaveChanges();
+        }
     }
 }

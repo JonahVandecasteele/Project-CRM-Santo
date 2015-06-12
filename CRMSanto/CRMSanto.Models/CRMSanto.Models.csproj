@@ -130,13 +130,13 @@
     <Compile Include="Migrations\201506120751247_nogmaalseeden.Designer.cs">
       <DependentUpon>201506120751247_nogmaalseeden.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201506120838549_archief.cs" />
+    <Compile Include="Migrations\201506120838549_archief.Designer.cs">
+      <DependentUpon>201506120838549_archief.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\201506120821530_KlantRelatie.cs" />
     <Compile Include="Migrations\201506120821530_KlantRelatie.Designer.cs">
       <DependentUpon>201506120821530_KlantRelatie.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201506120842335_Changes.cs" />
-    <Compile Include="Migrations\201506120842335_Changes.Designer.cs">
-      <DependentUpon>201506120842335_Changes.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Product\Product.cs" />
@@ -185,8 +185,8 @@
     <EmbeddedResource Include="Migrations\201506120751247_nogmaalseeden.resx">
       <DependentUpon>201506120751247_nogmaalseeden.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201506120821530_KlantRelatie.resx">
-      <DependentUpon>201506120821530_KlantRelatie.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201506120843475_klantrelatie.resx">
+      <DependentUpon>201506120843475_klantrelatie.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201506120842335_Changes.resx">
       <DependentUpon>201506120842335_Changes.cs</DependentUpon>
