@@ -5,7 +5,7 @@ using CRMSanto.BusinessLayer.Repository;
 using CRMSanto.BusinessLayer.Services;
 using CRMSanto.Models;
 using CRMSanto.Controllers;
-using CRMSanto.Models.Archief;
+using CRMSanto.Models;
 
 namespace CRMSanto
 {
