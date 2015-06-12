@@ -114,6 +114,12 @@ namespace CRMSanto.BusinessLayer.Services
             repoKaraktertrek.SaveChanges();
             return result;
         }
+        public Mutualiteit InsertMutualiteit(Mutualiteit m)
+        {
+            Mutualiteit result = repoMutualiteit.Insert(m);
+            repoMutualiteit.SaveChanges();
+            return result;
+        }
         public List<Gemeente> GetGemeentesByPostCode(string id)
         {
             return repoGemeente.GetGemeentesByPostCode(id);
@@ -139,7 +145,6 @@ namespace CRMSanto.BusinessLayer.Services
                 Console.WriteLine(createUpdatetUser);
             }
         }
-
         public void SendMail()
         {
 	        {
