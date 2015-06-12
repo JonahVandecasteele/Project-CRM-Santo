@@ -138,6 +138,10 @@
     <Compile Include="Migrations\201506120821530_KlantRelatie.Designer.cs">
       <DependentUpon>201506120821530_KlantRelatie.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201506120843475_klantrelatie.cs" />
+    <Compile Include="Migrations\201506120843475_klantrelatie.Designer.cs">
+      <DependentUpon>201506120843475_klantrelatie.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Product\Product.cs" />
     <Compile Include="Product\Productregistratie.cs" />
@@ -184,6 +188,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201506120751247_nogmaalseeden.resx">
       <DependentUpon>201506120751247_nogmaalseeden.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506120843475_klantrelatie.resx">
+      <DependentUpon>201506120843475_klantrelatie.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
