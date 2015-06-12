@@ -29,19 +29,24 @@
             <tr>
                 <th> </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Naam)
+                    @*@Html.DisplayNameFor(model => model.Naam)*@
+                    @Html.ActionLink(Html.DisplayNameFor(model => model.Naam).ToString(), "Index", new { sortOrder = ViewBag.NameSortParm })
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Voornaam)
+                    @*@Html.DisplayNameFor(model => model.Voornaam)*@
+                    @Html.ActionLink(Html.DisplayNameFor(model => model.Voornaam).ToString(), "Index", new { sortOrder = ViewBag.FirstNameSortParm })
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Telefoon)
+                    @*@Html.DisplayNameFor(model => model.Telefoon)*@
+                    @Html.ActionLink(Html.DisplayNameFor(model => model.Telefoon).ToString(), "Index", new { sortOrder = ViewBag.PhoneSortParm })
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Email)
+                    @*@Html.DisplayNameFor(model => model.Email)*@
+                    @Html.ActionLink(Html.DisplayNameFor(model => model.Email).ToString(), "Index", new { sortOrder = ViewBag.EmailSortParm })
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Adres)
+                    @*@Html.DisplayNameFor(model => model.Adres)*@
+                    @Html.ActionLink(Html.DisplayNameFor(model => model.Adres).ToString(), "Index", new { sortOrder = ViewBag.AdresSortParm })
                 </th>
             </tr>
 

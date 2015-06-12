@@ -5,6 +5,7 @@ using CRMSanto.BusinessLayer.Repository;
 using CRMSanto.BusinessLayer.Services;
 using CRMSanto.Models;
 using CRMSanto.Controllers;
+using CRMSanto.Models.Archief;
 
 namespace CRMSanto
 {
@@ -31,6 +32,7 @@ namespace CRMSanto
             container.RegisterType<IGenericRepository<SoortAfspraak>, GenericRepository<SoortAfspraak>>();
             container.RegisterType<IGenericRepository<Arrangement>, GenericRepository<Arrangement>>();
             container.RegisterType<IGenericRepository<Extra>, GenericRepository<Extra>>();
+            container.RegisterType<IGenericRepository<KlantRelatie>, GenericRepository<KlantRelatie>>();
             container.RegisterType<IGenericRepository<Archief>, GenericRepository<Archief>>();
             container.RegisterType<IAfsprakenRepository, AfsprakenRepository>();
             container.RegisterType<IAfspraakService, AfspraakService>();
@@ -38,6 +40,7 @@ namespace CRMSanto
             container.RegisterType<IProductService, ProductService>();
             container.RegisterType<IKlantenRepository, KlantenRepository>();
             container.RegisterType<IKlantService, KlantService>();
+            container.RegisterType<IGenericRepository<Archief>, GenericRepository<Archief>>();
 
             container.RegisterType<AccountController>(new InjectionConstructor());
             

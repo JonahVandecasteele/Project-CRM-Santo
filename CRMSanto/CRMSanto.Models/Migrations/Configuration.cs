@@ -33,7 +33,7 @@ namespace CRMSanto.Models.Migrations
             //SeedMasseur(context);
             //seedGemeentes(context);
             //SeedVoedingspatroon(context);
-            SeedProducten(context);
+            //SeedProducten(context);
         }
         public void SeedAccounts(ApplicationDbContext context)
         {

@@ -87,16 +87,13 @@ namespace CRMSanto.Controllers
                 {
                     _O365ServiceOperationFailed = true;
                 }
-
-                afs.AddAfspraak(a.Afspraak);
-                return RedirectToAction("Index");
-           
-                 
-           
-               
-         
-                
-            
+                if(_O365ServiceOperationFailed)
+                {
+                    afs.AddAfspraak(a.Afspraak);
+                    return RedirectToAction("Index");
+                }
+                return View(a);
+        
             /*if (Request.Form["New"] != null)
             {*/
                 
@@ -105,30 +102,31 @@ namespace CRMSanto.Controllers
             //pm.Klanten = new SelectList(ks.GetKlanten().Select(u => new { ID = u.ID, Naam = u.Naam + " " + u.Voornaam }), "ID", "Naam");
             //return View(pm);
         }
-        public async Task<ActionResult> Create(FormCollection collection)
-        {
-            _O365ServiceOperationFailed = false;
-            String newEventID = "";
 
-            try
-            {
+        //public async Task<ActionResult> Create(FormCollection collection)
+        //{
+        //    _O365ServiceOperationFailed = false;
+        //    String newEventID = "";
+
+        //    try
+        //    {
 
 
-                newEventID = await _calenderOperations.AddCalendarEventAsync(collection["Location"],
-                                                                                collection["Body"],
-                                                                                collection["Attendees"],
-                                                                                collection["Subject"],
-                                                                                DateTimeOffset.Parse(collection["StartDate"]),
-                                                                                DateTimeOffset.Parse(collection["EndDate"]));
-            }
+        //        newEventID = await _calenderOperations.AddCalendarEventAsync(collection["Location"],
+        //                                                                        collection["Body"],
+        //                                                                        collection["Attendees"],
+        //                                                                        collection["Subject"],
+        //                                                                        DateTimeOffset.Parse(collection["StartDate"]),
+        //                                                                        DateTimeOffset.Parse(collection["EndDate"]));
+        //    }
 
-            catch (Exception)
-            {
-                _O365ServiceOperationFailed = true;
-            }
+        //    catch (Exception)
+        //    {
+        //        _O365ServiceOperationFailed = true;
+        //    }
 
-            return RedirectToAction("Index", new { newid = newEventID });
-        }
+        //    return RedirectToAction("Index", new { newid = newEventID });
+        //}
 
 
     }

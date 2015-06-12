@@ -33,7 +33,7 @@ namespace CRMSanto.Controllers
 
         //    return View(ks.GetMutualiteiten());
         //}
-        public ActionResult Index()
+        public ActionResult Index(string sortOrder)
         {
             //List<Klant> klanten = ks.GetKlanten();
             //return View(klanten);
@@ -71,8 +71,52 @@ namespace CRMSanto.Controllers
             }
             else
             {
+                ViewBag.NameSortParm = sortOrder == "name_desc" ? "name" : "name_desc";
+                ViewBag.FirstNameSortParm = sortOrder == "firstname" ? "firstName_desc" : "firstname";
+                ViewBag.PhoneSortParm = sortOrder == "phoneNumber" ? "phonenumber_desc" : "phoneNumber";
+                ViewBag.EmailSortParm = sortOrder == "email" ? "email_desc" : "email";
+                ViewBag.AdresSortParm = sortOrder == "adres" ? "adres_desc" : "adres";
+                List<Klant> klanten = ks.GetKlanten();
                 ViewBag.Search = null;
-                return View(ks.GetKlanten());
+                switch (sortOrder)
+                {
+                    case "name":
+                        klanten = klanten.OrderBy(s => s.Naam).ToList();
+                        break;
+                    case "name_desc":
+                        klanten = klanten.OrderByDescending(s => s.Naam).ToList();
+                        break;
+                    case "firstname":
+                        klanten = klanten.OrderBy(s => s.Voornaam).ToList();
+                        break;
+                    case "firstName_desc":
+                        klanten = klanten.OrderByDescending(s => s.Voornaam).ToList();
+                        break;
+                    case "phoneNumber":
+                        klanten = klanten.OrderBy(s => s.Telefoon).ToList();
+                        break;
+                    case "phoneNumber_desc":
+                        klanten = klanten.OrderByDescending(s => s.Telefoon).ToList();
+                        break;
+                    case "email":
+                        klanten = klanten.OrderBy(s => s.Email).ToList();
+                        break;
+                    case "email_desc":
+                        klanten = klanten.OrderByDescending(s => s.Email).ToList();
+                        break;
+                    case "adres":
+                        klanten = klanten.OrderBy(s => s.Adres.Straat).ToList();
+                        break;
+                    case "adres_desc":
+                        klanten = klanten.OrderByDescending(s => s.Adres.Straat).ToList();
+                        break;
+                    default:
+                        klanten = klanten.OrderBy(s => s.Naam).ToList();
+                        break;
+
+                }
+                return View(klanten);
+                
             }
         }
         public ActionResult Details(int? id)
