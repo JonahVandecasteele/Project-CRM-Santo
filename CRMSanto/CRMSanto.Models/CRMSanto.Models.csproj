@@ -98,45 +98,9 @@
     <Compile Include="Klant\PersoonlijkeFiche.cs" />
     <Compile Include="Klant\Voedingspatroon.cs" />
     <Compile Include="Klant\Werksituatie.cs" />
-    <Compile Include="Migrations\201506111706448_voedingspatroon.cs" />
-    <Compile Include="Migrations\201506111706448_voedingspatroon.Designer.cs">
-      <DependentUpon>201506111706448_voedingspatroon.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201506111726161_seedproducten.cs" />
-    <Compile Include="Migrations\201506111726161_seedproducten.Designer.cs">
-      <DependentUpon>201506111726161_seedproducten.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201506111930084_probeerselarrangementen.cs" />
-    <Compile Include="Migrations\201506111930084_probeerselarrangementen.Designer.cs">
-      <DependentUpon>201506111930084_probeerselarrangementen.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201506112000011_decimalfix.cs" />
-    <Compile Include="Migrations\201506112000011_decimalfix.Designer.cs">
-      <DependentUpon>201506112000011_decimalfix.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201506120725245_winkelmand.cs" />
-    <Compile Include="Migrations\201506120725245_winkelmand.Designer.cs">
-      <DependentUpon>201506120725245_winkelmand.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201506120733147_winkelmand2.cs" />
-    <Compile Include="Migrations\201506120733147_winkelmand2.Designer.cs">
-      <DependentUpon>201506120733147_winkelmand2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201506120746262_requireds.cs" />
-    <Compile Include="Migrations\201506120746262_requireds.Designer.cs">
-      <DependentUpon>201506120746262_requireds.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201506120751247_nogmaalseeden.cs" />
-    <Compile Include="Migrations\201506120751247_nogmaalseeden.Designer.cs">
-      <DependentUpon>201506120751247_nogmaalseeden.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201506120838549_archief.cs" />
-    <Compile Include="Migrations\201506120838549_archief.Designer.cs">
-      <DependentUpon>201506120838549_archief.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201506120821530_KlantRelatie.cs" />
-    <Compile Include="Migrations\201506120821530_KlantRelatie.Designer.cs">
-      <DependentUpon>201506120821530_KlantRelatie.cs</DependentUpon>
+    <Compile Include="Migrations\201506120923316_allegow.cs" />
+    <Compile Include="Migrations\201506120923316_allegow.Designer.cs">
+      <DependentUpon>201506120923316_allegow.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Product\Product.cs" />
@@ -161,32 +125,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201506111706448_voedingspatroon.resx">
-      <DependentUpon>201506111706448_voedingspatroon.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201506111726161_seedproducten.resx">
-      <DependentUpon>201506111726161_seedproducten.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201506111930084_probeerselarrangementen.resx">
-      <DependentUpon>201506111930084_probeerselarrangementen.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201506112000011_decimalfix.resx">
-      <DependentUpon>201506112000011_decimalfix.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201506120725245_winkelmand.resx">
-      <DependentUpon>201506120725245_winkelmand.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201506120733147_winkelmand2.resx">
-      <DependentUpon>201506120733147_winkelmand2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201506120746262_requireds.resx">
-      <DependentUpon>201506120746262_requireds.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201506120751247_nogmaalseeden.resx">
-      <DependentUpon>201506120751247_nogmaalseeden.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201506120843475_klantrelatie.resx">
-      <DependentUpon>201506120843475_klantrelatie.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201506120923316_allegow.resx">
+      <DependentUpon>201506120923316_allegow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201506120842335_Changes.resx">
       <DependentUpon>201506120842335_Changes.cs</DependentUpon>

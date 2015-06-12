@@ -11,9 +11,11 @@ namespace CRMSanto.Controllers
     public class SettingController : Controller
     {
         private IKlantService ks;
-        public SettingController(IKlantService ks)
+        private IAfspraakService afs;
+        public SettingController(IKlantService ks,IAfspraakService afs)
         {
             this.ks = ks;
+            this.afs = afs;
         }
         
         [HttpGet]
@@ -36,6 +38,18 @@ namespace CRMSanto.Controllers
         public ActionResult NewWerksituatie(Werksituatie w)
         {
             ks.InsertWerkSituatie(w);
+            return View();
+        }
+        [HttpGet]
+        public ActionResult OpkuisAfspraken()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult OpkuisAfspraken(DateTime van, DateTime tot)
+        {
+            afs.InsertArchief(van,tot);
             return View();
         }
     }

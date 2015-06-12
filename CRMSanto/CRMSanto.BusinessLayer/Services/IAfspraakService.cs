@@ -17,6 +17,7 @@ namespace CRMSanto.BusinessLayer.Services
         System.Collections.Generic.List<CRMSanto.Models.SoortAfspraak> GetMassages();
         CRMSanto.Models.Masseur GetMasseurByID(int id);
         System.Collections.Generic.List<CRMSanto.Models.Masseur> GetMasseurs();
+        void InsertArchief(DateTime van, DateTime tot);
         CRMSanto.Models.Arrangement InsertArrangement(CRMSanto.Models.Arrangement a);
         CRMSanto.Models.Extra InsertExtra(CRMSanto.Models.Extra e);
         CRMSanto.Models.SoortAfspraak InsertMassage(CRMSanto.Models.SoortAfspraak m);
