@@ -1,13 +1,15 @@
-﻿
+﻿@model CRMSanto.ViewModels.InstellingenVM
 @{
     ViewBag.Title = "Instellingen";
 }
 
 <h2>Instellingen</h2>
 <hr />
-@Html.ActionLink("Nieuwe Karaktertrek Toevoegen", "NewKaraktertrek");
+@Html.ActionLink("Nieuwe Karaktertrek Toevoegen", "NewKaraktertrek","Setting", new { Karaktertrekken = Model.Karaktertreken },null);
 <hr />
-@Html.ActionLink("Nieuwe Werksituatie Toevoegen", "NewWerksituatie");
+@Html.ActionLink("Nieuwe Werksituatie Toevoegen", "NewWerksituatie", new { Werksituaties = Model.Werksituaties });
+<hr />
+@Html.ActionLink("Nieuwe Mutualiteit Toevoegen", "NewMutualiteit", new { Mutualiteiten = Model.Mutualiteiten });
 <hr />
 @Html.ActionLink("Afspraken Archiveren", "OpkuisAfspraken");
 

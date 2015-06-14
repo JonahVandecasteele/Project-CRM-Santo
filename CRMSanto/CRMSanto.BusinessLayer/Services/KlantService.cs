@@ -53,9 +53,10 @@ namespace CRMSanto.BusinessLayer.Services
         }
         public Klant InsertKlant(Klant klant)
         {
-            // StorageHelper.AddImage("StorageConnectionString", "images", Image, System.Guid.NewGuid().ToString());
+            
             Klant result = repoKlant.Insert(klant);
             repoKlant.SaveChanges();
+            //StorageHelper.AddImage("StorageConnectionString", "images", Image, System.Guid.NewGuid().ToString());
             return result;
         }
         public void SaveImage(HttpPostedFileBase p, string filename)
@@ -112,6 +113,12 @@ namespace CRMSanto.BusinessLayer.Services
         {
             Karaktertrek result = repoKaraktertrek.Insert(k);
             repoKaraktertrek.SaveChanges();
+            return result;
+        }
+        public Mutualiteit InsertMutualiteit(Mutualiteit m)
+        {
+            Mutualiteit result = repoMutualiteit.Insert(m);
+            repoMutualiteit.SaveChanges();
             return result;
         }
         public List<Gemeente> GetGemeentesByPostCode(string id)

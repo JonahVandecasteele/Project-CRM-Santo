@@ -1,5 +1,6 @@
 ﻿using CRMSanto.BusinessLayer.Services;
 using CRMSanto.Models;
+using CRMSanto.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +20,11 @@ namespace CRMSanto.Controllers
         }
         public ActionResult Index()
         {
-            return View();
+            InstellingenVM model = new InstellingenVM();
+            model.Mutualiteiten = ks.GetMutualiteiten();
+            model.Werksituaties = ks.GetWerkSituaties();
+            model.Karaktertreken = ks.GetKaraktertreken();
+            return View(model);
         }
         [HttpGet]
         public ActionResult NewKaraktertrek()

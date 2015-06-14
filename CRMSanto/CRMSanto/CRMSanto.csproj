@@ -315,6 +315,7 @@
     <Compile Include="Startup.cs" />
     <Compile Include="Utils\SettingsHelper.cs" />
     <Compile Include="ViewModels\AfspraakPM.cs" />
+    <Compile Include="ViewModels\InstellingenVM.cs" />
     <Compile Include="ViewModels\KlantDetailsPM.cs" />
     <Compile Include="ViewModels\KlantViewModel.cs" />
     <Compile Include="ViewModels\NieuweAfspraakPM.cs" />
@@ -464,6 +465,7 @@
     <Content Include="Views\Dienst\Edit3.cshtml" />
     <Content Include="Views\Setting\OpkuisAfspraken.cshtml" />
     <Content Include="Views\Setting\Index.cshtml" />
+    <Content Include="Views\Setting\NewMutualiteit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

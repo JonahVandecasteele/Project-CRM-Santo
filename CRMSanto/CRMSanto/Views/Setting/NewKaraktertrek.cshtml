@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "NewKaraktertrek";
+    List<CRMSanto.Models.Karaktertrek> list = (List<CRMSanto.Models.Karaktertrek>)ViewData["Karaktertrekken"];
 }
 
 <h2>Nieuwe Karaktertrek</h2>
@@ -19,6 +20,15 @@
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Naam, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Naam, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <h4>Bestaande :</h4>
+        <div class="form-group">
+            <div class="col-md-10">
+                @foreach (CRMSanto.Models.Karaktertrek item in list)
+                {
+                    Html.Label(item.Naam);
+                }
             </div>
         </div>
 

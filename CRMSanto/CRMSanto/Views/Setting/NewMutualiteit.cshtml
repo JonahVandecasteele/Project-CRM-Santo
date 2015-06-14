@@ -1,12 +1,11 @@
-﻿@model CRMSanto.Models.Werksituatie
+﻿@model CRMSanto.Models.Mutualiteit
 
 @{
-    ViewBag.Title = "NewWerksituatie";
-    List<CRMSanto.Models.Werksituatie> list = (List<CRMSanto.Models.Werksituatie>)ViewData["Werksituaties"];
+    ViewBag.Title = "NewMutualiteit";
+    List<CRMSanto.Models.Mutualiteit> list = (List<CRMSanto.Models.Mutualiteit>)ViewData["Mutualiteiten"];
 }
 
-<h2>Nieuwe Werksituatie</h2>
-
+<h2>Nieuwe Mutualiteit</h2>
 
 @using (Html.BeginForm()) 
 {
@@ -25,10 +24,10 @@
         <h4>Bestaande :</h4>
         <div class="form-group">
             <div class="col-md-10">
-                @foreach (CRMSanto.Models.Werksituatie item in list)
-                {
+                @foreach (CRMSanto.Models.Mutualiteit item in list)
+	            {
                     Html.Label(item.Naam);
-                }
+	            }
             </div>
         </div>
 
@@ -43,7 +42,3 @@
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
