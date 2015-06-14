@@ -24,6 +24,7 @@ namespace CRMSanto.BusinessLayer.Services
         CRMSanto.Models.Werksituatie InsertWerkSituatie(CRMSanto.Models.Werksituatie w);
         void Mails();
         void SaveImage(System.Web.HttpPostedFileBase p, string filename);
+        void SendMail();
         void UpdateKlant(CRMSanto.Models.Klant klant);
     }
 }

@@ -146,5 +146,12 @@ namespace CRMSanto.BusinessLayer.Services
                 Console.WriteLine(createUpdatetUser);
             }
         }
+        public void SendMail()
+        {
+	        {
+                API sendinBlue = new mailinblue.API("r0GZv13CEFbk8yVq");
+	            
+	        }
+        }
     }
 }
