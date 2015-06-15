@@ -78,16 +78,16 @@ namespace CRMSanto.Controllers
 
         [HttpPost]
         public async Task<ActionResult> New(NieuweAfspraakPM a)
-        {
-
-           
+        {        
                 if (a.Afspraak.Klant.ID != 0)
                 {
                     a.Afspraak.Klant = ks.GetKlantByID(a.Afspraak.Klant.ID);
                 }
                 a.Afspraak.Masseur = afs.GetMasseurByID(a.Afspraak.Masseur.ID);
                 a.Afspraak.SoortAfspraak = afs.GetMassageByID(a.Afspraak.SoortAfspraak.ID);
-                a.Afspraak.Duur = a.Afspraak.SoortAfspraak.Duur;
+                a.Afspraak.Arrangement = afs.GetArrangementByID(a.Afspraak.Arrangement.ID);
+                a.Afspraak.Extra = afs.GetExtraByID(a.Afspraak.Extra.ID);
+                a.Afspraak.Duur = a.Afspraak.SoortAfspraak.Duur + a.Afspraak.Arrangement.Duur;
                 a.Afspraak.DatumTijdstip = a.Datum.Date + a.Tijdstip.TimeOfDay;
                 if (a.Afspraak.DatumTijdstip == DateTime.MinValue)
                     a.Afspraak.DatumTijdstip = (DateTime)SqlDateTime.MinValue;

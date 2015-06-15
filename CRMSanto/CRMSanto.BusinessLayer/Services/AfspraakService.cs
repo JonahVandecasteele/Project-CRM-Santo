@@ -75,13 +75,13 @@ namespace CRMSanto.BusinessLayer.Services
             //Sessie s = new Sessie {Klant=a.Klant,AantalSessies=1 };
             //s.AantalSessies.Add(s);
             
-            List<Afspraak> afspraken = repoAfspraken.LopendeAfspraken();
+            //List<Afspraak> afspraken = repoAfspraken.LopendeAfspraken();
             //foreach (Afspraak afspraak in afspraken)
             //{
-                bool nieuweAfspraakBookable = !afspraken.Any(x => x.DatumTijdstip >= a.DatumTijdstip.AddHours((a.Duur / 60) + 1) && x.DatumTijdstip.AddHours((x.Duur / 60) + 1) <= a.DatumTijdstip);
-                //bool nieuweAfspraakBookable = !repoAfspraken.LopendeAfspraken().Any(x => x.DatumTijdstip >= a.DatumTijdstip.AddHours(a.Duur / 60) && x.DatumTijdstip.AddHours(x.Duur / 60) <= a.DatumTijdstip);
-                if (nieuweAfspraakBookable == false)
-                {
+                //bool nieuweAfspraakBookable = !afspraken.Any(x => x.DatumTijdstip >= a.DatumTijdstip.AddHours((a.Duur / 60) + 1) && x.DatumTijdstip.AddHours((x.Duur / 60) + 1) <= a.DatumTijdstip);
+                ////bool nieuweAfspraakBookable = !repoAfspraken.LopendeAfspraken().Any(x => x.DatumTijdstip >= a.DatumTijdstip.AddHours(a.Duur / 60) && x.DatumTijdstip.AddHours(x.Duur / 60) <= a.DatumTijdstip);
+                //if (nieuweAfspraakBookable == false)
+                //{
                     repoAfspraken.Insert(a);
                     repoAfspraken.SaveChanges();
 
@@ -99,7 +99,7 @@ namespace CRMSanto.BusinessLayer.Services
                         repoSessie.SaveChanges();
 
                     }
-            }
+           // }
             
              //}
         } 
