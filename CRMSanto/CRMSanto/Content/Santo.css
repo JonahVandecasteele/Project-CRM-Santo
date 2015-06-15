@@ -2573,3 +2573,11 @@ nav ul li.active, nav ul li:hover {
 .input-field .mdi-social-cake.prefix.active {
     color: #333333;
 }
+
+#icon-one, #icon-two, #icon-three {
+    transition-duration: 0.4s;
+    transition-property: transform;
+}
+.rotated{
+    transform: rotate(90deg);
+}
