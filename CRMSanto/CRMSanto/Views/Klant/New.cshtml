@@ -10,8 +10,7 @@
     <li class="active">Toevoegen</li>
 </ul>
 
-@using (Html.BeginForm("New", "Klant", FormMethod.Post,
- new { @id = "frmKlant", enctype = "multipart/form-data" }))
+@using (Html.BeginForm("New", "Klant", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
 
@@ -96,8 +95,9 @@
         </div>
     </div>
     <div class="fixed-action-btn">
+        <input type="submit" name="Create"/>
         <a onclick="$('#frmKlant').reset();" href="#" class="btn-floating btn-large waves-effect waves-light red"><i class="mdi-navigation-refresh"></i></a>
-        <a onclick="$('#frmKlatn').submit();" href="#" class="btn-floating btn-large waves-effect waves-light green"><i class="mdi-content-save"></i></a>
+        <a onclick="$('#frmKlant').submit();" href="#" class="btn-floating btn-large waves-effect waves-light green"><i class="mdi-content-save"></i></a>
     </div>
 }
 
