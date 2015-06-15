@@ -74,13 +74,13 @@ namespace CRMSanto.Controllers
         [HttpGet]
         public ActionResult NewRelatie()
         {
-            ViewBag.List = ks.GetMutualiteiten();
+            ViewBag.List = ks.GetRelaties();
             return View();
         }
         [HttpPost]
-        public ActionResult NewRelatie(Mutualiteit m)
+        public ActionResult NewRelatie(Relatie r)
         {
-            ks.InsertMutualiteit(m);
+            ks.InsertRelatie(r);
             return RedirectToAction("Index");
         }
     }
