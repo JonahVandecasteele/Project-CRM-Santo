@@ -242,6 +242,10 @@ namespace CRMSanto.Controllers
                 model.Karaktertreken = ks.GetKaraktertreken();
                 return View(model);
             }
+            else if (Request.Form["addrell"] != null)
+            {
+                
+            }
             return View();
 
         }

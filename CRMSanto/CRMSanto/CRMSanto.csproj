@@ -469,6 +469,7 @@
     <Content Include="Views\Setting\NewMutualiteit.cshtml" />
     <Content Include="Views\Setting\NewRelatie.cshtml" />
     <Content Include="Views\Klant\New.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\KlantRelatie.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
