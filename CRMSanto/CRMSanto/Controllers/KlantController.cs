@@ -35,6 +35,19 @@ namespace CRMSanto.Controllers
         //}
         public ActionResult Index(string sortOrder)
         {
+            List<Geslacht> geslachten = ks.GetGeslachten();
+            List<SelectListItem> items = new List<SelectListItem>();
+
+            foreach (Geslacht geslacht in geslachten)
+            {
+            items.Add(new SelectListItem { Text = geslacht.Naam, Value = geslacht.ID.ToString() });
+            
+            }
+           
+
+            ViewData["Options"] = items;
+
+
             KlantViewModel kv = new KlantViewModel();
             
             kv.Geslachten = ks.GetGeslachten();
@@ -67,10 +80,21 @@ namespace CRMSanto.Controllers
 
                     return View(klanten);
                 }
+               
                 else { 
                     ViewBag.Search = null;
                     return View(ks.GetKlanten());
                 }
+            }
+            else if (Request.Form["filterDit"] != null)
+            {
+                
+                string geslacht = Request.Form["Options"];
+                List<Klant> klant = ks.GetKlanten();
+                var klantOpGeslacht = from klants in klant
+                                      where klants.Geslacht.ID.ToString().Contains(geslacht)
+                                      select klants;
+                return View(klantOpGeslacht);
             }
             else if (Request.Form["clear"] != null)
             {
