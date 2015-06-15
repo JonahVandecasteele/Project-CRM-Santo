@@ -53,9 +53,9 @@ namespace CRMSanto.Controllers
         }
 
         [HttpPost]
-        public ActionResult OpkuisAfspraken(DateTime van, DateTime tot)
+        public ActionResult OpkuisAfspraken(String van, String tot)
         {
-            afs.InsertArchief(van,tot);
+            //afs.InsertArchief(van,tot);
             return RedirectToAction("Index");
         }
 

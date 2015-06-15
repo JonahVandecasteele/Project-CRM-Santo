@@ -135,6 +135,10 @@
     <Compile Include="Migrations\201506150747208_RelatieTest2.Designer.cs">
       <DependentUpon>201506150747208_RelatieTest2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201506151335464_Archief.cs" />
+    <Compile Include="Migrations\201506151335464_Archief.Designer.cs">
+      <DependentUpon>201506151335464_Archief.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Product\Product.cs" />
     <Compile Include="Product\Productregistratie.cs" />
@@ -184,6 +188,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201506150747208_RelatieTest2.resx">
       <DependentUpon>201506150747208_RelatieTest2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506151335464_Archief.resx">
+      <DependentUpon>201506151335464_Archief.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

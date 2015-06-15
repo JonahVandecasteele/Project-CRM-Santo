@@ -15,7 +15,6 @@ namespace CRMSanto.Models
         public string Voornaam { get; set; }
         public virtual Adres Adres { get; set; }
         public string Foto { get; set; }
-        [DataType(DataType.PhoneNumber)]
         public string Telefoon { get; set; }
         [DataType(DataType.EmailAddress)]
         [Display(Name="E-mail")]

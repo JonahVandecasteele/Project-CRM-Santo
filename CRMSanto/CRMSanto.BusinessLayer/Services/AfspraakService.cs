@@ -177,7 +177,8 @@ namespace CRMSanto.BusinessLayer.Services
             foreach(Afspraak a in afspraken)
             {
                 Archief ar = new Archief();
-                ar.AdresID = a.Adres.ID;
+                ar = (Archief)a;
+               /* ar.AdresID = a.Adres.ID;
                 ar.KlantID = a.Klant.ID;
                 ar.MasseurID = a.Masseur.ID;
                 ar.Notitie = a.Notitie;
@@ -187,7 +188,8 @@ namespace CRMSanto.BusinessLayer.Services
                 ar.AantalPersonen = a.AantalPersonen;
                 ar.ArrangementID = a.Arrangement.ID;
                 ar.DatumTijdstip = a.DatumTijdstip;
-                ar.Duur = a.Duur;
+                ar.Duur = a.Duur;*/
+
                 repoArchief.Insert(ar);
                 repoAfspraken.Delete(a);
             }

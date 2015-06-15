@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace CRMSanto.Models
 {
-    public class Archief
+    public class Archief : Afspraak
     {
-        public int ID { get; set; }
+     /*   public int ID { get; set; }
         public DateTime DatumTijdstip { get; set; }
         public int KlantID { get; set; }
         public Boolean Verplaatsing { get; set; }
@@ -21,6 +21,6 @@ namespace CRMSanto.Models
         public Boolean Geannuleerd { get; set; }
         public int MasseurID { get; set; }
         public int ArrangementID { get; set; }
-        public int AantalPersonen { get; set; }
+        public int AantalPersonen { get; set; }*/
     }
 }
