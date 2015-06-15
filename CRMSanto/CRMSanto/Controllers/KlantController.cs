@@ -35,6 +35,10 @@ namespace CRMSanto.Controllers
         //}
         public ActionResult Index(string sortOrder)
         {
+            KlantViewModel kv = new KlantViewModel();
+            
+            kv.Geslachten = ks.GetGeslachten();
+            kv.Gemeentes = ks.GetGemeentes();
             //List<Klant> klanten = ks.GetKlanten();
             //return View(klanten);
             if (Request.Form["submit"] != null)
