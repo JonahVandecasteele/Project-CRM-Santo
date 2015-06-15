@@ -152,6 +152,7 @@ namespace CRMSanto.Controllers
             model.Mutualiteiten = ks.GetMutualiteiten();
             model.Werksituaties = ks.GetWerkSituaties();
             model.Karaktertreken = ks.GetKaraktertreken();
+            model.Vandaag = DateTime.Now.ToString("dd-MM-yyyy");
             return View(model);
         }
         [HttpPost]
