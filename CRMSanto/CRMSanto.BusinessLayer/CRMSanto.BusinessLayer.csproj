@@ -93,6 +93,7 @@
     <Compile Include="Repository\ISessieRepository.cs" />
     <Compile Include="Repository\KaraktertrekRepository.cs" />
     <Compile Include="Repository\KlantenRepository.cs" />
+    <Compile Include="Repository\MailRepository.cs" />
     <Compile Include="Repository\ProductenRepository.cs" />
   </ItemGroup>
   <ItemGroup>
