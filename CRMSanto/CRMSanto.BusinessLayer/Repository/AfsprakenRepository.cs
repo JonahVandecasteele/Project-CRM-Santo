@@ -29,6 +29,14 @@ namespace CRMSanto.BusinessLayer.Repository
                          select a);
             return query.ToList<Afspraak>();
         }
+        public List<Afspraak> AfsprakenSpecifiekeDag(DateTime dag)
+        {
+            var query = (from a in context.Afspraak.Include(k => k.Klant).Include(m => m.Masseur).Include(ms => ms.SoortAfspraak).Include(k => k.Klant.Adres)
+                         where a.Geannuleerd == false && SqlFunctions.DateDiff("DAY", dag.Date, DbFunctions.TruncateTime(a.DatumTijdstip)) == 0
+                         orderby a.DatumTijdstip ascending
+                         select a);
+            return query.ToList<Afspraak>();
+        }
         public List<Afspraak> TussenTweeDatums(DateTime van,DateTime tot)
         {
             var query = (from a in context.Afspraak.Include(k=>k.Klant).Include(m=>m.Masseur).Include(ms=>ms.SoortAfspraak).Include(k=>k.Klant.Adres).Include(e=>e.Extra).Include(ar=>ar.Arrangement)
@@ -42,6 +50,15 @@ namespace CRMSanto.BusinessLayer.Repository
             DateTime dt = DateTime.Now;
             var query = (from a in context.Afspraak.Include(k => k.Klant).Include(m=>m.Masseur).Include(ms=>ms.SoortAfspraak).Include(k=>k.Klant.Adres)
                          where a.Geannuleerd == false && SqlFunctions.DateDiff("DAY",dt.Date,DbFunctions.TruncateTime(a.DatumTijdstip))>=0
+                         orderby a.DatumTijdstip ascending
+                         select a);
+
+            return query.ToList<Afspraak>();
+        }
+        public List<Afspraak> VanafAfspraken(DateTime vanaf)
+        {
+            var query = (from a in context.Afspraak.Include(k => k.Klant).Include(m => m.Masseur).Include(ms => ms.SoortAfspraak).Include(k => k.Klant.Adres)
+                         where a.Geannuleerd == false && SqlFunctions.DateDiff("DAY", vanaf.Date, DbFunctions.TruncateTime(a.DatumTijdstip)) >= 0
                          orderby a.DatumTijdstip ascending
                          select a);
 

@@ -9,6 +9,11 @@
 </ul>
 
 <div class="col-md-3">
+    @using (Html.BeginForm("Index", "Afspraak", FormMethod.Post))
+    { 
+        <input type="date" id="vanaf" name="vanaf" />
+        <input type="submit" value="feest" />
+    }
 </div>
 <div class="col-md-9">
     <div class="table-responsive">

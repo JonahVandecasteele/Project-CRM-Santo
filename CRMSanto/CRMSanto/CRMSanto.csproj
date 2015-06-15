@@ -299,7 +299,6 @@
     <Compile Include="Controllers\DienstController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KlantController.cs" />
-    <Compile Include="Controllers\MassageController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\SettingController.cs" />
     <Compile Include="Global.asax.cs">
@@ -315,6 +314,7 @@
     <Compile Include="Startup.cs" />
     <Compile Include="Utils\SettingsHelper.cs" />
     <Compile Include="ViewModels\AfspraakPM.cs" />
+    <Compile Include="ViewModels\InstellingenVM.cs" />
     <Compile Include="ViewModels\KlantDetailsPM.cs" />
     <Compile Include="ViewModels\KlantViewModel.cs" />
     <Compile Include="ViewModels\NieuweAfspraakPM.cs" />
@@ -387,7 +387,9 @@
     <Content Include="fonts\Roboto-Thin.ttf" />
     <Content Include="fonts\Roboto-Thin.woff" />
     <Content Include="fonts\Roboto-Thin.woff2" />
+    <None Include="Content\fonts\material-design-icons\Material-Design-Icons.woff2" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\collapse.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -402,6 +404,7 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\ripples.min.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="Views\Klant\TextFile1.txt" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -463,10 +466,11 @@
     <Content Include="Views\Dienst\New3.cshtml" />
     <Content Include="Views\Dienst\Edit3.cshtml" />
     <Content Include="Views\Setting\OpkuisAfspraken.cshtml" />
+    <Content Include="Views\Setting\Index.cshtml" />
+    <Content Include="Views\Setting\NewMutualiteit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Massage\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

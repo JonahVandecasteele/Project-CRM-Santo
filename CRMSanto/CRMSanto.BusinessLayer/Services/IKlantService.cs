@@ -20,9 +20,11 @@ namespace CRMSanto.BusinessLayer.Services
         System.Collections.Generic.List<CRMSanto.Models.Werksituatie> GetWerkSituaties();
         CRMSanto.Models.Karaktertrek InsertKaraktertrek(CRMSanto.Models.Karaktertrek k);
         CRMSanto.Models.Klant InsertKlant(CRMSanto.Models.Klant klant);
+        CRMSanto.Models.Mutualiteit InsertMutualiteit(CRMSanto.Models.Mutualiteit m);
         CRMSanto.Models.Werksituatie InsertWerkSituatie(CRMSanto.Models.Werksituatie w);
         void Mails();
         void SaveImage(System.Web.HttpPostedFileBase p, string filename);
+        void SendMail();
         void UpdateKlant(CRMSanto.Models.Klant klant);
     }
 }

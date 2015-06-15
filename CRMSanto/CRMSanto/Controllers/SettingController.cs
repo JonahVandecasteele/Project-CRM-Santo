@@ -1,5 +1,6 @@
 ﻿using CRMSanto.BusinessLayer.Services;
 using CRMSanto.Models;
+using CRMSanto.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +18,14 @@ namespace CRMSanto.Controllers
             this.ks = ks;
             this.afs = afs;
         }
-        
+        public ActionResult Index()
+        {
+            InstellingenVM model = new InstellingenVM();
+            model.Mutualiteiten = ks.GetMutualiteiten();
+            model.Werksituaties = ks.GetWerkSituaties();
+            model.Karaktertreken = ks.GetKaraktertreken();
+            return View(model);
+        }
         [HttpGet]
         public ActionResult NewKaraktertrek()
         {
@@ -52,5 +60,17 @@ namespace CRMSanto.Controllers
             afs.InsertArchief(van,tot);
             return View();
         }
+
+        [HttpGet]
+        public ActionResult NewMutualiteit()
+        {
+            return View();
+        }
+      //[HttpPost]
+      //public ActionResult NewMutualiteit(Mutualiteit m)
+      //{
+      //    ks.InsertMutualiteit(m);
+      //    return View();
+      //}
     }
 }

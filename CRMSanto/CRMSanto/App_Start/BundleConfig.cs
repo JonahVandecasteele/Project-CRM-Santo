@@ -25,7 +25,8 @@ namespace CRMSanto
                       "~/Scripts/respond.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/material").Include(
-                      "~/Scripts/materialize.min.js"));
+                      "~/Scripts/materialize.min.js",
+                      "~/Scripts/collapse.js"));
             //                      "~/Scripts/ripples.min.js",
 
 

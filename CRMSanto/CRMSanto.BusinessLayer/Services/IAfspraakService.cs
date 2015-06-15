@@ -4,6 +4,7 @@ namespace CRMSanto.BusinessLayer.Services
     public interface IAfspraakService
     {
         void AddAfspraak(CRMSanto.Models.Afspraak a);
+        System.Collections.Generic.List<CRMSanto.Models.Afspraak> AfsprakenSpecifiekeDag(DateTime dag);
         CRMSanto.Models.Afspraak GetAfspraakByID(int? id);
         System.Collections.Generic.List<CRMSanto.Models.Afspraak> GetAfspraken();
         System.Collections.Generic.List<CRMSanto.Models.Afspraak> GetAfsprakenByKlantenID(int id);
@@ -25,5 +26,6 @@ namespace CRMSanto.BusinessLayer.Services
         void UpdateArrangement(CRMSanto.Models.Arrangement a);
         void UpdateExtra(CRMSanto.Models.Extra e);
         void UpdateMassage(CRMSanto.Models.SoortAfspraak m);
+        System.Collections.Generic.List<CRMSanto.Models.Afspraak> VanafAfspraken(DateTime vanaf);
     }
 }
