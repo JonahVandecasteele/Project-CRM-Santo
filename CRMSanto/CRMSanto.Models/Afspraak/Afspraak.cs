@@ -34,5 +34,6 @@ namespace CRMSanto.Models
         public Arrangement Arrangement { get; set; }
         public int AantalPersonen { get; set; }
         public virtual List<Extra> Extra { get; set; }
+        public bool Archief { get; set; }
     }
 }

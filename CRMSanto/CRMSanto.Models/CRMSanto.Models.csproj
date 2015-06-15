@@ -84,7 +84,6 @@
     <Compile Include="Afspraak\Arrangement.cs" />
     <Compile Include="Afspraak\Extra.cs" />
     <Compile Include="Afspraak\Masseur.cs" />
-    <Compile Include="Archief\Archief.cs" />
     <Compile Include="Klant\Adres.cs" />
     <Compile Include="Afspraak\Afspraak.cs" />
     <Compile Include="Klant\Gemeente.cs" />
@@ -139,6 +138,10 @@
     <Compile Include="Migrations\201506151335464_Archief.Designer.cs">
       <DependentUpon>201506151335464_Archief.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201506151411295_ArchiefRemove.cs" />
+    <Compile Include="Migrations\201506151411295_ArchiefRemove.Designer.cs">
+      <DependentUpon>201506151411295_ArchiefRemove.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Product\Product.cs" />
     <Compile Include="Product\Productregistratie.cs" />
@@ -191,6 +194,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201506151335464_Archief.resx">
       <DependentUpon>201506151335464_Archief.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506151411295_ArchiefRemove.resx">
+      <DependentUpon>201506151411295_ArchiefRemove.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

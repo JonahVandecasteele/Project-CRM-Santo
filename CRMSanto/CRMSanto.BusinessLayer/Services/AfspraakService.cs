@@ -15,17 +15,15 @@ namespace CRMSanto.BusinessLayer.Services
         private IGenericRepository<Masseur> repoMasseur = null;
         private IGenericRepository<SoortAfspraak> repoMassage = null;
         private IGenericRepository<Arrangement> repoArrangement = null;
-        private IGenericRepository<Archief> repoArchief = null;
         private IGenericRepository<Extra> repoExtra = null;
         private ISessieRepository repoSessie = null;
 
-        public AfspraakService(IAfsprakenRepository repoAfspraken, IGenericRepository<Masseur> repoMasseur, IGenericRepository<SoortAfspraak> repoMassage,IGenericRepository<Arrangement> repoArrangement,IGenericRepository<Archief> repoArchief,IGenericRepository<Extra> repoExtra, ISessieRepository repoSessie)
+        public AfspraakService(IAfsprakenRepository repoAfspraken, IGenericRepository<Masseur> repoMasseur, IGenericRepository<SoortAfspraak> repoMassage,IGenericRepository<Arrangement> repoArrangement,IGenericRepository<Extra> repoExtra, ISessieRepository repoSessie)
         {
             this.repoAfspraken = repoAfspraken;
             this.repoMasseur = repoMasseur;
             this.repoMassage = repoMassage;
             this.repoArrangement = repoArrangement;
-            this.repoArchief = repoArchief;
             this.repoExtra = repoExtra;
             this.repoSessie = repoSessie;
         }
@@ -172,8 +170,6 @@ namespace CRMSanto.BusinessLayer.Services
             List<Afspraak> afspraken = repoAfspraken.TussenTweeDatums(van, tot);
             foreach(Afspraak a in afspraken)
             {
-                Archief ar = new Archief();
-                ar = (Archief)a;
                /* ar.AdresID = a.Adres.ID;
                 ar.KlantID = a.Klant.ID;
                 ar.MasseurID = a.Masseur.ID;
@@ -185,11 +181,7 @@ namespace CRMSanto.BusinessLayer.Services
                 ar.ArrangementID = a.Arrangement.ID;
                 ar.DatumTijdstip = a.DatumTijdstip;
                 ar.Duur = a.Duur;*/
-
-                repoArchief.Insert(ar);
-                repoAfspraken.Delete(a);
             }
-            repoArchief.SaveChanges();
             repoAfspraken.SaveChanges();
         }
     }
