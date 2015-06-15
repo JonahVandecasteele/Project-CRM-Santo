@@ -17,8 +17,7 @@ namespace VerjaardagWebJob
         // on an Azure Queue called queue.
         public static void ProcessQueueMessage([QueueTrigger("queue")] string message, TextWriter log)
         {
-
-            log.WriteLine(message);
         }
     }
 }
+
