@@ -14,13 +14,16 @@ namespace CRMSanto.BusinessLayer.Services
         CRMSanto.Models.Klant GetKlantByID(int id);
         System.Collections.Generic.List<CRMSanto.Models.Klant> GetKlanten();
         System.Collections.Generic.List<CRMSanto.Models.Klant> GetKlantenByPostCode(CRMSanto.Models.Adres Add);
+        System.Collections.Generic.List<CRMSanto.Models.KlantRelatie> GetKlantRelaties(CRMSanto.Models.Klant k);
         CRMSanto.Models.Mutualiteit GetMutualiteitByID(int id);
         System.Collections.Generic.List<CRMSanto.Models.Mutualiteit> GetMutualiteiten();
+        System.Collections.Generic.List<CRMSanto.Models.Relatie> GetRelaties();
         CRMSanto.Models.Werksituatie GetWerkSituatieByID(int id);
         System.Collections.Generic.List<CRMSanto.Models.Werksituatie> GetWerkSituaties();
         CRMSanto.Models.Karaktertrek InsertKaraktertrek(CRMSanto.Models.Karaktertrek k);
         CRMSanto.Models.Klant InsertKlant(CRMSanto.Models.Klant klant);
         CRMSanto.Models.Mutualiteit InsertMutualiteit(CRMSanto.Models.Mutualiteit m);
+        CRMSanto.Models.Relatie InsertRelatie(CRMSanto.Models.Relatie r);
         CRMSanto.Models.Werksituatie InsertWerkSituatie(CRMSanto.Models.Werksituatie w);
         void Mails();
         void SaveImage(System.Web.HttpPostedFileBase p, string filename);

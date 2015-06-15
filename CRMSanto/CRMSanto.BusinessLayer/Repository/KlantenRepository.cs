@@ -57,6 +57,14 @@ namespace CRMSanto.BusinessLayer.Repository
             context.Werksituatie.Attach(entity.PersoonlijkeFiche.Werksituatie);
             context.MedischeFiche.Add(entity.MedischeFiche);
             context.PersoonlijkeFiche.Add(entity.PersoonlijkeFiche);
+            if (entity.KlantRelaties != null)
+            {
+                foreach (KlantRelatie item in entity.KlantRelaties)
+                {
+                    context.Relatie.Attach(item.RelatieType);
+                }
+            }
+            context.KlantRelatie.AddRange(entity.KlantRelaties);
             Klant klant = context.Klant.Add(entity);
             return klant;
         }

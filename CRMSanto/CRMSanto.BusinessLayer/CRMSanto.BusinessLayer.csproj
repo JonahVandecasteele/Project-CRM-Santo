@@ -88,6 +88,7 @@
     <Compile Include="Repository\IGenericRepository.cs" />
     <Compile Include="Repository\IKaraktertrekRepository.cs" />
     <Compile Include="Repository\IKlantenRepository.cs" />
+    <Compile Include="Repository\IKlantRelatieRepository.cs" />
     <Compile Include="Repository\IProductenRepository.cs" />
     <Compile Include="Repository\ISessieRepository.cs" />
     <Compile Include="Repository\KaraktertrekRepository.cs" />

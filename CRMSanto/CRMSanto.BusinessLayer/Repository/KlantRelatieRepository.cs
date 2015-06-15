@@ -9,7 +9,7 @@ using System.Web;
 
 namespace CRMSanto.BusinessLayer.Repository
 {
-    public class KlantRelatieRepository : GenericRepository<KlantRelatie>
+    public class KlantRelatieRepository : GenericRepository<KlantRelatie>, CRMSanto.BusinessLayer.Repository.IKlantRelatieRepository
     {
         public IEnumerable<KlantRelatie> All(int id)
         {
