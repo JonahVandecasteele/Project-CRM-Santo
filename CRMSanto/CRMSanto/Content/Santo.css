@@ -2565,3 +2565,7 @@ nav ul li.active, nav ul li:hover {
   content: "\e8f5";
 }
 /*#endregion */
+
+.klant-hidden {
+    display: none;
+}
