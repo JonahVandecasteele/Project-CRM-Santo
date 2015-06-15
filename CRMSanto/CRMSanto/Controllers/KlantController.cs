@@ -55,9 +55,10 @@ namespace CRMSanto.Controllers
                     var klanten = from klants in klant
                                   where klants.Naam.ToLower().Contains(zoeken.ToLower()) || klants.Voornaam.ToLower().Contains(zoeken.ToLower())
                                         || (klants.Naam + " " + klants.Voornaam).ToLower().Contains(zoeken.ToLower()) || (klants.Voornaam + " " + klants.Naam).ToLower().Contains(zoeken.ToLower())
-                                        //|| klants.Adres.Gemeente.Plaatsnaam.ToLower().Contains(zoeken.ToLower())
-                                        //|| klants.Adres.Gemeente.Provincie.ToLower().Contains(zoeken.ToLower())
-                                        //|| klants.Adres.Gemeente.Postcode.ToLower().Contains(zoeken.ToLower())
+                                        || klants.Adres.Gemeente.Plaatsnaam.ToLower().Contains(zoeken.ToLower()) || (klants.Adres.Gemeente.Plaatsnaam + " " + klants.Adres.Gemeente.Postcode).ToLower().Contains(zoeken.ToLower())
+                                        || (klants.Adres.Gemeente.Postcode + " " + klants.Adres.Gemeente.Plaatsnaam).ToLower().Contains(zoeken.ToLower())
+                                        || klants.Adres.Gemeente.Provincie.ToLower().Contains(zoeken.ToLower())
+                                        || klants.Adres.Gemeente.Postcode.ToLower().Contains(zoeken.ToLower())
                                   select klants;
 
                     return View(klanten);
@@ -79,6 +80,8 @@ namespace CRMSanto.Controllers
                 ViewBag.PhoneSortParm = sortOrder == "phoneNumber" ? "phonenumber_desc" : "phoneNumber";
                 ViewBag.EmailSortParm = sortOrder == "email" ? "email_desc" : "email";
                 ViewBag.AdresSortParm = sortOrder == "adres" ? "adres_desc" : "adres";
+                ViewBag.GemeenteSortParm = sortOrder == "gemeente" ? "gemeente_desc" : "gemeente";
+
                 List<Klant> klanten = ks.GetKlanten();
                 ViewBag.Search = null;
                 switch (sortOrder)
@@ -112,6 +115,12 @@ namespace CRMSanto.Controllers
                         break;
                     case "adres_desc":
                         klanten = klanten.OrderByDescending(s => s.Adres.Straat).ToList();
+                        break;
+                    case "gemeente":
+                        klanten = klanten.OrderBy(s => s.Adres.Gemeente.Plaatsnaam).ToList();
+                        break;
+                    case "gemeente_desc":
+                        klanten = klanten.OrderByDescending(s => s.Adres.Gemeente.Plaatsnaam).ToList();
                         break;
                     default:
                         klanten = klanten.OrderBy(s => s.Naam).ToList();

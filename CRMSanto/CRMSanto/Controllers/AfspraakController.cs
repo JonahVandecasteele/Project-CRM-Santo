@@ -42,6 +42,7 @@ namespace CRMSanto.Controllers
         {
             AfspraakPM apm = new AfspraakPM();
             apm.Afspraken = afs.GetLopendeAfspraken();
+            //ks.SendMail();
             return View(apm);
         }
 

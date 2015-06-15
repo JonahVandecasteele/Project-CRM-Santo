@@ -2,9 +2,10 @@
 
 @{
     ViewBag.Title = "NewWerksituatie";
+    List<CRMSanto.Models.Werksituatie> list = ViewBag.List;
 }
 
-<h2>Nieuwe Werksituatie</h2>
+<h2>Nieuwe Werksituatie Optie</h2>
 
 
 @using (Html.BeginForm()) 
@@ -21,13 +22,36 @@
                 @Html.ValidationMessageFor(model => model.Naam, "", new { @class = "text-danger" })
             </div>
         </div>
-
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Create" class="btn btn-default" />
             </div>
         </div>
+        <h4>Bestaande :</h4>
+        <div class="form-group">
+            <div class="col-md-10">
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Naam</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (CRMSanto.Models.Werksituatie item in list)
+                        {
+                            <tr>
+                                <td>@Html.Raw(item.ID)</td>
+                                <td>@Html.Raw(item.Naam)</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
+    
+    
 }
 
 <div>
