@@ -15,11 +15,15 @@ namespace CRMSanto.Controllers
         {
             this.afs = afs;         
         }
-        // GET: Dienst
         public ActionResult Index()
         {
-            return View(afs.GetMassages());
+            ViewBag.Massages = afs.GetMassages();
+            ViewBag.Arrangementen = afs.GetArrangementen();
+            ViewBag.Extras = afs.GetExtras();
+            return View();
         }
+        // GET: Dienst
+        
         [HttpGet]
         public ActionResult New()
         {
@@ -43,11 +47,7 @@ namespace CRMSanto.Controllers
             return View();
         }
 
-        public ActionResult Index2()
-        {
-            return View(afs.GetArrangementen());
-        }
-
+        
         [HttpGet]
         public ActionResult New2()
         {
@@ -72,11 +72,6 @@ namespace CRMSanto.Controllers
         {
             afs.UpdateArrangement(a);
             return View();
-        }
-
-        public ActionResult Index3()
-        {
-            return View(afs.GetExtras());
         }
 
         [HttpGet]
