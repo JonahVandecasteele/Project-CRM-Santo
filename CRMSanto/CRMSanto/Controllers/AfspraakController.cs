@@ -42,7 +42,11 @@ namespace CRMSanto.Controllers
         {
             AfspraakPM apm = new AfspraakPM();
             apm.Afspraken = afs.GetLopendeAfspraken();
-            //ks.SendMail();
+            //List<Klant> jarigen = ks.GetJarigen();
+            //foreach(Klant k in jarigen)
+            //{
+            //    ks.SendMail(k);
+            //}
             return View(apm);
         }
 

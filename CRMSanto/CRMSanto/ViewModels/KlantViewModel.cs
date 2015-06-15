@@ -1,6 +1,7 @@
 ﻿using CRMSanto.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -16,5 +17,6 @@ namespace CRMSanto.ViewModels
         public List<Gemeente> Gemeentes { get; set; }
         public Karaktertrek SelectedKaracter { get;set;}
         public HttpPostedFileBase Upload { get; set; }
+        public String Vandaag { get; set; }
     }
 }

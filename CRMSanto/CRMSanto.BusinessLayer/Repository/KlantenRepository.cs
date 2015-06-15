@@ -7,6 +7,7 @@ using System.Data.Entity;
 using System.Threading.Tasks;
 using System.Web;
 using System.Data.Entity.SqlServer;
+using mailinblue;
 
 namespace CRMSanto.BusinessLayer.Repository
 {
