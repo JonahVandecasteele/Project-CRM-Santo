@@ -117,4 +117,8 @@ Aantal resultaten: @Model.Count()
     $(".clickable-row").click(function () {
         window.document.location = $(this).data("href");
     });
+
+    $(document).ready(function () {
+        $('select').material_select();
+    });
 </script>
