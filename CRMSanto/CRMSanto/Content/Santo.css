@@ -2570,3 +2570,6 @@ nav ul li.active, nav ul li:hover {
     display: none;
 }
 
+.input-field .mdi-social-cake.prefix.active {
+    color: #333333;
+}
