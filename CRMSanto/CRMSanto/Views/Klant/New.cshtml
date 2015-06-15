@@ -18,9 +18,7 @@
         <div class="panel panel-default">
             <div class="panel-heading" role="tab" id="headingOne">
                 <h4 class="panel-title expand-one">
-                    <a href="#">
-                        <i class="mdi-hardware-keyboard-arrow-down" id="icon-one"></i> Basisgegevens
-                    </a>
+                    <i class="mdi-hardware-keyboard-arrow-right rotated" id="icon-one"></i> <i class="mdi-action-info-outline"></i> Basisgegevens
                 </h4>
             </div>
             <div class="panel-body content-one">
@@ -109,9 +107,7 @@
         <div class="panel panel-default">
             <div class="panel-heading" role="tab" id="headingTwo">
                 <h4 class="panel-title expand-two">
-                    <a href="#">
-                        <i class="mdi-hardware-keyboard-arrow-right" id="icon-two"></i> Persoonlijke fiche
-                    </a>
+                    <i class="mdi-hardware-keyboard-arrow-right" id="icon-two"></i> <i class="mdi-action-perm-identity"></i> Persoonlijke fiche
                 </h4>
             </div>
             <div class="panel-body content-two klant-hidden">
@@ -123,7 +119,7 @@
             <div class="panel-heading" role="tab" id="headingThree">
                 <h4 class="panel-title expand-three">
                     <a href="#">
-                        <i class="mdi-hardware-keyboard-arrow-right" id="icon-three"></i> Medische fiche
+                        <i class="mdi-hardware-keyboard-arrow-right" id="icon-three"></i> <i class="mdi-image-healing"></i> Medische fiche
                     </a>
                 </h4>
             </div>
@@ -149,16 +145,17 @@
     }
     jQuery(document).ready(function ($) {
         $('.expand-one').click(function () {
-            $('#icon-one').toggleClass("mdi-hardware-keyboard-arrow-down mdi-hardware-keyboard-arrow-right");
             $('.content-one').slideToggle();
+            $('#icon-one').toggleClass("rotated");
         });
         $('.expand-two').click(function () {
             $('.content-two').slideToggle();
-            $('#icon-two').toggleClass("mdi-hardware-keyboard-arrow-right mdi-hardware-keyboard-arrow-down");
+            $('#icon-two').toggleClass("rotated");
         });
         $('.expand-three').click(function () {
             $('.content-three').slideToggle();
-            $('#icon-three').toggleClass("mdi-hardware-keyboard-arrow-right mdi-hardware-keyboard-arrow-down");
+            $('#icon-three').toggleClass("rotated");
+            
         });
         $('.datepicker').pickadate({
             monthsFull: ['januari', 'februari', 'maart', 'april', 'mei', 'juni', 'juli', 'augustus', 'september', 'oktober', 'november', 'december'],
