@@ -388,6 +388,8 @@
     <Content Include="fonts\Roboto-Thin.woff" />
     <Content Include="fonts\Roboto-Thin.woff2" />
     <None Include="Content\fonts\material-design-icons\Material-Design-Icons.woff2" />
+    <None Include="Properties\PublishProfiles\massage-santo - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\massage-santo - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\collapse.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -469,6 +471,7 @@
     <Content Include="Views\Setting\NewMutualiteit.cshtml" />
     <Content Include="Views\Setting\NewRelatie.cshtml" />
     <Content Include="Views\Klant\New.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\KlantRelatie.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

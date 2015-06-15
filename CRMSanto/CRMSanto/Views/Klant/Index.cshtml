@@ -19,28 +19,39 @@
             <button class="btn-floating waves-effect waves-light santo-brown-bg inline-btn @(@ViewBag.Search == null ? "hide" : "") btn-search" name="clear" type="submit" tabindex="-1">
                 <i class=" mdi-content-clear"></i>
             </button>
+           
         </span>
     </div>
+    <fieldset class="filtering">
+        <legend>Filters</legend>
+
+        @*<div class="form-group">
+            <div class="col-md-10">*@
+        @*@Html.DisplayNameFor(model => model.Geslacht).ToString()
+            @Html.DropDownListFor(model => model.Geslacht.Naam, Model.Geslacht, new { @class = "form-control combobox" })*@
+        <div>
+            <b>Geslachten:</b>
+            @*<select id="GeslachtenId" name="GeslachtenId">
+                    <option value="" disabled selected>--</option>
+                    <option value="1">M</option>
+                    <option value="2">V</option>
+                    <option value="3">X</option>
+                </select>*@
+            @Html.DropDownList("Options", ViewData["Options"] as SelectList, "--")
+        </div>
+
+        @*</div>*@
+        @*<input type="submit" value="Filter Results" name="filterDit" />*@
+
+        @*</div>*@
+        <button class="btn-floating waves-effect waves-light santo-brown-bg inline-btn" name="filterDit" type="submit" tabindex="-1">
+            <i class="mdi-action-filter"></i>
+        </button>
+    </fieldset>
 }
 
 @*@using (Html.BeginForm("Filterable", "Filters", FormMethod.Get)) {*@ 
-<fieldset class="filtering">
-    <legend>Filters</legend>
-        
-        @*<div class="form-group">
-            <div class="col-md-10">*@
-                @*@Html.DisplayNameFor(model => model.Geslacht).ToString()
-                @Html.DropDownListFor(model => model.Geslacht.Naam, Model.Geslacht, new { @class = "form-control combobox" })*@
-                    <b>Geslachten:</b>
-                    <select id="GeslachtenId" name="GeslachtenId">
-                        <option value="1">M</option>
-                        <option value="2">V</option>
-                        <option value="3">X</option>
-                    </select>   
-        @*</div>*@
-        <input type="submit" value="Filter Results" />
-    @*</div>*@
-</fieldset>
+
 @*}*@
 
 <div class="table-responsive">
