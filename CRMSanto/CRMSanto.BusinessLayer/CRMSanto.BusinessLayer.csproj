@@ -95,6 +95,7 @@
     <Compile Include="Repository\ProductenRepository.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Repository\KlantRelatieRepository.cs" />
     <Compile Include="Repository\SessieRepository.cs" />
     <Compile Include="Services\AfspraakService.cs" />
     <Compile Include="Services\IAfspraakService.cs" />

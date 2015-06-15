@@ -1,1 +1,199 @@
-﻿<img src="http://i.memeful.com/media/post/QRyVb4d_700wa_0.gif">
+﻿@model CRMSanto.ViewModels.KlantViewModel
+
+@{
+    ViewBag.Title = "Klant toevoegen";
+}
+
+<ul class="breadcrumb">
+    <li><a href="afspraken.html">Klanten</a></li>
+    <li class="active">Toevoegen</li>
+</ul>
+
+@using (Html.BeginForm("New", "Klant", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    if (Model.Gemeentes == null)
+    {
+        if (Model.Karaktertrek == null)
+        {
+            Model.Karaktertrek = new List<CRMSanto.Models.Karaktertrek>();
+        }
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="panel-group" id="accordion">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">Basisgegevens</a>
+                        </h4>
+                    </div>
+                    <div id="collapse2" class="panel-collapse collapse in">
+                        <div class="panel-body">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Foto, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    <table>
+                                        <tbody>
+                                            <tr>
+                                                <td><img src="/Klant/Photo" class="" id="uploadPreview" /></td>
+                                                <td><input type="file" name="Upload" id="Upload" onchange="PreviewImage();" class=""></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    @*<img src="/Content/img/profile.jpg" class="shop-placeholder" />*@
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Naam, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Naam, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Naam, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Voornaam, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Voornaam, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Voornaam, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Telefoon, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Telefoon, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Telefoon, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Geboortedatum, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Geboortedatum, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Geboortedatum, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Geslacht, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Geslacht, new { htmlAttributes = new { @class = "form-control" }, Geslachten = Model.Geslachten })
+                                    @Html.ValidationMessageFor(model => model.Geslacht, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-group" id="accordion">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">Adres</a>
+                        </h4>
+                    </div>
+                    <div id="collapse2" class="panel-collapse collapse in">
+                        <div class="panel-body">
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    @Html.EditorFor(model => model.Adres, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Adres, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-group" id="accordion">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">Geslacht</a>
+                        </h4>
+                    </div>
+                    <div id="collapse2" class="panel-collapse collapse in">
+                        <div class="panel-body">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.PersoonlijkeFiche, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.PersoonlijkeFiche, new { htmlAttributes = new { @class = "form-control" }, Werksituaties = Model.Werksituaties })
+                    @Html.ValidationMessageFor(model => model.PersoonlijkeFiche, "", new { @class = "text-danger" })
+                    @*@Html.EditorFor(model => model.PersoonlijkeFiche.Werksituatie, new { htmlAttributes = new { @class = "form-control" } })*@
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.SelectedKaracter, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.SelectedKaracter, new { htmlAttributes = new { @class = "form-control" }, Karaktertreken = Model.Karaktertreken, Karaktertrek = Model.Karaktertrek })
+                    @Html.ValidationMessageFor(model => model.SelectedKaracter, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-10">
+                    @for (var i = 0; i < Model.Karaktertrek.Count(); i++)
+                    {
+                        <label>@Model.Karaktertrek[i].Naam</label>
+                    }
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.MedischeFiche, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.MedischeFiche, new { htmlAttributes = new { @class = "form-control" }, Mutualiteiten = Model.Mutualiteiten })
+                    @Html.ValidationMessageFor(model => model.MedischeFiche, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" name="Create" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+        <h3>Meer dan 1 overeenstemende gemeente gevonden</h3>
+        <p>Selecteer de passende gemeente :</p>
+        @Html.DropDownListFor(model => model.Adres.Gemeente.ID, new SelectList(Model.Gemeentes, "ID", "Plaatsnaam"))
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Finish" name="Create" class="btn btn-default" />
+            </div>
+        </div>
+    }
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+<script type="text/javascript">
+    function PreviewImage() {
+        var oFReader = new FileReader();
+        oFReader.readAsDataURL(document.getElementById("Upload").files[0]);
+
+        oFReader.onload = function (oFREvent) {
+            document.getElementById("uploadPreview").src = oFREvent.target.result;
+        };
+    };
+
+    $(document).ready(function () {
+    });
+
+</script>

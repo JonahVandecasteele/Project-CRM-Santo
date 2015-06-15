@@ -468,6 +468,7 @@
     <Content Include="Views\Setting\OpkuisAfspraken.cshtml" />
     <Content Include="Views\Setting\Index.cshtml" />
     <Content Include="Views\Setting\NewMutualiteit.cshtml" />
+    <Content Include="Views\Setting\NewRelatie.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

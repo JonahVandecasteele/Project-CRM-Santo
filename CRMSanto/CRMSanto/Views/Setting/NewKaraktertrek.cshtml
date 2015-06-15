@@ -2,10 +2,9 @@
 
 @{
     ViewBag.Title = "NewKaraktertrek";
-    List<CRMSanto.Models.Karaktertrek> list = (List<CRMSanto.Models.Karaktertrek>)ViewData["Karaktertrekken"];
+    List<CRMSanto.Models.Karaktertrek> list =  ViewBag.List;
 }
-
-<h2>Nieuwe Karaktertrek</h2>
+<h2>Nieuwe Karaktertrek Optie</h2>
 
 
 @using (Html.BeginForm()) 
@@ -25,16 +24,48 @@
         <h4>Bestaande :</h4>
         <div class="form-group">
             <div class="col-md-10">
-                @foreach (CRMSanto.Models.Karaktertrek item in list)
-                {
-                    Html.Label(item.Naam);
-                }
+                <table style="width:100%">
+                    <tr>
+                        <td>ID</td>
+                        <td>Naam</td>
+                    </tr>             
+                        @foreach (CRMSanto.Models.Karaktertrek item in list)
+                        {
+                            <tr>
+                                <td>@Html.Raw(item.ID)</td>
+                                <td>@Html.Raw(item.Naam)</td>
+                            </tr>
+                        }                
+                </table> 
+                
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+        <h4>Bestaande :</h4>
+        <div class="form-group">
+            <div class="col-md-10">
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Naam</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (CRMSanto.Models.Karaktertrek item in list)
+                        {
+                            <tr>
+                                <td>@Html.Raw(item.ID)</td>
+                                <td>@Html.Raw(item.Naam)</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>

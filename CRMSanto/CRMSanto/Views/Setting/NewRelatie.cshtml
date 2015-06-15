@@ -1,17 +1,18 @@
-﻿@model CRMSanto.Models.Mutualiteit
+﻿@model CRMSanto.Models.Relatie
 
 @{
-    ViewBag.Title = "NewMutualiteit";
-    List<CRMSanto.Models.Mutualiteit> list = ViewBag.List;
+    ViewBag.Title = "NewRelatie";
+    List<CRMSanto.Models.Relatie> list = ViewBag.List;
 }
 
-<h2>Nieuwe Mutualiteit Optie</h2>
+<h2>NewRelatie</h2>
 
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
+        <h4>Nieuwe Relatie Optie</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
@@ -21,6 +22,7 @@
                 @Html.ValidationMessageFor(model => model.Naam, "", new { @class = "text-danger" })
             </div>
         </div>
+
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Create" class="btn btn-default" />
@@ -37,7 +39,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach (CRMSanto.Models.Mutualiteit item in list)
+                        @foreach (CRMSanto.Models.Relatie item in list)
                         {
                             <tr>
                                 <td>@Html.Raw(item.ID)</td>
@@ -48,7 +50,6 @@
                 </table>
             </div>
         </div>
-
     </div>
 }
 

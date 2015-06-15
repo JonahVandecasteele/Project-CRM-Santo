@@ -127,6 +127,14 @@
     <Compile Include="Migrations\201506121008185_Relaties-Final5.Designer.cs">
       <DependentUpon>201506121008185_Relaties-Final5.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201506150745168_RelatieTest.cs" />
+    <Compile Include="Migrations\201506150745168_RelatieTest.Designer.cs">
+      <DependentUpon>201506150745168_RelatieTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201506150747208_RelatieTest2.cs" />
+    <Compile Include="Migrations\201506150747208_RelatieTest2.Designer.cs">
+      <DependentUpon>201506150747208_RelatieTest2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Product\Product.cs" />
     <Compile Include="Product\Productregistratie.cs" />
@@ -170,6 +178,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201506121008185_Relaties-Final5.resx">
       <DependentUpon>201506121008185_Relaties-Final5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506150745168_RelatieTest.resx">
+      <DependentUpon>201506150745168_RelatieTest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506150747208_RelatieTest2.resx">
+      <DependentUpon>201506150747208_RelatieTest2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
