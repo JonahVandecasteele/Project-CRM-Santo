@@ -23,32 +23,22 @@ namespace VerjaardagWebJob
         // AzureWebJobsDashboard and AzureWebJobsStorage
         static void Main()
         {
+            Jarigen();
             var host = new JobHost();
             // The following code ensures that the WebJob will be running continuously
             host.RunAndBlock();
         }
 
-        //public static void Jarigen()
-        //{
-        //    ApplicationDbContext context = new ApplicationDbContext();
-        //    KlantenRepository kr = new KlantenRepository(context);
-        //    List<Klant> jarigen = new List<Klant>();
-
-            
-        //    SqlConnection con = new SqlConnection(connectionString);
-        //    SqlCommand cmd = new SqlCommand();
-        //    cmd.CommandText = "SELECT * FROM Klant";
-        //    cmd.CommandType = CommandType.Text;
-        //    cmd.Connection = con;
-
-        //    con.Open();
-
-        //    while(cmd.ExecuteReader().Read())
-        //    {
-        //        jarigen.Add(Klant);
-        //    }
-        //    con.Close();
-        //}
+        public static void Jarigen()
+        {
+            MailRepository mr = new MailRepository();
+            List<Klant> jarigen = new List<Klant>();
+            jarigen = mr.GetJarigen();
+            foreach(Klant k in jarigen)
+            {
+                mr.SendMail(k);
+            }           
+        }
 
         //public IEnumerable<String> GetEmailsJarigen()
         //{

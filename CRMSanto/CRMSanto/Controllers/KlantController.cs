@@ -194,7 +194,7 @@ namespace CRMSanto.Controllers
                     if (klant.Geslacht.ID != 0)
                         klant.Geslacht = ks.GetGeslachtByID(klant.Geslacht.ID);
 
-                    if (klant.MedischeFiche.Mutualiteit.ID != 0)
+                    if (klant.MedischeFiche.Mutualiteit != null )
                         klant.MedischeFiche.Mutualiteit = ks.GetMutualiteitByID(klant.MedischeFiche.Mutualiteit.ID);
                     HttpPostedFileBase photo = klant.Upload;
                     klant.Foto = Guid.NewGuid().ToString();
