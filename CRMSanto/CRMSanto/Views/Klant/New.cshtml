@@ -1,7 +1,7 @@
 ﻿@model CRMSanto.ViewModels.KlantViewModel
 
 @{
-    ViewBag.Title = "New";
+    ViewBag.Title = "Klant toevoegen";
 }
 
 <ul class="breadcrumb">
@@ -18,25 +18,42 @@
             <div class="panel-heading" role="tab" id="headingOne">
                 <h4 class="panel-title expand-one">
                     <a href="#">
-                        <i class="mdi-hardware-keyboard-arrow-down" id="icon-one"></i> Basisgegevens
+                        <i class="mdi-hardware-keyboard-arrow-down" id="icon-one"></i>Basisgegevens
                     </a>
                 </h4>
             </div>
             <div class="panel-body content-one">
                 <div class="row">
-                    <div class="input-field col s6"><img src="/Klant/Photo" class="" id="uploadPreview" /></div>
-                    <div class="input-field col s6"><input type="file" name="Upload" id="Upload" onchange="PreviewImage();" class=""></div>
+                    <div class="col s12">
+                        <div class="row">
+                            <div class="input-field col s6">
+                                <i class="mdi-action-account-circle prefix"></i>
+                                @Html.EditorFor(model => model.Voornaam, new { htmlAttributes = new { @class = "validate", id = "first_name" } })
+                                <label for="first_name">@Html.DisplayNameFor(model => model.Voornaam)</label>
+                            </div>
+                            <div class="input-field col s6">
+                                <i class="mdi-action-account-circle prefix"></i>
+                                @Html.EditorFor(model => model.Naam, new { htmlAttributes = new { @class = "validate", id = "last_name" } })
+                                <label for="last_name">@Html.DisplayNameFor(model => model.Naam)</label>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="row">
-                    <div class="input-field col s6">
-                        @Html.EditorFor(model => model.Voornaam, new { htmlAttributes = new { @class = "validate", id = "first_name"  } })
-                        <label for="first_name">@Html.DisplayNameFor(model => model.Voornaam)</label>
+                    <div class="col s12">
+                        <div class="row">
+                            <div class="input-field col s6">
+                                <i class="mdi-communication-email prefix"></i>
+                                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "validate", id = "mail" } })
+                                <label for="mail">@Html.DisplayNameFor(model => model.Email)</label>
+                            </div>
+                            <div class="input-field col s6">
+                                <i class="mdi-communication-phone prefix"></i>
+                                @Html.EditorFor(model => model.Telefoon, new { htmlAttributes = new { @class = "validate", id = "telephone" } })
+                                <label for="telephone">@Html.DisplayNameFor(model => model.Telefoon)</label>
+                            </div>
+                        </div>
                     </div>
-                    <div class="input-field col s6">
-                        @Html.EditorFor(model => model.Naam, new { htmlAttributes = new { @class = "validate", id = "last_name" } })
-                        <label for="first_name">@Html.DisplayNameFor(model => model.Naam)</label>
-                    </div>
-
                 </div>
             </div>
         </div>
@@ -57,9 +74,9 @@
 
 }
 
-    @section Scripts {
-        @Scripts.Render("~/bundles/jqueryval")
-    }
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
 
 <script>
         jQuery(document).ready(function ($) {
@@ -72,12 +89,4 @@
                 $('#icon-two').toggleClass("mdi-hardware-keyboard-arrow-right mdi-hardware-keyboard-arrow-down");
             });
         });
-        function PreviewImage() {
-            var oFReader = new FileReader();
-            oFReader.readAsDataURL(document.getElementById("Upload").files[0]);
-
-            oFReader.onload = function (oFREvent) {
-                document.getElementById("uploadPreview").src = oFREvent.target.result;
-            };
-        };
 </script>
