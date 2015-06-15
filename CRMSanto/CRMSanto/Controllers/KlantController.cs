@@ -173,6 +173,7 @@ namespace CRMSanto.Controllers
             kdpm.Afspraken = afspraken;
             return View(kdpm);
         }
+        [HttpGet]
         public ActionResult New()
         {
             KlantViewModel model = new KlantViewModel();
@@ -180,13 +181,37 @@ namespace CRMSanto.Controllers
             model.Mutualiteiten = ks.GetMutualiteiten();
             model.Werksituaties = ks.GetWerkSituaties();
             model.Karaktertreken = ks.GetKaraktertreken();
+            model.Geboortedatum = new DateTime();
+            model.Karaktertrek = new List<Karaktertrek>();
+            model.KlantRelaties = new List<KlantRelatie>();
+            model.Geslacht = new Geslacht();
+            model.MedischeFiche = new MedischeFiche();
+            model.MedischeFiche.Mutualiteit = new Mutualiteit();
             model.Vandaag = DateTime.Now.ToString("dd-MM-yyyy");
             return View(model);
         }
         [HttpPost]
         public ActionResult New(KlantViewModel klant)
         {
-            if (Request.Form["Create"] != null)
+            if (Request.Form["addkar"] != null)
+            {
+                KlantViewModel model = klant;
+                Session["PhotoUpload"] = klant.Upload;
+                Karaktertrek trek = ks.GetKaraktertrekByID(model.SelectedKaracter.ID);
+                model.Karaktertrek = (List<Karaktertrek>)TempData["KarTrek"];
+                if (model.Karaktertrek == null)
+                {
+                    model.Karaktertrek = new List<Karaktertrek>();
+                }
+                model.Karaktertrek.Add(trek);
+                TempData["KarTrek"] = model.Karaktertrek;
+                model.Geslachten = ks.GetGeslachten();
+                model.Mutualiteiten = ks.GetMutualiteiten();
+                model.Werksituaties = ks.GetWerkSituaties();
+                model.Karaktertreken = ks.GetKaraktertreken();
+                return View(model);
+            }
+            else           
             {
                 Klant tempKlant = new Klant();
                 if (TempData["NewKlantM"] == null)
@@ -248,28 +273,24 @@ namespace CRMSanto.Controllers
                 ks.Mails();
                 return RedirectToAction("Index");
             }
-            else if (Request.Form["addkar"] != null)
-            {
-                KlantViewModel model = klant;
-                Session["PhotoUpload"] = klant.Upload;
-                Karaktertrek trek = ks.GetKaraktertrekByID(model.SelectedKaracter.ID);
-                model.Karaktertrek = (List<Karaktertrek>)TempData["KarTrek"];
-                if (model.Karaktertrek == null)
-                {
-                    model.Karaktertrek = new List<Karaktertrek>();
-                }
-                model.Karaktertrek.Add(trek);
-                TempData["KarTrek"] = model.Karaktertrek;
-                model.Geslachten = ks.GetGeslachten();
-                model.Mutualiteiten = ks.GetMutualiteiten();
-                model.Werksituaties = ks.GetWerkSituaties();
-                model.Karaktertreken = ks.GetKaraktertreken();
-                return View(model);
-            }
-            else if (Request.Form["addrell"] != null)
-            {
-                
-            }
+            //else if (Request.Form["addkar"] != null)
+            //{
+            //    KlantViewModel model = klant;
+            //    Session["PhotoUpload"] = klant.Upload;
+            //    Karaktertrek trek = ks.GetKaraktertrekByID(model.SelectedKaracter.ID);
+            //    model.Karaktertrek = (List<Karaktertrek>)TempData["KarTrek"];
+            //    if (model.Karaktertrek == null)
+            //    {
+            //        model.Karaktertrek = new List<Karaktertrek>();
+            //    }
+            //    model.Karaktertrek.Add(trek);
+            //    TempData["KarTrek"] = model.Karaktertrek;
+            //    model.Geslachten = ks.GetGeslachten();
+            //    model.Mutualiteiten = ks.GetMutualiteiten();
+            //    model.Werksituaties = ks.GetWerkSituaties();
+            //    model.Karaktertreken = ks.GetKaraktertreken();
+            //    return View(model);
+            //}
             return View();
 
         }
