@@ -75,28 +75,32 @@ namespace CRMSanto.BusinessLayer.Services
             //Sessie s = new Sessie {Klant=a.Klant,AantalSessies=1 };
             //s.AantalSessies.Add(s);
             
-            //List<Afspraak> afspraken = repoAfspraken.LopendeAfspraken();
-            //bool nieuweAfspraakBookable = !afspraken.Any(x => x.DatumTijdstip <= a.DatumTijdstip.AddHours(a.Duur/60) && x.DatumTijdstip.AddHours(x.Duur/60) >= a.DatumTijdstip);
-            //bool nieuweAfspraakBookable = !repoAfspraken.LopendeAfspraken().Any(x => x.DatumTijdstip >= a.DatumTijdstip.AddHours(a.Duur / 60) && x.DatumTijdstip.AddHours(x.Duur / 60) <= a.DatumTijdstip);
-             //if (nieuweAfspraakBookable == true)
-             //{
-                 repoAfspraken.Insert(a);
-                 repoAfspraken.SaveChanges();
+            List<Afspraak> afspraken = repoAfspraken.LopendeAfspraken();
+            //foreach (Afspraak afspraak in afspraken)
+            //{
+                bool nieuweAfspraakBookable = !afspraken.Any(x => x.DatumTijdstip >= a.DatumTijdstip.AddHours((a.Duur / 60) + 1) && x.DatumTijdstip.AddHours((x.Duur / 60) + 1) <= a.DatumTijdstip);
+                //bool nieuweAfspraakBookable = !repoAfspraken.LopendeAfspraken().Any(x => x.DatumTijdstip >= a.DatumTijdstip.AddHours(a.Duur / 60) && x.DatumTijdstip.AddHours(x.Duur / 60) <= a.DatumTijdstip);
+                if (nieuweAfspraakBookable == false)
+                {
+                    repoAfspraken.Insert(a);
+                    repoAfspraken.SaveChanges();
 
-                 try
-                 {
-                     Sessie k = repoSessie.GetByKlantID(a.Klant.ID);
-                     k.AantalSessies++;
-                     repoSessie.Update(k);
-                     repoSessie.SaveChanges();
-                 }
-                 catch (Exception ex)
-                 {
+                    try
+                    {
+                        Sessie k = repoSessie.GetByKlantID(a.Klant.ID);
+                        k.AantalSessies++;
+                        repoSessie.Update(k);
+                        repoSessie.SaveChanges();
+                    }
+                    catch (Exception ex)
+                    {
 
-                     repoSessie.Insert(new Sessie() { AantalSessies = 1, Klant = a.Klant });
-                     repoSessie.SaveChanges();
+                        repoSessie.Insert(new Sessie() { AantalSessies = 1, Klant = a.Klant });
+                        repoSessie.SaveChanges();
 
-                 }
+                    }
+            }
+            
              //}
         } 
 

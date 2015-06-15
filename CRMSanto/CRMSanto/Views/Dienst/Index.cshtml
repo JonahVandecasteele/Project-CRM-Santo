@@ -1,55 +1,63 @@
-﻿@model IEnumerable<CRMSanto.Models.SoortAfspraak>
-
-@{
-    ViewBag.Title = "Index";
-}
-
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "New")
-</p>
+﻿<h2>Massages</h2>
+@Html.ActionLink("Nieuwe massage toevoegen", "New")
 <table class="table">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Naam)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Omschrijving)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Duur)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Prijs)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Verplaatsingmogelijk)
-        </th>
-        <th></th>
+        <th>Naam</th>
+        <th>Omschrijving</th>
+        <th>Duur</th>
+        <th>Prijs</th>
     </tr>
-
-@foreach (var item in Model) {
     <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Naam)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Omschrijving)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Duur)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Prijs)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Verplaatsingmogelijk)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID })
-        </td>
+    @foreach (var item in ViewBag.Massages)
+    {
+      <tr>
+        <td>@item.Naam</td>
+    <td>@item.Omschrijving</td>
+    <td>@item.Duur</td>
+    <td>@item.Prijs</td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.ID })
+    </td>
+        </tr>
+    }
+</table>
+<h2>Arrangementen</h2>
+@Html.ActionLink("Nieuw arrangement toevoegen", "New2")
+<table class="table"> 
+    <tr>
+        <th>Naam</th>
+        <th>Duur</th>
+        <th>Prijs</th>
     </tr>
-}
-
+    <tr>
+        @foreach (var item in ViewBag.Arrangementen)
+        {
+        <tr>
+            <td>@item.Naam</td>
+            <td>@item.Duur</td>
+            <td>@item.Prijs</td>
+            <td>
+                @Html.ActionLink("Edit", "Edit2", new { id = item.ID })
+            </td>
+        </tr>
+        }
+</table>
+<h2>Extra's</h2>
+@Html.ActionLink("Nieuwe extra toevoegen", "New3")
+<table class="table">
+    <tr>
+        <th>Naam</th>
+        <th>Prijs</th>
+    </tr>
+    <tr>
+        @foreach (var item in ViewBag.Extras)
+        {
+        <tr>
+            <td>@item.Naam</td>
+            <td>@item.Prijs</td>
+            <td>
+                @Html.ActionLink("Edit", "Edit3", new { id = item.ID })
+            </td>
+        </tr>
+        }
 </table>
