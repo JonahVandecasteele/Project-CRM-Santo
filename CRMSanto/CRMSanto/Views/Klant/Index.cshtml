@@ -47,6 +47,10 @@
                 @*@Html.DisplayNameFor(model => model.Adres)*@
                 @Html.ActionLink(Html.DisplayNameFor(model => model.Adres).ToString(), "Index", new { sortOrder = ViewBag.AdresSortParm })
             </th>
+            <th>
+                @*@Html.DisplayNameFor(model => model.Adres)*@
+                @Html.ActionLink(Html.DisplayNameFor(model => model.Adres.Gemeente).ToString(), "Index", new { sortOrder = ViewBag.GemeenteSortParm })
+            </th>
         </tr>
 
                 @foreach (var item in Model)
@@ -69,8 +73,11 @@
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.Adres.Straat) @Html.DisplayFor(modelItem => item.Adres.Nummer) @Html.DisplayFor(modelItem => item.Adres.Postbus)<br />
-                            @Html.DisplayFor(modelItem => item.Adres.Postcode) @Html.DisplayFor(modelItem => item.Adres.Gemeente)
+                            @Html.DisplayFor(modelItem => item.Adres.Postcode)
 
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Adres.Gemeente.Plaatsnaam) <br />
                         </td>
                         </tr>
                 }
