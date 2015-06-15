@@ -37,15 +37,17 @@
                     <option value="2">V</option>
                     <option value="3">X</option>
                 </select>*@
-            @Html.DropDownList("Options", ViewData["Options"] as SelectList, "--")
-        </div>
+            <div class="input-field col s12">
+                @Html.DropDownList("Options", ViewData["Options"] as SelectList, "--", new { @class = "browser-default"})
+                </div>
+            </div>
 
         @*</div>*@
         @*<input type="submit" value="Filter Results" name="filterDit" />*@
 
         @*</div>*@
         <button class="btn-floating waves-effect waves-light santo-brown-bg inline-btn" name="filterDit" type="submit" tabindex="-1">
-            <i class="mdi-action-filter"></i>
+            <i class="mdi-content-filter-list"></i>
         </button>
     </fieldset>
 }
@@ -107,7 +109,7 @@
                             
 
                         </td>
-                        <td>
+                        <td class="uppercase">
                             @Html.DisplayFor(modelItem => item.Adres.Gemeente.Plaatsnaam) <br />
                         </td>
                         </tr>
@@ -128,5 +130,8 @@ Aantal resultaten: @Model.Count()
 
     $(document).ready(function () {
         $('select').material_select();
+        $("img").error(function () {
+            $(this).attr("src", "http://massagesanto.blob.core.windows.net/images/profile.jpg");
+        });
     });
 </script>

@@ -216,11 +216,16 @@ namespace CRMSanto.Controllers
                 Klant tempKlant = new Klant();
                 if (TempData["NewKlantM"] == null)
                 {
-                    if (klant.Geslacht.ID != 0)
-                        klant.Geslacht = ks.GetGeslachtByID(klant.Geslacht.ID);
-
-                    if (klant.MedischeFiche.Mutualiteit != null )
-                        klant.MedischeFiche.Mutualiteit = ks.GetMutualiteitByID(klant.MedischeFiche.Mutualiteit.ID);
+                    if (klant.Geslacht != null)
+                    {
+                        if (klant.Geslacht.ID != 0)
+                            klant.Geslacht = ks.GetGeslachtByID(klant.Geslacht.ID);
+                    }
+                    if (klant.MedischeFiche != null)
+                    {
+                        if (klant.MedischeFiche.Mutualiteit != null)
+                            klant.MedischeFiche.Mutualiteit = ks.GetMutualiteitByID(klant.MedischeFiche.Mutualiteit.ID);
+                    }
                     HttpPostedFileBase photo = klant.Upload;
                     klant.Foto = Guid.NewGuid().ToString();
                     if (photo == null)

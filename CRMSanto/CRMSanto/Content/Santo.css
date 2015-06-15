@@ -2581,3 +2581,44 @@ nav ul li.active, nav ul li:hover {
 .rotated{
     transform: rotate(90deg);
 }
+
+.select-dropdown {
+    position: relative !important; 
+    z-index: 1 !important;
+    margin-bottom: 15px;
+}
+
+.panel-default {
+    z-index: 700;
+}
+
+.uppercase {text-transform: uppercase;}
+
+.file-field input.file-path {
+    margin-left: 200px;
+    width: calc(100% - 200px);
+}
+
+.row-eq-height {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display:         flex;
+}
+
+.vertical-align {
+  display: flex;
+  flex-direction: row;
+}
+
+.vertical-align > [class^="col-"],
+.vertical-align > [class*=" col-"] {
+  display: flex;
+  align-items: center;
+  /*justify-content: center;  Optional, to align inner items 
+                              horizontally inside the column */
+}
+
+.file-field.input-field {
+    width: 100%;
+}

@@ -9,25 +9,24 @@
         
 }
 
-
-    <hr />
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    <div class="form-group">
-        @Html.LabelFor(model => model, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-
-            @Html.DropDownListFor(model => model.ID, new SelectList(list, "ID", "Naam"))
-            @Html.ValidationMessageFor(model => model.ID, "", new { @class = "text-danger" })
-            <p>
-                <input type="submit" name="addkar" value="+" class="btn btn-default" />
-            </p>
-        </div>
-        @*@for (var i = 0; i < currentlist.Count(); i++)
+<div class="input-field col s12">
+    <select>
+        <option value="" disabled selected>--</option>
+        @foreach (var item in list)
         {
-            @Html.HiddenFor(model => currentlist[i].Naam)
-            @Html.HiddenFor(model => currentlist[i].ID)
-            <label>@currentlist[i].Naam</label>
-        }*@
-
-    </div>
-
+            <option value="@item.ID">@item.Naam</option>
+        }
+    </select>
+    <label>Karaktertrekken</label>
+    @Html.ValidationMessageFor(model => model.ID, "", new { @class = "text-danger" })
+    <button class="btn waves-effect waves-light" type="submit" name="addkar">
+        Toevoegen
+        <i class="mdi-content-add right"></i>
+    </button>
+</div>
+<p>
+    @foreach (var addemItem in currentlist)
+{
+    @addemItem.Naam
+}
+    </p>

@@ -1,5 +1,5 @@
 ﻿@model CRMSanto.ViewModels.KlantViewModel
-
+@using CRMSanto.Models
 @{
     ViewBag.Title = "Klant toevoegen";
     var gender = "X";
@@ -13,176 +13,171 @@
 @using (Html.BeginForm("New", "Klant", FormMethod.Post, new { @id = "frmKlant", enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
-
-    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-        <div class="panel panel-default">
-            <div class="panel-heading" role="tab" id="headingOne">
-                <h4 class="panel-title expand-one">
-                    <i class="mdi-hardware-keyboard-arrow-right rotated" id="icon-one"></i> <i class="mdi-action-info-outline"></i> Basisgegevens
-                </h4>
+    <div class="row vertical-align">
+        <div class="input-field col-xs-9">
+            <div class="file-field input-field">
+                <input class="file-path validate" disabled type="text" />
+                <div class="btn">
+                    <span>Foto uploaden</span>
+                    <input type="file" name="Upload" id="Upload" onchange="PreviewImage();" />
+                </div>
             </div>
-            <div class="panel-body content-one">
-                <div class="row">
-                    <div class="input-field col s6">
-                        <i class="mdi-action-account-circle prefix"></i>
-                        @Html.EditorFor(model => model.Voornaam, new { htmlAttributes = new { @class = "validate", id = "first_name" } })
-                        <label for="first_name">@Html.DisplayNameFor(model => model.Voornaam)</label>
-                    </div>
-                    <div class="input-field col s6">
-                        <i class="mdi-action-account-circle prefix"></i>
-                        @Html.EditorFor(model => model.Naam, new { htmlAttributes = new { @class = "validate", id = "last_name" } })
-                        <label for="last_name">@Html.DisplayNameFor(model => model.Naam)</label>
-                    </div>
+        </div>
+        <div class="input-field col-xs-3">
+            <img src="/Klant/Photo" class="" id="uploadPreview" />
+        </div>
+    </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    @Html.EditorFor(model => model.Voornaam, new { htmlAttributes = new { @class = "validate", id = "first_name", placeholder = "" } })
+                    <label for="first_name">@Html.DisplayNameFor(model => model.Voornaam)</label>
                 </div>
-                <div class="row">
-                    <div class="input-field col s6">
-                        <i class="mdi-communication-email prefix"></i>
-                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "validate", id = "mail" } })
-                        <label for="mail">@Html.DisplayNameFor(model => model.Email)</label>
-                    </div>
-                    <div class="input-field col s6">
-                        <i class="mdi-communication-phone prefix"></i>
-                        @Html.EditorFor(model => model.Telefoon, new { htmlAttributes = new { @class = "validate", id = "telephone" } })
-                        <label for="telephone">@Html.DisplayNameFor(model => model.Telefoon)</label>
-                    </div>
+                <div class="input-field col s6">
+                    @Html.EditorFor(model => model.Naam, new { htmlAttributes = new { @class = "validate", id = "last_name", placeholder = "" } })
+                    <label for="last_name">@Html.DisplayNameFor(model => model.Naam)</label>
                 </div>
-                <div class="row">
-                    <div class="input-field col s6">
-                        <i class="mdi-action-home prefix"></i>
-                        @Html.EditorFor(model => model.Adres.Straat, new { htmlAttributes = new { @class = "validate", id = "street" } })
-                        <label for="street">@Html.DisplayNameFor(model => model.Adres.Straat)</label>
+            </div>
+
+            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingOne">
+                        <h4 class="panel-title expand-one">
+                            <i class="mdi-hardware-keyboard-arrow-right" id="icon-one"></i> <i class="mdi-action-info-outline"></i> Basisgegevens
+                        </h4>
                     </div>
-                    <div class="input-field col s3">
-                        @Html.EditorFor(model => model.Adres.Nummer, new { htmlAttributes = new { @class = "validate", id = "number" } })
-                        <label for="number">@Html.DisplayNameFor(model => model.Adres.Nummer)</label>
-                    </div>
-                    <div class="input-field col s3">
-                        @Html.EditorFor(model => model.Adres.Postbus, new { htmlAttributes = new { @class = "validate", id = "postbus" } })
-                        <label for="postbus">@Html.DisplayNameFor(model => model.Adres.Postbus)</label>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="input-field col s4">
-                        <i class="prefix"></i>
-                        @Html.EditorFor(model => model.Adres.Postcode, new { htmlAttributes = new { @class = "validate", id = "postcode" } })
-                        <label for="postcode">@Html.DisplayNameFor(model => model.Adres.Postcode)</label>
-                    </div>
-                    <div class="input-field col s8">
-                        @Html.EditorFor(model => model.Adres.Gemeente.Plaatsnaam, new { htmlAttributes = new { @class = "validate", id = "gemeente" } })
-                        <label for="gemeente">@Html.DisplayNameFor(model => model.Adres.Gemeente.Plaatsnaam)</label>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="input-field col s6">
-                        <i class="mdi-social-cake prefix"></i>
-                        @Html.EditorFor(model => model.Geboortedatum, new { htmlAttributes = new { @class = "datepicker", id = "birthdate", type = "date", data_value = Model.Vandaag } })
-                        <label for="birthdate">@Html.DisplayNameFor(model => model.Geboortedatum)</label>
-                    </div>
-                    <div class="input-field col s6">
-                        <i class="mdi-social-group prefix"></i>
-                        @foreach (var item in Model.Geslachten)
-                        {
-                            switch (item.Naam)
+                    <div class="panel-body content-one klant-hidden">
+                        <div class="row">
+                            <div class="input-field col s6">
+                                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "validate", id = "mail", placeholder = "" } })
+                                <label for="mail">@Html.DisplayNameFor(model => model.Email)</label>
+                            </div>
+                            <div class="input-field col s6">
+                                @Html.EditorFor(model => model.Telefoon, new { htmlAttributes = new { @class = "validate", id = "telephone", placeholder = "" } })
+                                <label for="telephone">@Html.DisplayNameFor(model => model.Telefoon)</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s6">
+                                @Html.EditorFor(model => model.Adres.Straat, new { htmlAttributes = new { @class = "validate", id = "street", placeholder = "" } })
+                                <label for="street">@Html.DisplayNameFor(model => model.Adres.Straat)</label>
+                            </div>
+                            <div class="input-field col s3">
+                                @Html.EditorFor(model => model.Adres.Nummer, new { htmlAttributes = new { @class = "validate", id = "number", placeholder = "" } })
+                                <label for="number">@Html.DisplayNameFor(model => model.Adres.Nummer)</label>
+                            </div>
+                            <div class="input-field col s3">
+                                @Html.EditorFor(model => model.Adres.Postbus, new { htmlAttributes = new { @class = "validate", id = "postbus", placeholder = "" } })
+                                <label for="postbus">@Html.DisplayNameFor(model => model.Adres.Postbus)</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s4">
+                                @Html.EditorFor(model => model.Adres.Postcode, new { htmlAttributes = new { @class = "validate", id = "postcode", placeholder = "" } })
+                                <label for="postcode">@Html.DisplayNameFor(model => model.Adres.Postcode)</label>
+                            </div>
+                            <div class="input-field col s8">
+                                @Html.EditorFor(model => model.Adres.Gemeente.Plaatsnaam, new { htmlAttributes = new { @class = "validate", id = "gemeente", placeholder = "" } })
+                                <label for="gemeente">@Html.DisplayNameFor(model => model.Adres.Gemeente.Plaatsnaam)</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s6">
+                                @Html.EditorFor(model => model.Geboortedatum, new { htmlAttributes = new { @class = "datepicker", id = "birthdate", type = "date", data_value = Model.Vandaag } })
+                                <label for="birthdate">@Html.DisplayNameFor(model => model.Geboortedatum)</label>
+                            </div>
+                            <div class="input-field col s6">
+                                @foreach (var item in Model.Geslachten)
                             {
-                                case "M":
-                                    gender = "Man";
-                                    break;
-                                case "V":
-                                    gender = "Vrouw";
-                                    break;
-                                case "X":
-                                    gender = "X";
-                                    break;
-                                default:
-                                    gender = @item.Naam;
-                                    break;
+                                switch (item.Naam)
+                                {
+                                    case "M":
+                                        gender = "Man";
+                                        break;
+                                    case "V":
+                                        gender = "Vrouw";
+                                        break;
+                                    case "X":
+                                        gender = "X";
+                                        break;
+                                    default:
+                                        gender = @item.Naam;
+                                        break;
+                                }
+                                    <input name="Geslacht.ID" type="radio" id="@item.ID" class="with-gap radio-klant" value="@item.ID" />
+                                    <label for="@item.ID">@gender</label>
                             }
-                            <input name="Geslacht.ID" type="radio" id="@item.ID" class="with-gap radio-klant" value="@item.ID" />
-                            <label for="@item.ID">@gender</label>
-                        }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingTwo">
+                        <h4 class="panel-title expand-two">
+                            <i class="mdi-hardware-keyboard-arrow-right" id="icon-two"></i> <i class="mdi-action-perm-identity"></i> Persoonlijke fiche
+                        </h4>
+                    </div>
+                    <div class="panel-body content-two klant-hidden">
+                        <div class="row">
+                            <div class="input-field col s6">
+                                @Html.EditorFor(model => model.SelectedKaracter, new { htmlAttributes = new { @class = "form-control" }, Karaktertreken = Model.Karaktertreken, Karaktertrek = Model.Karaktertrek })
+                            </div>
+                            <div class="input-field col s6">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingThree">
+                        <h4 class="panel-title expand-three">
+                            <a href="#">
+                                <i class="mdi-hardware-keyboard-arrow-right" id="icon-three"></i> <i class="mdi-image-healing"></i> Medische fiche
+                            </a>
+                        </h4>
+                    </div>
+                    <div class="panel-body content-three">
+                        <div class="row">
+                            <div class="col s12">
+                                @Html.EditorFor(model => model.MedischeFiche, new { htmlAttributes = new { @class = "form-control" }, Mutualiteiten = Model.Mutualiteiten })
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="panel panel-default">
-            <div class="panel-heading" role="tab" id="headingTwo">
-                <h4 class="panel-title expand-two">
-                    <i class="mdi-hardware-keyboard-arrow-right" id="icon-two"></i> <i class="mdi-action-perm-identity"></i> Persoonlijke fiche
-                </h4>
+            <div class="fixed-action-btn">
+                <a onclick="$('#frmKlant')[0].reset();" href="#" class="btn-floating btn-large waves-effect waves-light red"><i class="mdi-navigation-refresh"></i></a>
+                <a onclick="$('#frmKlant')[0].submit();" href="#" class="btn-floating btn-large waves-effect waves-light green" name="Create"><i class="mdi-content-save"></i></a>
             </div>
-            <div class="panel-body content-two klant-hidden">
-                <p>This is the content</p>
-                <p> that was hidden before, but now is... Well, visible!"</p>
-            </div>
-        </div>
-        <div class="panel panel-default">
-            <div class="panel-heading" role="tab" id="headingThree">
-                <h4 class="panel-title expand-three">
-                    <a href="#">
-                        <i class="mdi-hardware-keyboard-arrow-right" id="icon-three"></i> <i class="mdi-image-healing"></i> Medische fiche
-                    </a>
-                </h4>
-            </div>
-            <div class="panel-body content-three klant-hidden">
-                <p>This is the content</p>
-                <p> that was hidden before, but now is... Well, visible!"</p>
-            </div>
-        </div>
-    </div>
-    <div class="fixed-action-btn">
-        <a onclick="$('#frmKlant').reset();" href="#" class="btn-floating btn-large waves-effect waves-light red"><i class="mdi-navigation-refresh"></i></a>
-        <a onclick="submitKlantForm();" href="#" class="btn-floating btn-large waves-effect waves-light green" name="Create"><i class="mdi-content-save"></i></a>
-    </div>
-}
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
-
-<script>
-    function submitKlantForm() {
-        $("#frmKlant").submit();
-    }
-    jQuery(document).ready(function ($) {
-        $('.expand-one').click(function () {
-            $('.content-one').slideToggle();
-            $('#icon-one').toggleClass("rotated");
-        });
-        $('.expand-two').click(function () {
-            $('.content-two').slideToggle();
-            $('#icon-two').toggleClass("rotated");
-        });
-        $('.expand-three').click(function () {
-            $('.content-three').slideToggle();
-            $('#icon-three').toggleClass("rotated");
-            
-        });
-        $('.datepicker').pickadate({
-            monthsFull: ['januari', 'februari', 'maart', 'april', 'mei', 'juni', 'juli', 'augustus', 'september', 'oktober', 'november', 'december'],
-            monthsShort: ['jan', 'feb', 'mrt', 'apr', 'mei', 'jun', 'jul', 'aug', 'sept', 'okt', 'nov', 'dec'],
-            weekdaysFull: ['zondag', 'maandag', 'dinsdag', 'woensdag', 'donderdag', 'vrijdag', 'zaterdag'],
-            weekdaysShort: ['zo', 'ma', 'di', 'wo', 'do', 'vr', 'za'],
-            showMonthsShort: undefined,
-            showWeekdaysFull: undefined,
-            today: 'Vandaag',
-            clear: 'Leegmaken',
-            close: 'Sluiten',
-            labelMonthNext: 'Volgende maand',
-            labelMonthPrev: 'Vorige maand',
-            labelMonthSelect: 'Selecteer een maand',
-            labelYearSelect: 'Selecteer een jaar',
-            format: 'dd-mm-yyyy',
-            formatSubmit: 'dd-mm-yyyy',
-            hiddenPrefix: undefined,
-            hiddenSuffix: '_submit',
-            hiddenName: undefined,
-            firstDay: 1,
-            selectMonths: true, // Creates a dropdown to control month
-            selectYears: 100, // Creates a dropdown of 15 years to control year
-            closeOnClear: true,
-            onSet: function (context) {
-                this.close();
             }
-        });
-    });
-</script>
+
+            @section Scripts {
+                @Scripts.Render("~/bundles/jqueryval")
+            }
+
+            <script>
+                function PreviewImage() {
+                    var oFReader = new FileReader();
+                    oFReader.readAsDataURL(document.getElementById("Upload").files[0]);
+
+                    oFReader.onload = function (oFREvent) {
+                        document.getElementById("uploadPreview").src = oFREvent.target.result;
+                    };
+                };
+                jQuery(document).ready(function ($) {
+                    $('select').material_select();
+                    $('.expand-one').click(function () {
+                        $('.content-one').slideToggle();
+                        $('#icon-one').toggleClass("rotated");
+                    });
+                    $('.expand-two').click(function () {
+                        $('.content-two').slideToggle();
+                        $('#icon-two').toggleClass("rotated");
+                    });
+                    $('.expand-three').click(function () {
+                        $('.content-three').slideToggle();
+                        $('#icon-three').toggleClass("rotated");
+
+                    });
+
+                });
+            </script>
