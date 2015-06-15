@@ -1,19 +1,18 @@
-﻿@model CRMSanto.ViewModels.KlantViewModel
-
-@{
+﻿@{
     ViewBag.Title = "Klant toevoegen";
     var gender = "X";
 }
+@model CRMSanto.ViewModels.KlantViewModel
 
 <ul class="breadcrumb">
     <li>@Html.ActionLink("Klanten", "Index", "Klant")</li>
     <li class="active">Toevoegen</li>
 </ul>
 
-@using (Html.BeginForm("New", "Klant", FormMethod.Post,
- new { @id = "frmKlant", enctype = "multipart/form-data" }))
+@using (Html.BeginForm("New", "Klant", FormMethod.Post, new { @id = "frmKlant", enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
     <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
         <div class="panel panel-default">
@@ -52,7 +51,7 @@
                 <div class="row">
                     <div class="input-field col s6">
                         <i class="mdi-social-cake prefix"></i>
-                        @Html.EditorFor(model => model.Geboortedatum, new { htmlAttributes = new { @class = "datepicker", id = "birthdate", type="date", data_value = Model.Vandaag } })
+                        <input type="date" class="datepicker" id="birthdate" name="Klant.Geboortedatum" value="@Model.Vandaag" data-value="@Model.Vandaag">
                         <label for="birthdate">@Html.DisplayNameFor(model => model.Geboortedatum)</label>
                     </div>
                     <div class="input-field col s6">
@@ -74,7 +73,7 @@
                                     gender = @item.Naam;
                                     break;
                             }
-                                <input name="Geslacht.ID" type="radio" id="@item.ID" class="with-gap radio-klant" value="@item.ID" />
+                                <input name="Klant.Geslacht.ID" type="radio" id="@item.ID" class="with-gap radio-klant" value="@item.ID" />
                                 <label for="@item.ID">@gender</label>
                         }
                     </div>
@@ -97,7 +96,7 @@
     </div>
     <div class="fixed-action-btn">
         <a onclick="$('#frmKlant').reset();" href="#" class="btn-floating btn-large waves-effect waves-light red"><i class="mdi-navigation-refresh"></i></a>
-        <a onclick="$('#frmKlatn').submit();" href="#" class="btn-floating btn-large waves-effect waves-light green"><i class="mdi-content-save"></i></a>
+        <a onclick="$('#frmKlant').unbind('Create').submit();" href="#" class="btn-floating btn-large waves-effect waves-light green"><i class="mdi-content-save"></i></a>
     </div>
 }
 
@@ -133,7 +132,7 @@
                 formatSubmit: 'dd-mm-yyyy',
                 hiddenPrefix: undefined,
                 hiddenSuffix: '_submit',
-                hiddenName: undefined,
+                hiddenName: true,
                 firstDay: 1,
                 closeOnSelect: true,
                 closeOnClear: true,
