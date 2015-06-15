@@ -23,6 +23,29 @@
     </div>
 }
 
+@*@using (Html.BeginForm("Filterable", "Filters", FormMethod.Get)) {*@ 
+<fieldset class="filtering">
+    <legend>Filters</legend>
+        
+        @*<div class="form-group">
+            <div class="col-md-10">*@
+                @*@Html.DisplayNameFor(model => model.Geslacht).ToString()
+                @Html.DropDownListFor(model => model.Geslacht.Naam, Model.Geslacht, new { @class = "form-control combobox" })*@
+
+                    <b>Geslachten:</b>
+                    <select id="GeslachtenId" name="GeslachtenId">
+                        <option value="1">M</option>
+                        <option value="2">V</option>
+                        <option value="3">X</option>
+                    </select>   
+
+                    
+        @*</div>*@
+        <input type="submit" value="Filter Results" />
+    @*</div>*@
+</fieldset>
+@*}*@
+
 <div class="table-responsive">
     <table class="table table-striped table-hover">
         <tr>
@@ -93,5 +116,9 @@ Aantal resultaten: @Model.Count()
 <script>
     $(".clickable-row").click(function () {
         window.document.location = $(this).data("href");
+    });
+
+    $(document).ready(function () {
+        $('select').material_select();
     });
 </script>

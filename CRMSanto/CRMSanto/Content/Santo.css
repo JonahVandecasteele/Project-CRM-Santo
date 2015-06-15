@@ -2569,3 +2569,7 @@ nav ul li.active, nav ul li:hover {
 .klant-hidden {
     display: none;
 }
+
+.input-field .mdi-social-cake.prefix.active {
+    color: #333333;
+}

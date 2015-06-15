@@ -19,9 +19,11 @@ namespace CRMSanto.BusinessLayer.Services
         private IGenericRepository<Werksituatie> repoWerksituatie = null;
         private IKaraktertrekRepository repoKaraktertrek = null;
         private IKlantenRepository repoKlant = null;
+        private IGenericRepository<Relatie> repoRelatie = null;
+        private IKlantRelatieRepository repoKlantRelatie = null;
 
 
-        public KlantService(IGenericRepository<Mutualiteit> repoMutualiteit, IGenericRepository<Geslacht> repoGeslacht, IGemeenteRepository repoGemeente, IGenericRepository<Werksituatie> repoWerksituatie, IKaraktertrekRepository repoKaraktertrek, IKlantenRepository repoKlant)
+        public KlantService(IGenericRepository<Mutualiteit> repoMutualiteit, IGenericRepository<Geslacht> repoGeslacht, IGemeenteRepository repoGemeente, IGenericRepository<Werksituatie> repoWerksituatie, IKaraktertrekRepository repoKaraktertrek, IKlantenRepository repoKlant, IGenericRepository<Relatie> repoRelatie, IKlantRelatieRepository repoKlantRelatie)
         {
             this.repoMutualiteit = repoMutualiteit;
             this.repoGeslacht = repoGeslacht;
@@ -29,6 +31,8 @@ namespace CRMSanto.BusinessLayer.Services
             this.repoWerksituatie = repoWerksituatie;
             this.repoKaraktertrek = repoKaraktertrek;
             this.repoKlant = repoKlant;
+            this.repoRelatie = repoRelatie;
+            this.repoKlantRelatie = repoKlantRelatie;
         }
         public List<Klant> GetKlanten()
         {
@@ -124,6 +128,20 @@ namespace CRMSanto.BusinessLayer.Services
         public List<Gemeente> GetGemeentesByPostCode(string id)
         {
             return repoGemeente.GetGemeentesByPostCode(id);
+        }
+        public List<Relatie> GetRelaties()
+        {
+            return repoRelatie.All().ToList<Relatie>();
+        }
+        public Relatie InsertRelatie(Relatie r)
+        {
+            Relatie result = repoRelatie.Insert(r);
+            repoMutualiteit.SaveChanges();
+            return result;
+        }
+        public List<KlantRelatie> GetKlantRelaties(Klant k)
+        {
+            return repoKlantRelatie.All(k.ID).ToList<KlantRelatie>();
         }
         public void Mails()
         {

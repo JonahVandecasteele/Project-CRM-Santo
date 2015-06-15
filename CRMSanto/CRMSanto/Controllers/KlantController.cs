@@ -35,6 +35,10 @@ namespace CRMSanto.Controllers
         //}
         public ActionResult Index(string sortOrder)
         {
+            KlantViewModel kv = new KlantViewModel();
+            
+            kv.Geslachten = ks.GetGeslachten();
+            kv.Gemeentes = ks.GetGemeentes();
             //List<Klant> klanten = ks.GetKlanten();
             //return View(klanten);
             if (Request.Form["submit"] != null)
@@ -152,6 +156,7 @@ namespace CRMSanto.Controllers
             model.Mutualiteiten = ks.GetMutualiteiten();
             model.Werksituaties = ks.GetWerkSituaties();
             model.Karaktertreken = ks.GetKaraktertreken();
+            model.Vandaag = DateTime.Now.ToString("dd-MM-yyyy");
             return View(model);
         }
         [HttpPost]
