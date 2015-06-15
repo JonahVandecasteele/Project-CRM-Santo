@@ -20,11 +20,11 @@ namespace CRMSanto.BusinessLayer.Repository
             var query = (from a in context.Afspraak.Include(k => k.Klant).Include(m=>m.Masseur).Include(ms=>ms.SoortAfspraak) where a.Archief==false select a);
             return query.ToList<Afspraak>();
         }
-        public override IEnumerable<Afspraak> AllArchief()
-        {
-            var query = (from a in context.Afspraak.Include(k => k.Klant).Include(m => m.Masseur).Include(ms => ms.SoortAfspraak) where a.Archief == true select a);
-            return query.ToList<Afspraak>();
-        }
+        //public override IEnumerable<Afspraak> AllArchief()
+        //{
+        //    var query = (from a in context.Afspraak.Include(k => k.Klant).Include(m => m.Masseur).Include(ms => ms.SoortAfspraak) where a.Archief == true select a);
+        //    return query.ToList<Afspraak>();
+        //}
         public List<Afspraak> AfsprakenVandaag() 
         {
             DateTime dt = DateTime.Now;
@@ -82,6 +82,8 @@ namespace CRMSanto.BusinessLayer.Repository
             context.Klant.Attach(entity.Klant);
             context.Masseur.Attach(entity.Masseur);
             context.SoortAfspraak.Attach(entity.SoortAfspraak);
+            context.Arrangement.Attach(entity.Arrangement);
+            context.Extra.Attach(entity.Extra);
             //context.Adres.Attach(entity.Adres);
 
             Afspraak afspraak = context.Afspraak.Add(entity);
