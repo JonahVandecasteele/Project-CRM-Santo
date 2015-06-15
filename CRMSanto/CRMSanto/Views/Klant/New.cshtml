@@ -1,1 +1,83 @@
-﻿<img src="http://i.memeful.com/media/post/QRyVb4d_700wa_0.gif">
+﻿@model CRMSanto.ViewModels.KlantViewModel
+
+@{
+    ViewBag.Title = "New";
+}
+
+<ul class="breadcrumb">
+    <li>@Html.ActionLink("Klanten", "Index", "Klant")</li>
+    <li class="active">Toevoegen</li>
+</ul>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+
+    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+        <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingOne">
+                <h4 class="panel-title expand-one">
+                    <a href="#">
+                        <i class="mdi-hardware-keyboard-arrow-down" id="icon-one"></i> Basisgegevens
+                    </a>
+                </h4>
+            </div>
+            <div class="panel-body content-one">
+                <div class="row">
+                    <div class="input-field col s6"><img src="/Klant/Photo" class="" id="uploadPreview" /></div>
+                    <div class="input-field col s6"><input type="file" name="Upload" id="Upload" onchange="PreviewImage();" class=""></div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6">
+                        @Html.EditorFor(model => model.Voornaam, new { htmlAttributes = new { @class = "validate", id = "first_name"  } })
+                        <label for="first_name">@Html.DisplayNameFor(model => model.Voornaam)</label>
+                    </div>
+                    <div class="input-field col s6">
+                        @Html.EditorFor(model => model.Naam, new { htmlAttributes = new { @class = "validate", id = "last_name" } })
+                        <label for="first_name">@Html.DisplayNameFor(model => model.Naam)</label>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingTwo">
+                <h4 class="panel-title expand-two">
+                    <a href="#">
+                        <i class="mdi-hardware-keyboard-arrow-right" id="icon-two"></i> Collapsible Group Item #2
+                    </a>
+                </h4>
+            </div>
+            <div class="panel-body content-two klant-hidden">
+                <p>This is the content</p>
+                <p> that was hidden before, but now is... Well, visible!"</p>
+            </div>
+        </div>
+    </div>
+
+}
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }
+
+<script>
+        jQuery(document).ready(function ($) {
+            $('.expand-one').click(function () {
+                $('#icon-one').toggleClass("mdi-hardware-keyboard-arrow-down mdi-hardware-keyboard-arrow-right");
+                $('.content-one').slideToggle();
+            });
+            $('.expand-two').click(function () {
+                $('.content-two').slideToggle();
+                $('#icon-two').toggleClass("mdi-hardware-keyboard-arrow-right mdi-hardware-keyboard-arrow-down");
+            });
+        });
+        function PreviewImage() {
+            var oFReader = new FileReader();
+            oFReader.readAsDataURL(document.getElementById("Upload").files[0]);
+
+            oFReader.onload = function (oFREvent) {
+                document.getElementById("uploadPreview").src = oFREvent.target.result;
+            };
+        };
+</script>
