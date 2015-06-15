@@ -164,22 +164,15 @@ namespace CRMSanto.BusinessLayer.Services
                 Console.WriteLine(createUpdatetUser);
             }
         }
-        public void SendMail()
+        public void SendMail(Klant k)
         {
 	        {
                 API sendinBlue = new mailinblue.API("r0GZv13CEFbk8yVq");
                 Dictionary<string, string> to = new Dictionary<string, string>();
-				to.Add("vanhoucke.lukas@gmail.com","Lukas Vanhoucke");
+				to.Add(k.Email,k.Voornaam);
 				List<string> from_name = new List<string>();
-				from_name.Add("jim.butseraen@gmail.com");
-				from_name.Add("Den Buts");
-				Dictionary<string, string> cc = new Dictionary<string, string>();
-				cc.Add("cc@example.net","cc whom!");
-				Dictionary<string, string> bcc = new Dictionary<string, string>();
-				bcc.Add("bcc@example.net", "bcc whom!");
-				List<string> replyto = new List<string>();
-				replyto.Add("replyto@email.com");
-				replyto.Add("reply to!");
+				from_name.Add("massage.santo@gmail.com");
+				from_name.Add("Massage Santo");
 				Dictionary<string, string> headers = new Dictionary<string, string>();
 				headers.Add("Content-Type","text/html; charset=iso-8859-1");
 				headers.Add("X-param1","value1");
@@ -187,7 +180,7 @@ namespace CRMSanto.BusinessLayer.Services
 				headers.Add("X-Mailin-custom","my custom value");
 				headers.Add("X-Mailin-IP","102.102.1.2");
 				headers.Add("X-Mailin-Tag","My tag");
-                Object sendEmail = sendinBlue.send_email(to, "My subject", from_name, "This is the <h1>HTML</h1>", "This is the text", cc, bcc, replyto, new Dictionary<string, string>(), headers);
+                Object sendEmail = sendinBlue.send_email(to, "Gelukkige verjaardag", from_name, "Gelukkige verjaardag", "This is the text", new Dictionary<string, string>(), headers);
 	        }
         }
     }

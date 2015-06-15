@@ -442,7 +442,6 @@
     <Content Include="Views\Home\EIDTest.cshtml" />
     <Content Include="Views\Product\Index.old.cshtml" />
     <Content Include="Views\Shared\_Layout.old.cshtml" />
-    <Content Include="Views\Klant\New.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Adres.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Geslacht.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\PersoonlijkeFiche.cshtml" />
@@ -469,6 +468,7 @@
     <Content Include="Views\Setting\Index.cshtml" />
     <Content Include="Views\Setting\NewMutualiteit.cshtml" />
     <Content Include="Views\Setting\NewRelatie.cshtml" />
+    <Content Include="Views\Klant\New.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
