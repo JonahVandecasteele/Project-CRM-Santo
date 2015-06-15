@@ -136,7 +136,7 @@ namespace CRMSanto.BusinessLayer.Services
         public Relatie InsertRelatie(Relatie r)
         {
             Relatie result = repoRelatie.Insert(r);
-            repoMutualiteit.SaveChanges();
+            repoRelatie.SaveChanges();
             return result;
         }
         public List<KlantRelatie> GetKlantRelaties(Klant k)
