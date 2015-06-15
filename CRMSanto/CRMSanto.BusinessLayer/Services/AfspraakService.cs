@@ -174,17 +174,8 @@ namespace CRMSanto.BusinessLayer.Services
             List<Afspraak> afspraken = repoAfspraken.TussenTweeDatums(van, tot);
             foreach(Afspraak a in afspraken)
             {
-               /* ar.AdresID = a.Adres.ID;
-                ar.KlantID = a.Klant.ID;
-                ar.MasseurID = a.Masseur.ID;
-                ar.Notitie = a.Notitie;
-                ar.SoloDuo = a.SoloDuo;
-                ar.SoortAfspraakID = a.SoortAfspraak.ID;
-                ar.Verplaatsing = a.Verplaatsing;
-                ar.AantalPersonen = a.AantalPersonen;
-                ar.ArrangementID = a.Arrangement.ID;
-                ar.DatumTijdstip = a.DatumTijdstip;
-                ar.Duur = a.Duur;*/
+                a.Archief = true;
+                repoAfspraken.Update(a);
             }
             repoAfspraken.SaveChanges();
         }
