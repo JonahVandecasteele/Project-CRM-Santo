@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
 using System.Data.Entity.SqlServer;
+using System.Data.Entity.Core.Objects;
 
 namespace CRMSanto.BusinessLayer.Repository
 {
@@ -93,6 +94,21 @@ namespace CRMSanto.BusinessLayer.Repository
         {
             var query = (from a in context.Afspraak.Include(k => k.Klant) select a);
             return query.SingleOrDefault<Afspraak>();
+        }
+
+        public List<Afspraak> GetDuurEnTijdstip(Afspraak b)
+        {
+            double duur = (b.Duur + 60);
+            DateTime beginNieuw = b.DatumTijdstip;
+            DateTime eindeNieuw = beginNieuw.AddMinutes(duur);
+
+            var query = (from a in context.Afspraak
+                         where a.DatumTijdstip <= eindeNieuw && System.Data.Entity.DbFunctions.AddMinutes(a.DatumTijdstip, a.Duur + 60) >= beginNieuw
+                         select a);
+                        
+            return query.ToList<Afspraak>();
+
+            //System.Data.Entity.Core.Objects.ObjectQuery.Addminutes(a.DatumTijdstip, a.Duur + 60)
         }
     }
 }

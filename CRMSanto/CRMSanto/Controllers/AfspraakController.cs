@@ -78,7 +78,8 @@ namespace CRMSanto.Controllers
 
         [HttpPost]
         public async Task<ActionResult> New(NieuweAfspraakPM a)
-        {        
+        {
+            bool Overlapping = false;
                 if (a.Afspraak.Klant.ID != 0)
                 {
                     a.Afspraak.Klant = ks.GetKlantByID(a.Afspraak.Klant.ID);
@@ -105,7 +106,16 @@ namespace CRMSanto.Controllers
                 if(_O365ServiceOperationFailed)
                 {
                     afs.AddAfspraak(a.Afspraak);
-                    return RedirectToAction("Index");
+                    if (Overlapping = true)
+                    {
+                        
+                    }
+                    else
+                    {
+                        return RedirectToAction("Index");
+                    }
+                   
+                    
                 }
                 return View(a);
         
