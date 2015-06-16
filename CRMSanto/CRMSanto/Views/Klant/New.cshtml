@@ -4,6 +4,11 @@
     ViewBag.Title = "Klant toevoegen";
     var gender = "X";
     var count = 0;
+    if (Model.Karaktertrek == null)
+    {
+        Model.Karaktertrek = new List<Karaktertrek>();
+    }
+        
 }
 
 <ul class="breadcrumb">
