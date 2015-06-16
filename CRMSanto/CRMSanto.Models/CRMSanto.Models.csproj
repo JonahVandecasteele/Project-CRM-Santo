@@ -159,6 +159,14 @@
     <Compile Include="Migrations\201506161331205_massage.Designer.cs">
       <DependentUpon>201506161331205_massage.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201506161344512_validatie.cs" />
+    <Compile Include="Migrations\201506161344512_validatie.Designer.cs">
+      <DependentUpon>201506161344512_validatie.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201506161445005_validatie2.cs" />
+    <Compile Include="Migrations\201506161445005_validatie2.Designer.cs">
+      <DependentUpon>201506161445005_validatie2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Product\Product.cs" />
     <Compile Include="Product\Productregistratie.cs" />
@@ -226,6 +234,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201506161331205_massage.resx">
       <DependentUpon>201506161331205_massage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506161344512_validatie.resx">
+      <DependentUpon>201506161344512_validatie.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506161445005_validatie2.resx">
+      <DependentUpon>201506161445005_validatie2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

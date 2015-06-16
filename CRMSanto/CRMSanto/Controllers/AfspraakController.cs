@@ -95,7 +95,7 @@ namespace CRMSanto.Controllers
                 {
                     a.Afspraak.Duur = a.Afspraak.SoortAfspraak.Duur;
                 }
-                else if(a.Afspraak.Arrangement !=null)
+                else if(a.Afspraak.Arrangement != null)
 
                 {
                     a.Afspraak.Duur = a.Afspraak.Arrangement.Duur;
