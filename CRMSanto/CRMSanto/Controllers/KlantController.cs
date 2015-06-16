@@ -271,90 +271,100 @@ namespace CRMSanto.Controllers
 
             if (Request.Form["addkar"] != null)
             {
-                //Add Karaktertrek
-                KlantViewModel model = klant;
-                Session["PhotoUpload"] = klant.Upload;
-                Karaktertrek trek = ks.GetKaraktertrekByID(model.SelectedKaracter.ID);
-                model.Karaktertrek = (List<Karaktertrek>)TempData["Karaktertreken"];
-                if (model.Karaktertrek == null)
+                try
                 {
-                    model.Karaktertrek = new List<Karaktertrek>();
+                    //Add Karaktertrek
+                    KlantViewModel model = klant;
+                    if (model.Upload != null) //Only set photo when upload not null
+                    {
+                        Session["PhotoUpload"] = model.Upload;
+                    }
+
+                    model.Karaktertrek = (List<Karaktertrek>)TempData["Karaktertreken"]; // Get Karaktertrekken From last postback
+                    if (model.Karaktertrek == null) // If no karakters where added before , this will be null (safety agains nullrefexeption)
+                    {
+                        model.Karaktertrek = new List<Karaktertrek>();
+                    }
+                    model.Karaktertrek.Add(ks.GetKaraktertrekByID(model.SelectedKaracter.ID));//Get and add karaktertrek
+                    TempData["Karaktertreken"] = model.Karaktertrek; // Save values for next rebound
+
+                    ////// Fill Lists
+                    model.Geslachten = ks.GetGeslachten();
+                    model.Mutualiteiten = ks.GetMutualiteiten();
+                    model.Werksituaties = ks.GetWerkSituaties();
+                    model.Karaktertreken = ks.GetKaraktertreken();
+                    return View(model);
                 }
-                model.Karaktertrek.Add(trek);
-                TempData["Karaktertreken"] = model.Karaktertrek;
-                model.Geslachten = ks.GetGeslachten();
-                model.Mutualiteiten = ks.GetMutualiteiten();
-                model.Werksituaties = ks.GetWerkSituaties();
-                model.Karaktertreken = ks.GetKaraktertreken();
-                return View(model);
+                catch(Exception ex)
+                {
+                    return View(klant);//If expetion happens , return filled in data
+                }
+                
             }
             else           
             {
                 //Add Klant
                 Klant tempKlant = new Klant();
-                if (TempData["NewKlantM"] == null)
+                if (TempData["NewKlantM"] == null)//If Klant doesn't exist from prev postback (Happens when multiple gemeentes are possible
                 {
-                    //If Klant doesn't exist from prev redirect
-                    if (klant.Geslacht != null)
+                    
+                    if (klant.Geslacht != null)// If Geslacht is filled in , get Object from database
                     {
                         if (klant.Geslacht.ID != 0)
                             klant.Geslacht = ks.GetGeslachtByID(klant.Geslacht.ID);
                     }
                     if (klant.MedischeFiche != null)
                     {
-                        if (klant.MedischeFiche.Mutualiteit != null)
+                        if (klant.MedischeFiche.Mutualiteit != null)//If mutualiteit is filled in , get object from database
                             klant.MedischeFiche.Mutualiteit = ks.GetMutualiteitByID(klant.MedischeFiche.Mutualiteit.ID);
                     }
-                    HttpPostedFileBase photo = klant.Upload;
-                    klant.Foto = Guid.NewGuid().ToString();
-                    if (photo == null)
+
+                    if(klant.Upload==null)//If the upload would magicaly become null , we grab it from the database.
                     {
                         if (Session["PhotoUpload"] != null)
                         {
-                            photo = (HttpPostedFileBase)Session["PhotoUpload"];
-                            ks.SaveImage(photo, klant.Foto);
+                            ks.SaveImage((HttpPostedFileBase)Session["PhotoUpload"], Guid.NewGuid().ToString());//Save photo from last postback
                         }
                     }
                     else
                     {
-                        ks.SaveImage(photo, klant.Foto);
+                        ks.SaveImage(klant.Upload, Guid.NewGuid().ToString());//Save photo from current post
                     }
 
-                    tempKlant = new Klant() { Voornaam = klant.Voornaam, Naam = klant.Naam, Adres = klant.Adres, Email = klant.Email, Karaktertrek = klant.Karaktertrek, Telefoon = klant.Telefoon, Foto = klant.Foto, Geslacht = klant.Geslacht, ID = klant.ID, MedischeFiche = klant.MedischeFiche, PersoonlijkeFiche = klant.PersoonlijkeFiche };
+                    //Set a temp klant object with data from ViewModel and Tempdata
+                    tempKlant = new Klant() { Voornaam = klant.Voornaam, Naam = klant.Naam,Geboortedatum = klant.Geboortedatum, Adres = klant.Adres, Email = klant.Email, Karaktertrek = (List<Karaktertrek>)TempData["Karaktertreken"], Telefoon = klant.Telefoon, Foto = klant.Foto, Geslacht = klant.Geslacht, ID = klant.ID, MedischeFiche = klant.MedischeFiche, PersoonlijkeFiche = klant.PersoonlijkeFiche };
 
-                    if (klant.Geboortedatum == DateTime.MinValue)
+                    //datetime-sql only can go as low as January 1, 1753
+                    if (klant.Geboortedatum < (DateTime)SqlDateTime.MinValue)
                         tempKlant.Geboortedatum = (DateTime)SqlDateTime.MinValue;
-                    else
-                        tempKlant.Geboortedatum = klant.Geboortedatum;
 
-                    tempKlant.Karaktertrek = (List<Karaktertrek>)TempData["KarTrek"];
-
+                    //Get all possible gemeentes
                     List<Gemeente> gemeentelist = new List<Gemeente>();
                     if (tempKlant.Adres.Gemeente == null)
                     {
-                        gemeentelist = ks.GetGemeentesByPostCode(tempKlant.Adres.Postcode);
-                        if (gemeentelist.Count > 1)
+                        gemeentelist = ks.GetGemeentesByPostCode(tempKlant.Adres.Postcode);//Get list of gemeentes by postcode
+                        if (gemeentelist.Count > 1)//If more then 1 gemeente possible
                         {
-                            TempData["NewKlantM"] = klant;
-                            KlantViewModel model = klant;
-                            model.Gemeentes = gemeentelist;
-                            return View(model);
+                            TempData["NewKlantM"] = klant;//Save klant data for postback
+                            KlantViewModel model = klant;//Prep View Model
+                            model.Gemeentes = gemeentelist;//Fill gemeentes so view knows that it has to show all possible gemeentes
+                            return View(model);//Return this for view to handle
                         }
                         else
                         {
 
-                            tempKlant.Adres.Gemeente = gemeentelist.First();
+                            tempKlant.Adres.Gemeente = gemeentelist.First();//Only 1 possible so no furder actions needed
                         }
 
                     }
                 }
                 else
                 {
-                    tempKlant = (Klant)TempData["NewKlantM"];
-                    tempKlant.Adres.Gemeente = ks.GetGemeenteByID(klant.Adres.Gemeente.ID);
+                    tempKlant = (Klant)TempData["NewKlantM"];//Get data from before gemeente selection
+                    tempKlant.Adres.Gemeente = ks.GetGemeenteByID(klant.Adres.Gemeente.ID);//Get selected gemeente
                 }
 
-                ks.InsertKlant(tempKlant);
+                ks.InsertKlant(tempKlant); // save klant
                 ks.Mails();
                 return RedirectToAction("Index");
             }

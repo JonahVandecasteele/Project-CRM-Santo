@@ -10,13 +10,14 @@
 }
 
 <div class="input-field col s12">
-    <select>
+    @Html.DropDownListFor(model => model.ID, new SelectList(list, "ID", "Naam"))
+    @*<select>
         <option value="" disabled selected>--</option>
         @foreach (var item in list)
         {
             <option value="@item.ID">@item.Naam</option>
         }
-    </select>
+    </select>*@
     <label>Karaktertrekken</label>
     @Html.ValidationMessageFor(model => model.ID, "", new { @class = "text-danger" })
     <button class="btn waves-effect waves-light" type="submit" name="addkar">
