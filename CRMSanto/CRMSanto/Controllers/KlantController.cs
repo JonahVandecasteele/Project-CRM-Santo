@@ -691,7 +691,7 @@ namespace CRMSanto.Controllers
                             klant.Mutualiteiten = ks.GetMutualiteiten();
                             klant.Werksituaties = ks.GetWerkSituaties();
                             klant.Karaktertreken = ks.GetKaraktertreken();
-                            model.Voedingspatronen = ks.GetVoedingspatronen();
+                            klant.Voedingspatronen = ks.GetVoedingspatronen();
                             return View(klant);
                         }
                         
