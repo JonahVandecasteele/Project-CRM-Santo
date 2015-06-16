@@ -55,7 +55,14 @@
                     @Html.DisplayFor(modelItem => item.Masseur.Naam)
                 </td>
                 <td>
-                    <div class="col-md-3"><a href="Klant/Details/@Html.DisplayFor(modelItem => item.Klant.ID)"><img src="@Html.GetPhotoURL(Html.DisplayFor(modelItem => item.Klant.Foto).ToString())" alt="" class="profilepic shadow-z-1" /></a></div> <div class="col-md-9"><a href="Klant/Details/@Html.DisplayFor(modelItem => item.Klant.ID)">@Html.DisplayFor(modelItem => item.Klant.Naam) @Html.DisplayFor(modelItem => item.Klant.Voornaam)</a></div>
+                    <div class="row vertical-align klant-home">
+                        <div class="col-md-3">
+                            <a href="Klant/Details/@Html.DisplayFor(modelItem => item.Klant.ID)"><img src="@Html.GetPhotoURL(Html.DisplayFor(modelItem => item.Klant.Foto).ToString())" alt="" class="profilepic shadow-z-1" /></a>
+                        </div>
+                        <div class="col-md-9">
+                            <a href="Klant/Details/@Html.DisplayFor(modelItem => item.Klant.ID)">@Html.DisplayFor(modelItem => item.Klant.Naam) @Html.DisplayFor(modelItem => item.Klant.Voornaam)</a>
+                        </div>
+                    </div>
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.SoortAfspraak.Naam)
