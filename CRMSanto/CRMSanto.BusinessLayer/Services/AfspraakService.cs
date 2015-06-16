@@ -91,7 +91,7 @@ namespace CRMSanto.BusinessLayer.Services
             }
             else
             {
-                Overlapping = 1;
+                a.Geannuleerd = true;
             }
         } 
 
