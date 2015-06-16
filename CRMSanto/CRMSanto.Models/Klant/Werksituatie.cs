@@ -10,7 +10,6 @@ namespace CRMSanto.Models
     public class Werksituatie
     {
         public int ID { get; set; }
-        [Required]
         public string Naam { get; set; }
     }
 }
