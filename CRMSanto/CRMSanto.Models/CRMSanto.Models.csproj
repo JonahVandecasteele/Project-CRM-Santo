@@ -199,6 +199,18 @@
     <Compile Include="Migrations\201506162029249_KlantRelatie-Tweaks8.Designer.cs">
       <DependentUpon>201506162029249_KlantRelatie-Tweaks8.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201506162216391_KlantRelatie-DropDump.cs" />
+    <Compile Include="Migrations\201506162216391_KlantRelatie-DropDump.Designer.cs">
+      <DependentUpon>201506162216391_KlantRelatie-DropDump.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201506162236239_KlantRelatie-ANewBegining.cs" />
+    <Compile Include="Migrations\201506162236239_KlantRelatie-ANewBegining.Designer.cs">
+      <DependentUpon>201506162236239_KlantRelatie-ANewBegining.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201506162244377_KlantRelatie-ANewBegining-2.cs" />
+    <Compile Include="Migrations\201506162244377_KlantRelatie-ANewBegining-2.Designer.cs">
+      <DependentUpon>201506162244377_KlantRelatie-ANewBegining-2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Product\Product.cs" />
     <Compile Include="Product\Productregistratie.cs" />
@@ -296,6 +308,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201506162029249_KlantRelatie-Tweaks8.resx">
       <DependentUpon>201506162029249_KlantRelatie-Tweaks8.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506162216391_KlantRelatie-DropDump.resx">
+      <DependentUpon>201506162216391_KlantRelatie-DropDump.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506162236239_KlantRelatie-ANewBegining.resx">
+      <DependentUpon>201506162236239_KlantRelatie-ANewBegining.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506162244377_KlantRelatie-ANewBegining-2.resx">
+      <DependentUpon>201506162244377_KlantRelatie-ANewBegining-2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

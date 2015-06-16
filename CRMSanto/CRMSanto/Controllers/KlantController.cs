@@ -558,6 +558,9 @@ namespace CRMSanto.Controllers
             model.Werksituaties = ks.GetWerkSituaties();
             model.Karaktertreken = ks.GetKaraktertreken();
             model.Voedingspatronen = ks.GetVoedingspatronen();
+            model.Relaties = ks.GetRelaties();
+            model.Klanten = ks.GetKlanten();
+            model.KlantRelatie = new List<KlantRelatie>();
             model.Geboortedatum = new DateTime();
             model.Karaktertrek = new List<Karaktertrek>();
             model.KlantRelaties = new List<KlantRelatie>();
@@ -610,91 +613,99 @@ namespace CRMSanto.Controllers
                     }
                     else
                     {
-                        if(ModelState.IsValid)
+                        if(Request.Form["addrelatie"]!=null)
                         {
-                            Klant tempKlant = new Klant();
-                            if (TempData["NewKlantM"] == null)//If Klant doesn't exist from prev postback (Happens when multiple gemeentes are possible
-                            {
-                                if (klant.Geslacht != null)// If Geslacht is filled in , get Object from database
-                                {
-                                    if (klant.Geslacht.ID != 0)
-                                        klant.Geslacht = ks.GetGeslachtByID(klant.Geslacht.ID);
-                                }
-                                if (klant.MedischeFiche != null)
-                                {
-                                    if (klant.MedischeFiche.Mutualiteit != null)//If mutualiteit is filled in , get object from database
-                                        klant.MedischeFiche.Mutualiteit = ks.GetMutualiteitByID(klant.MedischeFiche.Mutualiteit.ID);
-                                }
-
-                                klant.Foto = Guid.NewGuid().ToString();
-
-                                if (klant.Upload == null)//If the upload would magicaly become null , we grab it from the database.
-                                {
-                                    if (Session["PhotoUpload"] != null)
-                                    {
-                                        ks.SaveImage((HttpPostedFileBase)Session["PhotoUpload"], klant.Foto);//Save photo from last postback
-                                    }
-                                }
-                                else
-                                {
-                                    ks.SaveImage(klant.Upload, klant.Foto);//Save photo from current post
-                                }
-
-                                //Set a temp klant object with data from ViewModel and Tempdata
-                                tempKlant = new Klant() { Voornaam = klant.Voornaam, Naam = klant.Naam, Geboortedatum = klant.Geboortedatum, Adres = klant.Adres, Email = klant.Email, Karaktertrek = (List<Karaktertrek>)TempData["Karaktertreken"], Telefoon = klant.Telefoon, Foto = klant.Foto, Geslacht = klant.Geslacht, ID = klant.ID, MedischeFiche = klant.MedischeFiche, PersoonlijkeFiche = klant.PersoonlijkeFiche };
-
-                                //datetime-sql only can go as low as January 1, 1753
-                                if (klant.Geboortedatum < (DateTime)SqlDateTime.MinValue)
-                                    tempKlant.Geboortedatum = (DateTime)SqlDateTime.MinValue;
-
-                                //Get all possible gemeentes
-                                List<Gemeente> gemeentelist = new List<Gemeente>();
-                                if (tempKlant.Adres.Postcode == null)
-                                {
-                                    tempKlant.Adres.Postcode = "0000";
-                                }
-                                if (tempKlant.Adres.Gemeente.Plaatsnaam == null)
-                                {
-                                    gemeentelist = ks.GetGemeentesByPostCode(tempKlant.Adres.Postcode);//Get list of gemeentes by postcode
-                                    if (gemeentelist.Count > 1)//If more then 1 gemeente possible
-                                    {
-                                        TempData["NewKlantM"] = klant;//Save klant data for postback
-                                        KlantViewModel model = klant;//Prep View Model
-                                        model.Gemeentes = gemeentelist;//Fill gemeentes so view knows that it has to show all possible gemeentes
-                                        return View(model);//Return this for view to handle
-                                    }
-                                    else
-                                    {
-
-                                        tempKlant.Adres.Gemeente = gemeentelist.First();//Only 1 possible so no furder actions needed
-                                    }
-
-                                }
-                            }
-                            else
-                            {
-                                tempKlant = (Klant)TempData["NewKlantM"];//Get data from before gemeente selection
-                                tempKlant.Adres.Gemeente = ks.GetGemeenteByID(klant.Adres.Gemeente.ID);//Get selected gemeente
-                            }
-
-                            ks.InsertKlant(tempKlant); // save klant
-                            ks.Mails();
                             return RedirectToAction("Index");
                         }
                         else
                         {
-                            klant.Karaktertrek = (List<Karaktertrek>)TempData["Karaktertreken"]; 
-                            if (klant.Karaktertrek == null) 
+                            if (ModelState.IsValid)
                             {
-                                klant.Karaktertrek = new List<Karaktertrek>();
+                                Klant tempKlant = new Klant();
+                                if (TempData["NewKlantM"] == null)//If Klant doesn't exist from prev postback (Happens when multiple gemeentes are possible
+                                {
+                                    if (klant.Geslacht != null)// If Geslacht is filled in , get Object from database
+                                    {
+                                        if (klant.Geslacht.ID != 0)
+                                            klant.Geslacht = ks.GetGeslachtByID(klant.Geslacht.ID);
+                                    }
+                                    if (klant.MedischeFiche != null)
+                                    {
+                                        if (klant.MedischeFiche.Mutualiteit != null)//If mutualiteit is filled in , get object from database
+                                            klant.MedischeFiche.Mutualiteit = ks.GetMutualiteitByID(klant.MedischeFiche.Mutualiteit.ID);
+                                    }
+
+                                    klant.Foto = Guid.NewGuid().ToString();
+
+                                    if (klant.Upload == null)//If the upload would magicaly become null , we grab it from the database.
+                                    {
+                                        if (Session["PhotoUpload"] != null)
+                                        {
+                                            ks.SaveImage((HttpPostedFileBase)Session["PhotoUpload"], klant.Foto);//Save photo from last postback
+                                        }
+                                    }
+                                    else
+                                    {
+                                        ks.SaveImage(klant.Upload, klant.Foto);//Save photo from current post
+                                    }
+
+                                    //Set a temp klant object with data from ViewModel and Tempdata
+                                    tempKlant = new Klant() { Voornaam = klant.Voornaam, Naam = klant.Naam, Geboortedatum = klant.Geboortedatum, Adres = klant.Adres, Email = klant.Email, Karaktertrek = (List<Karaktertrek>)TempData["Karaktertreken"], Telefoon = klant.Telefoon, Foto = klant.Foto, Geslacht = klant.Geslacht, ID = klant.ID, MedischeFiche = klant.MedischeFiche, PersoonlijkeFiche = klant.PersoonlijkeFiche };
+
+                                    //datetime-sql only can go as low as January 1, 1753
+                                    if (klant.Geboortedatum < (DateTime)SqlDateTime.MinValue)
+                                        tempKlant.Geboortedatum = (DateTime)SqlDateTime.MinValue;
+
+                                    //Get all possible gemeentes
+                                    List<Gemeente> gemeentelist = new List<Gemeente>();
+                                    if (tempKlant.Adres.Postcode == null)
+                                    {
+                                        tempKlant.Adres.Postcode = "0000";
+                                    }
+                                    if (tempKlant.Adres.Gemeente.Plaatsnaam == null)
+                                    {
+                                        gemeentelist = ks.GetGemeentesByPostCode(tempKlant.Adres.Postcode);//Get list of gemeentes by postcode
+                                        if (gemeentelist.Count > 1)//If more then 1 gemeente possible
+                                        {
+                                            TempData["NewKlantM"] = klant;//Save klant data for postback
+                                            KlantViewModel model = klant;//Prep View Model
+                                            model.Gemeentes = gemeentelist;//Fill gemeentes so view knows that it has to show all possible gemeentes
+                                            return View(model);//Return this for view to handle
+                                        }
+                                        else
+                                        {
+
+                                            tempKlant.Adres.Gemeente = gemeentelist.First();//Only 1 possible so no furder actions needed
+                                        }
+
+                                    }
+                                }
+                                else
+                                {
+                                    tempKlant = (Klant)TempData["NewKlantM"];//Get data from before gemeente selection
+                                    tempKlant.Adres.Gemeente = ks.GetGemeenteByID(klant.Adres.Gemeente.ID);//Get selected gemeente
+                                }
+
+                                ks.InsertKlant(tempKlant); // save klant
+                                ks.Mails();
+                                return RedirectToAction("Index");
                             }
-                            klant.Geslachten = ks.GetGeslachten();
-                            klant.Mutualiteiten = ks.GetMutualiteiten();
-                            klant.Werksituaties = ks.GetWerkSituaties();
-                            klant.Karaktertreken = ks.GetKaraktertreken();
-                            klant.Voedingspatronen = ks.GetVoedingspatronen();
-                            return View(klant);
+                            else
+                            {
+                                klant.Karaktertrek = (List<Karaktertrek>)TempData["Karaktertreken"];
+                                if (klant.Karaktertrek == null)
+                                {
+                                    klant.Karaktertrek = new List<Karaktertrek>();
+                                }
+                                klant.Geslachten = ks.GetGeslachten();
+                                klant.Mutualiteiten = ks.GetMutualiteiten();
+                                klant.Werksituaties = ks.GetWerkSituaties();
+                                klant.Karaktertreken = ks.GetKaraktertreken();
+                                klant.Voedingspatronen = ks.GetVoedingspatronen();
+                                return View(klant);
+                            }
                         }
+                        
                         
                     }
         }
