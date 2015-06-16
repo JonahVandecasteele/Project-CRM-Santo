@@ -110,10 +110,13 @@ namespace CRMSanto.Controllers
                                                         || klants.Adres.Gemeente.Plaatsnaam.ToLower().Contains(zoeken.ToLower()) || (klants.Adres.Gemeente.Plaatsnaam + " " + klants.Adres.Gemeente.Postcode).ToLower().Contains(zoeken.ToLower())
                                                         || (klants.Adres.Gemeente.Postcode + " " + klants.Adres.Gemeente.Plaatsnaam).ToLower().Contains(zoeken.ToLower())
                                                         || klants.Adres.Gemeente.Provincie.ToLower().Contains(zoeken.ToLower())
-                                                        || klants.Adres.Gemeente.Postcode.ToLower().Contains(zoeken.ToLower())
-                                                        && klants.Geslacht.ID.ToString().Contains(geslacht)
+                                                        || klants.Adres.Gemeente.Postcode.ToLower().Contains(zoeken.ToLower()) 
+                                                        //&& klants.Geslacht.ID.ToString().Contains(geslacht)
                                                   select klants;
-                    return View(klantOpGeslachtEnSearch);
+
+                    var klanten = klantOpGeslachtEnSearch.Where(a => a.Geslacht.ID.ToString().Contains(geslacht));
+
+                    return View(klanten);
                 }
                 else if (geslacht == null && leeftijdVan != 0 && leeftijdTot != 100 && !string.IsNullOrEmpty(zoeken))
                 {
@@ -124,9 +127,10 @@ namespace CRMSanto.Controllers
                                                         || (klants.Adres.Gemeente.Postcode + " " + klants.Adres.Gemeente.Plaatsnaam).ToLower().Contains(zoeken.ToLower())
                                                         || klants.Adres.Gemeente.Provincie.ToLower().Contains(zoeken.ToLower())
                                                         || klants.Adres.Gemeente.Postcode.ToLower().Contains(zoeken.ToLower())
-                                                        && klants.Geboortedatum.Year <= minLeeftijd && klants.Geboortedatum.Year >= maxLeeftijd
+                                                        //&& klants.Geboortedatum.Year <= minLeeftijd && klants.Geboortedatum.Year >= maxLeeftijd
                                                   select klants;
-                    return View(klantOpLeeftijdEnSearch);
+                    var klanten = klantOpLeeftijdEnSearch.Where(a => a.Geboortedatum.Year <= minLeeftijd && a.Geboortedatum.Year >= maxLeeftijd);
+                    return View(klanten);
                 }
                 else if(geslacht != null && leeftijdVan != 0 && leeftijdTot != 100 && !string.IsNullOrEmpty(zoeken))
                 {
@@ -137,10 +141,11 @@ namespace CRMSanto.Controllers
                                                         || (klants.Adres.Gemeente.Postcode + " " + klants.Adres.Gemeente.Plaatsnaam).ToLower().Contains(zoeken.ToLower())
                                                         || klants.Adres.Gemeente.Provincie.ToLower().Contains(zoeken.ToLower())
                                                         || klants.Adres.Gemeente.Postcode.ToLower().Contains(zoeken.ToLower())
-                                                        && klants.Geboortedatum.Year <= minLeeftijd && klants.Geboortedatum.Year >= maxLeeftijd
-                                                        && klants.Geslacht.ID.ToString().Contains(geslacht)
+                                                        //&& klants.Geboortedatum.Year <= minLeeftijd && klants.Geboortedatum.Year >= maxLeeftijd
+                                                        //&& klants.Geslacht.ID.ToString().Contains(geslacht)
                                                   select klants;
-                    return View(klantOpLeeftijdGeslachtEnSearch);
+                    var klanten = klantOpLeeftijdGeslachtEnSearch.Where(a => a.Geboortedatum.Year <= minLeeftijd && a.Geboortedatum.Year >= maxLeeftijd && a.Geslacht.ID.ToString().Contains(geslacht));
+                    return View(klanten);
                 }
                 else if(geslacht == null && leeftijdVan != 0 && leeftijdTot != 100 && string.IsNullOrEmpty(zoeken))
                 {
