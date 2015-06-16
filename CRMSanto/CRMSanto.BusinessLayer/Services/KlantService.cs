@@ -21,9 +21,10 @@ namespace CRMSanto.BusinessLayer.Services
         private IKlantenRepository repoKlant = null;
         private IGenericRepository<Relatie> repoRelatie = null;
         private IKlantRelatieRepository repoKlantRelatie = null;
+        private IGenericRepository<Voedingspatroon> repoVoedingspatroon = null;
 
 
-        public KlantService(IGenericRepository<Mutualiteit> repoMutualiteit, IGenericRepository<Geslacht> repoGeslacht, IGemeenteRepository repoGemeente, IGenericRepository<Werksituatie> repoWerksituatie, IKaraktertrekRepository repoKaraktertrek, IKlantenRepository repoKlant, IGenericRepository<Relatie> repoRelatie, IKlantRelatieRepository repoKlantRelatie)
+        public KlantService(IGenericRepository<Mutualiteit> repoMutualiteit, IGenericRepository<Geslacht> repoGeslacht, IGemeenteRepository repoGemeente, IGenericRepository<Werksituatie> repoWerksituatie, IKaraktertrekRepository repoKaraktertrek, IKlantenRepository repoKlant, IGenericRepository<Relatie> repoRelatie, IKlantRelatieRepository repoKlantRelatie,IGenericRepository<Voedingspatroon> repoVoedingspatroon)            
         {
             this.repoMutualiteit = repoMutualiteit;
             this.repoGeslacht = repoGeslacht;
@@ -33,6 +34,7 @@ namespace CRMSanto.BusinessLayer.Services
             this.repoKlant = repoKlant;
             this.repoRelatie = repoRelatie;
             this.repoKlantRelatie = repoKlantRelatie;
+            this.repoVoedingspatroon = repoVoedingspatroon;
         }
         public List<Klant> GetKlanten()
         {
@@ -142,6 +144,11 @@ namespace CRMSanto.BusinessLayer.Services
         public List<KlantRelatie> GetKlantRelaties(Klant k)
         {
             return repoKlantRelatie.All(k.ID).ToList<KlantRelatie>();
+        }
+
+        public List<Voedingspatroon> GetVoedingspatronen()
+        {
+            return repoVoedingspatroon.All().ToList<Voedingspatroon>();
         }
         public void Mails()
         {

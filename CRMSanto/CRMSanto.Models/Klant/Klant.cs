@@ -9,12 +9,13 @@ namespace CRMSanto.Models
     public class Klant
     {
         public int ID { get; set; }
-        [Required]
+        [Required(ErrorMessage="Gelieve een naam in te vullen!")]
         public string Naam { get; set; }
-        [Required]
+        [Required(ErrorMessage="Gelieve een voornaam in te vullen")]
         public string Voornaam { get; set; }
         public virtual Adres Adres { get; set; }
         public string Foto { get; set; }
+        [DataType(DataType.PhoneNumber)]
         public string Telefoon { get; set; }
         [DataType(DataType.EmailAddress)]
         [Display(Name="E-mail")]
@@ -27,5 +28,6 @@ namespace CRMSanto.Models
         public virtual MedischeFiche MedischeFiche { get; set; }
         public virtual PersoonlijkeFiche PersoonlijkeFiche { get; set; }
         public virtual List<KlantRelatie> KlantRelaties { get; set; }
+        public virtual Voedingspatroon Voedingspatroon { get; set; }
     }
 }

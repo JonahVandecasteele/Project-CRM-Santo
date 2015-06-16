@@ -11,6 +11,7 @@ namespace CRMSanto.BusinessLayer.Services
         System.Collections.Generic.List<CRMSanto.Models.Afspraak> GetAfsprakenToday();
         CRMSanto.Models.Arrangement GetArrangementByID(int id);
         System.Collections.Generic.List<CRMSanto.Models.Arrangement> GetArrangementen();
+        System.Collections.Generic.List<CRMSanto.Models.Afspraak> GetDuurEnTijdstip(CRMSanto.Models.Afspraak a);
         CRMSanto.Models.Extra GetExtraByID(int id);
         System.Collections.Generic.List<CRMSanto.Models.Extra> GetExtras();
         System.Collections.Generic.List<CRMSanto.Models.Afspraak> GetLopendeAfspraken();
