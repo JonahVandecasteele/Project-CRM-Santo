@@ -121,8 +121,8 @@
                             <div class="input-field col s6">
                                 @Html.EditorFor(model => model.SelectedKaracter, new { htmlAttributes = new { @class = "form-control" }, Karaktertreken = Model.Karaktertreken, Karaktertrek = Model.Karaktertrek })
                             </div>
-                            <div class="input-field col s6">
-
+                            <div class="input-field col s6" >
+                                
                             </div>
                         </div>
                     </div>
@@ -148,7 +148,7 @@
                 <a onclick="$('#frmKlant')[0].reset();" href="#" class="btn-floating btn-large waves-effect waves-light red"><i class="mdi-navigation-refresh"></i></a>
                 <a onclick="$('#frmKlant')[0].submit();" href="#" class="btn-floating btn-large waves-effect waves-light green" name="Create"><i class="mdi-content-save"></i></a>
             </div>
-            }
+}
 
             @section Scripts {
                 @Scripts.Render("~/bundles/jqueryval")

@@ -21,11 +21,11 @@ namespace CRMSanto.BusinessLayer.Repository
             var query = (from a in context.Afspraak.Include(k => k.Klant).Include(m=>m.Masseur).Include(ms=>ms.SoortAfspraak) where a.Archief==false select a);
             return query.ToList<Afspraak>();
         }
-        //public override IEnumerable<Afspraak> AllArchief()
-        //{
-        //    var query = (from a in context.Afspraak.Include(k => k.Klant).Include(m => m.Masseur).Include(ms => ms.SoortAfspraak) where a.Archief == true select a);
-        //    return query.ToList<Afspraak>();
-        //}
+        public IEnumerable<Afspraak> AllArchief()
+        {
+            var query = (from a in context.Afspraak.Include(k => k.Klant).Include(m => m.Masseur).Include(ms => ms.SoortAfspraak) where a.Archief == true select a);
+            return query.ToList<Afspraak>();
+        }
         public List<Afspraak> AfsprakenVandaag() 
         {
             DateTime dt = DateTime.Now;
