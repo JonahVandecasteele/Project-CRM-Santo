@@ -1,0 +1,97 @@
+﻿@model CRMSanto.ViewModels.StatsPM
+
+@{
+    ViewBag.Title = "Statistieken";
+    int Antwerpen, Brussel, Henegouwen, Limburg, Luik, Luxemburg, Namen, OostVlaanderen, VlaamsBrabant, WaalsBrabant, WestVlaanderen, Onbekend;
+    Antwerpen = 0;
+    Brussel = 0;
+    Henegouwen = 0;
+    Limburg = 0;
+    Luik = 0;
+    Luxemburg = 0;
+    Namen = 0;
+    OostVlaanderen = 0;
+    VlaamsBrabant = 0;
+    WaalsBrabant = 0;
+    WestVlaanderen = 0;
+    Onbekend = 0;
+    foreach (var k in Model.Klanten) 
+    { 
+        switch (k.Adres.Gemeente.Provincie) 
+        {
+            case "Antwerpen":
+                Antwerpen = Antwerpen + 1;
+                break;
+            case "Brussel (19 gemeenten)":
+                Brussel = Brussel + 1;
+                break;
+            case "Henegouwen":
+                Henegouwen = Henegouwen + 1;
+                break;
+            case "Limburg":
+                Limburg = Limburg + 1;
+                break;
+            case "Luik":
+                Luik = Luik + 1;
+                break;
+            case "Luxemburg":
+                Luxemburg = Luxemburg + 1;
+                break;
+            case "Namen":
+                Namen = Namen + 1;
+                break;
+            case "Oost-Vlaanderen":
+                OostVlaanderen = OostVlaanderen + 1;
+                break;
+            case "Vlaams-Brabant":
+                VlaamsBrabant = VlaamsBrabant + 1;
+                break;
+            case "Waals-Brabant":
+                WaalsBrabant = WaalsBrabant + 1;
+                break;
+            case "West-Vlaanderen":
+                WestVlaanderen = WestVlaanderen + 1;
+                break;
+            default:
+                Onbekend = Onbekend + 1;
+                break;
+        }
+    }
+}
+
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript">
+    google.load("visualization", "1", {packages:["corechart"]});
+    google.setOnLoadCallback(drawChart);
+    function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Provincie', 'Klanten'],
+          ['Antwerpen', @Antwerpen],
+          ['Brussel', @Brussel],
+          ['Henegouwen', @Henegouwen],
+          ['Limburg', @Limburg],
+          ['Luik', @Luik],
+          ['Luxemburg', @Luxemburg],
+          ['Namen', @Namen],
+          ['Oost-Vlaanderen', @OostVlaanderen],
+          ['Vlaams-Brabant', @VlaamsBrabant],
+          ['Waals-Brabant', @WaalsBrabant],
+          ['West-Vlaanderen', @WestVlaanderen]
+        ]);
+
+        var options = {
+            title: 'Aantal klanten per provincie'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        chart.draw(data, options);
+    }
+</script>
+
+<div class="row">
+    <div class="col s12">
+        <div id="piechart" style="width: 100%; height: 500px;"></div>
+    </div>
+</div>

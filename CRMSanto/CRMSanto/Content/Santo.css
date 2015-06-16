@@ -2640,3 +2640,19 @@ nav ul li.active, nav ul li:hover {
 .last.row {
     margin-bottom: 0;
 }
+
+h2 {
+    font-size: 3em;
+}
+
+/*#region MOBILE & TABLET */
+@media (max-width:768px) 
+{
+    h1{
+		font-size: 2.3em;
+	}
+	h2{
+		font-size: 1.9em;
+	}
+}
+/*#endregion*/
