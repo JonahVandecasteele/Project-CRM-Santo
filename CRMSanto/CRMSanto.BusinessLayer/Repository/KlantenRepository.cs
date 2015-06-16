@@ -56,6 +56,7 @@ namespace CRMSanto.BusinessLayer.Repository
             {
                 context.Gemeente.Attach(entity.Adres.Gemeente);
             }
+
             context.Mutualiteit.Attach(entity.MedischeFiche.Mutualiteit);
             if (entity.PersoonlijkeFiche != null)
             {
