@@ -9,11 +9,11 @@ using System.Web;
 
 namespace CRMSanto.BusinessLayer.Repository
 {
-    public class KlantRelatieRepository : GenericRepository<KlantRelatie>, CRMSanto.BusinessLayer.Repository.IKlantRelatieRepository
+    public class KlantRelatieRepository : GenericRepository<KlantRelatie>,IKlantRelatieRepository
     {
         public IEnumerable<KlantRelatie> All(int id)
         {
-            var query = (from s in context.KlantRelatie.Include(a => a.RelatieType) where s.Relatie.ID == id select s);
+            var query = (from s in context.KlantRelatie.Include(a => a.RelatieType) where s.Relatie.ID == id || s.Klant.ID == id select s);
             return query.ToList<KlantRelatie>();
         }
         public override KlantRelatie Insert(KlantRelatie entity)

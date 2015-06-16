@@ -142,7 +142,25 @@ namespace CRMSanto.BusinessLayer.Services
         }
         public List<KlantRelatie> GetKlantRelaties(Klant k)
         {
-            return repoKlantRelatie.All(k.ID).ToList<KlantRelatie>();
+            List<KlantRelatie> resultlist = repoKlantRelatie.All(k.ID).ToList<KlantRelatie>();
+            List<KlantRelatie> returnlist = new List<KlantRelatie>();
+            //Switch klant and relatie when needed so all items start with the 'k' klant
+            foreach(KlantRelatie item in resultlist)
+            {
+                if(item.Klant.ID == k.ID)
+                {
+                    returnlist.Add(item);
+                }
+                if(item.Relatie.ID == k.ID)
+                {
+                    returnlist.Add(new KlantRelatie() { ID = item.ID, Klant = item.Relatie, Relatie = item.Klant });
+                }
+            }
+            return returnlist;
+        }
+        public KlantRelatie InsertKlantRelatie(KlantRelatie k)
+        {
+            return repoKlantRelatie.Insert(k);
         }
 
         public List<Voedingspatroon> GetVoedingspatronen()
