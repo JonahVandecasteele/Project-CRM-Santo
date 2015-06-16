@@ -68,7 +68,6 @@ namespace CRMSanto.BusinessLayer.Services
 
         public void AddAfspraak(Afspraak a)
         {
-            int Overlapping;
             List<Afspraak> afspraak = repoAfspraken.GetDuurEnTijdstip(a);
             if (afspraak.Count() == 0)
             {
@@ -92,12 +91,8 @@ namespace CRMSanto.BusinessLayer.Services
             }
             else
             {
-                Overlapping = 1;
+                a.Geannuleerd = true;
             }
-                   
-           // }
-            
-             //}
         } 
 
         public List<Masseur> GetMasseurs()

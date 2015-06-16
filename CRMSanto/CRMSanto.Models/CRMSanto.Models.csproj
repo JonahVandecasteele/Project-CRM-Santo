@@ -147,6 +147,10 @@
     <Compile Include="Migrations\201506151742383_fixenextraveld.Designer.cs">
       <DependentUpon>201506151742383_fixenextraveld.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201506160916579_voedingspatroon.cs" />
+    <Compile Include="Migrations\201506160916579_voedingspatroon.Designer.cs">
+      <DependentUpon>201506160916579_voedingspatroon.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Product\Product.cs" />
     <Compile Include="Product\Productregistratie.cs" />
@@ -205,6 +209,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201506151742383_fixenextraveld.resx">
       <DependentUpon>201506151742383_fixenextraveld.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506160916579_voedingspatroon.resx">
+      <DependentUpon>201506160916579_voedingspatroon.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
