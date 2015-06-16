@@ -114,7 +114,8 @@ namespace CRMSanto.Controllers
                     {
                         a.Afspraak.Geannuleerd = false;
                         //ViewBag.Error = "Afspraak reeds gemaakt op dit tijdstip";
-                        return RedirectToAction("New");
+                        RedirectToAction("New");
+                        //return View(a);
                     }
                     }
                    
