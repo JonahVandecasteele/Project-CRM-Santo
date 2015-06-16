@@ -44,7 +44,7 @@ namespace CRMSanto.BusinessLayer.Repository
         public override Klant Insert(Klant entity)
         {
             context.Adres.Add(entity.Adres);
-            context.Geslacht.Attach(entity.Geslacht);
+            //
             if (entity.Karaktertrek != null)
             {
                 foreach (Karaktertrek item in entity.Karaktertrek)
@@ -52,6 +52,8 @@ namespace CRMSanto.BusinessLayer.Repository
                     context.Karaktertrek.Attach(item);
                 }
             }
+            else
+                context.Geslacht.Attach(entity.Geslacht);
             if (entity.Adres.Gemeente != null)
             {
                 context.Gemeente.Attach(entity.Adres.Gemeente);
