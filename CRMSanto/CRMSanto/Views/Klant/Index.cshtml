@@ -32,27 +32,38 @@
             <div class="panel-body content-one klant-hidden">
                 <div class="row">
                     <div class="col s12">
-                        <div>
-                            <b>Geslachten:</b>
-                            <div class="input-field col s12">
-                                @Html.DropDownList("Options", ViewData["Options"] as SelectList, "--", new { @class = "browser-default" })
+                            <div class="row">
+                                <div class="col s12">
+                                    <p>
+                                        <label for="geslachten">Geslacht</label>
+                                        @Html.DropDownList("Options", ViewData["Options"] as SelectList, "--", new { @class = "browser-default", id = "geslachten" })
+                                    </p>
+                                </div>
                             </div>
-                            <b>Leeftijd van:</b>
-                            <div>
-                                <p class="range-field">
-                                    <input type="range" id="LeeftijdVan" name="LeeftijdVan" min="0" max="100" value="0" />
-                                </p>
+                            <div class="row">
+                                <div class="col s12">
+                                    <p class="range-field">
+                                        <label for="LeeftijdVan">Minimum leeftijd: <span id="minLeeftijd"></span></label>
+                                        <input type="range" id="LeeftijdVan" name="LeeftijdVan" min="0" max="100" value="0" onchange="updateMinLeeftijd(this.value);" />
+                                    </p>
+                                    </div>
+                                </div>
+                            <div class="row">
+                                <div class="col s12">
+                                    <p class="range-field">
+                                        <label for="LeeftijdTot">Maximum leeftijd: <span id="maxLeeftijd"></span></label>
+                                        <input type="range" id="LeeftijdTot" name="LeeftijdTot" min="0" max="100" value="100" onchange="updateMaxLeeftijd(this.value);" />
+                                    </p>
+                                </div>
                             </div>
-                            <b>tot:</b>
-                            <div>
-                                <p class="range-field">
-                                    <input type="range" id="LeeftijdTot" name="LeeftijdTot" min="0" max="100" value="100" />
-                                </p>
+                        <div class="last row">
+                            <div class="col s12">
+                                <button class="btn waves-effect waves-light" name="filterDit" type="submit" tabindex="-1">
+                                    Toepassen
+                                    <i class="mdi-content-filter-list right"></i>
+                                </button>
+                                </div>
                             </div>
-                        </div>
-                        <button class="btn-floating waves-effect waves-light santo-brown-bg inline-btn" name="filterDit" type="submit" tabindex="-1">
-                            <i class="mdi-content-filter-list"></i>
-                        </button>
                     </div>
                 </div>
             </div>
@@ -142,4 +153,11 @@
                         $('#icon-one').toggleClass("rotated");
                 });
             });
+
+            function updateMaxLeeftijd(val) {
+                $('#maxLeeftijd').text(val);
+            }
+            function updateMinLeeftijd(val) {
+                $('#minLeeftijd').text(val);
+            }
         </script>
