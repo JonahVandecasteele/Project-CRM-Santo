@@ -118,7 +118,7 @@
                     showWeekdaysFull: undefined,
                     today: 'Vandaag',
                     clear: 'Leegmaken',
-                    close: 'Sluiten',
+                    close: 'OK',
                     labelMonthNext: 'Volgende maand',
                     labelMonthPrev: 'Vorige maand',
                     labelMonthSelect: 'Selecteer een maand',
@@ -131,10 +131,7 @@
                     firstDay: 1,
                     selectMonths: true, // Creates a dropdown to control month
                     selectYears: 100, // Creates a dropdown of 15 years to control year
-                    closeOnClear: true,
-                    onSet: function (context) {
-                        this.close();
-                    }
+                    closeOnClear: true
                 });
             });
             $("#massage").change(function () {
