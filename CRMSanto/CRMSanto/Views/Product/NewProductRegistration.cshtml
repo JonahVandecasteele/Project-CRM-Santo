@@ -26,12 +26,7 @@
                 @Html.ValidationMessageFor(model => model.Productregistratie.Aantal, "", new { @class = "text-danger" })
             </div>
         </div>
-        <div class="row">
-            <div class="input-field col s12">
                 @Html.DropDownListFor(model => model.ProductID, Model.Producten, new { htmlAttributes = new { @class = "form-control" } })
-            </div>
-            </div>
-        
         @Html.DropDownListFor(model => model.KlantID, Model.Klanten, new { htmlAttributes = new { @class = "form-control" } })
 
         <div class="form-group">
