@@ -95,9 +95,15 @@ namespace CRMSanto.Controllers
                 {
                     a.Afspraak.Duur = a.Afspraak.SoortAfspraak.Duur;
                 }
-                else
+                else if(a.Afspraak.Arrangement !=null)
+
                 {
                     a.Afspraak.Duur = a.Afspraak.Arrangement.Duur;
+                }
+
+                else
+                {
+                    a.Afspraak.Duur = 60;
                 }
                 
                 a.Afspraak.DatumTijdstip = a.Datum.Date + a.Tijdstip.TimeOfDay;

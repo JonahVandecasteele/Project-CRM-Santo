@@ -91,8 +91,11 @@ namespace CRMSanto.BusinessLayer.Repository
             {
                 context.Arrangement.Attach(entity.Arrangement);
             }
-            
-            context.Extra.Attach(entity.Extra);
+
+            if (entity.Extra != null)
+            {
+                context.Extra.Attach(entity.Extra);
+            }
             //context.Adres.Attach(entity.Adres);
 
             Afspraak afspraak = context.Afspraak.Add(entity);
