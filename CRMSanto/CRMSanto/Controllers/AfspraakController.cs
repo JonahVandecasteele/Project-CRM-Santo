@@ -105,7 +105,7 @@ namespace CRMSanto.Controllers
                 if (_O365ServiceOperationFailed)
                 {
                     afs.AddAfspraak(a.Afspraak);
-                    if (a.Afspraak.Geannuleerd = false)
+                    if (a.Afspraak.Geannuleerd == false)
                     {
                         return RedirectToAction("Index");
                     }

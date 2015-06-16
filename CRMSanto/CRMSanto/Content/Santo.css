@@ -2626,3 +2626,9 @@ nav ul li.active, nav ul li:hover {
 .file-field.input-field {
     width: 100%;
 }
+
+.block-afspraak {
+    background: rgba(0,0,0,0.05);
+    border-radius: 5px;
+    padding: 5px;
+}
