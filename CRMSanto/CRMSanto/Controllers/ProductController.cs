@@ -114,6 +114,7 @@ namespace CRMSanto.Controllers
             pm.Producten = new SelectList(ps.GetProducten(),"ID","Naam");
             pm.Klanten = new SelectList(values, "ID", "Naam");
             pm.Productregistratie = new Productregistratie();
+            pm.Winkelmand = new Winkelmand();
             return View(pm);
         }
 
@@ -125,6 +126,7 @@ namespace CRMSanto.Controllers
 
             Productregistratie pr = new Productregistratie();
             pr = nprpm.Productregistratie;
+            pr.Winkelmand = new Winkelmand();
             pr.Winkelmand.DatumTijdstip = DateTime.Now;
             pr.Winkelmand.Klant = ks.GetKlantByID(nprpm.KlantID);
             pr.Product = ps.GetProductByID(nprpm.ProductID);
