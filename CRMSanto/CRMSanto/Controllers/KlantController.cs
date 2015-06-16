@@ -314,7 +314,6 @@ namespace CRMSanto.Controllers
                 Klant tempKlant = new Klant();
                 if (TempData["NewKlantM"] == null)//If Klant doesn't exist from prev postback (Happens when multiple gemeentes are possible
                 {
-                    
                     if (klant.Geslacht != null)// If Geslacht is filled in , get Object from database
                     {
                         if (klant.Geslacht.ID != 0)
@@ -347,7 +346,11 @@ namespace CRMSanto.Controllers
 
                     //Get all possible gemeentes
                     List<Gemeente> gemeentelist = new List<Gemeente>();
-                    if (tempKlant.Adres.Gemeente == null)
+                    if(tempKlant.Adres.Postcode == null)
+                    {
+                        tempKlant.Adres.Postcode = "0000";
+                    }
+                    if (tempKlant.Adres.Gemeente.Plaatsnaam == null)
                     {
                         gemeentelist = ks.GetGemeentesByPostCode(tempKlant.Adres.Postcode);//Get list of gemeentes by postcode
                         if (gemeentelist.Count > 1)//If more then 1 gemeente possible
