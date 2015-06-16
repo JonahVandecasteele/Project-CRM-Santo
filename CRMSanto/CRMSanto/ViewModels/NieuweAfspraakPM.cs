@@ -33,6 +33,6 @@ namespace CRMSanto.Models.PresentationModels
         public int ArrangementID { get; set; }
         public SelectList Arrangementen { get; set; }
         public int ExtraID { get; set; }
-        public SelectList Extras { get; set; }        
+        public SelectList Extras { get; set; }
     }
 }
