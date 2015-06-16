@@ -257,6 +257,7 @@ namespace CRMSanto.Controllers
             KlantViewModel model = new KlantViewModel();
             model.Geslachten = ks.GetGeslachten();
             model.Mutualiteiten = ks.GetMutualiteiten();
+            ViewData["Werksituaties"] = ks.GetWerkSituaties();
             model.Werksituaties = ks.GetWerkSituaties();
             model.Karaktertreken = ks.GetKaraktertreken();
             model.Voedingspatronen = ks.GetVoedingspatronen();

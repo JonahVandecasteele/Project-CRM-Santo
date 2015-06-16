@@ -122,7 +122,11 @@
                                 @Html.EditorFor(model => model.SelectedKaracter, new { htmlAttributes = new { @class = "form-control" }, Karaktertreken = Model.Karaktertreken})
                             </div>
                             <div class="input-field col s6" >
-                                
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                @Html.EditorFor(model => model.PersoonlijkeFiche, new { htmlAttributes = new { @class = "form-control" }, Karaktertreken = Model.Karaktertreken })
                             </div>
                         </div>
                     </div>
