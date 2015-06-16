@@ -15,17 +15,15 @@ namespace CRMSanto.BusinessLayer.Services
         private IGenericRepository<Masseur> repoMasseur = null;
         private IGenericRepository<SoortAfspraak> repoMassage = null;
         private IGenericRepository<Arrangement> repoArrangement = null;
-        private IGenericRepository<Archief> repoArchief = null;
         private IGenericRepository<Extra> repoExtra = null;
         private ISessieRepository repoSessie = null;
 
-        public AfspraakService(IAfsprakenRepository repoAfspraken, IGenericRepository<Masseur> repoMasseur, IGenericRepository<SoortAfspraak> repoMassage,IGenericRepository<Arrangement> repoArrangement,IGenericRepository<Archief> repoArchief,IGenericRepository<Extra> repoExtra, ISessieRepository repoSessie)
+        public AfspraakService(IAfsprakenRepository repoAfspraken, IGenericRepository<Masseur> repoMasseur, IGenericRepository<SoortAfspraak> repoMassage,IGenericRepository<Arrangement> repoArrangement,IGenericRepository<Extra> repoExtra, ISessieRepository repoSessie)
         {
             this.repoAfspraken = repoAfspraken;
             this.repoMasseur = repoMasseur;
             this.repoMassage = repoMassage;
             this.repoArrangement = repoArrangement;
-            this.repoArchief = repoArchief;
             this.repoExtra = repoExtra;
             this.repoSessie = repoSessie;
         }
@@ -77,13 +75,13 @@ namespace CRMSanto.BusinessLayer.Services
             //Sessie s = new Sessie {Klant=a.Klant,AantalSessies=1 };
             //s.AantalSessies.Add(s);
             
-            List<Afspraak> afspraken = repoAfspraken.LopendeAfspraken();
+            //List<Afspraak> afspraken = repoAfspraken.LopendeAfspraken();
             //foreach (Afspraak afspraak in afspraken)
             //{
-                bool nieuweAfspraakBookable = !afspraken.Any(x => x.DatumTijdstip >= a.DatumTijdstip.AddHours((a.Duur / 60) + 1) && x.DatumTijdstip.AddHours((x.Duur / 60) + 1) <= a.DatumTijdstip);
-                //bool nieuweAfspraakBookable = !repoAfspraken.LopendeAfspraken().Any(x => x.DatumTijdstip >= a.DatumTijdstip.AddHours(a.Duur / 60) && x.DatumTijdstip.AddHours(x.Duur / 60) <= a.DatumTijdstip);
-                if (nieuweAfspraakBookable == false)
-                {
+                //bool nieuweAfspraakBookable = !afspraken.Any(x => x.DatumTijdstip >= a.DatumTijdstip.AddHours((a.Duur / 60) + 1) && x.DatumTijdstip.AddHours((x.Duur / 60) + 1) <= a.DatumTijdstip);
+                ////bool nieuweAfspraakBookable = !repoAfspraken.LopendeAfspraken().Any(x => x.DatumTijdstip >= a.DatumTijdstip.AddHours(a.Duur / 60) && x.DatumTijdstip.AddHours(x.Duur / 60) <= a.DatumTijdstip);
+                //if (nieuweAfspraakBookable == false)
+                //{
                     repoAfspraken.Insert(a);
                     repoAfspraken.SaveChanges();
 
@@ -101,7 +99,7 @@ namespace CRMSanto.BusinessLayer.Services
                         repoSessie.SaveChanges();
 
                     }
-            }
+           // }
             
              //}
         } 
@@ -176,24 +174,9 @@ namespace CRMSanto.BusinessLayer.Services
             List<Afspraak> afspraken = repoAfspraken.TussenTweeDatums(van, tot);
             foreach(Afspraak a in afspraken)
             {
-                Archief ar = new Archief();
-                ar = (Archief)a;
-               /* ar.AdresID = a.Adres.ID;
-                ar.KlantID = a.Klant.ID;
-                ar.MasseurID = a.Masseur.ID;
-                ar.Notitie = a.Notitie;
-                ar.SoloDuo = a.SoloDuo;
-                ar.SoortAfspraakID = a.SoortAfspraak.ID;
-                ar.Verplaatsing = a.Verplaatsing;
-                ar.AantalPersonen = a.AantalPersonen;
-                ar.ArrangementID = a.Arrangement.ID;
-                ar.DatumTijdstip = a.DatumTijdstip;
-                ar.Duur = a.Duur;*/
-
-                repoArchief.Insert(ar);
-                repoAfspraken.Delete(a);
+                a.Archief = true;
+                repoAfspraken.Update(a);
             }
-            repoArchief.SaveChanges();
             repoAfspraken.SaveChanges();
         }
     }

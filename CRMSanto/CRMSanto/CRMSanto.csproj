@@ -29,6 +29,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -406,7 +407,7 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\ripples.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Views\Klant\TextFile1.txt" />
+    <Content Include="Views\Klant\BACKUP NEW.txt" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -457,13 +458,10 @@
     <Content Include="Views\Shared\EditorTemplates\Werksituatie.cshtml" />
     <Content Include="Views\Setting\NewKaraktertrek.cshtml" />
     <Content Include="Views\Setting\NewWerksituatie.cshtml" />
-    <Content Include="Views\Dienst\Index.cshtml" />
     <Content Include="Views\Dienst\New.cshtml" />
     <Content Include="Views\Dienst\Edit.cshtml" />
-    <Content Include="Views\Dienst\Index2.cshtml" />
     <Content Include="Views\Dienst\New2.cshtml" />
     <Content Include="Views\Dienst\Edit2.cshtml" />
-    <Content Include="Views\Dienst\Index3.cshtml" />
     <Content Include="Views\Dienst\New3.cshtml" />
     <Content Include="Views\Dienst\Edit3.cshtml" />
     <Content Include="Views\Setting\OpkuisAfspraken.cshtml" />
@@ -472,6 +470,7 @@
     <Content Include="Views\Setting\NewRelatie.cshtml" />
     <Content Include="Views\Klant\New.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\KlantRelatie.cshtml" />
+    <Content Include="Views\Dienst\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

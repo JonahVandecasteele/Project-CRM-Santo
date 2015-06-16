@@ -33,14 +33,12 @@ namespace CRMSanto
             container.RegisterType<IGenericRepository<Extra>, GenericRepository<Extra>>();
             container.RegisterType<IGenericRepository<Relatie>, GenericRepository<Relatie>>();
             container.RegisterType<IKlantRelatieRepository, KlantRelatieRepository>();
-            container.RegisterType<IGenericRepository<Archief>, GenericRepository<Archief>>();
             container.RegisterType<IAfsprakenRepository, AfsprakenRepository>();
             container.RegisterType<IAfspraakService, AfspraakService>();
             container.RegisterType<IProductenRepository, ProductenRepository>();
             container.RegisterType<IProductService, ProductService>();
             container.RegisterType<IKlantenRepository, KlantenRepository>();
             container.RegisterType<IKlantService, KlantService>();
-            container.RegisterType<IGenericRepository<Archief>, GenericRepository<Archief>>();
 
             container.RegisterType<AccountController>(new InjectionConstructor());
             
