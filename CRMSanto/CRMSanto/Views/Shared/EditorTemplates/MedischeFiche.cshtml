@@ -3,36 +3,31 @@
     List<CRMSanto.Models.Mutualiteit> list = (List<CRMSanto.Models.Mutualiteit>)ViewData["Mutualiteiten"];
 }
 
-        <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.Voedingspatroon, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Voedingspatroon, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Voedingspatroon, "", new { @class = "text-danger" })
-            </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Spijsvertering, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Spijsvertering, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Spijsvertering, "", new { @class = "text-danger" })
-            </div>
-        </div>
+<div class="row">
+    <div class="input-field col s6">
+        @Html.EditorFor(model => model.Voedingspatroon, new { htmlAttributes = new { @class = "validate", id = "voedingspatroon", placeholder = "" } })
+        <label for="voedingspatroon">@Html.DisplayNameFor(model => model.Voedingspatroon)</label>
+    </div>
+    <div class="input-field col s6">
+        @Html.EditorFor(model => model.Spijsvertering, new { htmlAttributes = new { @class = "validate", id = "spijsvertering", placeholder = "" } })
+        <label for="spijsvertering">@Html.DisplayNameFor(model => model.Spijsvertering)</label>
+    </div>
+</div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.HuidigeKlachten, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.HuidigeKlachten, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.HuidigeKlachten, "", new { @class = "text-danger" })
-            </div>
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(model => model, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-
-                @Html.DropDownListFor(model => model.Mutualiteit.ID, new SelectList(list, "ID", "Naam"))
-                @Html.ValidationMessageFor(model => model.Mutualiteit, "", new { @class = "text-danger" })
-            </div>
-        </div>
+<div class="row">
+    <div class="input-field col s6">
+        @Html.EditorFor(model => model.HuidigeKlachten, new { htmlAttributes = new { @class = "validate", id = "huidigeklachten", placeholder = "" } })
+        <label for="huidigeklachten">@Html.DisplayNameFor(model => model.HuidigeKlachten)</label>
+    </div>
+    <div class="input-field col s6">
+        <select id="MedischeFiche_Mutualiteit_ID" name="MedischeFiche.Mutualiteit.ID">
+                @foreach (var m in list) 
+                {  
+                    <option value="@m.ID">@m.Naam</option>
+                } 
+        </select>
+        <label for="MedischeFiche_Mutualiteit_ID">@Html.DisplayNameFor(model => model.Mutualiteit)</label>
+    </div>
+</div>

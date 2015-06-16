@@ -11,6 +11,5 @@ namespace CRMSanto.Models
         public int ID { get; set; }
         public string Naam { get; set; }
         public decimal Prijs { get; set; }
-        public List<Afspraak> Afspraak { get; set; }
     }
 }

@@ -46,18 +46,15 @@ namespace CRMSanto.BusinessLayer.Repository
         {
             context.Adres.Add(entity.Adres);
             context.Geslacht.Attach(entity.Geslacht);
-            if (entity.Karaktertrek != null) { 
-                foreach (Karaktertrek item in entity.Karaktertrek)
-                {
-                    context.Karaktertrek.Attach(item);
-                }
+            foreach (Karaktertrek item in entity.Karaktertrek)
+            {
+                context.Karaktertrek.Attach(item);
             }
             context.Gemeente.Attach(entity.Adres.Gemeente);
             context.Mutualiteit.Attach(entity.MedischeFiche.Mutualiteit);
-            if (entity.PersoonlijkeFiche.Werksituatie != null)
-            context.Werksituatie.Attach(entity.PersoonlijkeFiche.Werksituatie);
-            context.MedischeFiche.Add(entity.MedischeFiche);
+            if (entity.PersoonlijkeFiche.Werksituatie != null) context.Werksituatie.Attach(entity.PersoonlijkeFiche.Werksituatie);
             context.PersoonlijkeFiche.Add(entity.PersoonlijkeFiche);
+            context.MedischeFiche.Add(entity.MedischeFiche);
             if (entity.KlantRelaties != null)
             {
                 foreach (KlantRelatie item in entity.KlantRelaties)

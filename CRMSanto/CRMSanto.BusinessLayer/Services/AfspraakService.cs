@@ -9,7 +9,7 @@ using CRMSanto.Models;
 
 namespace CRMSanto.BusinessLayer.Services
 {
-    public class AfspraakService : CRMSanto.BusinessLayer.Services.IAfspraakService
+    public class AfspraakService : CRMSanto.BusinessLayer.Services.IAfspraakService 
     {
         private IAfsprakenRepository repoAfspraken = null;
         private IGenericRepository<Masseur> repoMasseur = null;
@@ -68,38 +68,34 @@ namespace CRMSanto.BusinessLayer.Services
 
         public void AddAfspraak(Afspraak a)
         {
-            //ApplicationDbContext context = new ApplicationDbContext();
+            int Overlapping;
+            List<Afspraak> afspraak = repoAfspraken.GetDuurEnTijdstip(a);
+            if (afspraak.Count() == 0)
+            {
+                repoAfspraken.Insert(a);
+                repoAfspraken.SaveChanges();
 
-            //context.Klant.Add(a.Klant);
-            //context.Entry<Klant>(a.Klant).State = System.Data.Entity.EntityState.Unchanged;
-            //Sessie s = new Sessie {Klant=a.Klant,AantalSessies=1 };
-            //s.AantalSessies.Add(s);
-            
-            List<Afspraak> afspraken = repoAfspraken.LopendeAfspraken();
-            //foreach (Afspraak afspraak in afspraken)
-            //{
-                bool nieuweAfspraakBookable = !afspraken.Any(x => x.DatumTijdstip >= a.DatumTijdstip.AddHours((a.Duur / 60) + 1) && x.DatumTijdstip.AddHours((x.Duur / 60) + 1) <= a.DatumTijdstip);
-                //bool nieuweAfspraakBookable = !repoAfspraken.LopendeAfspraken().Any(x => x.DatumTijdstip >= a.DatumTijdstip.AddHours(a.Duur / 60) && x.DatumTijdstip.AddHours(x.Duur / 60) <= a.DatumTijdstip);
-                if (nieuweAfspraakBookable == false)
+                try
                 {
-                    repoAfspraken.Insert(a);
-                    repoAfspraken.SaveChanges();
+                    Sessie k = repoSessie.GetByKlantID(a.Klant.ID);
+                    k.AantalSessies++;
+                    repoSessie.Update(k);
+                    repoSessie.SaveChanges();
+                }
+                catch (Exception ex)
+                {
 
-                    try
-                    {
-                        Sessie k = repoSessie.GetByKlantID(a.Klant.ID);
-                        k.AantalSessies++;
-                        repoSessie.Update(k);
-                        repoSessie.SaveChanges();
-                    }
-                    catch (Exception ex)
-                    {
+                    repoSessie.Insert(new Sessie() { AantalSessies = 1, Klant = a.Klant });
+                    repoSessie.SaveChanges();
 
-                        repoSessie.Insert(new Sessie() { AantalSessies = 1, Klant = a.Klant });
-                        repoSessie.SaveChanges();
-
-                    }
+                }
             }
+            else
+            {
+                Overlapping = 1;
+            }
+                   
+           // }
             
              //}
         } 
@@ -178,6 +174,10 @@ namespace CRMSanto.BusinessLayer.Services
                 repoAfspraken.Update(a);
             }
             repoAfspraken.SaveChanges();
+        }
+        public List<Afspraak> GetDuurEnTijdstip(Afspraak a)
+        {
+            return repoAfspraken.GetDuurEnTijdstip(a).ToList<Afspraak>();
         }
     }
 }
