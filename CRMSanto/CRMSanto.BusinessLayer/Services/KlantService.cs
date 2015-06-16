@@ -62,7 +62,6 @@ namespace CRMSanto.BusinessLayer.Services
             
             Klant result = repoKlant.Insert(klant);
             repoKlant.SaveChanges();
-            //StorageHelper.AddImage("StorageConnectionString", "images", Image, System.Guid.NewGuid().ToString());
             return result;
         }
         public void SaveImage(HttpPostedFileBase p, string filename)

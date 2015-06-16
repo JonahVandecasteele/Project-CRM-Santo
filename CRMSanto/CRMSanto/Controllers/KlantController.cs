@@ -624,16 +624,18 @@ namespace CRMSanto.Controllers
                             klant.MedischeFiche.Mutualiteit = ks.GetMutualiteitByID(klant.MedischeFiche.Mutualiteit.ID);
                     }
 
+                    klant.Foto = Guid.NewGuid().ToString();
+
                     if(klant.Upload==null)//If the upload would magicaly become null , we grab it from the database.
                     {
                         if (Session["PhotoUpload"] != null)
                         {
-                            ks.SaveImage((HttpPostedFileBase)Session["PhotoUpload"], Guid.NewGuid().ToString());//Save photo from last postback
+                            ks.SaveImage((HttpPostedFileBase)Session["PhotoUpload"], klant.Foto);//Save photo from last postback
                         }
                     }
                     else
                     {
-                        ks.SaveImage(klant.Upload, Guid.NewGuid().ToString());//Save photo from current post
+                        ks.SaveImage(klant.Upload, klant.Foto);//Save photo from current post
                     }
 
                     //Set a temp klant object with data from ViewModel and Tempdata

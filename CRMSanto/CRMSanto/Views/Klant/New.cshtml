@@ -31,10 +31,12 @@
             <div class="row">
                 <div class="input-field col s6">
                     @Html.EditorFor(model => model.Voornaam, new { htmlAttributes = new { @class = "validate", id = "first_name", placeholder = "" } })
+                    @Html.ValidationMessageFor(model => model.Voornaam)
                     <label for="first_name">@Html.DisplayNameFor(model => model.Voornaam)</label>
                 </div>
                 <div class="input-field col s6">
                     @Html.EditorFor(model => model.Naam, new { htmlAttributes = new { @class = "validate", id = "last_name", placeholder = "" } })
+                    @Html.ValidationMessageFor(model => model.Naam)
                     <label for="last_name">@Html.DisplayNameFor(model => model.Naam)</label>
                 </div>
             </div>
@@ -73,7 +75,7 @@
                         </div>
                         <div class="row">
                             <div class="input-field col s4">
-                                @Html.EditorFor(model => model.Adres.Postcode, new { htmlAttributes = new { @class = "validate", id = "postcode"} })
+                                @Html.EditorFor(model => model.Adres.Postcode, new { htmlAttributes = new { @class = "validate", id = "postcode", placeholder = ""} })
                                 <label for="postcode">@Html.DisplayNameFor(model => model.Adres.Postcode)</label>
                             </div>
                             <div class="input-field col s8">
