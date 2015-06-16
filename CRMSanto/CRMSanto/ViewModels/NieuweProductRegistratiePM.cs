@@ -9,7 +9,7 @@ namespace CRMSanto.Models.PresentationModels
 {
     public class NieuweProductRegistratiePM
     {
-        public SelectList Producten { get; set; }
+        public Product Product { get; set; }
         public int ProductID { get; set; }
         public SelectList Klanten { get; set; }
         public int KlantID { get; set; }

@@ -105,13 +105,13 @@ namespace CRMSanto.Controllers
         }
 
         [HttpGet]
-        public ActionResult NewProductRegistration()
+        public ActionResult NewProductRegistration(int? id)
         {
             NieuweProductRegistratiePM pm = new NieuweProductRegistratiePM();
 
             var values = ks.GetKlanten().Select(u => new { ID = u.ID, Naam = u.Naam + " " + u.Voornaam });
-            
-            pm.Producten = new SelectList(ps.GetProducten(),"ID","Naam");
+
+            pm.Product = ps.GetProductByID(id.Value);
             pm.Klanten = new SelectList(values, "ID", "Naam");
             pm.Productregistratie = new Productregistratie();
             pm.Winkelmand = new Winkelmand();
@@ -122,7 +122,6 @@ namespace CRMSanto.Controllers
         public ActionResult NewProductRegistration(NieuweProductRegistratiePM nprpm)
         {
             nprpm.Klanten = new SelectList(ks.GetKlanten(), "ID", "Naam");
-            nprpm.Producten = new SelectList(ps.GetProducten(), "ID", "Naam");
 
             Productregistratie pr = new Productregistratie();
             pr = nprpm.Productregistratie;

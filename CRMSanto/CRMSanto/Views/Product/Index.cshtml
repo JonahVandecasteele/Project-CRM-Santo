@@ -45,8 +45,9 @@
                         <td>€ @Html.DisplayFor(modelItem => item.VerkoopPrijs)</td>
                         <td>
                             <nobr>
-                                <a class="btn-floating waves-effect waves-light orange inline-btn"><i class="mdi-editor-mode-edit"></i></a>
+                                <a href='@Url.Action("Edit","Product",new { id = item.ID })'class="btn-floating waves-effect waves-light orange inline-btn"><i class="mdi-editor-mode-edit"></i></a>
                                 <a class="btn-floating waves-effect waves-light red inline-btn"><i class="mdi-content-remove-circle"></i></a>
+                                <a href='@Url.Action("NewProductRegistration", "Product", new { id = item.ID })' class="btn-floating btn-large waves-effect waves-light red"><i class="mdi-action-shopping-cart"></i></a>
                             </nobr>
                         </td>
                     </tr>
@@ -57,6 +58,6 @@
 }
 Aantal resultaten: @Model.Count()
 <div class="fixed-action-btn">
-    <a href='@Url.Action("NewProductRegistration", "Product")' class="btn-floating btn-large waves-effect waves-light red"><i class="mdi-action-shopping-cart"></i></a>
+    
     <a href='@Url.Action("New", "Product")' class="btn-floating btn-large waves-effect waves-light green"><i class="mdi-content-add"></i></a>
 </div>
