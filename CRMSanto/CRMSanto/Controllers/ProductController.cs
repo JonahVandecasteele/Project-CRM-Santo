@@ -128,7 +128,7 @@ namespace CRMSanto.Controllers
             pr.Winkelmand = new Winkelmand();
             pr.Winkelmand.DatumTijdstip = DateTime.Now;
             pr.Winkelmand.Klant = ks.GetKlantByID(nprpm.KlantID);
-            pr.Product = ps.GetProductByID(nprpm.ProductID);
+            pr.Product = ps.GetProductByID(nprpm.Product.ID);
 
             ps.InsertProductregistration(pr);
             return RedirectToAction("Index");
