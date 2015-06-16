@@ -598,6 +598,7 @@ namespace CRMSanto.Controllers
                             model.Mutualiteiten = ks.GetMutualiteiten();
                             model.Werksituaties = ks.GetWerkSituaties();
                             model.Karaktertreken = ks.GetKaraktertreken();
+                            model.Voedingspatronen = ks.GetVoedingspatronen();
                             return View(model);
                         }
                         catch (Exception ex)
@@ -686,15 +687,11 @@ namespace CRMSanto.Controllers
                             {
                                 klant.Karaktertrek = new List<Karaktertrek>();
                             }
-                            klant.MedischeFiche.Voedingspatroon = (Voedingspatroon)TempData["Voedingspatroon"];
-                            if (klant.MedischeFiche.Voedingspatroon == null)
-                            {
-                                klant.MedischeFiche.Voedingspatroon = new Voedingspatroon();
-                            }
                             klant.Geslachten = ks.GetGeslachten();
                             klant.Mutualiteiten = ks.GetMutualiteiten();
                             klant.Werksituaties = ks.GetWerkSituaties();
                             klant.Karaktertreken = ks.GetKaraktertreken();
+                            model.Voedingspatronen = ks.GetVoedingspatronen();
                             return View(klant);
                         }
                         
