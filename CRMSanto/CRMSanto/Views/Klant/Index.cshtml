@@ -22,72 +22,43 @@
            
         </span>
     </div>
-    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+    <div class="panel-group filter-panel" id="accordion" role="tablist" aria-multiselectable="true">
         <div class="panel panel-default">
             <div class="panel-heading" role="tab" id="headingOne">
                 <h4 class="panel-title expand-one">
-                    <a href="#">
-                        <i class="mdi-hardware-keyboard-arrow-right" id="icon-one"></i> <i class="mdi-content-filter-list"></i> Filters
-                    </a>
+                    <i class="mdi-hardware-keyboard-arrow-right" id="icon-one"></i> <i class="mdi-content-filter-list"></i> Filters
                 </h4>
             </div>
             <div class="panel-body content-one klant-hidden">
                 <div class="row">
                     <div class="col s12">
-
+                        <div>
+                            <b>Geslachten:</b>
+                            <div class="input-field col s12">
+                                @Html.DropDownList("Options", ViewData["Options"] as SelectList, "--", new { @class = "browser-default" })
+                            </div>
+                            <b>Leeftijd van:</b>
+                            <div>
+                                <p class="range-field">
+                                    <input type="range" id="LeeftijdVan" name="LeeftijdVan" min="0" max="100" value="0" />
+                                </p>
+                            </div>
+                            <b>tot:</b>
+                            <div>
+                                <p class="range-field">
+                                    <input type="range" id="LeeftijdTot" name="LeeftijdTot" min="0" max="100" value="100" />
+                                </p>
+                            </div>
+                        </div>
+                        <button class="btn-floating waves-effect waves-light santo-brown-bg inline-btn" name="filterDit" type="submit" tabindex="-1">
+                            <i class="mdi-content-filter-list"></i>
+                        </button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-        <fieldset class="filtering">
-            <legend>Filters</legend>
-
-            @*<div class="form-group">
-                <div class="col-md-10">*@
-            @*@Html.DisplayNameFor(model => model.Geslacht).ToString()
-                @Html.DropDownListFor(model => model.Geslacht.Naam, Model.Geslacht, new { @class = "form-control combobox" })*@
-            <div>
-                <b>Geslachten:</b>
-                @*<select id="GeslachtenId" name="GeslachtenId">
-                        <option value="" disabled selected>--</option>
-                        <option value="1">M</option>
-                        <option value="2">V</option>
-                        <option value="3">X</option>
-                    </select>*@
-                <div class="input-field col s12">
-                    @Html.DropDownList("Options", ViewData["Options"] as SelectList, "--", new { @class = "browser-default" })
-                </div>
-                <b>Leeftijd van:</b>
-                <div>
-                    @*<input type="number" name="LeeftijdVan" id="LeeftijdVan" />*@
-                    <p class="range-field">
-                        <input type="range" id="LeeftijdVan" name="LeeftijdVan" min="0" max="100" value="0" />
-                    </p>
-                </div>
-                <b>tot:</b>
-                <div>
-                    @*<input type="number" name="LeeftijdTot" id="LeeftijdTot" />*@
-                    <p class="range-field">
-                        <input type="range" id="LeeftijdTot" name="LeeftijdTot" min="0" max="100" value="100" />
-                    </p>
-                </div>
-            </div>
-
-            @*</div>*@
-            @*<input type="submit" value="Filter Results" name="filterDit" />*@
-
-            @*</div>*@
-            <button class="btn-floating waves-effect waves-light santo-brown-bg inline-btn" name="filterDit" type="submit" tabindex="-1">
-                <i class="mdi-content-filter-list"></i>
-            </button>
-        </fieldset>
-        }
-
-        @*@using (Html.BeginForm("Filterable", "Filters", FormMethod.Get)) {*@
-
-        @*}*@
+}
 
         <div class="table-responsive">
             <table class="table table-striped table-hover">
@@ -166,12 +137,9 @@
                 $("img").error(function () {
                     $(this).attr("src", "http://massagesanto.blob.core.windows.net/images/profile.jpg");
                 });
-                jQuery(document).ready(function ($) {
-                    $('select').material_select();
-                    $('.expand-one').click(function () {
+                $('.expand-one').click(function () {
                         $('.content-one').slideToggle();
                         $('#icon-one').toggleClass("rotated");
-                    });
-                };
+                });
             });
         </script>
