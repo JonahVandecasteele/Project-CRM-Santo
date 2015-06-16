@@ -10,8 +10,10 @@ namespace CRMSanto.Models
     {
         public int ID { get; set; }
         [Required(ErrorMessage="Gelieve een naam in te vullen!")]
+        [StringLength(60, MinimumLength = 3)]
         public string Naam { get; set; }
         [Required(ErrorMessage="Gelieve een voornaam in te vullen")]
+        [StringLength(60, MinimumLength = 3)]
         public string Voornaam { get; set; }
         public virtual Adres Adres { get; set; }
         public string Foto { get; set; }
