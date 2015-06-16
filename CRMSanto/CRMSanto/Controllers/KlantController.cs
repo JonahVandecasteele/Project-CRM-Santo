@@ -214,6 +214,7 @@ namespace CRMSanto.Controllers
             model.Karaktertrek = new List<Karaktertrek>();
             model.KlantRelaties = new List<KlantRelatie>();
             model.Geslacht = new Geslacht();
+            model.Voedingspatroon = new Voedingspatroon();
             model.MedischeFiche = new MedischeFiche();
             model.MedischeFiche.Mutualiteit = new Mutualiteit();
             model.Vandaag = DateTime.Now.ToString("dd-MM-yyyy");
