@@ -44,7 +44,7 @@
                                 <div class="col s12">
                                     <p class="range-field">
                                         <label for="LeeftijdVan">Minimum leeftijd: <span id="minLeeftijd"></span></label>
-                                        <input type="range" id="LeeftijdVan" name="LeeftijdVan" min="0" max="100" value="0" onchange="updateMinLeeftijd(this.value);" />
+                                        <input type="range" id="LeeftijdVan" name="LeeftijdVan" min="0" max="100" value="@ViewBag.LeeftijdVan" onchange="updateMinLeeftijd(this.value);" />
                                     </p>
                                     </div>
                                 </div>
@@ -52,7 +52,7 @@
                                 <div class="col s12">
                                     <p class="range-field">
                                         <label for="LeeftijdTot">Maximum leeftijd: <span id="maxLeeftijd"></span></label>
-                                        <input type="range" id="LeeftijdTot" name="LeeftijdTot" min="0" max="100" value="100" onchange="updateMaxLeeftijd(this.value);" />
+                                        <input type="range" id="LeeftijdTot" name="LeeftijdTot" min="0" max="100" value="@ViewBag.LeeftijdTot" onchange="updateMaxLeeftijd(this.value);" />
                                     </p>
                                 </div>
                             </div>
