@@ -22,87 +22,77 @@
            
         </span>
     </div>
-    <fieldset class="filtering">
-        <legend>Filters</legend>
-
-        @*<div class="form-group">
-            <div class="col-md-10">*@
-        @*@Html.DisplayNameFor(model => model.Geslacht).ToString()
-            @Html.DropDownListFor(model => model.Geslacht.Naam, Model.Geslacht, new { @class = "form-control combobox" })*@
-        <div>
-            <b>Geslachten:</b>
-            @*<select id="GeslachtenId" name="GeslachtenId">
-                    <option value="" disabled selected>--</option>
-                    <option value="1">M</option>
-                    <option value="2">V</option>
-                    <option value="3">X</option>
-                </select>*@
-            <div class="input-field col s12">
-                @Html.DropDownList("Options", ViewData["Options"] as SelectList, "--", new { @class = "browser-default" })
+    <div class="panel-group filter-panel" id="accordion" role="tablist" aria-multiselectable="true">
+        <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingOne">
+                <h4 class="panel-title expand-one">
+                    <i class="mdi-hardware-keyboard-arrow-right" id="icon-one"></i> <i class="mdi-content-filter-list"></i> Filters
+                </h4>
             </div>
-            <b>Leeftijd van:</b>
-            <div>
-                @*<input type="number" name="LeeftijdVan" id="LeeftijdVan" />*@
-                <p class="range-field">
-                    <input type="range" id="LeeftijdVan" name="LeeftijdVan" min="0" max="100" value="0" />
-                </p>
-            </div>
-            <b>tot:</b>
-            <div>
-                @*<input type="number" name="LeeftijdTot" id="LeeftijdTot" />*@
-                <p class="range-field">
-                    <input type="range" id="LeeftijdTot" name="LeeftijdTot" min="0" max="100" value="100" />
-                </p>
+            <div class="panel-body content-one klant-hidden">
+                <div class="row">
+                    <div class="col s12">
+                        <div>
+                            <b>Geslachten:</b>
+                            <div class="input-field col s12">
+                                @Html.DropDownList("Options", ViewData["Options"] as SelectList, "--", new { @class = "browser-default" })
+                            </div>
+                            <b>Leeftijd van:</b>
+                            <div>
+                                <p class="range-field">
+                                    <input type="range" id="LeeftijdVan" name="LeeftijdVan" min="0" max="100" value="0" />
+                                </p>
+                            </div>
+                            <b>tot:</b>
+                            <div>
+                                <p class="range-field">
+                                    <input type="range" id="LeeftijdTot" name="LeeftijdTot" min="0" max="100" value="100" />
+                                </p>
+                            </div>
+                        </div>
+                        <button class="btn-floating waves-effect waves-light santo-brown-bg inline-btn" name="filterDit" type="submit" tabindex="-1">
+                            <i class="mdi-content-filter-list"></i>
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
-
-        @*</div>*@
-        @*<input type="submit" value="Filter Results" name="filterDit" />*@
-
-        @*</div>*@
-        <button class="btn-floating waves-effect waves-light santo-brown-bg inline-btn" name="filterDit" type="submit" tabindex="-1">
-            <i class="mdi-content-filter-list"></i>
-        </button>
-    </fieldset>
+    </div>
 }
 
-@*@using (Html.BeginForm("Filterable", "Filters", FormMethod.Get)) {*@ 
-
-@*}*@
-
-<div class="table-responsive">
-    <table class="table table-striped table-hover">
-        <tr>
-            <th> </th>
-            <th>
-                @*@Html.DisplayNameFor(model => model.Naam)*@
-                @Html.ActionLink(Html.DisplayNameFor(model => model.Naam).ToString(), "Index", new { sortOrder = ViewBag.NameSortParm })
-            </th>
-            <th>
-                @*@Html.DisplayNameFor(model => model.Voornaam)*@
-                @Html.ActionLink(Html.DisplayNameFor(model => model.Voornaam).ToString(), "Index", new { sortOrder = ViewBag.FirstNameSortParm })
-            </th>
-            <th>
-                @*@Html.DisplayNameFor(model => model.Telefoon)*@
-                @Html.ActionLink(Html.DisplayNameFor(model => model.Telefoon).ToString(), "Index", new { sortOrder = ViewBag.PhoneSortParm })
-            </th>
-            <th>
-                @*@Html.DisplayNameFor(model => model.Email)*@
-                @Html.ActionLink(Html.DisplayNameFor(model => model.Email).ToString(), "Index", new { sortOrder = ViewBag.EmailSortParm })
-            </th>
-            <th>
-                @*@Html.DisplayNameFor(model => model.Adres)*@
-                @Html.ActionLink(Html.DisplayNameFor(model => model.Adres).ToString(), "Index", new { sortOrder = ViewBag.AdresSortParm })
-            </th>
-            <th>
-                @*@Html.DisplayNameFor(model => model.Adres)*@
-                @Html.ActionLink(Html.DisplayNameFor(model => model.Adres.Gemeente).ToString(), "Index", new { sortOrder = ViewBag.GemeenteSortParm })
-            </th>
-        </tr>
+        <div class="table-responsive">
+            <table class="table table-striped table-hover">
+                <tr>
+                    <th> </th>
+                    <th>
+                        @*@Html.DisplayNameFor(model => model.Naam)*@
+                        @Html.ActionLink(Html.DisplayNameFor(model => model.Naam).ToString(), "Index", new { sortOrder = ViewBag.NameSortParm })
+                    </th>
+                    <th>
+                        @*@Html.DisplayNameFor(model => model.Voornaam)*@
+                        @Html.ActionLink(Html.DisplayNameFor(model => model.Voornaam).ToString(), "Index", new { sortOrder = ViewBag.FirstNameSortParm })
+                    </th>
+                    <th>
+                        @*@Html.DisplayNameFor(model => model.Telefoon)*@
+                        @Html.ActionLink(Html.DisplayNameFor(model => model.Telefoon).ToString(), "Index", new { sortOrder = ViewBag.PhoneSortParm })
+                    </th>
+                    <th>
+                        @*@Html.DisplayNameFor(model => model.Email)*@
+                        @Html.ActionLink(Html.DisplayNameFor(model => model.Email).ToString(), "Index", new { sortOrder = ViewBag.EmailSortParm })
+                    </th>
+                    <th>
+                        @*@Html.DisplayNameFor(model => model.Adres)*@
+                        @Html.ActionLink(Html.DisplayNameFor(model => model.Adres).ToString(), "Index", new { sortOrder = ViewBag.AdresSortParm })
+                    </th>
+                    <th>
+                        @*@Html.DisplayNameFor(model => model.Adres)*@
+                        @Html.ActionLink(Html.DisplayNameFor(model => model.Adres.Gemeente).ToString(), "Index", new { sortOrder = ViewBag.GemeenteSortParm })
+                    </th>
+                </tr>
 
                 @foreach (var item in Model)
                 {
-                    <tr class ='clickable-row' data-href='Klant/Details/@Html.DisplayFor(modelItem => item.ID)'>
+                    <tr class='clickable-row' data-href='Klant/Details/@Html.DisplayFor(modelItem => item.ID)'>
                         <td>
                             <img src="@Html.GetPhotoURL(Html.DisplayFor(modelItem => item.Foto).ToString())" alt="" class="profilepic shadow-z-1" />
                         </td>
@@ -120,32 +110,36 @@
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.Adres.Straat) @Html.DisplayFor(modelItem => item.Adres.Nummer) @Html.DisplayFor(modelItem => item.Adres.Postbus)<br />
-                            
+
 
                         </td>
                         <td class="uppercase">
                             @Html.DisplayFor(modelItem => item.Adres.Gemeente.Plaatsnaam) <br />
                         </td>
-                        </tr>
+                    </tr>
                 }
 
-</table>
-</div>
-Aantal resultaten: @Model.Count()
+            </table>
+        </div>
+        Aantal resultaten: @Model.Count()
 
-<div class="fixed-action-btn">
-    <a href='@Url.Action("New", "Klant")' onclick="showProgress();" class="btn-floating btn-large waves-effect waves-light green"><i class="mdi-content-add"></i></a>
-</div>
+        <div class="fixed-action-btn">
+            <a href='@Url.Action("New", "Klant")' onclick="showProgress();" class="btn-floating btn-large waves-effect waves-light green"><i class="mdi-content-add"></i></a>
+        </div>
 
-<script>
-    $(".clickable-row").click(function () {
-        window.document.location = $(this).data("href");
-    });
+        <script>
+            $(".clickable-row").click(function () {
+                window.document.location = $(this).data("href");
+            });
 
-    $(document).ready(function () {
-        $('select').material_select();
-        $("img").error(function () {
-            $(this).attr("src", "http://massagesanto.blob.core.windows.net/images/profile.jpg");
-        });
-    });
-</script>
+            $(document).ready(function () {
+                $('select').material_select();
+                $("img").error(function () {
+                    $(this).attr("src", "http://massagesanto.blob.core.windows.net/images/profile.jpg");
+                });
+                $('.expand-one').click(function () {
+                        $('.content-one').slideToggle();
+                        $('#icon-one').toggleClass("rotated");
+                });
+            });
+        </script>
