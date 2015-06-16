@@ -712,7 +712,6 @@ namespace CRMSanto.Controllers
                 return new FileStreamResult(stream, "image/jpeg");
             }
         }
-
         public Stream ToStream(Image image, ImageFormat formaw)
         {
             var stream = new System.IO.MemoryStream();
