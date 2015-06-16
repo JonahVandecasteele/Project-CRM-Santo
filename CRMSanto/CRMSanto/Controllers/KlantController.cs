@@ -681,7 +681,11 @@ namespace CRMSanto.Controllers
                         }
                         else
                         {
-                            klant.Karaktertrek = (List<Karaktertrek>)TempData["Karaktertreken"];
+                            klant.Karaktertrek = (List<Karaktertrek>)TempData["Karaktertreken"]; 
+                            if (klant.Karaktertrek == null) 
+                            {
+                                klant.Karaktertrek = new List<Karaktertrek>();
+                            }
                             klant.Geslachten = ks.GetGeslachten();
                             klant.Mutualiteiten = ks.GetMutualiteiten();
                             klant.Werksituaties = ks.GetWerkSituaties();
