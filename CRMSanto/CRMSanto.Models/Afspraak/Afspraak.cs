@@ -22,7 +22,6 @@ namespace CRMSanto.Models
         [Display(Name="Extra")]
         public String Notitie { get; set; }
         [Display(Name="Massage")]
-        [Required]
         public SoortAfspraak SoortAfspraak { get; set; }
         public int Duur { get; set; }
         [Display(Name="Duo")]
