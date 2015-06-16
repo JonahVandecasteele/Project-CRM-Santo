@@ -27,7 +27,7 @@ namespace CRMSanto.Models
         [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         public DateTime Geboortedatum { get; set; }
         public virtual List<Karaktertrek> Karaktertrek { get; set; }
-        public virtual List<Relatie> KlantRelatie { get; set; }
+        public virtual List<KlantRelatie> KlantRelatie { get; set; }
         public virtual MedischeFiche MedischeFiche { get; set; }
         public virtual PersoonlijkeFiche PersoonlijkeFiche { get; set; }
         public virtual List<KlantRelatie> KlantRelaties { get; set; }

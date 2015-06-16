@@ -169,6 +169,10 @@
                         <div class="row">
                             <div class="col s12">
                                 @Html.EditorFor(model => model.SelectedKlantRelatie, new { Klanten = Model.Klanten})
+                                @foreach (CRMSanto.Models.KlantRelatie r in Model.KlantRelatie)
+                                {
+                                    <span class="Klantrelatie">@r</span>
+                                }
                             </div>
                         </div>
                     </div>
