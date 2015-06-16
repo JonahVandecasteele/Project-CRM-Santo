@@ -14,5 +14,6 @@ namespace CRMSanto.Models.PresentationModels
         public SelectList Klanten { get; set; }
         public int KlantID { get; set; }
         public Productregistratie Productregistratie { get; set; }
+        public Winkelmand Winkelmand { get; set; }
     }
 }
