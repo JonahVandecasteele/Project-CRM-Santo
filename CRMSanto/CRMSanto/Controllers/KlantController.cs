@@ -60,14 +60,9 @@ namespace CRMSanto.Controllers
                 {
                     ViewBag.Search = Request.Form["Search"];
                     string zoeken = Request.Form["Search"];
-                    //return View(ps.GetProducten());
+                   
                     List<Klant> klant = ks.GetKlanten();
-
-                    //List<Klant> klanten = ks.GetKlanten().Where(x => x.Naam.ToLower().Contains(zoeken.ToLower())).ToList();
-
-                    var klantOpAdres = from klants in klant
-                                       where klants.Adres.Gemeente.Provincie.ToLower().Contains(zoeken.ToLower())
-                                       select klants;
+  
 
                     var klanten = from klants in klant
                                   where klants.Naam.ToLower().Contains(zoeken.ToLower()) || klants.Voornaam.ToLower().Contains(zoeken.ToLower())
@@ -88,13 +83,46 @@ namespace CRMSanto.Controllers
             }
             else if (Request.Form["filterDit"] != null)
             {
-                
-                string geslacht = Request.Form["Options"];
                 List<Klant> klant = ks.GetKlanten();
-                var klantOpGeslacht = from klants in klant
-                                      where klants.Geslacht.ID.ToString().Contains(geslacht)
-                                      select klants;
-                return View(klantOpGeslacht);
+                string geslacht = Request.Form["Options"];
+                int leeftijdVan = Convert.ToInt32(Request.Form["LeeftijdVan"]);
+                int leeftijdTot = Convert.ToInt32(Request.Form["LeeftijdTot"]);
+                int minLeeftijd = DateTime.Now.Year - leeftijdVan;
+                int maxLeeftijd = DateTime.Now.Year - leeftijdTot;
+
+                if(geslacht != null && leeftijdVan == 0 && leeftijdTot == 100)
+                {
+                    var klantOpGeslacht = from klants in klant
+                                          where klants.Geslacht.ID.ToString().Contains(geslacht)
+                                          select klants;
+                    return View(klantOpGeslacht);
+                }
+                else if(geslacht == null && leeftijdVan != 0 && leeftijdTot != 100)
+                {
+                    var klantOpLeeftijd = from klants in klant
+                                          where klants.Geboortedatum.Year <= minLeeftijd && klants.Geboortedatum.Year >= maxLeeftijd
+                                          select klants;
+                    return View(klantOpLeeftijd);
+                }
+                else if (geslacht != null && leeftijdVan != 0 && leeftijdTot != 100)
+                {
+                    var klantOpLeeftijdEnGeslacht = from klants in klant
+                                                    where klants.Geboortedatum.Year <= minLeeftijd && klants.Geboortedatum.Year >= maxLeeftijd && klants.Geslacht.ID.ToString().Contains(geslacht)
+                                                    select klants;
+                    return View(klantOpLeeftijdEnGeslacht);
+                }
+                else
+                {
+                    return View(klant);
+                }
+
+                
+
+
+                
+                
+                //return View(klantOpGeslacht);
+                
             }
             else if (Request.Form["clear"] != null)
             {
