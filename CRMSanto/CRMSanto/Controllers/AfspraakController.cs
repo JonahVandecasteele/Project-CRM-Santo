@@ -105,7 +105,7 @@ namespace CRMSanto.Controllers
                 if (_O365ServiceOperationFailed)
                 {
                     afs.AddAfspraak(a.Afspraak);
-                    if (a.Afspraak.Geannuleerd = false)
+                    if (a.Afspraak.Geannuleerd == false)
                     {
                         return RedirectToAction("Index");
                     }
@@ -114,7 +114,8 @@ namespace CRMSanto.Controllers
                     {
                         a.Afspraak.Geannuleerd = false;
                         //ViewBag.Error = "Afspraak reeds gemaakt op dit tijdstip";
-                        return RedirectToAction("New");
+                        RedirectToAction("New");
+                        //return View(a);
                     }
                     }
                    

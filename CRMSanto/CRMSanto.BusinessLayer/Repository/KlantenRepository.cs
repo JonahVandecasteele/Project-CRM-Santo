@@ -45,15 +45,25 @@ namespace CRMSanto.BusinessLayer.Repository
         {
             context.Adres.Add(entity.Adres);
             context.Geslacht.Attach(entity.Geslacht);
-            foreach (Karaktertrek item in entity.Karaktertrek)
+            if (entity.Karaktertrek != null)
             {
-                context.Karaktertrek.Attach(item);
+                foreach (Karaktertrek item in entity.Karaktertrek)
+                {
+                    context.Karaktertrek.Attach(item);
+                }
             }
-            context.Gemeente.Attach(entity.Adres.Gemeente);
+            if (entity.Adres.Gemeente != null)
+            {
+                context.Gemeente.Attach(entity.Adres.Gemeente);
+            }
             context.Mutualiteit.Attach(entity.MedischeFiche.Mutualiteit);
-            if (entity.PersoonlijkeFiche.Werksituatie != null) context.Werksituatie.Attach(entity.PersoonlijkeFiche.Werksituatie);
-            context.PersoonlijkeFiche.Add(entity.PersoonlijkeFiche);
-            context.MedischeFiche.Add(entity.MedischeFiche);
+            if (entity.PersoonlijkeFiche != null)
+            {
+                context.PersoonlijkeFiche.Add(entity.PersoonlijkeFiche);
+                context.Werksituatie.Attach(entity.PersoonlijkeFiche.Werksituatie);
+            }
+            if(entity.MedischeFiche!=null)context.MedischeFiche.Add(entity.MedischeFiche);
+            
             if (entity.KlantRelaties != null)
             {
                 foreach (KlantRelatie item in entity.KlantRelaties)
@@ -61,7 +71,7 @@ namespace CRMSanto.BusinessLayer.Repository
                     context.Relatie.Attach(item.RelatieType);
                 }
             }
-            context.KlantRelatie.AddRange(entity.KlantRelaties);
+            //context.KlantRelatie.AddRange(entity.KlantRelaties);
             Klant klant = context.Klant.Add(entity);
             return klant;
         }
