@@ -147,14 +147,14 @@ namespace CRMSanto.BusinessLayer.Services
             //Switch klant and relatie when needed so all items start with the 'k' klant
             foreach(KlantRelatie item in resultlist)
             {
-                if(item.Klant.ID == k.ID)
+               /* if(item.Klant.ID == k.ID)
                 {
                     returnlist.Add(item);
                 }
                 if(item.Relatie.ID == k.ID)
                 {
                     returnlist.Add(new KlantRelatie() { ID = item.ID, Klant = item.Relatie, Relatie = item.Klant });
-                }
+                }*/
             }
             return returnlist;
         }

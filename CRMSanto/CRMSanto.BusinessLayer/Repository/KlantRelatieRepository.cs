@@ -13,11 +13,13 @@ namespace CRMSanto.BusinessLayer.Repository
     {
         public IEnumerable<KlantRelatie> All(int id)
         {
-            var query = (from s in context.KlantRelatie.Include(a => a.RelatieType) where s.Relatie.ID == id || s.Klant.ID == id select s);
+            var query = (from s in context.KlantRelatie.Include(a => a.RelatieType)  select s);
             return query.ToList<KlantRelatie>();
         }
         public override KlantRelatie Insert(KlantRelatie entity)
         {
+            //context.Klant.Attach(entity.Klant);
+            //context.Klant.Attach(entity.Relatie);
             context.Relatie.Attach(entity.RelatieType);
             return context.KlantRelatie.Add(entity);
         }

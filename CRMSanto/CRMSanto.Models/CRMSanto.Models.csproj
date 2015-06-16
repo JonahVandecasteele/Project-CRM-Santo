@@ -171,6 +171,34 @@
     <Compile Include="Migrations\201506161915307_KlantRelatie-Tweaks.Designer.cs">
       <DependentUpon>201506161915307_KlantRelatie-Tweaks.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201506161926587_KlantRelatie-Tweaks2.cs" />
+    <Compile Include="Migrations\201506161926587_KlantRelatie-Tweaks2.Designer.cs">
+      <DependentUpon>201506161926587_KlantRelatie-Tweaks2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201506161936250_KlantRelatie-Tweaks3.cs" />
+    <Compile Include="Migrations\201506161936250_KlantRelatie-Tweaks3.Designer.cs">
+      <DependentUpon>201506161936250_KlantRelatie-Tweaks3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201506161944467_KlantRelatie-Tweaks4.cs" />
+    <Compile Include="Migrations\201506161944467_KlantRelatie-Tweaks4.Designer.cs">
+      <DependentUpon>201506161944467_KlantRelatie-Tweaks4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201506161947319_KlantRelatie-Tweaks5.cs" />
+    <Compile Include="Migrations\201506161947319_KlantRelatie-Tweaks5.Designer.cs">
+      <DependentUpon>201506161947319_KlantRelatie-Tweaks5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201506162023067_KlantRelatie-Tweaks6.cs" />
+    <Compile Include="Migrations\201506162023067_KlantRelatie-Tweaks6.Designer.cs">
+      <DependentUpon>201506162023067_KlantRelatie-Tweaks6.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201506162026290_KlantRelatie-Tweaks7.cs" />
+    <Compile Include="Migrations\201506162026290_KlantRelatie-Tweaks7.Designer.cs">
+      <DependentUpon>201506162026290_KlantRelatie-Tweaks7.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201506162029249_KlantRelatie-Tweaks8.cs" />
+    <Compile Include="Migrations\201506162029249_KlantRelatie-Tweaks8.Designer.cs">
+      <DependentUpon>201506162029249_KlantRelatie-Tweaks8.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Product\Product.cs" />
     <Compile Include="Product\Productregistratie.cs" />
@@ -247,6 +275,27 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201506161915307_KlantRelatie-Tweaks.resx">
       <DependentUpon>201506161915307_KlantRelatie-Tweaks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506161926587_KlantRelatie-Tweaks2.resx">
+      <DependentUpon>201506161926587_KlantRelatie-Tweaks2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506161936250_KlantRelatie-Tweaks3.resx">
+      <DependentUpon>201506161936250_KlantRelatie-Tweaks3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506161944467_KlantRelatie-Tweaks4.resx">
+      <DependentUpon>201506161944467_KlantRelatie-Tweaks4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506161947319_KlantRelatie-Tweaks5.resx">
+      <DependentUpon>201506161947319_KlantRelatie-Tweaks5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506162023067_KlantRelatie-Tweaks6.resx">
+      <DependentUpon>201506162023067_KlantRelatie-Tweaks6.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506162026290_KlantRelatie-Tweaks7.resx">
+      <DependentUpon>201506162026290_KlantRelatie-Tweaks7.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506162029249_KlantRelatie-Tweaks8.resx">
+      <DependentUpon>201506162029249_KlantRelatie-Tweaks8.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

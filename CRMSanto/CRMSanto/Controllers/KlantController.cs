@@ -572,6 +572,7 @@ namespace CRMSanto.Controllers
         [HttpPost]
         public ActionResult New(KlantViewModel klant)
         {
+            
                     if (Request.Form["addkar"] != null)
                     {
                         try

@@ -8,8 +8,7 @@ namespace CRMSanto.Models
 {
     public class KlantRelatie
     {
-        public int ID { get; set; }
-         public virtual Klant Klant { get; set; }
+         public int ID { get; set; }
          public Klant Relatie { get; set; }
          public Relatie RelatieType { get; set; }
     }
