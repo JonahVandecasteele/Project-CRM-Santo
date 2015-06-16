@@ -686,6 +686,11 @@ namespace CRMSanto.Controllers
                             {
                                 klant.Karaktertrek = new List<Karaktertrek>();
                             }
+                            klant.MedischeFiche.Voedingspatroon = TempData["Voedingspatroon"];
+                            if (klant.MedischeFiche.Voedingspatroon == null)
+                            {
+                                klant.MedischeFiche.Voedingspatroon = new List<Voedingspatroon>();
+                            }
                             klant.Geslachten = ks.GetGeslachten();
                             klant.Mutualiteiten = ks.GetMutualiteiten();
                             klant.Werksituaties = ks.GetWerkSituaties();
