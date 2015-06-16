@@ -181,6 +181,7 @@ namespace CRMSanto.Controllers
             model.Mutualiteiten = ks.GetMutualiteiten();
             model.Werksituaties = ks.GetWerkSituaties();
             model.Karaktertreken = ks.GetKaraktertreken();
+            model.Voedingspatronen = ks.GetVoedingspatronen();
             model.Geboortedatum = new DateTime();
             model.Karaktertrek = new List<Karaktertrek>();
             model.KlantRelaties = new List<KlantRelatie>();

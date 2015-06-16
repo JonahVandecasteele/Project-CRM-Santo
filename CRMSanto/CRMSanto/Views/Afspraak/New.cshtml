@@ -8,7 +8,6 @@
     <li>@Html.ActionLink("Afspraken","Index","Afspraak")</li>
     <li class="active">Toevoegen</li>
 </ul>
-
 @using (Html.BeginForm("New", "Afspraak", FormMethod.Post,new { @id = "frmAfspraak" }))
 {
     @Html.AntiForgeryToken()

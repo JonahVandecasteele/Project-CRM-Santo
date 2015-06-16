@@ -16,6 +16,7 @@ namespace CRMSanto.ViewModels
         public List<Werksituatie> Werksituaties { get; set; }
         public List<Klant> Klanten { get; set; }
         public List<Relatie> Relaties { get; set; }
+        public List<Voedingspatroon> Voedingspatronen { get; set; }
         public List<KlantRelatie> KlantRelaties { get; set; }
         public List<Gemeente> Gemeentes { get; set; }
         public Karaktertrek SelectedKaracter { get;set;}
