@@ -167,6 +167,10 @@
     <Compile Include="Migrations\201506161445005_validatie2.Designer.cs">
       <DependentUpon>201506161445005_validatie2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201506161915307_KlantRelatie-Tweaks.cs" />
+    <Compile Include="Migrations\201506161915307_KlantRelatie-Tweaks.Designer.cs">
+      <DependentUpon>201506161915307_KlantRelatie-Tweaks.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Product\Product.cs" />
     <Compile Include="Product\Productregistratie.cs" />
@@ -240,6 +244,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201506161445005_validatie2.resx">
       <DependentUpon>201506161445005_validatie2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506161915307_KlantRelatie-Tweaks.resx">
+      <DependentUpon>201506161915307_KlantRelatie-Tweaks.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
