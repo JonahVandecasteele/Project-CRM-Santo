@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "Klant toevoegen";
     var gender = "X";
+    var count = 0;
 }
 
 <ul class="breadcrumb">
@@ -81,31 +82,36 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="input-field col s6">
-                                @Html.EditorFor(model => model.Geboortedatum, new { htmlAttributes = new { @class = "datepicker", id = "birthdate", type = "date", data_value = Model.Vandaag } })
-                                <label for="birthdate">@Html.DisplayNameFor(model => model.Geboortedatum)</label>
+                            <div class="col s6">
+                                <p>
+                                    <label for="birthdate">@Html.DisplayNameFor(model => model.Geboortedatum)</label>
+                                    @Html.EditorFor(model => model.Geboortedatum, new { htmlAttributes = new { @class = "datepicker", id = "birthdate", type = "date", data_value = Model.Vandaag } })
+                                </p>
                             </div>
-                            <div class="input-field col s6">
-                                @foreach (var item in Model.Geslachten)
-                            {
-                                switch (item.Naam)
-                                {
-                                    case "M":
-                                        gender = "Man";
-                                        break;
-                                    case "V":
-                                        gender = "Vrouw";
-                                        break;
-                                    case "X":
-                                        gender = "X";
-                                        break;
-                                    default:
-                                        gender = @item.Naam;
-                                        break;
-                                }
-                                    <input name="Geslacht.ID" type="radio" id="@item.ID" class="with-gap radio-klant" value="@item.ID" />
-                                    <label for="@item.ID">@gender</label>
-                            }
+                            <div class="col s6">
+                                <p>
+                                        @foreach (var item in Model.Geslachten)
+                                        {
+                                            count = count + 1;
+                                            switch (item.Naam)
+                                            {
+                                                case "M":
+                                                    gender = "Man";
+                                                    break;
+                                                case "V":
+                                                    gender = "Vrouw";
+                                                    break;
+                                                case "X":
+                                                    gender = "X";
+                                                    break;
+                                                default:
+                                                    gender = @item.Naam;
+                                                    break;
+                                            }
+                                            <input @(@count == 1 ? "checked" : "") name="Geslacht.ID" type="radio" id="@item.ID" class="with-gap radio-klant" value="@item.ID" />
+                                            <label for="@item.ID">@gender</label>
+                                        }
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -126,7 +132,7 @@
                         </div>
                         <div class="row">
                             <div class="input-field col s12">
-                                @Html.EditorFor(model => model.PersoonlijkeFiche, new { htmlAttributes = new { @class = "form-control" }, Karaktertreken = Model.Karaktertreken })
+                                @Html.EditorFor(model => model.PersoonlijkeFiche, new { htmlAttributes = new { @class = "form-control" }, WerkSituaties = Model.Werksituaties })
                             </div>
                         </div>
                     </div>
