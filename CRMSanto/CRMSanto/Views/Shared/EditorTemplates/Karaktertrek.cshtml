@@ -9,7 +9,6 @@
         
 }
 
-<div class="input-field col s12">
     @Html.DropDownListFor(model => model.ID, new SelectList(list, "ID", "Naam"))
     @*<select>
         <option value="" disabled selected>--</option>
@@ -24,10 +23,3 @@
         Toevoegen
         <i class="mdi-content-add right"></i>
     </button>
-</div>
-<p>
-    @foreach (var addemItem in currentlist)
-{
-    @addemItem.Naam
-}
-    </p>
