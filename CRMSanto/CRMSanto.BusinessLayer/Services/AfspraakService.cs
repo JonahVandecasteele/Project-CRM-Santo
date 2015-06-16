@@ -9,7 +9,7 @@ using CRMSanto.Models;
 
 namespace CRMSanto.BusinessLayer.Services
 {
-    public class AfspraakService : CRMSanto.BusinessLayer.Services.IAfspraakService
+    public class AfspraakService : CRMSanto.BusinessLayer.Services.IAfspraakService 
     {
         private IAfsprakenRepository repoAfspraken = null;
         private IGenericRepository<Masseur> repoMasseur = null;
@@ -91,7 +91,7 @@ namespace CRMSanto.BusinessLayer.Services
             }
             else
             {
-                a.Geannuleerd = true;
+                Overlapping = 1;
             }
         } 
 

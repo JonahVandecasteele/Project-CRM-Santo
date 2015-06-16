@@ -105,20 +105,20 @@ namespace CRMSanto.Controllers
                 if (_O365ServiceOperationFailed)
                 {
                     afs.AddAfspraak(a.Afspraak);
-                    if(a.Afspraak.Geannuleerd==false)
+                    if (Overlapping = true)
                     {
                         return RedirectToAction("Index");
                     }
-
+                        
                     else
                     {
                         a.Afspraak.Geannuleerd = false;
                         //ViewBag.Error = "Afspraak reeds gemaakt op dit tijdstip";
                         return RedirectToAction("New");
                     }
-                }
-
-                
+                    }
+                   
+                    
                 return View(a);
         
             /*if (Request.Form["New"] != null)
