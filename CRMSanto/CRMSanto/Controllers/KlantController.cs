@@ -589,7 +589,9 @@ namespace CRMSanto.Controllers
                     {
                         model.Karaktertrek = new List<Karaktertrek>();
                     }
-                    model.Karaktertrek.Add(ks.GetKaraktertrekByID(model.SelectedKaracter.ID));//Get and add karaktertrek
+                    Karaktertrek newKaraktertrek = ks.GetKaraktertrekByID(model.SelectedKaracter.ID);
+                    bool containsItem = model.Karaktertrek.Any(item => item.ID == newKaraktertrek.ID);
+                    if (containsItem != true) { model.Karaktertrek.Add(newKaraktertrek); }
                     TempData["Karaktertreken"] = model.Karaktertrek; // Save values for next rebound
 
                     ////// Fill Lists
