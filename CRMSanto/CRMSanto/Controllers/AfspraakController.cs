@@ -87,7 +87,19 @@ namespace CRMSanto.Controllers
                 a.Afspraak.SoortAfspraak = afs.GetMassageByID(a.Afspraak.SoortAfspraak.ID);
                 a.Afspraak.Arrangement = afs.GetArrangementByID(a.Afspraak.Arrangement.ID);
                 a.Afspraak.Extra = afs.GetExtraByID(a.Afspraak.Extra.ID);
-                a.Afspraak.Duur = a.Afspraak.SoortAfspraak.Duur + a.Afspraak.Arrangement.Duur;
+                if (a.Afspraak.Arrangement != null && a.Afspraak.SoortAfspraak != null)
+                {
+                    a.Afspraak.Duur = a.Afspraak.SoortAfspraak.Duur + a.Afspraak.Arrangement.Duur;
+                }
+                else if (a.Afspraak.SoortAfspraak != null)
+                {
+                    a.Afspraak.Duur = a.Afspraak.SoortAfspraak.Duur;
+                }
+                else
+                {
+                    a.Afspraak.Duur = a.Afspraak.Arrangement.Duur;
+                }
+                
                 a.Afspraak.DatumTijdstip = a.Datum.Date + a.Tijdstip.TimeOfDay;
                 if (a.Afspraak.DatumTijdstip == DateTime.MinValue)
                     a.Afspraak.DatumTijdstip = (DateTime)SqlDateTime.MinValue;
