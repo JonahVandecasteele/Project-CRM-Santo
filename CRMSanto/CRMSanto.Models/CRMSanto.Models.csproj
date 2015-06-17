@@ -215,6 +215,10 @@
     <Compile Include="Migrations\201506170902192_KlantRelatie-FinalCountDown.Designer.cs">
       <DependentUpon>201506170902192_KlantRelatie-FinalCountDown.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201506170910362_KlantRelatie-FinalCountDown2.cs" />
+    <Compile Include="Migrations\201506170910362_KlantRelatie-FinalCountDown2.Designer.cs">
+      <DependentUpon>201506170910362_KlantRelatie-FinalCountDown2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Product\Product.cs" />
     <Compile Include="Product\Productregistratie.cs" />
@@ -324,6 +328,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201506170902192_KlantRelatie-FinalCountDown.resx">
       <DependentUpon>201506170902192_KlantRelatie-FinalCountDown.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506170910362_KlantRelatie-FinalCountDown2.resx">
+      <DependentUpon>201506170910362_KlantRelatie-FinalCountDown2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
