@@ -59,7 +59,6 @@ namespace CRMSanto.Controllers
             apm.Afspraken = afs.VanafAfspraken(vanaf);
             return View(apm);
         }
-
         [HttpGet]
         public ActionResult Edit(int? id)
         {
@@ -98,8 +97,7 @@ namespace CRMSanto.Controllers
             {
                 return RedirectToAction("Index");
             }
-        }
-        
+        }      
         [HttpPost]
         public ActionResult Edit(NieuweAfspraakPM a)
         {
@@ -135,9 +133,11 @@ namespace CRMSanto.Controllers
                     a.Afspraak.DatumTijdstip = a.Tijdstip;
                 else
                     a.Afspraak.DatumTijdstip = a.Datum.Date + a.Tijdstip.TimeOfDay;
-                    afs.UpdateAfspraak(a.Afspraak);
+
+                    
                     if (a.Afspraak.Geannuleerd == false)
                     {
+                        afs.UpdateAfspraak(a.Afspraak);
                         return RedirectToAction("Index");
                     }
                         
@@ -166,7 +166,6 @@ namespace CRMSanto.Controllers
             pm.Tijdstip = DateTime.Now;
             return View(pm);
         }
-
         [HttpPost]
         public async Task<ActionResult> New(NieuweAfspraakPM a)
         {
