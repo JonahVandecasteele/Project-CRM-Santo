@@ -578,25 +578,65 @@ namespace CRMSanto.Controllers
         [HttpGet]
         public ActionResult New()
         {
-            KlantViewModel model = new KlantViewModel();
-            model.Geslachten = ks.GetGeslachten();
-            model.Mutualiteiten = ks.GetMutualiteiten();
-            model.Werksituaties = ks.GetWerkSituaties();
-            model.Karaktertreken = ks.GetKaraktertreken();
-            model.Voedingspatronen = ks.GetVoedingspatronen();
-            model.Relaties = ks.GetRelaties();
-            model.Klanten = ks.GetKlanten();
-            model.KlantRelatie = new List<KlantRelatie>();
-            model.Geboortedatum = new DateTime();
-            model.Karaktertrek = new List<Karaktertrek>();
-            model.KlantRelaties = new List<KlantRelatie>();
-            model.Geslacht = new Geslacht();
-            model.Voedingspatroon = new Voedingspatroon();
-            model.MedischeFiche = new MedischeFiche();
-            model.PersoonlijkeFiche = new PersoonlijkeFiche();
-            model.MedischeFiche.Mutualiteit = new Mutualiteit();
-            model.Vandaag = DateTime.Now.ToString("dd-MM-yyyy");
+            KlantViewModel model;
+            if(TempData["EditKlant"]==null)
+            {
+                model = new KlantViewModel();
+                model.Geslachten = ks.GetGeslachten();
+                model.Mutualiteiten = ks.GetMutualiteiten();
+                model.Werksituaties = ks.GetWerkSituaties();
+                model.Karaktertreken = ks.GetKaraktertreken();
+                model.Voedingspatronen = ks.GetVoedingspatronen();
+                model.Relaties = ks.GetRelaties();
+                model.Klanten = ks.GetKlanten();
+                model.KlantRelatie = new List<KlantRelatie>();
+                model.Geboortedatum = new DateTime();
+                model.Karaktertrek = new List<Karaktertrek>();
+                model.KlantRelaties = new List<KlantRelatie>();
+                model.Geslacht = new Geslacht();
+                model.Voedingspatroon = new Voedingspatroon();
+                model.MedischeFiche = new MedischeFiche();
+                model.PersoonlijkeFiche = new PersoonlijkeFiche();
+                model.MedischeFiche.Mutualiteit = new Mutualiteit();
+                model.Vandaag = DateTime.Now.ToString("dd-MM-yyyy");
+            }
+            else
+            {
+                Klant k = ks.GetKlantByID(Convert.ToInt32(TempData["EditKlant"]));
+                model = new KlantViewModel()
+                {
+                    Adres = k.Adres,
+                    Email = k.Email,
+                    Foto = k.Foto,
+                    Geboortedatum = k.Geboortedatum,
+                    Geslacht = k.Geslacht,
+                    ID = k.ID,
+                    Karaktertrek = k.Karaktertrek,
+                    KlantRelatie = k.KlantRelatie,
+                    MedischeFiche = k.MedischeFiche,
+                    Naam = k.Naam,
+                    PersoonlijkeFiche = k.PersoonlijkeFiche,
+                    Telefoon = k.Telefoon,
+                    Voornaam = k.Voornaam,
+                    Voedingspatroon = k.Voedingspatroon,
+                };
+                model.Geslachten = ks.GetGeslachten();
+                model.Mutualiteiten = ks.GetMutualiteiten();
+                model.Werksituaties = ks.GetWerkSituaties();
+                model.Karaktertreken = ks.GetKaraktertreken();
+                model.Voedingspatronen = ks.GetVoedingspatronen();
+                model.Relaties = ks.GetRelaties();
+                model.Klanten = ks.GetKlanten();
+                if (model.KlantRelatie == null)
+                    model.KlantRelatie = new List<KlantRelatie>();
+            }
+            
             return View(model);
+        }
+        public ActionResult Edit(int ID)
+        {
+            TempData["EditKlant"] = ID;
+            return RedirectToAction("New");
         }
         [HttpPost]
         public ActionResult New(KlantViewModel klant)
