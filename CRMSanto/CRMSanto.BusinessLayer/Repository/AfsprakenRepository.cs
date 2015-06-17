@@ -104,6 +104,7 @@ namespace CRMSanto.BusinessLayer.Repository
         public override Afspraak GetByID(object id)
         {
             var query = (from a in context.Afspraak.Include(k => k.Klant).Include(m=>m.Masseur).Include(ms=>ms.SoortAfspraak).Include(k=>k.Klant.Adres).Include(a=>a.Arrangement).Include(e=>e.Extra)
+                         where a.ID == (int)id
                          select a);
             return query.SingleOrDefault<Afspraak>();
         }
