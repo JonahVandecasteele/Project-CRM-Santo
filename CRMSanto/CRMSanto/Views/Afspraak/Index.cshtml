@@ -63,6 +63,11 @@
                                     <td>
                                         @Html.DisplayFor(modelItem => item.SoloDuo)
                                     </td>
+                                    <td>
+                                    <nobr>
+                                    <a href='@Url.Action("Edit","Afspraak",new { id = item.ID })' class="btn-floating waves-effect waves-light orange inline-btn"><i class="mdi-editor-mode-edit"></i></a>
+                                    </nobr>
+                                        </td>
                                 </tr>
                 }
                         </table>
@@ -77,7 +82,7 @@
 <script>
     if (datefield.type != "date") { //if browser doesn't support input type="date", initialize date picker widget:
         jQuery(function ($) { //on document.ready
-            $('#vanaf').datepicker();
+            $('#vanaf').datepicker({ dateFormat: 'dd-mm-yyyy' });
         })
     }
 </script>

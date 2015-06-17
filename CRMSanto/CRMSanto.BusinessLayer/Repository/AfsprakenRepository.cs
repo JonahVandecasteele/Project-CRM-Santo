@@ -54,7 +54,7 @@ namespace CRMSanto.BusinessLayer.Repository
         public List<Afspraak> LopendeAfspraken()
         {
             DateTime dt = DateTime.Now;
-            var query = (from a in context.Afspraak.Include(k => k.Klant).Include(m=>m.Masseur).Include(ms=>ms.SoortAfspraak).Include(k=>k.Klant.Adres)
+            var query = (from a in context.Afspraak.Include(k => k.Klant).Include(m=>m.Masseur).Include(ms=>ms.SoortAfspraak).Include(k=>k.Klant.Adres).Include(a=>a.Arrangement).Include(e=>e.Extra)
                          where a.Geannuleerd == false && a.Archief == false && SqlFunctions.DateDiff("DAY", dt.Date, DbFunctions.TruncateTime(a.DatumTijdstip)) >= 0
                          orderby a.DatumTijdstip ascending
                          select a);
@@ -103,10 +103,23 @@ namespace CRMSanto.BusinessLayer.Repository
         }
         public override Afspraak GetByID(object id)
         {
-            var query = (from a in context.Afspraak.Include(k => k.Klant) select a);
+            var query = (from a in context.Afspraak.Include(k => k.Klant).Include(m=>m.Masseur).Include(ms=>ms.SoortAfspraak).Include(k=>k.Klant.Adres).Include(a=>a.Arrangement).Include(e=>e.Extra)
+                         where a.ID == (int)id
+                         select a);
             return query.SingleOrDefault<Afspraak>();
         }
+        public override void Update(Afspraak entityToUpdate)
+        {
+            context.Klant.Attach(entityToUpdate.Klant);
+            context.Masseur.Attach(entityToUpdate.Masseur);
+            context.Arrangement.Attach(entityToUpdate.Arrangement);
+            context.SoortAfspraak.Attach(entityToUpdate.SoortAfspraak);
+            context.Extra.Attach(entityToUpdate.Extra);
 
+            Afspraak afspraak = context.Afspraak.Attach(entityToUpdate);
+
+            context.Entry(entityToUpdate).State = EntityState.Modified;
+        }
         public List<Afspraak> GetDuurEnTijdstip(Afspraak b)
         {
             double duur = (b.Duur + 60);

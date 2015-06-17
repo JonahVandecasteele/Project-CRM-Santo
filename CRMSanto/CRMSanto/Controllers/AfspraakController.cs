@@ -60,6 +60,35 @@ namespace CRMSanto.Controllers
             return View(apm);
         }
 
+        [HttpGet]
+        public ActionResult Edit(int? id)
+        {
+            if(id.HasValue)
+            {
+                NieuweAfspraakPM pm = new NieuweAfspraakPM();
+                Afspraak a = afs.GetAfspraakByID(id.Value);
+                pm.Afspraak.ID = a.ID;
+                pm.Afspraak.DatumTijdstip = a.DatumTijdstip;
+                pm.Afspraak.Verplaatsing = a.Verplaatsing;
+                a.Notitie = pm.Afspraak.Notitie;
+                a.Duur = pm.Afspraak.Duur;
+                a.SoloDuo = pm.Afspraak.SoloDuo;
+                a.SoortAfspraak = pm.Afspraak.SoortAfspraak;
+                a.Arrangement = pm.Afspraak.Arrangement;
+                a.AantalPersonen = pm.Afspraak.AantalPersonen;
+                a.Klant = pm.Afspraak.Klant;
+                a.Archief = pm.Afspraak.Archief;
+                a.Geannuleerd = pm.Afspraak.Geannuleerd;
+
+
+                return View(pm);
+            }
+
+            else
+            {
+                return RedirectToAction("Index");
+            }
+        }
 
         [HttpGet]
         public ActionResult New()

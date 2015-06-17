@@ -4,6 +4,7 @@
     ViewBag.Title = "Klanten";
 }
 
+
 <ul class="breadcrumb">
     <li class="active">Klanten</li>
 </ul>
@@ -36,7 +37,7 @@
                                 <div class="col s12">
                                     <p>
                                         <label for="geslachten">Geslacht</label>
-                                        @Html.DropDownList("Options", ViewData["Options"] as SelectList, "--", new { @class = "browser-default", id = "geslachten" })
+                                        @Html.DropDownList("Options", ViewData["Options"] as SelectList, "--", new { @class = "browser-default", id = "geslachten", sortGeslacht = ViewBag.sortGeslacht })
                                     </p>
                                 </div>
                             </div>
@@ -58,7 +59,7 @@
                             </div>
                         <div class="last row">
                             <div class="col s12">
-                                <button class="btn waves-effect waves-light" name="filterDit" type="submit" tabindex="-1">
+                                <button class="btn waves-effect waves-light" name="filterDit" id="filterDit" type="submit" tabindex="-1">
                                     Toepassen
                                     <i class="mdi-content-filter-list right"></i>
                                 </button>
@@ -77,27 +78,27 @@
                     <th> </th>
                     <th>
                         @*@Html.DisplayNameFor(model => model.Naam)*@
-                        @Html.ActionLink(Html.DisplayNameFor(model => model.Naam).ToString(), "Index", new { sortOrder = ViewBag.NameSortParm })
+                        @Html.ActionLink(Html.DisplayNameFor(model => model.Naam).ToString(), "Index", new { sortOrder = ViewBag.NameSortParm }, new { @class = "linkdisabled" })
                     </th>
                     <th>
                         @*@Html.DisplayNameFor(model => model.Voornaam)*@
-                        @Html.ActionLink(Html.DisplayNameFor(model => model.Voornaam).ToString(), "Index", new { sortOrder = ViewBag.FirstNameSortParm })
+                        @Html.ActionLink(Html.DisplayNameFor(model => model.Voornaam).ToString(), "Index", new { sortOrder = ViewBag.FirstNameSortParm}, new { @class = "linkdisabled" })
                     </th>
                     <th>
                         @*@Html.DisplayNameFor(model => model.Telefoon)*@
-                        @Html.ActionLink(Html.DisplayNameFor(model => model.Telefoon).ToString(), "Index", new { sortOrder = ViewBag.PhoneSortParm })
+                        @Html.ActionLink(Html.DisplayNameFor(model => model.Telefoon).ToString(), "Index", new { sortOrder = ViewBag.PhoneSortParm }, new { @class = "linkdisabled" })
                     </th>
                     <th>
                         @*@Html.DisplayNameFor(model => model.Email)*@
-                        @Html.ActionLink(Html.DisplayNameFor(model => model.Email).ToString(), "Index", new { sortOrder = ViewBag.EmailSortParm })
+                        @Html.ActionLink(Html.DisplayNameFor(model => model.Email).ToString(), "Index", new { sortOrder = ViewBag.EmailSortParm }, new { @class = "linkdisabled" })
                     </th>
                     <th>
                         @*@Html.DisplayNameFor(model => model.Adres)*@
-                        @Html.ActionLink(Html.DisplayNameFor(model => model.Adres).ToString(), "Index", new { sortOrder = ViewBag.AdresSortParm })
+                        @Html.ActionLink(Html.DisplayNameFor(model => model.Adres).ToString(), "Index", new { sortOrder = ViewBag.AdresSortParm }, new { @class = "linkdisabled" })
                     </th>
                     <th>
                         @*@Html.DisplayNameFor(model => model.Adres)*@
-                        @Html.ActionLink(Html.DisplayNameFor(model => model.Adres.Gemeente).ToString(), "Index", new { sortOrder = ViewBag.GemeenteSortParm })
+                        @Html.ActionLink(Html.DisplayNameFor(model => model.Adres.Gemeente).ToString(), "Index", new { sortOrder = ViewBag.GemeenteSortParm }, new { @class = "linkdisabled" })
                     </th>
                 </tr>
 
@@ -160,4 +161,9 @@
             function updateMinLeeftijd(val) {
                 $('#minLeeftijd').text(val);
             }
+
+            $('#filterDit').click(function () {
+                $(".linkdisabled").disabled();
+            });
+
         </script>
