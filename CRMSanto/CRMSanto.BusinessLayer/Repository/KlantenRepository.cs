@@ -89,6 +89,7 @@ namespace CRMSanto.BusinessLayer.Repository
             }
             context.MedischeFiche.Attach(entityToUpdate.MedischeFiche);
             context.PersoonlijkeFiche.Attach(entityToUpdate.PersoonlijkeFiche);
+            context.Voedingspatroon.Attach(entityToUpdate.Voedingspatroon);
             Klant klant = context.Klant.Attach(entityToUpdate);
 
             context.Entry(entityToUpdate).State = EntityState.Modified;
