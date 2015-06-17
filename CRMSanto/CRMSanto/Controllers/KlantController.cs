@@ -35,6 +35,7 @@ namespace CRMSanto.Controllers
         //}
         public ActionResult Index(string sortOrder, string sortGeslacht)
         {
+            Session["EditKlant"] = null;
             List<Geslacht> geslachten = ks.GetGeslachten();
             List<SelectListItem> items = new List<SelectListItem>();
             ViewBag.Leeftijdvan = 0;
@@ -752,6 +753,7 @@ namespace CRMSanto.Controllers
 
                                     ks.InsertKlant(tempKlant); // save klant
                                     ks.Mails();
+                                    TempData["Klanten"] = null;
                                     return RedirectToAction("Index");
                                 }
                                 else
@@ -763,6 +765,8 @@ namespace CRMSanto.Controllers
                                     if (tempKlant.Voedingspatroon == null)
                                         tempKlant.Voedingspatroon = new Voedingspatroon();
                                     ks.UpdateKlant(tempKlant);
+                                    TempData["Klanten"] = null;
+                                    Session["EditKlant"] = null;
                                     return RedirectToAction("Index");
                                 }
                                 

@@ -127,8 +127,7 @@ namespace CRMSanto.BusinessLayer.Repository
                 context.Extra.Attach(entityToUpdate.Extra);
             }
 
-            Afspraak afspraak = context.Afspraak.Attach(entityToUpdate);
-
+            Afspraak afspraak = context.Afspraak.Attach(entityToUpdate);         
             context.Entry(entityToUpdate).State = EntityState.Modified;
         }
         public void UpdateAnnuleer(Afspraak a)

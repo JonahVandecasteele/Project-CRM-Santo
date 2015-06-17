@@ -1,12 +1,5 @@
 ﻿@model CRMSanto.Models.Extra
 
-@{
-    ViewBag.Title = "Edit3";
-}
-
-<h2>Edit3</h2>
-
-
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
@@ -44,7 +37,3 @@
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}

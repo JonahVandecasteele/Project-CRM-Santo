@@ -32,19 +32,40 @@ namespace CRMSanto.Controllers
         [HttpPost]
         public ActionResult New(SoortAfspraak m)
         {
-            afs.InsertMassage(m);
-            return View();
+            if (ModelState.IsValid)
+            {
+                afs.InsertMassage(m);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View();
+            }
         }
         [HttpGet]
         public ActionResult Edit(int? id)
         {
-            return View(afs.GetMassageByID(id.Value));
+            if(id==null)
+            {
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View(afs.GetMassageByID(id.Value));
+            }            
         }
         [HttpPost]
         public ActionResult Edit(SoortAfspraak m)
         {
-            afs.UpdateMassage(m);
-            return View();
+            if (ModelState.IsValid)
+            {
+                afs.UpdateMassage(m);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View();
+            }
         }        
         [HttpGet]
         public ActionResult New2()
@@ -54,19 +75,43 @@ namespace CRMSanto.Controllers
         [HttpPost]
         public ActionResult New2(Arrangement a)
         {
-            afs.InsertArrangement(a);
-            return View();
+            if (ModelState.IsValid)
+            {
+                afs.InsertArrangement(a);
+                return RedirectToAction("Index");
+            }
+
+            else
+            {
+                return View();
+            }
         }
         [HttpGet]
         public ActionResult Edit2(int? id)
         {
-            return View(afs.GetArrangementByID(id.Value));
+            if (id == null)
+            {
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View(afs.GetArrangementByID(id.Value));
+            }
         }
         [HttpPost]
         public ActionResult Edit2(Arrangement a)
         {
-            afs.UpdateArrangement(a);
-            return View();
+            if(ModelState.IsValid)
+            {
+                afs.UpdateArrangement(a);
+                return RedirectToAction("Index");
+            }
+
+            else
+            {
+                return View();
+            }
+            
         }
         [HttpGet]
         public ActionResult New3()
@@ -76,19 +121,40 @@ namespace CRMSanto.Controllers
         [HttpPost]
         public ActionResult New3(Extra e)
         {
-            afs.InsertExtra(e);
-            return View();
+            if (ModelState.IsValid)
+            {
+                afs.InsertExtra(e);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View();
+            }
         }
         [HttpGet]
         public ActionResult Edit3(int? id)
         {
-            return View(afs.GetExtraByID(id.Value));
+            if (id == null)
+            {
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View(afs.GetExtraByID(id.Value));
+            }
         }
         [HttpPost]
         public ActionResult Edit3(Extra e)
         {
-            afs.UpdateExtra(e);
-            return View();
+            if (ModelState.IsValid)
+            {
+                afs.UpdateExtra(e);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View();
+            }
         }
     }
 }
