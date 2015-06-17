@@ -488,7 +488,8 @@ namespace CRMSanto.Controllers
                 ViewBag.AdresSortParm = sortOrder == "adres" ? "adres_desc" : "adres";
                 ViewBag.GemeenteSortParm = sortOrder == "gemeente" ? "gemeente_desc" : "gemeente";
 
-                List<Klant> klanten = ks.GetKlanten();
+                //List<Klant> klanten = ks.GetKlanten();
+                List<Klant> klanten = 
                 ViewBag.Search = null;
                 switch (sortOrder)
                 {
