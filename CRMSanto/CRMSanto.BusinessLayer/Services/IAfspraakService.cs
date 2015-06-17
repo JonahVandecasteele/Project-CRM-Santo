@@ -25,6 +25,7 @@ namespace CRMSanto.BusinessLayer.Services
         CRMSanto.Models.SoortAfspraak InsertMassage(CRMSanto.Models.SoortAfspraak m);
         System.Collections.Generic.List<CRMSanto.Models.Afspraak> TussenTweeDatums(DateTime van, DateTime tot);
         void UpdateAfspraak(CRMSanto.Models.Afspraak a);
+        void UpdateAnnuleer(CRMSanto.Models.Afspraak a);
         void UpdateArrangement(CRMSanto.Models.Arrangement a);
         void UpdateExtra(CRMSanto.Models.Extra e);
         void UpdateMassage(CRMSanto.Models.SoortAfspraak m);

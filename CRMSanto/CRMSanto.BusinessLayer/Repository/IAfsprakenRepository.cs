@@ -15,6 +15,7 @@ namespace CRMSanto.BusinessLayer.Repository
         System.Collections.Generic.List<CRMSanto.Models.Afspraak> LopendeAfspraken();
         System.Collections.Generic.List<CRMSanto.Models.Afspraak> TussenTweeDatums(DateTime van, DateTime tot);
         void Update(CRMSanto.Models.Afspraak entityToUpdate);
+        void UpdateAnnuleer(CRMSanto.Models.Afspraak a);
         System.Collections.Generic.List<CRMSanto.Models.Afspraak> VanafAfspraken(DateTime vanaf);
     }
 }

@@ -131,6 +131,11 @@ namespace CRMSanto.BusinessLayer.Repository
 
             context.Entry(entityToUpdate).State = EntityState.Modified;
         }
+        public void UpdateAnnuleer(Afspraak a)
+        {
+            Afspraak afspraak = context.Afspraak.Attach(a);
+            context.Entry(a).State = EntityState.Modified;
+        }
         public List<Afspraak> GetDuurEnTijdstip(Afspraak b)
         {
             double duur = (b.Duur + 60);

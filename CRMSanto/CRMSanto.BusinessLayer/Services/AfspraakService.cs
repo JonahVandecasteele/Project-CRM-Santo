@@ -78,6 +78,12 @@ namespace CRMSanto.BusinessLayer.Services
                 a.Geannuleerd = true;
             }
         }
+
+        public void UpdateAnnuleer(Afspraak a)
+        {
+            repoAfspraken.UpdateAnnuleer(a);
+            repoAfspraken.SaveChanges();
+        }
         public void AddAfspraak(Afspraak a)
         {
             List<Afspraak> afspraak = repoAfspraken.GetDuurEnTijdstip(a);

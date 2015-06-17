@@ -476,6 +476,7 @@
     <Content Include="Views\Dienst\Index.cshtml" />
     <Content Include="Views\Stats\Index.cshtml" />
     <Content Include="Views\Afspraak\Edit.cshtml" />
+    <Content Include="Views\Afspraak\Annuleer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

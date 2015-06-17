@@ -239,6 +239,59 @@ namespace CRMSanto.Controllers
             //return View(pm);
         }
 
+        [HttpGet]
+        public ActionResult Annuleer(int? id)
+        {
+            if(id.HasValue)
+            {
+                NieuweAfspraakPM pm = new NieuweAfspraakPM();
+                pm.Klanten = new SelectList(ks.GetKlanten().Select(u => new { ID = u.ID, Naam = u.Naam + " " + u.Voornaam }), "ID", "Naam");
+                pm.Masseurs = new SelectList(afs.GetMasseurs().Select(m => new { ID = m.ID, Naam = m.Naam }), "ID", "Naam");
+                pm.SoortAfspraken = new SelectList(afs.GetMassages().Select(ms => new { ID = ms.ID, Naam = ms.Naam }), "ID", "Naam");
+                pm.Arrangementen = new SelectList(afs.GetArrangementen().Select(ar => new { ID = ar.ID, Naam = ar.Naam }), "ID", "Naam");
+                pm.Extras = new SelectList(afs.GetExtras().Select(e => new { ID = e.ID, Naam = e.Naam }), "ID", "Naam");
+                Afspraak a = afs.GetAfspraakByID(id.Value);
+                pm.Afspraak = a;
+                pm.Afspraak.ID = a.ID;
+                pm.Datum = a.DatumTijdstip.Date;
+                ViewBag.Datum = a.DatumTijdstip;
+                pm.Tijdstip = Convert.ToDateTime(a.DatumTijdstip.ToString("HH:mm"));
+                pm.Afspraak.DatumTijdstip = a.DatumTijdstip;
+                pm.Afspraak.Verplaatsing = a.Verplaatsing;
+                a.Notitie = pm.Afspraak.Notitie;
+                a.Duur = pm.Afspraak.Duur;
+                a.SoloDuo = pm.Afspraak.SoloDuo;
+                a.SoortAfspraak = pm.Afspraak.SoortAfspraak;
+                a.Arrangement = pm.Afspraak.Arrangement;
+                a.AantalPersonen = pm.Afspraak.AantalPersonen;
+                a.Klant = pm.Afspraak.Klant;
+                a.Archief = pm.Afspraak.Archief;
+                a.Geannuleerd = pm.Afspraak.Geannuleerd;
+                a.Masseur = pm.Afspraak.Masseur;
+                return View(pm);
+            }
+            else
+            {
+                return RedirectToAction("Index");
+            }
+        }
+
+        [HttpPost]
+        public ActionResult Annuleer(NieuweAfspraakPM a)
+        {
+            if (a.Afspraak.Klant.ID != 0)
+            {
+                a.Afspraak.Klant = ks.GetKlantByID(a.Afspraak.Klant.ID);
+            }
+            a.Afspraak.Masseur = afs.GetMasseurByID(a.Afspraak.Masseur.ID);
+            a.Afspraak.SoortAfspraak = afs.GetMassageByID(a.Afspraak.SoortAfspraak.ID);
+            a.Afspraak.Arrangement = afs.GetArrangementByID(a.Afspraak.Arrangement.ID);
+            a.Afspraak.Extra = afs.GetExtraByID(a.Afspraak.Extra.ID);
+
+            a.Afspraak.Geannuleerd = true;
+            afs.UpdateAnnuleer(a.Afspraak);
+            return RedirectToAction("Index");
+        }
         //public async Task<ActionResult> Create(FormCollection collection)
         //{
         //    _O365ServiceOperationFailed = false;
