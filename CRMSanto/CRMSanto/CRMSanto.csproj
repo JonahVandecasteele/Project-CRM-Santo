@@ -474,6 +474,7 @@
     <Content Include="Views\Shared\EditorTemplates\KlantRelatie.cshtml" />
     <Content Include="Views\Dienst\Index.cshtml" />
     <Content Include="Views\Stats\Index.cshtml" />
+    <Content Include="Views\Afspraak\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
