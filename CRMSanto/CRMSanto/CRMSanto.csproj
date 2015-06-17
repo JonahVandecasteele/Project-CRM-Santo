@@ -302,6 +302,7 @@
     <Compile Include="Controllers\KlantController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\SettingController.cs" />
+    <Compile Include="Controllers\StatsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -320,6 +321,7 @@
     <Compile Include="ViewModels\KlantViewModel.cs" />
     <Compile Include="ViewModels\NieuweAfspraakPM.cs" />
     <Compile Include="ViewModels\NieuweProductRegistratiePM.cs" />
+    <Compile Include="ViewModels\StatsPM.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\android-icon-144x144.png" />
@@ -471,9 +473,12 @@
     <Content Include="Views\Klant\New.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\KlantRelatie.cshtml" />
     <Content Include="Views\Dienst\Index.cshtml" />
+    <Content Include="Views\Stats\Index.cshtml" />
+    <Content Include="Views\Afspraak\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Stat\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
