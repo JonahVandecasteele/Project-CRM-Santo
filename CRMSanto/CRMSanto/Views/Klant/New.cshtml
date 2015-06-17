@@ -160,19 +160,22 @@
                     </div>
                 </div>
                 <div class="panel panel-default">
-                    <div class="panel-heading" role="tab" id="headingThree">
-                        <h4 class="panel-title expand-three">
-                            <i class="mdi-hardware-keyboard-arrow-right" id="icon-three"></i> <i class="mdi-image-healing"></i> Relaties
+                    <div class="panel-heading" role="tab" id="headingFour">
+                        <h4 class="panel-title expand-four">
+                            <i class="mdi-hardware-keyboard-arrow-right" id="icon-four"></i> <i class="mdi-image-healing"></i> Relaties
                         </h4>
                     </div>
-                    <div class="panel-body content-three klant-hidden">
+                    <div class="panel-body content-four klant-hidden">
                         <div class="row">
                             <div class="col s12">
                                 @Html.EditorFor(model => model.SelectedKlantRelatie, new { Klanten = Model.Klanten, Relaties = Model.Relaties})
-                                @*@foreach (CRMSanto.Models.KlantRelatie r in Model.KlantRelatie)
+                                @foreach (CRMSanto.Models.KlantRelatie r in Model.KlantRelatie)
                                 {
-                                    <span class="Klantrelatie">@r</span>
-                                }*@
+                                    <span class="Klantrelatie">
+                                        @Html.Raw(r.Relatie.Naam)
+                                        @Html.Raw(r.RelatieType.Naam)
+                                    </span>
+                                }
                             </div>
                         </div>
                     </div>
@@ -211,6 +214,11 @@
                     $('.expand-three').click(function () {
                         $('.content-three').slideToggle();
                         $('#icon-three').toggleClass("rotated");
+
+                    });
+                    $('.expand-four').click(function () {
+                        $('.content-four').slideToggle();
+                        $('#icon-four').toggleClass("rotated");
 
                     });
 

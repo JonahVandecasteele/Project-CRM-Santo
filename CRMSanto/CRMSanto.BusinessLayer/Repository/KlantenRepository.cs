@@ -68,9 +68,9 @@ namespace CRMSanto.BusinessLayer.Repository
             }
             if(entity.MedischeFiche!=null)context.MedischeFiche.Add(entity.MedischeFiche);
             
-            if (entity.KlantRelaties != null)
+            if (entity.KlantRelatie != null)
             {
-                foreach (KlantRelatie item in entity.KlantRelaties)
+                foreach (KlantRelatie item in entity.KlantRelatie)
                 {
                    // context.Relatie.Attach(item.RelatieType);
                 }

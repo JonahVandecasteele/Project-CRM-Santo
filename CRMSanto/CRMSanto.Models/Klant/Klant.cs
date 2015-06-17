@@ -30,7 +30,6 @@ namespace CRMSanto.Models
         public virtual List<KlantRelatie> KlantRelatie { get; set; }
         public virtual MedischeFiche MedischeFiche { get; set; }
         public virtual PersoonlijkeFiche PersoonlijkeFiche { get; set; }
-        public virtual List<KlantRelatie> KlantRelaties { get; set; }
         public virtual Voedingspatroon Voedingspatroon { get; set; }
     }
 }

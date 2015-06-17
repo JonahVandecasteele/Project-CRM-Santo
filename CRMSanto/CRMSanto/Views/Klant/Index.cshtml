@@ -103,7 +103,7 @@
 
                 @foreach (var item in Model)
                 {
-                    <tr class='clickable-row' data-href='Klant/Details/@Html.DisplayFor(modelItem => item.ID)'>
+                    <tr class='clickable-row' data-href='/Klant/Edit/@Html.DisplayFor(modelItem => item.ID)'>
                         <td>
                             <img src="@Html.GetPhotoURL(Html.DisplayFor(modelItem => item.Foto).ToString())" alt="" class="profilepic shadow-z-1" />
                         </td>

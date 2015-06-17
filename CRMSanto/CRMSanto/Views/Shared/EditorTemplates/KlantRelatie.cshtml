@@ -3,18 +3,18 @@
 @{
     List<CRMSanto.Models.Klant> klantlist = (List<CRMSanto.Models.Klant>)ViewData["Klanten"];
     List<CRMSanto.Models.Relatie> relatielist = (List<CRMSanto.Models.Relatie>)ViewData["Relaties"];
-   // List<CRMSanto.Models.KlantRelatie> klantrelatielist = (List<CRMSanto.Models.KlantRelatie>)ViewData["KlantRelaties"];
+   List<CRMSanto.Models.KlantRelatie> klantrelatielist = (List<CRMSanto.Models.KlantRelatie>)ViewData["KlantRelaties"];
 }
 
 <hr />
 
-        @*@Html.DropDownListFor(model => model.Relatie.ID, new SelectList(klantlist, "ID", "Naam"))
+        @Html.DropDownListFor(model => model.Relatie.ID, new SelectList(klantlist, "ID", "Naam"))
         <label>Karaktertrekken</label>
         @Html.ValidationMessageFor(model => model.Relatie.ID, "", new { @class = "text-danger" })
 
         @Html.DropDownListFor(model => model.RelatieType.ID, new SelectList(relatielist, "ID", "Naam"))
         <label>Karaktertrekken</label>
-        @Html.ValidationMessageFor(model => model.RelatieType.ID, "", new { @class = "text-danger" })*@
+        @Html.ValidationMessageFor(model => model.RelatieType.ID, "", new { @class = "text-danger" })
         <button class="btn waves-effect waves-light" type="submit" name="addrelatie">
             Toevoegen
             <i class="mdi-content-add right"></i>

@@ -134,6 +134,10 @@ namespace CRMSanto.BusinessLayer.Services
         {
             return repoRelatie.All().ToList<Relatie>();
         }
+        public Relatie GetRelatieByID(int id)
+        {
+            return repoRelatie.GetByID(id);
+        }
         public Relatie InsertRelatie(Relatie r)
         {
             Relatie result = repoRelatie.Insert(r);
