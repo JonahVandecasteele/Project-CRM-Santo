@@ -24,22 +24,20 @@ namespace CRMSanto.BusinessLayer.Repository
         }
         public void SendMail(Klant k)
         {
-            {
-                API sendinBlue = new mailinblue.API("r0GZv13CEFbk8yVq");
-                Dictionary<string, string> to = new Dictionary<string, string>();
-                to.Add(k.Email, k.Voornaam);
-                List<string> from_name = new List<string>();
-                from_name.Add("massage.santo@gmail.com");
-                from_name.Add("Massage Santo");
-                Dictionary<string, string> headers = new Dictionary<string, string>();
-                headers.Add("Content-Type", "text/html; charset=iso-8859-1");
-                headers.Add("X-param1", "value1");
-                headers.Add("X-param2", "value2");
-                headers.Add("X-Mailin-custom", "my custom value");
-                headers.Add("X-Mailin-IP", "102.102.1.2");
-                headers.Add("X-Mailin-Tag", "My tag");
-                Object sendEmail = sendinBlue.send_email(to, "Gelukkige verjaardag", from_name, "Gelukkige verjaardag", "This is the text", new Dictionary<string, string>(), headers);
-            }
+            API sendinBlue = new mailinblue.API("r0GZv13CEFbk8yVq");
+            Dictionary<string, string> to = new Dictionary<string, string>();
+            to.Add(k.Email, k.Voornaam);
+            List<string> from_name = new List<string>();
+            from_name.Add("massage.santo@gmail.com");
+            from_name.Add("Massage Santo");
+            Dictionary<string, string> headers = new Dictionary<string, string>();
+            headers.Add("Content-Type", "text/html; charset=iso-8859-1");
+            headers.Add("X-param1", "value1");
+            headers.Add("X-param2", "value2");
+            headers.Add("X-Mailin-custom", "my custom value");
+            headers.Add("X-Mailin-IP", "102.102.1.2");
+            headers.Add("X-Mailin-Tag", "My tag");
+            Object sendEmail = sendinBlue.send_email(to, "Gelukkige verjaardag", from_name, "<img src='https://dl.dropboxusercontent.com/u/37586195/kaart.jpg'/>", "Gefeliciteerd!", new Dictionary<string, string>(), headers);
         }
     }
 }
