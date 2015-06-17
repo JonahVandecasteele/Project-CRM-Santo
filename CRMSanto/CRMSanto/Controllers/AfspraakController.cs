@@ -130,7 +130,7 @@ namespace CRMSanto.Controllers
                 
                 
                 if (a.Datum.Date == DateTime.MinValue)
-                    a.Afspraak.DatumTijdstip = a.Tijdstip;
+                    a.Afspraak.DatumTijdstip = ViewBag.Datum + a.Tijdstip.TimeOfDay;
                 else
                     a.Afspraak.DatumTijdstip = a.Datum.Date + a.Tijdstip.TimeOfDay;
 
