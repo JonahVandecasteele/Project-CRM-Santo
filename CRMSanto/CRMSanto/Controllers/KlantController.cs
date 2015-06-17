@@ -572,7 +572,7 @@ namespace CRMSanto.Controllers
             KlantViewModel model;
             if(TempData["EditKlant"]==null)
             {
-                model = new KlantViewModel();
+            model = new KlantViewModel();
             model.Geslachten = ks.GetGeslachten();
             model.Mutualiteiten = ks.GetMutualiteiten();
             model.Werksituaties = ks.GetWerkSituaties();
