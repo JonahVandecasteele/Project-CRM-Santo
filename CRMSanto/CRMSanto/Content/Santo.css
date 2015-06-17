@@ -2645,6 +2645,10 @@ h2 {
     font-size: 3em;
 }
 
+#ui-datepicker-div {
+    background-color: white;
+}
+
 /*#region MOBILE & TABLET */
 @media (max-width:768px) 
 {

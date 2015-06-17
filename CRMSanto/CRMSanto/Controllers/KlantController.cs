@@ -40,9 +40,9 @@ namespace CRMSanto.Controllers
             ViewBag.Leeftijdvan = 0;
             ViewBag.Leeftijdtot = 100;
 
-            if(ViewBag.Klanten ==null)
+            if (TempData["Klanten"] == null)
             {
-                ViewBag.Klanten = ks.GetKlanten();
+                TempData["Klanten"] = ks.GetKlanten();
             }
 
             foreach (Geslacht geslacht in geslachten)
@@ -65,10 +65,10 @@ namespace CRMSanto.Controllers
             {
                 if (Request.Form["Search"] != "")
                 {
-                    ViewBag.Search = Request.Form["Search"];
+                    TempData["Search"] = Request.Form["Search"];
                     string zoeken = Request.Form["Search"];
                    
-                    List<Klant> klant = ks.GetKlanten();
+                    List<Klant> klant = (List<Klant>)TempData["Klanten"];
   
 
                     var klanten = from klants in klant
@@ -79,12 +79,11 @@ namespace CRMSanto.Controllers
                                         || klants.Adres.Gemeente.Provincie.ToLower().Contains(zoeken.ToLower())
                                         || klants.Adres.Gemeente.Postcode.ToLower().Contains(zoeken.ToLower())
                                   select klants;
-
+                    TempData["Klanten"] = klanten.ToList();
                     return View(klanten);
                 }
                
                 else { 
-                    ViewBag.Search = null;
                     return View(ks.GetKlanten());
                 }
             }
@@ -96,7 +95,7 @@ namespace CRMSanto.Controllers
                 int leeftijdVan = Convert.ToInt32(Request.Form["LeeftijdVan"]);
                 int leeftijdTot = Convert.ToInt32(Request.Form["LeeftijdTot"]);
 
-                ViewBag.Search = Request.Form["Search"];
+                TempData["Search"] = Request.Form["Search"];
                 //ViewBag.Options = Request.Form["Options"];
                 ViewBag.Geslacht = Request.Form["Options"];
                 ViewBag.LeeftijdVan = Request.Form["LeeftijdVan"];
@@ -166,7 +165,7 @@ namespace CRMSanto.Controllers
                             break;
                     }
 
-                    ViewBag.Klanten = klanten;
+                    TempData["Klanten"] = klanten.ToList();
                     return View(klanten);
                 }
                 else if (geslacht != null && leeftijdVan == 0 && leeftijdTot == 100 && !string.IsNullOrEmpty(zoeken))
@@ -190,6 +189,7 @@ namespace CRMSanto.Controllers
                                                   select klants;
 
                     var klanten = klantOpGeslachtEnSearch.Where(a => a.Geslacht.ID.ToString().Contains(geslacht));
+                    
                     switch (sortOrder)
                     {
                         case "name":
@@ -232,6 +232,7 @@ namespace CRMSanto.Controllers
                             klanten = klanten.OrderBy(s => s.Naam).ToList();
                             break;
                     }
+                    TempData["Klanten"] = klanten.ToList();
                     return View(klanten);
                 }
                 else if (geslacht == null && leeftijdVan != 0 && leeftijdTot != 100 && !string.IsNullOrEmpty(zoeken))
@@ -252,7 +253,7 @@ namespace CRMSanto.Controllers
                                                         || klants.Adres.Gemeente.Postcode.ToLower().Contains(zoeken.ToLower())
                                                   select klants;
                     var klanten = klantOpLeeftijdEnSearch.Where(a => a.Geboortedatum.Year <= minLeeftijd && a.Geboortedatum.Year >= maxLeeftijd);
-                    ViewBag.Klanten = klanten;
+
                     switch (sortOrder)
                     {
                         case "name":
@@ -295,7 +296,7 @@ namespace CRMSanto.Controllers
                             klanten = klanten.OrderBy(s => s.Naam).ToList();
                             break;
                     }
-
+                    TempData["Klanten"] = klanten.ToList();
                     return View(klanten);
                 }
                 else if(geslacht != null && leeftijdVan != 0 && leeftijdTot != 100 && !string.IsNullOrEmpty(zoeken))
@@ -316,7 +317,7 @@ namespace CRMSanto.Controllers
                                                         || klants.Adres.Gemeente.Postcode.ToLower().Contains(zoeken.ToLower())
                                                   select klants;
                     var klanten = klantOpLeeftijdGeslachtEnSearch.Where(a => a.Geboortedatum.Year <= minLeeftijd && a.Geboortedatum.Year >= maxLeeftijd && a.Geslacht.ID.ToString().Contains(geslacht));
-                    ViewBag.Klanten = klanten;
+
                     switch (sortOrder)
                     {
                         case "name":
@@ -359,7 +360,7 @@ namespace CRMSanto.Controllers
                             klanten = klanten.OrderBy(s => s.Naam).ToList();
                             break;
                     }
-
+                    TempData["Klanten"] = klanten.ToList();
                     return View(klanten);
                 }
                 else if(geslacht == null && leeftijdVan != 0 && leeftijdTot != 100 && string.IsNullOrEmpty(zoeken))
@@ -375,7 +376,7 @@ namespace CRMSanto.Controllers
                                           where klants.Geboortedatum.Year <= minLeeftijd && klants.Geboortedatum.Year >= maxLeeftijd
                                           select klants;
                     var klanten = klantOpLeeftijd;
-                    ViewBag.Klanten = klanten;
+
                     switch (sortOrder)
                     {
                         case "name":
@@ -418,7 +419,7 @@ namespace CRMSanto.Controllers
                             klanten = klanten.OrderBy(s => s.Naam).ToList();
                             break;
                     }
-
+                    TempData["Klanten"] = klanten.ToList();
                     return View(klanten);
                 }
                 else if (geslacht != null && leeftijdVan != 0 && leeftijdTot != 100 && string.IsNullOrEmpty(zoeken))
@@ -434,7 +435,6 @@ namespace CRMSanto.Controllers
                                                     where klants.Geboortedatum.Year <= minLeeftijd && klants.Geboortedatum.Year >= maxLeeftijd && klants.Geslacht.ID.ToString().Contains(geslacht)
                                                     select klants;
                     var klanten = klantOpLeeftijdEnGeslacht;
-                    ViewBag.Klanten = klanten;
 
                     switch (sortOrder)
                     {
@@ -478,7 +478,7 @@ namespace CRMSanto.Controllers
                             klanten = klanten.OrderBy(s => s.Naam).ToList();
                             break;
                     }
-
+                    TempData["Klanten"] = klanten.ToList();
                     return View(klanten);
                 }
                 else
@@ -489,75 +489,66 @@ namespace CRMSanto.Controllers
             }
             else if (Request.Form["clear"] != null)
             {
-                ViewBag.Search = null;
+                TempData["Search"] = null;
                 return View(ks.GetKlanten());
             }
             else
             {
-                List<Klant> klanten = ks.GetKlanten();
-                if (Request.Form["filterDit"] == null)
+                ViewBag.sortGeslacht = sortGeslacht;
+
+                ViewBag.NameSortParm = sortOrder == "name_desc" ? "name" : "name_desc";
+                ViewBag.FirstNameSortParm = sortOrder == "firstname" ? "firstName_desc" : "firstname";
+                ViewBag.PhoneSortParm = sortOrder == "phoneNumber" ? "phonenumber_desc" : "phoneNumber";
+                ViewBag.EmailSortParm = sortOrder == "email" ? "email_desc" : "email";
+                ViewBag.AdresSortParm = sortOrder == "adres" ? "adres_desc" : "adres";
+                ViewBag.GemeenteSortParm = sortOrder == "gemeente" ? "gemeente_desc" : "gemeente";
+
+                List<Klant> klanten = (List<Klant>)TempData["Klanten"];
+
+                switch (sortOrder)
                 {
-
-
-                    ViewBag.sortGeslacht = sortGeslacht;
-
-                    ViewBag.NameSortParm = sortOrder == "name_desc" ? "name" : "name_desc";
-                    ViewBag.FirstNameSortParm = sortOrder == "firstname" ? "firstName_desc" : "firstname";
-                    ViewBag.PhoneSortParm = sortOrder == "phoneNumber" ? "phonenumber_desc" : "phoneNumber";
-                    ViewBag.EmailSortParm = sortOrder == "email" ? "email_desc" : "email";
-                    ViewBag.AdresSortParm = sortOrder == "adres" ? "adres_desc" : "adres";
-                    ViewBag.GemeenteSortParm = sortOrder == "gemeente" ? "gemeente_desc" : "gemeente";
-
-                    
-                    ViewBag.Search = null;
-                    switch (sortOrder)
-                    {
-                        case "name":
-                            klanten = klanten.OrderBy(s => s.Naam).ToList();
-                            break;
-                        case "name_desc":
-                            klanten = klanten.OrderByDescending(s => s.Naam).ToList();
-                            break;
-                        case "firstname":
-                            klanten = klanten.OrderBy(s => s.Voornaam).ToList();
-                            break;
-                        case "firstName_desc":
-                            klanten = klanten.OrderByDescending(s => s.Voornaam).ToList();
-                            break;
-                        case "phoneNumber":
-                            klanten = klanten.OrderBy(s => s.Telefoon).ToList();
-                            break;
-                        case "phoneNumber_desc":
-                            klanten = klanten.OrderByDescending(s => s.Telefoon).ToList();
-                            break;
-                        case "email":
-                            klanten = klanten.OrderBy(s => s.Email).ToList();
-                            break;
-                        case "email_desc":
-                            klanten = klanten.OrderByDescending(s => s.Email).ToList();
-                            break;
-                        case "adres":
-                            klanten = klanten.OrderBy(s => s.Adres.Straat).ToList();
-                            break;
-                        case "adres_desc":
-                            klanten = klanten.OrderByDescending(s => s.Adres.Straat).ToList();
-                            break;
-                        case "gemeente":
-                            klanten = klanten.OrderBy(s => s.Adres.Gemeente.Plaatsnaam).ToList();
-                            break;
-                        case "gemeente_desc":
-                            klanten = klanten.OrderByDescending(s => s.Adres.Gemeente.Plaatsnaam).ToList();
-                            break;
-                        default:
-                            klanten = klanten.OrderBy(s => s.Naam).ToList();
-                            break;
-                    }
-                    return View(klanten);
+                    case "name":
+                        klanten = klanten.OrderBy(s => s.Naam).ToList();
+                        break;
+                    case "name_desc":
+                        klanten = klanten.OrderByDescending(s => s.Naam).ToList();
+                        break;
+                    case "firstname":
+                        klanten = klanten.OrderBy(s => s.Voornaam).ToList();
+                        break;
+                    case "firstName_desc":
+                        klanten = klanten.OrderByDescending(s => s.Voornaam).ToList();
+                        break;
+                    case "phoneNumber":
+                        klanten = klanten.OrderBy(s => s.Telefoon).ToList();
+                        break;
+                    case "phoneNumber_desc":
+                        klanten = klanten.OrderByDescending(s => s.Telefoon).ToList();
+                        break;
+                    case "email":
+                        klanten = klanten.OrderBy(s => s.Email).ToList();
+                        break;
+                    case "email_desc":
+                        klanten = klanten.OrderByDescending(s => s.Email).ToList();
+                        break;
+                    case "adres":
+                        klanten = klanten.OrderBy(s => s.Adres.Straat).ToList();
+                        break;
+                    case "adres_desc":
+                        klanten = klanten.OrderByDescending(s => s.Adres.Straat).ToList();
+                        break;
+                    case "gemeente":
+                        klanten = klanten.OrderBy(s => s.Adres.Gemeente.Plaatsnaam).ToList();
+                        break;
+                    case "gemeente_desc":
+                        klanten = klanten.OrderByDescending(s => s.Adres.Gemeente.Plaatsnaam).ToList();
+                        break;
+                    default:
+                        klanten = klanten.OrderBy(s => s.Naam).ToList();
+                        break;
                 }
-                else
-                {
-                    return View(klanten);
-                }
+                TempData["Klanten"] = klanten;
+                return View(klanten);
                 
             }
         }
@@ -578,7 +569,10 @@ namespace CRMSanto.Controllers
         [HttpGet]
         public ActionResult New()
         {
-            KlantViewModel model = new KlantViewModel();
+            KlantViewModel model;
+            if(TempData["EditKlant"]==null)
+            {
+                model = new KlantViewModel();
             model.Geslachten = ks.GetGeslachten();
             model.Mutualiteiten = ks.GetMutualiteiten();
             model.Werksituaties = ks.GetWerkSituaties();
@@ -596,7 +590,44 @@ namespace CRMSanto.Controllers
             model.PersoonlijkeFiche = new PersoonlijkeFiche();
             model.MedischeFiche.Mutualiteit = new Mutualiteit();
             model.Vandaag = DateTime.Now.ToString("dd-MM-yyyy");
+            }
+            else
+            {
+                Klant k = ks.GetKlantByID(Convert.ToInt32(TempData["EditKlant"]));
+                model = new KlantViewModel()
+                {
+                    Adres = k.Adres,
+                    Email = k.Email,
+                    Foto = k.Foto,
+                    Geboortedatum = k.Geboortedatum,
+                    Geslacht = k.Geslacht,
+                    ID = k.ID,
+                    Karaktertrek = k.Karaktertrek,
+                    KlantRelatie = k.KlantRelatie,
+                    MedischeFiche = k.MedischeFiche,
+                    Naam = k.Naam,
+                    PersoonlijkeFiche = k.PersoonlijkeFiche,
+                    Telefoon = k.Telefoon,
+                    Voornaam = k.Voornaam,
+                    Voedingspatroon = k.Voedingspatroon,
+                };
+                model.Geslachten = ks.GetGeslachten();
+                model.Mutualiteiten = ks.GetMutualiteiten();
+                model.Werksituaties = ks.GetWerkSituaties();
+                model.Karaktertreken = ks.GetKaraktertreken();
+                model.Voedingspatronen = ks.GetVoedingspatronen();
+                model.Relaties = ks.GetRelaties();
+                model.Klanten = ks.GetKlanten();
+                if (model.KlantRelatie == null)
+                    model.KlantRelatie = new List<KlantRelatie>();
+            }
+            
             return View(model);
+        }
+        public ActionResult Edit(int ID)
+        {
+            TempData["EditKlant"] = ID;
+            return RedirectToAction("New");
         }
         [HttpPost]
         public ActionResult New(KlantViewModel klant)
