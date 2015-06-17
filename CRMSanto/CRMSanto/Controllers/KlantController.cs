@@ -68,7 +68,7 @@ namespace CRMSanto.Controllers
                     TempData["Search"] = Request.Form["Search"];
                     string zoeken = Request.Form["Search"];
                    
-                    List<Klant> klant = ks.GetKlanten();
+                    List<Klant> klant = (List<Klant>)TempData["Klanten"];
   
 
                     var klanten = from klants in klant
@@ -79,7 +79,7 @@ namespace CRMSanto.Controllers
                                         || klants.Adres.Gemeente.Provincie.ToLower().Contains(zoeken.ToLower())
                                         || klants.Adres.Gemeente.Postcode.ToLower().Contains(zoeken.ToLower())
                                   select klants;
-                    TempData["Klanten"] = klanten;
+                    TempData["Klanten"] = klanten.ToList();
                     return View(klanten);
                 }
                
@@ -165,7 +165,7 @@ namespace CRMSanto.Controllers
                             break;
                     }
 
-                    TempData["Klanten"] = klanten;
+                    TempData["Klanten"] = klanten.ToList();
                     return View(klanten);
                 }
                 else if (geslacht != null && leeftijdVan == 0 && leeftijdTot == 100 && !string.IsNullOrEmpty(zoeken))
@@ -232,7 +232,7 @@ namespace CRMSanto.Controllers
                             klanten = klanten.OrderBy(s => s.Naam).ToList();
                             break;
                     }
-                    TempData["Klanten"] = klanten;
+                    TempData["Klanten"] = klanten.ToList();
                     return View(klanten);
                 }
                 else if (geslacht == null && leeftijdVan != 0 && leeftijdTot != 100 && !string.IsNullOrEmpty(zoeken))
@@ -296,7 +296,7 @@ namespace CRMSanto.Controllers
                             klanten = klanten.OrderBy(s => s.Naam).ToList();
                             break;
                     }
-                    TempData["Klanten"] = klanten;
+                    TempData["Klanten"] = klanten.ToList();
                     return View(klanten);
                 }
                 else if(geslacht != null && leeftijdVan != 0 && leeftijdTot != 100 && !string.IsNullOrEmpty(zoeken))
@@ -360,7 +360,7 @@ namespace CRMSanto.Controllers
                             klanten = klanten.OrderBy(s => s.Naam).ToList();
                             break;
                     }
-                    TempData["Klanten"] = klanten;
+                    TempData["Klanten"] = klanten.ToList();
                     return View(klanten);
                 }
                 else if(geslacht == null && leeftijdVan != 0 && leeftijdTot != 100 && string.IsNullOrEmpty(zoeken))
@@ -419,7 +419,7 @@ namespace CRMSanto.Controllers
                             klanten = klanten.OrderBy(s => s.Naam).ToList();
                             break;
                     }
-                    TempData["Klanten"] = klanten;
+                    TempData["Klanten"] = klanten.ToList();
                     return View(klanten);
                 }
                 else if (geslacht != null && leeftijdVan != 0 && leeftijdTot != 100 && string.IsNullOrEmpty(zoeken))
@@ -478,7 +478,7 @@ namespace CRMSanto.Controllers
                             klanten = klanten.OrderBy(s => s.Naam).ToList();
                             break;
                     }
-                    TempData["Klanten"] = klanten;
+                    TempData["Klanten"] = klanten.ToList();
                     return View(klanten);
                 }
                 else
@@ -503,7 +503,8 @@ namespace CRMSanto.Controllers
                 ViewBag.AdresSortParm = sortOrder == "adres" ? "adres_desc" : "adres";
                 ViewBag.GemeenteSortParm = sortOrder == "gemeente" ? "gemeente_desc" : "gemeente";
 
-                List<Klant> klanten = (List<Klant>)TempData["Klanten"];
+                List<Klant> klanten = (List<Klant>)TempData["Klanten"]; 
+
                 switch (sortOrder)
                 {
                     case "name":
@@ -548,6 +549,7 @@ namespace CRMSanto.Controllers
                 }
                 TempData["Klanten"] = klanten;
                 return View(klanten);
+                
             }
         }
         public ActionResult Details(int? id)
@@ -574,6 +576,8 @@ namespace CRMSanto.Controllers
             model.Karaktertreken = ks.GetKaraktertreken();
             model.Voedingspatronen = ks.GetVoedingspatronen();
             model.Relaties = ks.GetRelaties();
+            model.Klanten = ks.GetKlanten();
+            model.KlantRelatie = new List<KlantRelatie>();
             model.Geboortedatum = new DateTime();
             model.Karaktertrek = new List<Karaktertrek>();
             model.KlantRelaties = new List<KlantRelatie>();
@@ -626,7 +630,13 @@ namespace CRMSanto.Controllers
                     }
                     else
                     {
-                        if(ModelState.IsValid)
+                        if(Request.Form["addrelatie"]!=null)
+                        {
+                            return RedirectToAction("Index");
+                        }
+                        else
+                        {
+                            if (ModelState.IsValid)
                         {
                             Klant tempKlant = new Klant();
                             if (TempData["NewKlantM"] == null)//If Klant doesn't exist from prev postback (Happens when multiple gemeentes are possible
@@ -711,6 +721,8 @@ namespace CRMSanto.Controllers
                             klant.Voedingspatronen = ks.GetVoedingspatronen();
                             return View(klant);
                         }
+                        }
+                        
                         
                     }
         }
