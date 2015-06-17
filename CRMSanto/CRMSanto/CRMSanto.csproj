@@ -301,6 +301,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KlantController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\RekeningController.cs" />
     <Compile Include="Controllers\SettingController.cs" />
     <Compile Include="Controllers\StatsController.cs" />
     <Compile Include="Global.asax.cs">
@@ -471,12 +472,7 @@
     <Content Include="Views\Stats\Index.cshtml" />
     <Content Include="Views\Afspraak\Edit.cshtml" />
     <Content Include="Views\Afspraak\Annuleer.cshtml" />
-    <Content Include="Views\Dienst\New.cshtml" />
-    <Content Include="Views\Dienst\New2.cshtml" />
-    <Content Include="Views\Dienst\New3.cshtml" />
-    <Content Include="Views\Dienst\Edit.cshtml" />
-    <Content Include="Views\Dienst\Edit2.cshtml" />
-    <Content Include="Views\Dienst\Edit3.cshtml" />
+    <Content Include="Views\Rekening\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

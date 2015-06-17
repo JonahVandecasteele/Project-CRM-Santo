@@ -91,6 +91,7 @@
     <Compile Include="Repository\IKlantenRepository.cs" />
     <Compile Include="Repository\IKlantRelatieRepository.cs" />
     <Compile Include="Repository\IProductenRepository.cs" />
+    <Compile Include="Repository\IRekeningRepository.cs" />
     <Compile Include="Repository\ISessieRepository.cs" />
     <Compile Include="Repository\KaraktertrekRepository.cs" />
     <Compile Include="Repository\KlantenRepository.cs" />
@@ -99,13 +100,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Repository\KlantRelatieRepository.cs" />
+    <Compile Include="Repository\RekeningRepository.cs" />
     <Compile Include="Repository\SessieRepository.cs" />
     <Compile Include="Services\AfspraakService.cs" />
     <Compile Include="Services\IAfspraakService.cs" />
     <Compile Include="Services\IKlantService.cs" />
     <Compile Include="Services\IProductService.cs" />
+    <Compile Include="Services\IRekeningService.cs" />
     <Compile Include="Services\KlantService.cs" />
     <Compile Include="Services\ProductService.cs" />
+    <Compile Include="Services\RekeningService.cs" />
     <Compile Include="StorageHelper.cs" />
   </ItemGroup>
   <ItemGroup>
