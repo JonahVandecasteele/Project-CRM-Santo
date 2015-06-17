@@ -153,6 +153,9 @@
                         $('.content-one').slideToggle();
                         $('#icon-one').toggleClass("rotated");
                 });
+                $("img").error(function () {
+                    $(this).attr("src", "http://massagesanto.blob.core.windows.net/images/profile.jpg");
+                });
             });
 
             function updateMaxLeeftijd(val) {

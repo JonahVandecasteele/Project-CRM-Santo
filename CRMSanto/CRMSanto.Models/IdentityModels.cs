@@ -51,6 +51,8 @@ namespace CRMSanto.Models
         public DbSet<Winkelmand> Winkelmand { get; set; }
         public DbSet<KlantRelatie> KlantRelatie { get; set; }
         public DbSet<Relatie> Relatie { get; set; }
+        public DbSet<ProductWinkelmand> ProductWinkelmand { get; set; }
+        public DbSet<Rekening> Rekening { get; set; }
         public class UserTokenCache
         {
             [Key]

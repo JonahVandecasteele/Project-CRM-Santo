@@ -14,7 +14,7 @@ namespace CRMSanto.Models
         public string Naam { get; set; }
         public Decimal AankoopPrijs { get; set; }
         public Decimal VerkoopPrijs { get; set; }
-        [Display(Name="Inhoud (in ml of gram)")]
+        [Display(Name="Inhoud (ml/gr)")]
         public int Inhoud { get; set; }
         public string Foto { get; set; }
         public string Omschrijving { get; set; }

@@ -11,18 +11,21 @@
 
 <ul class="breadcrumb">
     <li class="active">Producten</li>
-</ul>       
-        
-            <div class="input-group search">
-                <input type="text" name="Search" class="form-control" placeholder="Zoeken...">
-                <span class="input-group-btn">
-                    <button class="btn btn-primary" name="submit" type="submit"><span class="glyphicon glyphicon-search"></span></button>
-                    @*<input class="btn btn-primary" name="submit" type="submit"><span class="glyphicon glyphicon-search"></span> />*@
-                </span>
-            </div>
-            @*<b>Search by:</b>
-            @Html.TextBox("Search");<input type="submit" value="Search" />*@
-       
+</ul>
+
+    <div class="input-group search">
+        <input type="text" value="@ViewBag.Search" name="Search" class="form-control" placeholder="Zoeken...">
+        <span class="input-group-btn">
+            <button class="btn-floating waves-effect waves-light santo-brown-bg inline-btn" name="submit" type="submit" tabindex="-1">
+                <i class="mdi-action-search"></i>
+            </button>
+            <button class="btn-floating waves-effect waves-light santo-brown-bg inline-btn btn-search" name="clear" type="submit" tabindex="-1">
+                <i class=" mdi-content-clear"></i>
+            </button>
+
+        </span>
+    </div>
+
         <div class="table-responsive">
             <table class="table table-striped table-hover">
                 <thead>

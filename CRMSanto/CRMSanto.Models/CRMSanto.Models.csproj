@@ -219,9 +219,27 @@
     <Compile Include="Migrations\201506170910362_KlantRelatie-FinalCountDown2.Designer.cs">
       <DependentUpon>201506170910362_KlantRelatie-FinalCountDown2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201506171157016_JimIsLelijk.cs" />
+    <Compile Include="Migrations\201506171157016_JimIsLelijk.Designer.cs">
+      <DependentUpon>201506171157016_JimIsLelijk.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201506171200570_JimIsLelijk2.cs" />
+    <Compile Include="Migrations\201506171200570_JimIsLelijk2.Designer.cs">
+      <DependentUpon>201506171200570_JimIsLelijk2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201506171203202_JimIsLelijk3.cs" />
+    <Compile Include="Migrations\201506171203202_JimIsLelijk3.Designer.cs">
+      <DependentUpon>201506171203202_JimIsLelijk3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201506171208127_JimIsLelijk4.cs" />
+    <Compile Include="Migrations\201506171208127_JimIsLelijk4.Designer.cs">
+      <DependentUpon>201506171208127_JimIsLelijk4.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Product\Product.cs" />
     <Compile Include="Product\Productregistratie.cs" />
+    <Compile Include="Winkelmand\ProductWinkelmand.cs" />
+    <Compile Include="Winkelmand\Rekening.cs" />
     <Compile Include="Product\Winkelmand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Afspraak\Sessie.cs" />
@@ -331,6 +349,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201506170910362_KlantRelatie-FinalCountDown2.resx">
       <DependentUpon>201506170910362_KlantRelatie-FinalCountDown2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506171157016_JimIsLelijk.resx">
+      <DependentUpon>201506171157016_JimIsLelijk.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506171200570_JimIsLelijk2.resx">
+      <DependentUpon>201506171200570_JimIsLelijk2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506171203202_JimIsLelijk3.resx">
+      <DependentUpon>201506171203202_JimIsLelijk3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506171208127_JimIsLelijk4.resx">
+      <DependentUpon>201506171208127_JimIsLelijk4.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
