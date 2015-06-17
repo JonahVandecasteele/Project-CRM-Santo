@@ -408,6 +408,7 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\ripples.min.js" />
+    <Content Include="Scripts\sorttable.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Views\Klant\BACKUP NEW.txt" />
     <Content Include="Web.config" />
