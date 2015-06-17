@@ -2649,6 +2649,11 @@ h2 {
     background-color: white;
 }
 
+.piechart {
+    width: 100%;
+    height: 250px;
+}
+
 /*#region MOBILE & TABLET */
 @media (max-width:768px) 
 {
