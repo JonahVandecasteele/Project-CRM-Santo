@@ -65,7 +65,23 @@ namespace CRMSanto.Controllers
         {
             if(id.HasValue)
             {
-                return View(afs.GetAfspraakByID(id.Value));
+                NieuweAfspraakPM pm = new NieuweAfspraakPM();
+                Afspraak a = afs.GetAfspraakByID(id.Value);
+                pm.Afspraak.ID = a.ID;
+                pm.Afspraak.DatumTijdstip = a.DatumTijdstip;
+                pm.Afspraak.Verplaatsing = a.Verplaatsing;
+                a.Notitie = pm.Afspraak.Notitie;
+                a.Duur = pm.Afspraak.Duur;
+                a.SoloDuo = pm.Afspraak.SoloDuo;
+                a.SoortAfspraak = pm.Afspraak.SoortAfspraak;
+                a.Arrangement = pm.Afspraak.Arrangement;
+                a.AantalPersonen = pm.Afspraak.AantalPersonen;
+                a.Klant = pm.Afspraak.Klant;
+                a.Archief = pm.Afspraak.Archief;
+                a.Geannuleerd = pm.Afspraak.Geannuleerd;
+
+
+                return View(pm);
             }
 
             else

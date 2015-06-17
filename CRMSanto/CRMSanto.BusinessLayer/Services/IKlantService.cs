@@ -17,12 +17,14 @@ namespace CRMSanto.BusinessLayer.Services
         System.Collections.Generic.List<CRMSanto.Models.KlantRelatie> GetKlantRelaties(CRMSanto.Models.Klant k);
         CRMSanto.Models.Mutualiteit GetMutualiteitByID(int id);
         System.Collections.Generic.List<CRMSanto.Models.Mutualiteit> GetMutualiteiten();
+        CRMSanto.Models.Relatie GetRelatieByID(int id);
         System.Collections.Generic.List<CRMSanto.Models.Relatie> GetRelaties();
         System.Collections.Generic.List<CRMSanto.Models.Voedingspatroon> GetVoedingspatronen();
         CRMSanto.Models.Werksituatie GetWerkSituatieByID(int id);
         System.Collections.Generic.List<CRMSanto.Models.Werksituatie> GetWerkSituaties();
         CRMSanto.Models.Karaktertrek InsertKaraktertrek(CRMSanto.Models.Karaktertrek k);
         CRMSanto.Models.Klant InsertKlant(CRMSanto.Models.Klant klant);
+        CRMSanto.Models.KlantRelatie InsertKlantRelatie(CRMSanto.Models.KlantRelatie k);
         CRMSanto.Models.Mutualiteit InsertMutualiteit(CRMSanto.Models.Mutualiteit m);
         CRMSanto.Models.Relatie InsertRelatie(CRMSanto.Models.Relatie r);
         CRMSanto.Models.Werksituatie InsertWerkSituatie(CRMSanto.Models.Werksituatie w);

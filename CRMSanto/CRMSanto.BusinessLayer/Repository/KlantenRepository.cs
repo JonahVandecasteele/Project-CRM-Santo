@@ -20,7 +20,8 @@ namespace CRMSanto.BusinessLayer.Repository
         }
         public override IEnumerable<Klant> All()
         {
-            var query = (from k in context.Klant.Include(g => g.Geslacht).Include(kar => kar.Karaktertrek).Include(m => m.MedischeFiche).Include(p => p.PersoonlijkeFiche).Include(a =>a.Adres).Include(g => g.Adres.Gemeente) select k);
+            var query = (from k in context.Klant.Include(g => g.Geslacht).Include(kar => kar.Karaktertrek).Include(m => m.MedischeFiche).Include(p => p.PersoonlijkeFiche).Include(a =>a.Adres).Include(g => g.Adres.Gemeente).Include(r => r.KlantRelatie)  select k);
+           
             return query.ToList<Klant>();
         }
         public List<Klant> GetJarigen()
@@ -67,11 +68,11 @@ namespace CRMSanto.BusinessLayer.Repository
             }
             if(entity.MedischeFiche!=null)context.MedischeFiche.Add(entity.MedischeFiche);
             
-            if (entity.KlantRelaties != null)
+            if (entity.KlantRelatie != null)
             {
-                foreach (KlantRelatie item in entity.KlantRelaties)
+                foreach (KlantRelatie item in entity.KlantRelatie)
                 {
-                    context.Relatie.Attach(item.RelatieType);
+                   // context.Relatie.Attach(item.RelatieType);
                 }
             }
             //context.KlantRelatie.AddRange(entity.KlantRelaties);

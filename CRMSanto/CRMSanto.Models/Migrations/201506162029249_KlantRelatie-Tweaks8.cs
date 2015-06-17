@@ -11,6 +11,7 @@ namespace CRMSanto.Models.Migrations
         
         public override void Down()
         {
+
         }
     }
 }
