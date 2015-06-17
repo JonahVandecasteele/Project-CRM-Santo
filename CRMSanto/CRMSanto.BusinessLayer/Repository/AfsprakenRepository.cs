@@ -143,7 +143,7 @@ namespace CRMSanto.BusinessLayer.Repository
             DateTime eindeNieuw = beginNieuw.AddMinutes(duur);
 
             var query = (from a in context.Afspraak
-                         where a.DatumTijdstip <= eindeNieuw && System.Data.Entity.DbFunctions.AddMinutes(a.DatumTijdstip, a.Duur + 60) >= beginNieuw && a.Geannuleerd != true
+                         where a.DatumTijdstip <= eindeNieuw && System.Data.Entity.DbFunctions.AddMinutes(a.DatumTijdstip, a.Duur + 60) >= beginNieuw && a.Geannuleerd != true && a.ID != b.ID
                          select a);
                         
             return query.ToList<Afspraak>();
