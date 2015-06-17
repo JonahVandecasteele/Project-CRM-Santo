@@ -164,6 +164,8 @@ namespace CRMSanto.Controllers
             pm.Afspraak.DatumTijdstip = DateTime.Now;
             pm.Datum = DateTime.Now;
             pm.Tijdstip = DateTime.Now;
+            pm.Afspraak = new Afspraak();
+            pm.Afspraak.SoloDuo = true;
             return View(pm);
         }
         [HttpPost]
