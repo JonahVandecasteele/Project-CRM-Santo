@@ -47,7 +47,7 @@ namespace CRMSanto.Controllers
             //{
             //    ks.SendMail(k);
             //}
-            ViewBag.Vanaf = DateTime.Today.ToString("yyyy-MM-dd");
+            ViewBag.Vanaf = DateTime.Today.ToString("dd-MM-yyyy");
             return View(apm);
         }
 
@@ -55,7 +55,7 @@ namespace CRMSanto.Controllers
         public ActionResult Index(DateTime vanaf)
         {
             AfspraakPM apm = new AfspraakPM();
-            ViewBag.Vanaf = vanaf.ToString("yyyy-MM-dd");
+            ViewBag.Vanaf = vanaf.ToString("dd-MM-yyyy");
             apm.Afspraken = afs.VanafAfspraken(vanaf);
             return View(apm);
         }
