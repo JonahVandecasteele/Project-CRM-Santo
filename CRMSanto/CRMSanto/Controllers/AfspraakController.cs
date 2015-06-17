@@ -171,6 +171,19 @@ namespace CRMSanto.Controllers
         [HttpPost]
         public async Task<ActionResult> New(NieuweAfspraakPM a)
         {
+                string verplaatsing = Request.Form["Afspraak.Verplaatsing"];
+                string soloduo = Request.Form["Afspraak.SoloDuo"];
+
+                if (verplaatsing.Equals("on"))
+                    a.Afspraak.Verplaatsing = true;
+                else
+                    a.Afspraak.Verplaatsing = false;
+
+                if (soloduo.Equals("on"))
+                    a.Afspraak.SoloDuo = true;
+                else
+                    a.Afspraak.SoloDuo = false;
+
                 if (a.Afspraak.Klant.ID != 0)
                 {
                     a.Afspraak.Klant = ks.GetKlantByID(a.Afspraak.Klant.ID);
