@@ -62,6 +62,7 @@ namespace CRMSanto.BusinessLayer.Services
         public void UpdateAfspraak(Afspraak a)
         {
             List<Afspraak> afspraak = repoAfspraken.GetDuurEnTijdstip(a);
+
             if (afspraak.Count() == 0)
             {
                 repoAfspraken.Update(a);
