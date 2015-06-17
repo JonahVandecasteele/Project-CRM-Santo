@@ -153,5 +153,29 @@
 <script>
     $(document).ready(function () {
         $('select').material_select();
+        $('.datepicker').pickadate({
+            monthsFull: ['januari', 'februari', 'maart', 'april', 'mei', 'juni', 'juli', 'augustus', 'september', 'oktober', 'november', 'december'],
+            monthsShort: ['jan', 'feb', 'mrt', 'apr', 'mei', 'jun', 'jul', 'aug', 'sept', 'okt', 'nov', 'dec'],
+            weekdaysFull: ['zondag', 'maandag', 'dinsdag', 'woensdag', 'donderdag', 'vrijdag', 'zaterdag'],
+            weekdaysShort: ['zo', 'ma', 'di', 'wo', 'do', 'vr', 'za'],
+            showMonthsShort: undefined,
+            showWeekdaysFull: undefined,
+            today: 'Vandaag',
+            clear: 'Leeg',
+            close: 'OK',
+            labelMonthNext: 'Volgende maand',
+            labelMonthPrev: 'Vorige maand',
+            labelMonthSelect: 'Selecteer een maand',
+            labelYearSelect: 'Selecteer een jaar',
+            format: 'dd-mm-yyyy',
+            formatSubmit: 'dd-mm-yyyy',
+            hiddenPrefix: undefined,
+            hiddenSuffix: '_submit',
+            hiddenName: undefined,
+            firstDay: 1,
+            selectMonths: true, // Creates a dropdown to control month
+            selectYears: 100, // Creates a dropdown of 15 years to control year
+            closeOnClear: true
+        });
     });
 </script>
