@@ -112,9 +112,20 @@ namespace CRMSanto.BusinessLayer.Repository
         {
             context.Klant.Attach(entityToUpdate.Klant);
             context.Masseur.Attach(entityToUpdate.Masseur);
-            context.Arrangement.Attach(entityToUpdate.Arrangement);
-            context.SoortAfspraak.Attach(entityToUpdate.SoortAfspraak);
-            context.Extra.Attach(entityToUpdate.Extra);
+            if (entityToUpdate.SoortAfspraak != null)
+            {
+                context.SoortAfspraak.Attach(entityToUpdate.SoortAfspraak);
+            }
+
+            if (entityToUpdate.Arrangement != null)
+            {
+                context.Arrangement.Attach(entityToUpdate.Arrangement);
+            }
+
+            if (entityToUpdate.Extra != null)
+            {
+                context.Extra.Attach(entityToUpdate.Extra);
+            }
 
             Afspraak afspraak = context.Afspraak.Attach(entityToUpdate);
 
