@@ -27,32 +27,26 @@ namespace CRMSanto.BusinessLayer.Services
             this.repoExtra = repoExtra;
             this.repoSessie = repoSessie;
         }
-
         public List<Afspraak> GetAfspraken()
         {
             return repoAfspraken.All().ToList<Afspraak>();
         }
-
         public List<Afspraak> GetAfsprakenByKlantenID(int id) 
         {
             return repoAfspraken.GetAfsprakenByKlantenID(id);
         }
-
         public List<Afspraak> GetLopendeAfspraken()
         {
             return repoAfspraken.LopendeAfspraken().ToList<Afspraak>();
         }
-
         public List<Afspraak> GetAfsprakenToday()
         {
             return repoAfspraken.AfsprakenVandaag().ToList<Afspraak>();
         }
-
         public List<Afspraak> AfsprakenSpecifiekeDag(DateTime dag)
         {
             return repoAfspraken.AfsprakenSpecifiekeDag(dag);
         }
-
         public List<Afspraak> VanafAfspraken(DateTime vanaf)
         {
             return repoAfspraken.VanafAfspraken(vanaf).ToList<Afspraak>();
@@ -78,11 +72,14 @@ namespace CRMSanto.BusinessLayer.Services
                 a.Geannuleerd = true;
             }
         }
-
         public void UpdateAnnuleer(Afspraak a)
         {
             repoAfspraken.UpdateAnnuleer(a);
             repoAfspraken.SaveChanges();
+            Sessie k = repoSessie.GetByKlantID(a.Klant.ID);
+            k.AantalSessies--;
+            repoSessie.Update(k);
+            repoSessie.SaveChanges();
         }
         public void AddAfspraak(Afspraak a)
         {

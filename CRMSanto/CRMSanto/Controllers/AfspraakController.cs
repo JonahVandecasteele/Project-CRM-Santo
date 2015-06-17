@@ -288,6 +288,11 @@ namespace CRMSanto.Controllers
             a.Afspraak.Arrangement = afs.GetArrangementByID(a.Afspraak.Arrangement.ID);
             a.Afspraak.Extra = afs.GetExtraByID(a.Afspraak.Extra.ID);
 
+            if (a.Datum.Date == DateTime.MinValue)
+                a.Afspraak.DatumTijdstip = a.Tijdstip;
+            else
+                a.Afspraak.DatumTijdstip = a.Datum.Date + a.Tijdstip.TimeOfDay;
+
             a.Afspraak.Geannuleerd = true;
             afs.UpdateAnnuleer(a.Afspraak);
             return RedirectToAction("Index");
