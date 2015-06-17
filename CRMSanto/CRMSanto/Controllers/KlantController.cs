@@ -570,9 +570,9 @@ namespace CRMSanto.Controllers
         public ActionResult New()
         {
             KlantViewModel model;
-            if(TempData["EditKlant"]==null)
+            if (Session["EditKlant"] == null)
             {
-                model = new KlantViewModel();
+            model = new KlantViewModel();
             model.Geslachten = ks.GetGeslachten();
             model.Mutualiteiten = ks.GetMutualiteiten();
             model.Werksituaties = ks.GetWerkSituaties();
@@ -594,7 +594,7 @@ namespace CRMSanto.Controllers
             }
             else
             {
-                Klant k = ks.GetKlantByID(Convert.ToInt32(TempData["EditKlant"]));
+                Klant k = ks.GetKlantByID(Convert.ToInt32(Session["EditKlant"]));
                 model = new KlantViewModel()
                 {
                     Adres = k.Adres,
@@ -628,7 +628,7 @@ namespace CRMSanto.Controllers
         }
         public ActionResult Edit(int ID)
         {
-            TempData["EditKlant"] = ID;
+            Session["EditKlant"] = ID;
             return RedirectToAction("New");
         }
         [HttpPost]
