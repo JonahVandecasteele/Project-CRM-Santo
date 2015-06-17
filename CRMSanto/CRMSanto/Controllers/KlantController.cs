@@ -40,9 +40,9 @@ namespace CRMSanto.Controllers
             ViewBag.Leeftijdvan = 0;
             ViewBag.Leeftijdtot = 100;
 
-            if(ViewBag.Klanten ==null)
+            if (TempData["Klanten"] == null)
             {
-                ViewBag.Klanten = ks.GetKlanten();
+                TempData["Klanten"] = ks.GetKlanten();
             }
 
             foreach (Geslacht geslacht in geslachten)
@@ -65,7 +65,7 @@ namespace CRMSanto.Controllers
             {
                 if (Request.Form["Search"] != "")
                 {
-                    ViewBag.Search = Request.Form["Search"];
+                    TempData["Search"] = Request.Form["Search"];
                     string zoeken = Request.Form["Search"];
                    
                     List<Klant> klant = ks.GetKlanten();
@@ -79,12 +79,11 @@ namespace CRMSanto.Controllers
                                         || klants.Adres.Gemeente.Provincie.ToLower().Contains(zoeken.ToLower())
                                         || klants.Adres.Gemeente.Postcode.ToLower().Contains(zoeken.ToLower())
                                   select klants;
-
+                    TempData["Klanten"] = klanten;
                     return View(klanten);
                 }
                
                 else { 
-                    ViewBag.Search = null;
                     return View(ks.GetKlanten());
                 }
             }
@@ -96,7 +95,7 @@ namespace CRMSanto.Controllers
                 int leeftijdVan = Convert.ToInt32(Request.Form["LeeftijdVan"]);
                 int leeftijdTot = Convert.ToInt32(Request.Form["LeeftijdTot"]);
 
-                ViewBag.Search = Request.Form["Search"];
+                TempData["Search"] = Request.Form["Search"];
                 //ViewBag.Options = Request.Form["Options"];
                 ViewBag.Geslacht = Request.Form["Options"];
                 ViewBag.LeeftijdVan = Request.Form["LeeftijdVan"];
@@ -166,7 +165,7 @@ namespace CRMSanto.Controllers
                             break;
                     }
 
-                    ViewBag.Klanten = klanten;
+                    TempData["Klanten"] = klanten;
                     return View(klanten);
                 }
                 else if (geslacht != null && leeftijdVan == 0 && leeftijdTot == 100 && !string.IsNullOrEmpty(zoeken))
@@ -190,6 +189,7 @@ namespace CRMSanto.Controllers
                                                   select klants;
 
                     var klanten = klantOpGeslachtEnSearch.Where(a => a.Geslacht.ID.ToString().Contains(geslacht));
+                    
                     switch (sortOrder)
                     {
                         case "name":
@@ -232,6 +232,7 @@ namespace CRMSanto.Controllers
                             klanten = klanten.OrderBy(s => s.Naam).ToList();
                             break;
                     }
+                    TempData["Klanten"] = klanten;
                     return View(klanten);
                 }
                 else if (geslacht == null && leeftijdVan != 0 && leeftijdTot != 100 && !string.IsNullOrEmpty(zoeken))
@@ -252,7 +253,7 @@ namespace CRMSanto.Controllers
                                                         || klants.Adres.Gemeente.Postcode.ToLower().Contains(zoeken.ToLower())
                                                   select klants;
                     var klanten = klantOpLeeftijdEnSearch.Where(a => a.Geboortedatum.Year <= minLeeftijd && a.Geboortedatum.Year >= maxLeeftijd);
-                    ViewBag.Klanten = klanten;
+
                     switch (sortOrder)
                     {
                         case "name":
@@ -295,7 +296,7 @@ namespace CRMSanto.Controllers
                             klanten = klanten.OrderBy(s => s.Naam).ToList();
                             break;
                     }
-
+                    TempData["Klanten"] = klanten;
                     return View(klanten);
                 }
                 else if(geslacht != null && leeftijdVan != 0 && leeftijdTot != 100 && !string.IsNullOrEmpty(zoeken))
@@ -316,7 +317,7 @@ namespace CRMSanto.Controllers
                                                         || klants.Adres.Gemeente.Postcode.ToLower().Contains(zoeken.ToLower())
                                                   select klants;
                     var klanten = klantOpLeeftijdGeslachtEnSearch.Where(a => a.Geboortedatum.Year <= minLeeftijd && a.Geboortedatum.Year >= maxLeeftijd && a.Geslacht.ID.ToString().Contains(geslacht));
-                    ViewBag.Klanten = klanten;
+
                     switch (sortOrder)
                     {
                         case "name":
@@ -359,7 +360,7 @@ namespace CRMSanto.Controllers
                             klanten = klanten.OrderBy(s => s.Naam).ToList();
                             break;
                     }
-
+                    TempData["Klanten"] = klanten;
                     return View(klanten);
                 }
                 else if(geslacht == null && leeftijdVan != 0 && leeftijdTot != 100 && string.IsNullOrEmpty(zoeken))
@@ -375,7 +376,7 @@ namespace CRMSanto.Controllers
                                           where klants.Geboortedatum.Year <= minLeeftijd && klants.Geboortedatum.Year >= maxLeeftijd
                                           select klants;
                     var klanten = klantOpLeeftijd;
-                    ViewBag.Klanten = klanten;
+
                     switch (sortOrder)
                     {
                         case "name":
@@ -418,7 +419,7 @@ namespace CRMSanto.Controllers
                             klanten = klanten.OrderBy(s => s.Naam).ToList();
                             break;
                     }
-
+                    TempData["Klanten"] = klanten;
                     return View(klanten);
                 }
                 else if (geslacht != null && leeftijdVan != 0 && leeftijdTot != 100 && string.IsNullOrEmpty(zoeken))
@@ -434,7 +435,6 @@ namespace CRMSanto.Controllers
                                                     where klants.Geboortedatum.Year <= minLeeftijd && klants.Geboortedatum.Year >= maxLeeftijd && klants.Geslacht.ID.ToString().Contains(geslacht)
                                                     select klants;
                     var klanten = klantOpLeeftijdEnGeslacht;
-                    ViewBag.Klanten = klanten;
 
                     switch (sortOrder)
                     {
@@ -478,7 +478,7 @@ namespace CRMSanto.Controllers
                             klanten = klanten.OrderBy(s => s.Naam).ToList();
                             break;
                     }
-
+                    TempData["Klanten"] = klanten;
                     return View(klanten);
                 }
                 else
@@ -489,7 +489,7 @@ namespace CRMSanto.Controllers
             }
             else if (Request.Form["clear"] != null)
             {
-                ViewBag.Search = null;
+                TempData["Search"] = null;
                 return View(ks.GetKlanten());
             }
             else
@@ -503,9 +503,7 @@ namespace CRMSanto.Controllers
                 ViewBag.AdresSortParm = sortOrder == "adres" ? "adres_desc" : "adres";
                 ViewBag.GemeenteSortParm = sortOrder == "gemeente" ? "gemeente_desc" : "gemeente";
 
-                List<Klant> klanten = ViewBag.Klanten;
-
-                ViewBag.Search = null;
+                List<Klant> klanten = (List<Klant>)TempData["Klanten"];
                 switch (sortOrder)
                 {
                     case "name":
@@ -548,6 +546,7 @@ namespace CRMSanto.Controllers
                         klanten = klanten.OrderBy(s => s.Naam).ToList();
                         break;
                 }
+                TempData["Klanten"] = klanten;
                 return View(klanten);
             }
         }
