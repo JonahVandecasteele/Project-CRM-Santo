@@ -58,24 +58,28 @@
         }
     }
 
-    int man, vrouw, andere;
+    int man, vrouw, andere, onbekendGeslacht;
     man = 0;
     vrouw = 0;
     andere = 0;
+    onbekendGeslacht = 0;
 
-    foreach (var k in Model.Klanten)
+    foreach (var g in Model.Klanten)
     {
-        switch (k.Geslacht.Naam)
+        switch (g.Geslacht.Naam)
         {
             case "M":
                 man = man + 1;
                 break;
             case "V":
-                man = man + 1;
+                vrouw = vrouw + 1;
                 break;
             case "X":
-                man = man + 1;
+                andere = andere + 1;
                 break;
+            default:
+                onbekendGeslacht = onbekendGeslacht + 1;
+                break; 
         }
     }
     
@@ -83,8 +87,10 @@
 
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 <script type="text/javascript">
-    google.load("visualization", "1", {packages:["corechart"]});
+    google.load("visualization", "1", { packages: ["corechart"] });
+
     google.setOnLoadCallback(drawChart);
+
     function drawChart() {
 
         var data = google.visualization.arrayToDataTable([
@@ -103,38 +109,40 @@
         ]);
 
         var options = {
-            title: 'Aantal klanten per provincie'
+            title: 'Aantal klanten per provincie',
+            pieHole: 0.4
         };
 
         var chart = new google.visualization.PieChart(document.getElementById('piechart'));
 
         chart.draw(data, options);
-    }
+    };
+
+    google.setOnLoadCallback(drawChartGeslacht);
 
     function drawChartGeslacht() {
         var data = google.visualization.arrayToDataTable([
             ['Geslacht', 'Klanten'],
-            ['Man', '@man'],
-            ['Vrouw', '@vrouw'],
-            ['Andere', '@andere'],
+            ['Man', @man],
+            ['Vrouw', @vrouw],
+            ['Andere', @andere],
+            ['Onbekend', @onbekendGeslacht]
         ]);
         var options = {
-            title: 'Verdeling geslachten'
+            title: 'Verdeling geslachten',
+            pieHole: 0.4
         };
         var chart = new google.visualization.PieChart(document.getElementById('piechartGeslacht'));
 
         chart.draw(data, options);
-    }
+    };
 </script>
 
 <div class="row">
-    <div class="col s12">
-        <div id="piechart" style="width: 100%; height: 500px;"></div>
+    <div class="col s6">
+        <div id="piechart" style="width: 100%; height: 300px;"></div>
     </div>
-</div>
-
-<div class="row">
-    <div class="col s12">
-        <div id="piechartGeslacht" style="width: 100%; height: 500px;"></div>
+    <div class="col s6">
+        <div id="piechartGeslacht" style="width: 100%; height: 300px;"></div>
     </div>
 </div>
