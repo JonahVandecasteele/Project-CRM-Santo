@@ -40,29 +40,29 @@
 <body>
     <div class="navbar-fixed">
         <nav class="santo-brown-bg">
-            <div class="nav-wrapper">
+            <div class="nav-wrapper container">
                 <a href="@Url.Action("Index", "Home")" class="brand-logo left"><img src="/Content/img/logo.png" alt=""></a>
                 <a href="@Url.Action("Index", "Home")" data-activates="mobile-demo" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
                 <ul class="left hide-on-med-and-down" style="margin-left: 174px;">
                     <li class="@Html.ActivePage("Home", "Index") waves-effect waves-light">@Html.ActionLink("Start", "Index", "Home", null, null)</li>
+                    <li class="@Html.ActivePage("Dienst", "Index") waves-effect waves-light">@Html.ActionLink("Diensten", "Index", "Dienst", null, null)</li>
                     <li class="@Html.ActivePage("Afspraak", "Index") waves-effect waves-light">@Html.ActionLink("Afspraken", "Index", "Afspraak", null, null)</li>
                     <li class="@Html.ActivePage("Klant", "Index") waves-effect waves-light">@Html.ActionLink("Klanten", "Index", "Klant", null, null)</li>
                     <li class="@Html.ActivePage("Product", "Index") waves-effect waves-light">@Html.ActionLink("Producten", "Index", "Product", null, null)</li>
-                    <li class="@Html.ActivePage("Dienst", "Index") waves-effect waves-light">@Html.ActionLink("Diensten", "Index", "Dienst", null, null)</li>
-                </ul>
-                <ul class="side-nav" id="mobile-demo">
-                    <li class="@Html.ActivePage("Home", "Index")">@Html.ActionLink("Start", "Index", "Home", null, null)</li>
-                    <li class="@Html.ActivePage("Afspraak", "Index")">@Html.ActionLink("Afspraken", "Index", "Afspraak", null, null)</li>
-                    <li class="@Html.ActivePage("Klant", "Index")">@Html.ActionLink("Klanten", "Index", "Klant", null, null)</li>
-                    <li class="@Html.ActivePage("Product", "Index")">@Html.ActionLink("Producten", "Index", "Product", null, null)</li>
-                    <li class="@Html.ActivePage("Dienst", "Index")">@Html.ActionLink("Diensten", "Index", "Dienst", null, null)</li>
-                    <li class="@Html.ActivePage("Setting", "Index")">@Html.ActionLink("Instellingen", "Index", "Setting", null, null)</li>
-                    <li class="@Html.ActivePage("Stats","Index")">@Html.ActionLink("Statistieken", "Index", "Stats", null, null)</li>
                 </ul>
                 <ul class="right hide-on-med-and-down">
                     <li class="@Html.ActivePage("Setting", "Index") waves-effect waves-light"><a href='@Url.Action("Index", "Setting")'><i class="mdi-action-settings"></i></a></li>
                     <li class="@Html.ActivePage("Stats","Index") waves-effect waves-light"><a href='@Url.Action("Index", "Stats")'><i class="mdi-editor-insert-chart"></i></a></li>
                     @Html.Partial("_LoginPartial")
+                </ul>
+                <ul class="side-nav" id="mobile-demo">
+                    <li class="@Html.ActivePage("Home", "Index")">@Html.ActionLink("Start", "Index", "Home", null, null)</li>
+                    <li class="@Html.ActivePage("Dienst", "Index")">@Html.ActionLink("Diensten", "Index", "Dienst", null, null)</li>
+                    <li class="@Html.ActivePage("Afspraak", "Index")">@Html.ActionLink("Afspraken", "Index", "Afspraak", null, null)</li>
+                    <li class="@Html.ActivePage("Klant", "Index")">@Html.ActionLink("Klanten", "Index", "Klant", null, null)</li>
+                    <li class="@Html.ActivePage("Product", "Index")">@Html.ActionLink("Producten", "Index", "Product", null, null)</li>
+                    <li class="@Html.ActivePage("Setting", "Index")">@Html.ActionLink("Instellingen", "Index", "Setting", null, null)</li>
+                    <li class="@Html.ActivePage("Stats","Index")">@Html.ActionLink("Statistieken", "Index", "Stats", null, null)</li>
                 </ul>
             </div>
         </nav>

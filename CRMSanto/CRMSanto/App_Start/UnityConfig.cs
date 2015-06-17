@@ -23,6 +23,8 @@ namespace CRMSanto
             container.RegisterType<IGenericRepository<Geslacht>, GenericRepository<Geslacht>>();
             container.RegisterType<IGenericRepository<Product>, GenericRepository<Product>>();
             container.RegisterType<IKaraktertrekRepository, KaraktertrekRepository>();
+            container.RegisterType<IGenericRepository<Rekening>, GenericRepository<Rekening>>();
+            container.RegisterType<IGenericRepository<ProductWinkelmand>, GenericRepository<ProductWinkelmand>>();
             container.RegisterType<ISessieRepository, SessieRepository>();
             container.RegisterType<IGenericRepository<Werksituatie>, GenericRepository<Werksituatie>>();
             container.RegisterType<IGemeenteRepository,GemeenteRepository>();
@@ -40,6 +42,8 @@ namespace CRMSanto
             container.RegisterType<IProductService, ProductService>();
             container.RegisterType<IKlantenRepository, KlantenRepository>();
             container.RegisterType<IKlantService, KlantService>();
+            container.RegisterType<IRekeningRepository, RekeningRepository>();
+            container.RegisterType<IRekeningService, RekeningService>();
 
             container.RegisterType<AccountController>(new InjectionConstructor());
             
