@@ -60,6 +60,19 @@ namespace CRMSanto.Controllers
             return View(apm);
         }
 
+        [HttpGet]
+        public ActionResult Edit(int? id)
+        {
+            if(id.HasValue)
+            {
+                return View(afs.GetAfspraakByID(id.Value));
+            }
+
+            else
+            {
+                return RedirectToAction("Index");
+            }
+        }
 
         [HttpGet]
         public ActionResult New()

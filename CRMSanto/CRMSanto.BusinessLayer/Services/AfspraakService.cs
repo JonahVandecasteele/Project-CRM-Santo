@@ -9,7 +9,7 @@ using CRMSanto.Models;
 
 namespace CRMSanto.BusinessLayer.Services
 {
-    public class AfspraakService : CRMSanto.BusinessLayer.Services.IAfspraakService 
+    public class AfspraakService : CRMSanto.BusinessLayer.Services.IAfspraakService
     {
         private IAfsprakenRepository repoAfspraken = null;
         private IGenericRepository<Masseur> repoMasseur = null;
@@ -65,7 +65,11 @@ namespace CRMSanto.BusinessLayer.Services
         {
             return repoAfspraken.GetByID(id.Value);
         }
-
+        public void UpdateAfspraak(Afspraak a)
+        {
+            repoAfspraken.Update(a);
+            repoAfspraken.SaveChanges();
+        }
         public void AddAfspraak(Afspraak a)
         {
             List<Afspraak> afspraak = repoAfspraken.GetDuurEnTijdstip(a);
