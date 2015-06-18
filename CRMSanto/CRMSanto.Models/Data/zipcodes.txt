@@ -1,4 +1,4 @@
-0,Plaatsnaam,Provincie
+0000,,Provincie
 2970,'S Gravenwezel,Antwerpen
 3700,'S Herenelderen,Limburg
 7510,3 Suisses,
