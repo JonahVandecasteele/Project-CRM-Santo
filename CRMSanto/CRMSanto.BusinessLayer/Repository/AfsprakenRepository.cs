@@ -29,7 +29,7 @@ namespace CRMSanto.BusinessLayer.Repository
         public List<Afspraak> AfsprakenVandaag() 
         {
             DateTime dt = DateTime.Now;
-            var query = (from a in context.Afspraak.Include(k => k.Klant).Include(m => m.Masseur).Include(ms=>ms.SoortAfspraak).Include(k=>k.Klant.Adres)
+            var query = (from a in context.Afspraak.Include(k => k.Klant).Include(m => m.Masseur).Include(ms=>ms.SoortAfspraak).Include(k=>k.Klant.Adres).Include(k=>k.Klant.Adres.Gemeente)
                          where a.Geannuleerd == false && a.Archief == false && SqlFunctions.DateDiff("DAY", dt.Date, DbFunctions.TruncateTime(a.DatumTijdstip)) == 0
                          orderby a.DatumTijdstip ascending
                          select a);
@@ -54,7 +54,7 @@ namespace CRMSanto.BusinessLayer.Repository
         public List<Afspraak> LopendeAfspraken()
         {
             DateTime dt = DateTime.Now;
-            var query = (from a in context.Afspraak.Include(k => k.Klant).Include(m=>m.Masseur).Include(ms=>ms.SoortAfspraak).Include(k=>k.Klant.Adres).Include(a=>a.Arrangement).Include(e=>e.Extra)
+            var query = (from a in context.Afspraak.Include(k => k.Klant).Include(m=>m.Masseur).Include(ms=>ms.SoortAfspraak).Include(k=>k.Klant.Adres).Include(a=>a.Arrangement).Include(e=>e.Extra).Include(k=>k.Klant.Adres.Gemeente)
                          where a.Geannuleerd == false && a.Archief == false && SqlFunctions.DateDiff("DAY", dt.Date, DbFunctions.TruncateTime(a.DatumTijdstip)) >= 0
                          orderby a.DatumTijdstip ascending
                          select a);
@@ -63,7 +63,7 @@ namespace CRMSanto.BusinessLayer.Repository
         }
         public List<Afspraak> VanafAfspraken(DateTime vanaf)
         {
-            var query = (from a in context.Afspraak.Include(k => k.Klant).Include(m => m.Masseur).Include(ms => ms.SoortAfspraak).Include(k => k.Klant.Adres)
+            var query = (from a in context.Afspraak.Include(k => k.Klant).Include(m => m.Masseur).Include(ms => ms.SoortAfspraak).Include(k => k.Klant.Adres).Include(k=>k.Klant.Adres.Gemeente)
                          where a.Geannuleerd == false && a.Archief == false && SqlFunctions.DateDiff("DAY", vanaf.Date, DbFunctions.TruncateTime(a.DatumTijdstip)) >= 0
                          orderby a.DatumTijdstip ascending
                          select a);
@@ -132,7 +132,10 @@ namespace CRMSanto.BusinessLayer.Repository
             if (old.SoortAfspraak.ID != entityToUpdate.SoortAfspraak.ID)
             {
                 context.SoortAfspraak.Attach(entityToUpdate.SoortAfspraak);
-                context.Afspraak.Include(m => m.SoortAfspraak).FirstOrDefault(m => m.ID == entityToUpdate.ID).SoortAfspraak = entityToUpdate.SoortAfspraak;
+                if (entityToUpdate.SoortAfspraak.ID == 0)
+                    context.Afspraak.Include(m => m.SoortAfspraak).FirstOrDefault(m => m.ID == entityToUpdate.ID).SoortAfspraak = null;
+                else
+                    context.Afspraak.Include(m => m.SoortAfspraak).FirstOrDefault(m => m.ID == entityToUpdate.ID).SoortAfspraak = entityToUpdate.SoortAfspraak;
             }
           /*  context.Entry(old.Klant.Adres).CurrentValues.SetValues(entityToUpdate.Klant.Adres);
             if (old.Klant.Adres.Gemeente.ID != entityToUpdate.Klant.Adres.Gemeente.ID && entityToUpdate.Klant.Adres.Gemeente.ID != 0)
@@ -150,12 +153,18 @@ namespace CRMSanto.BusinessLayer.Repository
             if (old.Arrangement.ID != entityToUpdate.Arrangement.ID)
             {
                 context.Arrangement.Attach(entityToUpdate.Arrangement);
-                context.Afspraak.Include(m => m.Arrangement).FirstOrDefault(m => m.ID == entityToUpdate.ID).Arrangement = entityToUpdate.Arrangement;
+                if (entityToUpdate.Arrangement.ID == 0)
+                    context.Afspraak.Include(m => m.Arrangement).FirstOrDefault(m => m.ID == entityToUpdate.ID).Arrangement = null;
+                else
+                    context.Afspraak.Include(m => m.Arrangement).FirstOrDefault(m => m.ID == entityToUpdate.ID).Arrangement = entityToUpdate.Arrangement;
             }
             if (old.Extra.ID != entityToUpdate.Extra.ID)
             {
                 context.Extra.Attach(entityToUpdate.Extra);
-                context.Afspraak.Include(m => m.Extra).FirstOrDefault(m => m.ID == entityToUpdate.ID).Extra = entityToUpdate.Extra;
+                if (entityToUpdate.Extra.ID == 0)
+                    context.Afspraak.Include(m => m.Extra).FirstOrDefault(m => m.ID == entityToUpdate.ID).Extra = null;
+                else
+                    context.Afspraak.Include(m => m.Extra).FirstOrDefault(m => m.ID == entityToUpdate.ID).Extra = entityToUpdate.Extra;
             }
             
             context.Entry(old).CurrentValues.SetValues(entityToUpdate);

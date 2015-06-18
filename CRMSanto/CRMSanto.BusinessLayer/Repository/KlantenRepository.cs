@@ -20,7 +20,9 @@ namespace CRMSanto.BusinessLayer.Repository
         }
         public override IEnumerable<Klant> All()
         {
-            var query = (from k in context.Klant.Include(g => g.Geslacht).Include(kar => kar.Karaktertrek).Include(m => m.MedischeFiche).Include(p => p.PersoonlijkeFiche).Include(p => p.PersoonlijkeFiche.Werksituatie).Include(a => a.Adres).Include(g => g.Adres.Gemeente).Include(r => r.KlantRelatie).Include(v => v.Voedingspatroon) select k);
+            var query = (from k in context.Klant.Include(g => g.Geslacht).Include(kar => kar.Karaktertrek).Include(m => m.MedischeFiche).Include(p => p.PersoonlijkeFiche).Include(p => p.PersoonlijkeFiche.Werksituatie).Include(a => a.Adres).Include(g => g.Adres.Gemeente).Include(r => r.KlantRelatie).Include(v => v.Voedingspatroon)
+                         orderby k.Naam
+                         select k);
            
             return query.ToList<Klant>();
         }
