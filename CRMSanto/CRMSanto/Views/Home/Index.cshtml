@@ -45,7 +45,10 @@
                 <td>
                     @if (item.Verplaatsing)
                     {
-                        <button class="btn btn-fab-mini btn-raised btn-sm btn-material-pink" onclick="routeLink('@Html.DisplayFor(modelItem => item.Klant.Adres.Straat)', '@Html.DisplayFor(modelItem => item.Klant.Adres.Nummer)', '@Html.DisplayFor(modelItem => item.Klant.Adres.Postcode)', '@Html.DisplayFor(modelItem => item.Klant.Adres.Gemeente)');return false;"><i class="mdi-maps-navigation"></i></button>
+                        <button class="btn btn-fab-mini btn-raised btn-sm btn-material-pink"
+                                onclick="routeLink('@Html.DisplayFor(modelItem => item.Klant.Adres.Straat)', '@Html.DisplayFor(modelItem => item.Klant.Adres.Nummer)', '@Html.DisplayFor(modelItem => item.Klant.Adres.Postcode)', '@Html.DisplayFor(modelItem => item.Klant.Adres.Gemeente.Plaatsnaam)'); return false;">
+                            <i class="mdi-maps-navigation"></i>
+                        </button>
                     }
                 </td>
                 <td>    

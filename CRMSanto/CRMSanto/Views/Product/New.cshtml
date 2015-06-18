@@ -26,12 +26,12 @@
             </div>
             <div class="row">
                 <div class="input-field col s6">
-                    @Html.LabelFor(model => model.AankoopPrijs)
+                    <label for="AankoopPrijs">Aankoopprijs</label>
                     @Html.EditorFor(model => model.AankoopPrijs, new { htmlAttributes = new { placeholder = "" } })
                     @Html.ValidationMessageFor(model => model.AankoopPrijs, "", new { @class = "text-danger" })
                 </div>
                 <div class="input-field col s6">
-                    @Html.LabelFor(model => model.VerkoopPrijs)
+                    <label for="VerkoopPrijs">Verkoopprijs</label>
                     @Html.EditorFor(model => model.VerkoopPrijs, new { htmlAttributes = new { placeholder = "" } })
                     @Html.ValidationMessageFor(model => model.VerkoopPrijs, "", new { @class = "text-danger" })
                 </div>

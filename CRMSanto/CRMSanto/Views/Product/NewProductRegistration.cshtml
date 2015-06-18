@@ -1,42 +1,51 @@
 ﻿@model CRMSanto.Models.PresentationModels.NieuweProductRegistratiePM
 
 @{
-    ViewBag.Title = "NewProductRegistration";
+    ViewBag.Title = "Verkopen";
 }
+
+<ul class="breadcrumb">
+    <li>@Html.ActionLink("Producten", "Index", "Product")</li>
+    <li class="active">Verkopen</li>
+</ul>
+
 <h2>@Model.Product.Naam</h2>
 @using (Html.BeginForm("NewProductRegistration", "Product", FormMethod.Post,
  new { @id = "frmProductRegistration" }))
 {
     @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.DropDownListFor(model => model.KlantID, Model.Klanten, new { htmlAttributes = new { @class = "browser-default" } })
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-        @Html.HiddenFor(model => model.Product.ID)
-        <div class="form-group">
-            @Html.LabelFor(model => model.Productregistratie.Aantal, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Productregistratie.Aantal, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Productregistratie.Aantal, "", new { @class = "text-danger" })
+    <div class="row">
+        <div class="col s12">
+            <div class="row">
+                <div class="col s12">
+                    <label for="KlantID">Klant</label>
+                    @Html.DropDownListFor(model => model.KlantID, Model.Klanten, new { @class = "browser-default" })
+                </div>
             </div>
-        </div>
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <a onclick="$('#frmProductRegistration')[0].submit();" href="#" class="btn btn-success btn-fab btn-raised mdi-content-save"></a>
-                <a onclick="$('#frmProductRegistration')[0].reset();" href="#" class="btn btn-warning btn-fab btn-raised mdi-navigation-refresh fab2"></a>
-                @Html.ActionLink(" ", "Index", "Product", null, new Dictionary<string, object> { { "class", "btn btn-danger btn-fab btn-raised mdi-navigation-close fab3" } })
+            <div class="row">
+                <div class="col s12">
+                    <label for="Productregistratie_Aantal">Aantal</label>
+                    @Html.EditorFor(model => model.Productregistratie.Aantal)
+                    @Html.ValidationMessageFor(model => model.Productregistratie.Aantal, "", new { @class = "text-danger" })
+                </div>
             </div>
         </div>
     </div>
-}
 
-<script>
-    $(document).ready(function () {
-        $('select').material_select();
-    });
-</script>
+    <div class="fixed-action-btn">
+        <a onclick="$('#frmProductRegistration').submit();" href="#" class="btn-floating btn-large waves-effect waves-light green"><i class="mdi-content-save"></i></a>
+    </div>
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+            }
+
+            <script>
+                $(document).ready(function () {
+                    $('select').material_select();
+                });
+            </script>
+
+            @section Scripts {
+                @Scripts.Render("~/bundles/jqueryval")
+            }
