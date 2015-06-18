@@ -195,16 +195,7 @@
                 return this.value;
             }).get();
 
-            function mailTo() {               
-                    var emails = [];
-                    $('.checkboxes:checked').each(function () {
-                        emails.push(this.value);
-                    $('mailTo').attr("href", "mailto:" + emails);
-                    console.log(emails);
-                });
-            });
-            
-
+                  
             //$("#Test").click(function () {
             //    $("input:checkbox:not(#Test)").attr("checked", $(this).is(":checked"));
             //});
