@@ -8,12 +8,12 @@
     <li>@Html.ActionLink("Afspraken","Index","Afspraak")</li>
     <li class="active">Toevoegen</li>
 </ul>
+<h2>@ViewBag.Error</h2>
 @using (Html.BeginForm("New", "Afspraak", FormMethod.Post,new { @id = "frmAfspraak" }))
 {
     @Html.AntiForgeryToken()
 
     @Html.ValidationSummary(false)
-    @ViewBag.Error
     <div class="row">
         <div class="input-field col s12">
             @Html.DropDownListFor(model => model.Afspraak.Klant.ID, Model.Klanten)
@@ -117,7 +117,7 @@
                     showMonthsShort: undefined,
                     showWeekdaysFull: undefined,
                     today: 'Vandaag',
-                    clear: 'Leeg',
+                    clear: '',
                     close: 'OK',
                     labelMonthNext: 'Volgende maand',
                     labelMonthPrev: 'Vorige maand',
