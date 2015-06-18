@@ -23,5 +23,8 @@ namespace CRMSanto.ViewModels
         public KlantRelatie SelectedKlantRelatie { get; set; }
         public HttpPostedFileBase Upload { get; set; }
         public String Vandaag { get; set; }
+
+        public List<Productregistratie> Producten;
+        public List<Afspraak> Afspraken;
     }
 }

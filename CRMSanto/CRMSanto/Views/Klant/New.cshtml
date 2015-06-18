@@ -24,88 +24,108 @@
     if (Model.Gemeentes == null)
     {
 
-    <div class="row vertical-align">
-        <div class="input-field col-xs-9">
-            <div class="file-field input-field">
-                <input class="file-path validate" disabled type="text" />
-                <div class="btn">
-                    <span>Foto uploaden</span>
-                    <input type="file" name="Upload" id="Upload" onchange="PreviewImage();" />
-                </div>
-            </div>
-        </div>
-        <div class="input-field col-xs-3">
-            <img src="/Klant/Photo" class="" id="uploadPreview" />
-        </div>
-    </div>
+        if (Model.Afspraken != null && Model.Producten != null)
+        {
+        
+            int producten = 0;
+            for (var i = 0; i < Model.Producten.Count; i++)
+            { producten = producten + Model.Producten[i].Aantal; }
             <div class="row">
-                <div class="input-field col s6">
-                    @Html.EditorFor(model => model.Voornaam, new { htmlAttributes = new { @class = "validate", id = "first_name", placeholder = "" } })
-                    @Html.ValidationMessageFor(model => model.Voornaam)
-                    <label for="first_name">@Html.DisplayNameFor(model => model.Voornaam)</label>
-                </div>
-                <div class="input-field col s6">
-                    @Html.EditorFor(model => model.Naam, new { htmlAttributes = new { @class = "validate", id = "last_name", placeholder = "" } })
-                    @Html.ValidationMessageFor(model => model.Naam)
-                    <label for="last_name">@Html.DisplayNameFor(model => model.Naam)</label>
+                <div class="col s12">
+                    <div class="row ">
+                        <div class="col s3">
+                            <p class="statKlant"><i class="tiny mdi-editor-insert-chart"></i> <b>Aantal afspraken:</b> @Html.DisplayFor(model => model.Afspraken.Count)</p>
+                        </div>
+                        <div class="col s3">
+                            <p class="statKlant"><i class="tiny mdi-editor-insert-chart"></i> <b>Aantal gekochte producten:</b> @producten</p>
+                        </div>
+                    </div>
                 </div>
             </div>
+        }
 
-            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-                <div class="panel panel-default">
-                    <div class="panel-heading" role="tab" id="headingOne">
-                        <h4 class="panel-title expand-one">
-                            <i class="mdi-hardware-keyboard-arrow-right" id="icon-one"></i> <i class="mdi-action-info-outline"></i> Basisgegevens
-                        </h4>
+                    <div class="row vertical-align">
+                        <div class="input-field col-xs-9">
+                            <div class="file-field input-field">
+                                <input class="file-path validate" disabled type="text" />
+                                <div class="btn">
+                                    <span>Foto uploaden</span>
+                                    <input type="file" name="Upload" id="Upload" onchange="PreviewImage();" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="input-field col-xs-3">
+                            <img src="/Klant/Photo" class="" id="uploadPreview" />
+                        </div>
                     </div>
-                    <div class="panel-body content-one klant-hidden">
-                        <div class="row">
-                            <div class="input-field col s6">
-                                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "validate", id = "mail", placeholder = "" } })
-                                <label for="mail">@Html.DisplayNameFor(model => model.Email)</label>
-                            </div>
-                            <div class="input-field col s6">
-                                @Html.EditorFor(model => model.Telefoon, new { htmlAttributes = new { @class = "validate", id = "telephone", placeholder = "" } })
-                                <label for="telephone">@Html.DisplayNameFor(model => model.Telefoon)</label>
-                            </div>
+                    <div class="row">
+                        <div class="input-field col s6">
+                            @Html.EditorFor(model => model.Voornaam, new { htmlAttributes = new { @class = "validate", id = "first_name", placeholder = "" } })
+                            @Html.ValidationMessageFor(model => model.Voornaam)
+                            <label for="first_name">@Html.DisplayNameFor(model => model.Voornaam)</label>
                         </div>
-                        <div class="row">
-                            @Html.HiddenFor(model => model.Adres.ID)
-                            <div class="input-field col s6">
-                                @Html.EditorFor(model => model.Adres.Straat, new { htmlAttributes = new { @class = "validate", id = "street", placeholder = "" } })
-                                <label for="street">@Html.DisplayNameFor(model => model.Adres.Straat)</label>
-                            </div>
-                            <div class="input-field col s3">
-                                @Html.EditorFor(model => model.Adres.Nummer, new { htmlAttributes = new { @class = "validate", id = "number", placeholder = "" } })
-                                <label for="number">@Html.DisplayNameFor(model => model.Adres.Nummer)</label>
-                            </div>
-                            <div class="input-field col s3">
-                                @Html.EditorFor(model => model.Adres.Postbus, new { htmlAttributes = new { @class = "validate", id = "postbus", placeholder = "" } })
-                                <label for="postbus">@Html.DisplayNameFor(model => model.Adres.Postbus)</label>
-                            </div>
+                        <div class="input-field col s6">
+                            @Html.EditorFor(model => model.Naam, new { htmlAttributes = new { @class = "validate", id = "last_name", placeholder = "" } })
+                            @Html.ValidationMessageFor(model => model.Naam)
+                            <label for="last_name">@Html.DisplayNameFor(model => model.Naam)</label>
                         </div>
-                        <div class="row">
-                            <div class="input-field col s4">
-                                @Html.EditorFor(model => model.Adres.Postcode, new { htmlAttributes = new { @class = "validate", id = "postcode", placeholder = ""} })
-                                <label for="postcode">@Html.DisplayNameFor(model => model.Adres.Postcode)</label>
+                    </div>
+
+                    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingOne">
+                                <h4 class="panel-title expand-one">
+                                    <i class="mdi-hardware-keyboard-arrow-right" id="icon-one"></i> <i class="mdi-action-info-outline"></i> Basisgegevens
+                                </h4>
                             </div>
-                            <div class="input-field col s8">
-                                @Html.EditorFor(model => model.Adres.Gemeente.Plaatsnaam, new { htmlAttributes = new { @class = "validate", id = "gemeente", placeholder = "" } })
-                                <label for="gemeente">@Html.DisplayNameFor(model => model.Adres.Gemeente.Plaatsnaam)</label>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col s6">
-                                <p>
-                                    <label for="birthdate">@Html.DisplayNameFor(model => model.Geboortedatum)</label>
-                                    @Html.EditorFor(model => model.Geboortedatum, new { htmlAttributes = new { @class = "datepicker", id = "birthdate", type = "date", data_value = Model.Vandaag } })
-                                </p>
-                            </div>
-                            <div class="col s6">
-                                <p>
-                                        @foreach (var item in Model.Geslachten)
+                            <div class="panel-body content-one klant-hidden">
+                                <div class="row">
+                                    <div class="input-field col s6">
+                                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "validate", id = "mail", placeholder = "" } })
+                                        <label for="mail">@Html.DisplayNameFor(model => model.Email)</label>
+                                    </div>
+                                    <div class="input-field col s6">
+                                        @Html.EditorFor(model => model.Telefoon, new { htmlAttributes = new { @class = "validate", id = "telephone", placeholder = "" } })
+                                        <label for="telephone">@Html.DisplayNameFor(model => model.Telefoon)</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    @Html.HiddenFor(model => model.Adres.ID)
+                                    <div class="input-field col s6">
+                                        @Html.EditorFor(model => model.Adres.Straat, new { htmlAttributes = new { @class = "validate", id = "street", placeholder = "" } })
+                                        <label for="street">@Html.DisplayNameFor(model => model.Adres.Straat)</label>
+                                    </div>
+                                    <div class="input-field col s3">
+                                        @Html.EditorFor(model => model.Adres.Nummer, new { htmlAttributes = new { @class = "validate", id = "number", placeholder = "" } })
+                                        <label for="number">@Html.DisplayNameFor(model => model.Adres.Nummer)</label>
+                                    </div>
+                                    <div class="input-field col s3">
+                                        @Html.EditorFor(model => model.Adres.Postbus, new { htmlAttributes = new { @class = "validate", id = "postbus", placeholder = "" } })
+                                        <label for="postbus">@Html.DisplayNameFor(model => model.Adres.Postbus)</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="input-field col s4">
+                                        @Html.EditorFor(model => model.Adres.Postcode, new { htmlAttributes = new { @class = "validate", id = "postcode", placeholder = ""} })
+                                        <label for="postcode">@Html.DisplayNameFor(model => model.Adres.Postcode)</label>
+                                    </div>
+                                    <div class="input-field col s8">
+                                        @Html.EditorFor(model => model.Adres.Gemeente.Plaatsnaam, new { htmlAttributes = new { @class = "validate", id = "gemeente", placeholder = "" } })
+                                        <label for="gemeente">@Html.DisplayNameFor(model => model.Adres.Gemeente.Plaatsnaam)</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col s6">
+                                        <p>
+                                            <label for="birthdate">@Html.DisplayNameFor(model => model.Geboortedatum)</label>
+                                            @Html.EditorFor(model => model.Geboortedatum, new { htmlAttributes = new { @class = "datepicker", id = "birthdate", type = "date", data_value = Model.Vandaag } })
+                                        </p>
+                                    </div>
+                                    <div class="col s6">
+                                        <p>
+                                            @foreach (var item in Model.Geslachten)
                                         {
-                                            
+
                                             count = count + 1;
                                             switch (item.Naam)
                                             {
@@ -122,150 +142,164 @@
                                                     gender = @item.Naam;
                                                     break;
                                             }
-                                            <input @(@item.ID == Model.Geslacht.ID ? "checked" : "") name="Geslacht.ID" type="radio" id="@item.ID" class="with-gap radio-klant" value="@item.ID" />
-                                            <label for="@item.ID">@gender</label>
+                                                <input @(@item.ID == Model.Geslacht.ID ? "checked" : "") name="Geslacht.ID" type="radio" id="@item.ID" class="with-gap radio-klant" value="@item.ID" />
+                                                <label for="@item.ID">@gender</label>
                                         }
-                                </p>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingTwo">
+                                <h4 class="panel-title expand-two">
+                                    <i class="mdi-hardware-keyboard-arrow-right" id="icon-two"></i> <i class="mdi-action-perm-identity"></i> Persoonlijke fiche
+                                </h4>
+                            </div>
+                            <div class="panel-body content-two klant-hidden">
+                                <div class="row">
+                                    <div class="col s12">
+                                        <label for="SelectedKaracter_ID">Karaktertrekken</label>
+                                        @Html.HiddenFor(model => model.SelectedKlantRelatie.RelatieType.Naam)
+                                        @Html.EditorFor(model => model.SelectedKaracter, new { Karaktertreken = Model.Karaktertreken })
+                                        <div class="row">
+                                            <div class="col s12">
+                                                <button class="btn waves-effect waves-light" name="addkar" id="filterDit" type="submit" tabindex="-1">
+                                                    Toevoegen
+                                                    <i class="mdi-content-add right"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col s12">
+                                                @foreach (var x in Model.Karaktertrek)
+                                                {
+                                                    <span class="karaktertrek">@x.Naam</span>
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col s12">
+                                                <label for="PersoonlijkeFiche_Werksituatie_ID">Werksituatie</label>
+                                                @Html.EditorFor(model => model.PersoonlijkeFiche, new { WerkSituaties = Model.Werksituaties })
+                                            </div>
+                                        </div>
+                                    </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingThree">
+                                <h4 class="panel-title expand-three">
+                                    <i class="mdi-hardware-keyboard-arrow-right" id="icon-three"></i> <i class="mdi-image-healing"></i> Medische fiche
+                                </h4>
+                            </div>
+                            <div class="panel-body content-three klant-hidden">
+                                <div class="row">
+                                    <div class="col s12">
+                                        @Html.EditorFor(model => model.MedischeFiche, new { Mutualiteiten = Model.Mutualiteiten, Voedingspatronen = Model.Voedingspatronen })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default hidden">
+                            <div class="panel-heading" role="tab" id="headingFour">
+                                <h4 class="panel-title expand-four">
+                                    <i class="mdi-hardware-keyboard-arrow-right" id="icon-four"></i> <i class="mdi-action-account-child"></i> Relaties
+                                </h4>
+                            </div>
+                            <div class="panel-body content-four klant-hidden">
+                                <div class="row">
+                                    <div class="col s12">
+                                        @Html.EditorFor(model => model.SelectedKlantRelatie, new { Klanten = Model.Klanten, Relaties = Model.Relaties})
+                                        @foreach (CRMSanto.Models.KlantRelatie r in Model.KlantRelatie)
+                                        {
+                                        <span class="Klantrelatie">
+                                            @Html.Raw(r.Relatie.Naam)
+                                            @Html.Raw(r.RelatieType.Naam)
+                                        </span>
+                                        }
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading" role="tab" id="headingTwo">
-                        <h4 class="panel-title expand-two">
-                            <i class="mdi-hardware-keyboard-arrow-right" id="icon-two"></i> <i class="mdi-action-perm-identity"></i> Persoonlijke fiche
-                        </h4>
+                    <div class="fixed-action-btn">
+                        <a onclick="alert('eID inscannen');" href="#" class="btn-floating btn-large waves-effect waves-light yellow"><i class="mdi-action-picture-in-picture"></i></a>
+                        @*<a onclick="$('#frmKlant')[0].reset();" href="#" class="btn-floating btn-large waves-effect waves-light red"><i class="mdi-navigation-refresh"></i></a>*@
+                        <a onclick="$('#frmKlant')[0].submit();" href="#" class="btn-floating btn-large waves-effect waves-light green" name="Create"><i class="mdi-content-save"></i></a>
                     </div>
-                    <div class="panel-body content-two klant-hidden">
-                        <div class="row">
-                            <div class="col s12">
-                                @Html.HiddenFor(model => model.SelectedKlantRelatie.RelatieType.Naam)
-                                @Html.EditorFor(model => model.SelectedKaracter, new { Karaktertreken = Model.Karaktertreken})
-                                @foreach (var x in Model.Karaktertrek) 
-                                {
-                                    <span class="karaktertrek">@x.Naam</span>
-                                }
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="input-field col s12">
-                                @Html.EditorFor(model => model.PersoonlijkeFiche, new { WerkSituaties = Model.Werksituaties })
-                            </div>
+                    }
+                    else
+                    {
+                    <h3>Meer dan 1 overeenstemende gemeente gevonden</h3>
+                    <p>Selecteer de passende gemeente :</p>
+                    @Html.DropDownListFor(model => model.Adres.Gemeente.ID, new SelectList(Model.Gemeentes, "ID", "Plaatsnaam"), new { @class = "browser-default" })
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Finish" name="Create" class="btn btn-default" />
                         </div>
                     </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading" role="tab" id="headingThree">
-                        <h4 class="panel-title expand-three">
-                                <i class="mdi-hardware-keyboard-arrow-right" id="icon-three"></i> <i class="mdi-image-healing"></i> Medische fiche
-                        </h4>
-                    </div>
-                    <div class="panel-body content-three klant-hidden">
-                        <div class="row">
-                            <div class="col s12">
-                                @Html.EditorFor(model => model.MedischeFiche, new { Mutualiteiten = Model.Mutualiteiten, Voedingspatronen = Model.Voedingspatronen })
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading" role="tab" id="headingFour">
-                        <h4 class="panel-title expand-four">
-                            <i class="mdi-hardware-keyboard-arrow-right" id="icon-four"></i> <i class="mdi-action-account-child"></i> Relaties
-                        </h4>
-                    </div>
-                    <div class="panel-body content-four klant-hidden">
-                        <div class="row">
-                            <div class="col s12">
-                                @Html.EditorFor(model => model.SelectedKlantRelatie, new { Klanten = Model.Klanten, Relaties = Model.Relaties})
-                                @foreach (CRMSanto.Models.KlantRelatie r in Model.KlantRelatie)
-                                {
-                                    <span class="Klantrelatie">
-                                        @Html.Raw(r.Relatie.Naam)
-                                        @Html.Raw(r.RelatieType.Naam)
-                                    </span>
-                                }
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="fixed-action-btn">
-                <a onclick="alert('eID inscannen');" href="#" class="btn-floating btn-large waves-effect waves-light yellow"><i class="mdi-action-picture-in-picture"></i></a>
-                @*<a onclick="$('#frmKlant')[0].reset();" href="#" class="btn-floating btn-large waves-effect waves-light red"><i class="mdi-navigation-refresh"></i></a>*@
-                <a onclick="$('#frmKlant')[0].submit();" href="#" class="btn-floating btn-large waves-effect waves-light green" name="Create"><i class="mdi-content-save"></i></a>
-            </div>
-    }
-    else
-    {
-        <h3>Meer dan 1 overeenstemende gemeente gevonden</h3>
-        <p>Selecteer de passende gemeente :</p>
-        @Html.DropDownListFor(model => model.Adres.Gemeente.ID, new SelectList(Model.Gemeentes, "ID", "Plaatsnaam"), new { @class = "browser-default" })
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Finish" name="Create" class="btn btn-default" />
-            </div>
-        </div>
-    }
-}
+                    }
+                    }
 
-            @section Scripts {
-                @Scripts.Render("~/bundles/jqueryval")
-            }
+                    @section Scripts {
+                        @Scripts.Render("~/bundles/jqueryval")
+                    }
 
-            <script>
-                function PreviewImage() {
-                    var oFReader = new FileReader();
-                    oFReader.readAsDataURL(document.getElementById("Upload").files[0]);
+                    <script>
+                        function PreviewImage() {
+                            var oFReader = new FileReader();
+                            oFReader.readAsDataURL(document.getElementById("Upload").files[0]);
 
-                    oFReader.onload = function (oFREvent) {
-                        document.getElementById("uploadPreview").src = oFREvent.target.result;
-                    };
-                };
-                jQuery(document).ready(function ($) {
-                    $('.datepicker').pickadate({
-                        monthsFull: ['januari', 'februari', 'maart', 'april', 'mei', 'juni', 'juli', 'augustus', 'september', 'oktober', 'november', 'december'],
-                        monthsShort: ['jan', 'feb', 'mrt', 'apr', 'mei', 'jun', 'jul', 'aug', 'sept', 'okt', 'nov', 'dec'],
-                        weekdaysFull: ['zondag', 'maandag', 'dinsdag', 'woensdag', 'donderdag', 'vrijdag', 'zaterdag'],
-                        weekdaysShort: ['zo', 'ma', 'di', 'wo', 'do', 'vr', 'za'],
-                        showMonthsShort: undefined,
-                        showWeekdaysFull: undefined,
-                        today: 'Vandaag',
-                        clear: '',
-                        close: 'OK',
-                        labelMonthNext: 'Volgende maand',
-                        labelMonthPrev: 'Vorige maand',
-                        labelMonthSelect: 'Selecteer een maand',
-                        labelYearSelect: 'Selecteer een jaar',
-                        format: 'dd-mm-yyyy',
-                        formatSubmit: 'dd-mm-yyyy',
-                        hiddenPrefix: undefined,
-                        hiddenSuffix: '_submit',
-                        hiddenName: undefined,
-                        firstDay: 1,
-                        selectMonths: true, // Creates a dropdown to control month
-                        selectYears: 100, // Creates a dropdown of 15 years to control year
-                        closeOnClear: true
-                    });
-                    $('select').material_select();
-                    $('.expand-one').click(function () {
-                        $('.content-one').slideToggle();
-                        $('#icon-one').toggleClass("rotated");
-                    });
-                    $('.expand-two').click(function () {
-                        $('.content-two').slideToggle();
-                        $('#icon-two').toggleClass("rotated");
-                    });
-                    $('.expand-three').click(function () {
-                        $('.content-three').slideToggle();
-                        $('#icon-three').toggleClass("rotated");
+                            oFReader.onload = function (oFREvent) {
+                                document.getElementById("uploadPreview").src = oFREvent.target.result;
+                            };
+                        };
+                        jQuery(document).ready(function ($) {
+                            $('.datepicker').pickadate({
+                                monthsFull: ['januari', 'februari', 'maart', 'april', 'mei', 'juni', 'juli', 'augustus', 'september', 'oktober', 'november', 'december'],
+                                monthsShort: ['jan', 'feb', 'mrt', 'apr', 'mei', 'jun', 'jul', 'aug', 'sept', 'okt', 'nov', 'dec'],
+                                weekdaysFull: ['zondag', 'maandag', 'dinsdag', 'woensdag', 'donderdag', 'vrijdag', 'zaterdag'],
+                                weekdaysShort: ['zo', 'ma', 'di', 'wo', 'do', 'vr', 'za'],
+                                showMonthsShort: undefined,
+                                showWeekdaysFull: undefined,
+                                today: 'Vandaag',
+                                clear: '',
+                                close: 'OK',
+                                labelMonthNext: 'Volgende maand',
+                                labelMonthPrev: 'Vorige maand',
+                                labelMonthSelect: 'Selecteer een maand',
+                                labelYearSelect: 'Selecteer een jaar',
+                                format: 'dd-mm-yyyy',
+                                formatSubmit: 'dd-mm-yyyy',
+                                hiddenPrefix: undefined,
+                                hiddenSuffix: '_submit',
+                                hiddenName: undefined,
+                                firstDay: 1,
+                                selectMonths: true, // Creates a dropdown to control month
+                                selectYears: 100, // Creates a dropdown of 15 years to control year
+                                closeOnClear: true
+                            });
+                            $('select').material_select();
+                            $('.expand-one').click(function () {
+                                $('.content-one').slideToggle();
+                                $('#icon-one').toggleClass("rotated");
+                            });
+                            $('.expand-two').click(function () {
+                                $('.content-two').slideToggle();
+                                $('#icon-two').toggleClass("rotated");
+                            });
+                            $('.expand-three').click(function () {
+                                $('.content-three').slideToggle();
+                                $('#icon-three').toggleClass("rotated");
 
-                    });
-                    $('.expand-four').click(function () {
-                        $('.content-four').slideToggle();
-                        $('#icon-four').toggleClass("rotated");
+                            });
+                            $('.expand-four').click(function () {
+                                $('.content-four').slideToggle();
+                                $('#icon-four').toggleClass("rotated");
 
-                    });
+                            });
 
-                });
-            </script>
+                        });
+                    </script>

@@ -11,6 +11,12 @@
     #icon-four.rotated {
         transform: rotate(90deg);
     }
+    .statKlant {
+        border-radius: 5px;
+        padding: 5px;
+        color: white;
+        background-color: #d9166e;
+    }
     .body-content {
         padding: 10px;
     }

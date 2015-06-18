@@ -17,9 +17,5 @@
             <option value="@item.ID">@item.Naam</option>
         }
     </select>*@
-    <label>Karaktertrekken</label>
     @Html.ValidationMessageFor(model => model.ID, "", new { @class = "text-danger" })
-    <button  type="submit" name="addkar">
-        Toevoegen
 
-    </button>
