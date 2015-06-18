@@ -101,9 +101,6 @@ namespace CRMSanto.Controllers
         [HttpPost]
         public ActionResult New(Product p)
         {
-            HttpPostedFileBase photo = p.Upload;
-            p.Foto = photo.FileName;
-            ps.SaveImage(photo);
             ps.AddProduct(p);
             return RedirectToAction("Index");
         }
