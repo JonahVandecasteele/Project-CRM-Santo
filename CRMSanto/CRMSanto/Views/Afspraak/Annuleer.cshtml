@@ -1,157 +1,55 @@
 ﻿@model CRMSanto.Models.PresentationModels.NieuweAfspraakPM
 
+@{
+    ViewBag.Title = "Afspraak annuleren";
+}
+
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    <div class="form-horizontal">
-        <h4>Afspraak @ViewBag.Datum</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.Afspraak.ID)
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.Afspraak.ID)
+    @Html.HiddenFor(model => model.Datum);
+    @Html.HiddenFor(model => model.Tijdstip);
+    @Html.HiddenFor(model => model.Afspraak.Klant);
+    @Html.HiddenFor(model => model.Afspraak.Masseur);
+    @Html.HiddenFor(model => model.Afspraak.SoortAfspraak);
+    @Html.HiddenFor(model => model.Afspraak.SoortAfspraak.ID);
+    @Html.HiddenFor(model => model.Afspraak.Arrangement);
+    @Html.HiddenFor(model => model.Afspraak.Arrangement.ID);
+    @Html.HiddenFor(model => model.Afspraak.Extra.ID);
+    @Html.HiddenFor(model => model.Afspraak.Verplaatsing);
+    @Html.HiddenFor(model => model.Afspraak.Notitie)
+    @Html.HiddenFor(model => model.Afspraak.Duur)
+    @Html.HiddenFor(model => model.Afspraak.SoloDuo)
+    @Html.HiddenFor(model => model.Afspraak.Geannuleerd)
+    @Html.HiddenFor(model => model.Afspraak.AantalPersonen)
+    @Html.HiddenFor(model => model.Afspraak.Archief)
 
-        <div class="row">
-            <div class="col s6">
-                <p>
-                    <label for="datum">@Html.DisplayNameFor(model => model.Datum)</label>
-                    @Html.EditorFor(model => model.Datum, new { htmlAttributes = new { @class = "datepicker", id = "datum", type = "date" } })
-                </p>
+    <div class="row">
+        <div class="col s12">
+            <div class="row">
+                <h2>@ViewBag.Datum.ToString("dd MMMM yyyy hh:mm")</h2>
+                <p><b>Klant:</b> @Html.DisplayFor(model => model.Afspraak.Klant.Naam) @Html.DisplayFor(model => model.Afspraak.Klant.Voornaam)</p>
+                <p><b>Afspraak:</b> @Html.DisplayFor(model => model.Afspraak.SoortAfspraak.Naam)</p>
             </div>
-            <div class="col s6">
-                <p>
-                    <label for="tijdstip">@Html.DisplayNameFor(model => model.Tijdstip)</label>
-                    @Html.EditorFor(model => model.Tijdstip, new { htmlAttributes = new { @class = "timepicker", placeholder = "", type = "time" } })
-                </p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="input-field col s12">
-                @Html.DropDownListFor(model => model.Afspraak.Klant.ID, Model.Klanten)
-                <label>@Html.DisplayNameFor(model => model.Afspraak.Klant)</label>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="input-field col s12">
-                @Html.DropDownListFor(model => model.Afspraak.Masseur.ID, Model.Masseurs)
-                <label>@Html.DisplayNameFor(model => model.Afspraak.Masseur)</label>
-            </div>
-        </div>
-        <div class="row row-eq-height">
-            <div class="col s6">
-                <div class="block-afspraak">
-                    <p>
-                        <input type="checkbox" checked id="massage" />
-                        <label for="massage">@Html.DisplayNameFor(model => model.Afspraak.SoortAfspraak)</label>
-                    </p>
-                    <div id="massage-row">
-                        <div class="row">
-                            <div class="input-field col s12">
-                                @Html.DropDownListFor(model => model.Afspraak.SoortAfspraak.ID, Model.SoortAfspraken, "--", null)
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col s6">
-                <div class="block-afspraak">
-                    <p>
-                        <input type="checkbox" id="arrangement" />
-                        <label for="arrangement">@Html.DisplayNameFor(model => model.Afspraak.Arrangement)</label>
-                    </p>
-                    <div id="arrangement-row">
-                        <div class="row">
-                            <div class="input-field col s12">
-                                @Html.DropDownListFor(model => model.Afspraak.Arrangement.ID, Model.Arrangementen, "--", null)
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="input-field col s12">
-                                @Html.DropDownListFor(model => model.Afspraak.Extra.ID, Model.Extras, "--", null)
-                                <label>@Html.DisplayNameFor(model => model.Extras)</label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Afspraak.Verplaatsing, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.Afspraak.Verplaatsing)
-                    @Html.ValidationMessageFor(model => model.Afspraak.Verplaatsing, "", new { @class = "text-danger" })
-                </div>
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Afspraak.Notitie, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Afspraak.Notitie, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Afspraak.Notitie, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Afspraak.Duur, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Afspraak.Duur, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Afspraak.Duur, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Afspraak.SoloDuo, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.Afspraak.SoloDuo)
-                    @Html.ValidationMessageFor(model => model.Afspraak.SoloDuo, "", new { @class = "text-danger" })
-                </div>
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Afspraak.Geannuleerd, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.Afspraak.Geannuleerd)
-                    @Html.ValidationMessageFor(model => model.Afspraak.Geannuleerd, "", new { @class = "text-danger" })
-                </div>
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Afspraak.AantalPersonen, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Afspraak.AantalPersonen, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Afspraak.AantalPersonen, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Afspraak.Archief, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.Afspraak.Archief)
-                    @Html.ValidationMessageFor(model => model.Afspraak.Archief, "", new { @class = "text-danger" })
-                </div>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Annuleer afspraak" class="btn btn-danger" />
+            <div class="row">
+                <h3>Ben je zeker dat je deze afspraak wil verwijderen?</h3>
+                <button class="btn waves-effect waves-light red" type="submit" name="action">
+                    <i class="mdi-action-delete left"></i>                    
+                    Ja
+                </button>
+                <a class="btn waves-effect waves-light orange" href="@Url.Action("Index", "Afspraak")">
+                    <i class="mdi-navigation-close left"></i>
+                    Nee
+                </a>
             </div>
         </div>
     </div>
 }
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
-<script>
-    $(document).ready(function () {
-        $('select').material_select();
-    });
-</script>
+
+            <script>
+                $(document).ready(function () {
+                    $('select').material_select();
+                });
+            </script>

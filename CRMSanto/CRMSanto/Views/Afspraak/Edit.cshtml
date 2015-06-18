@@ -1,162 +1,129 @@
 ﻿@model CRMSanto.Models.PresentationModels.NieuweAfspraakPM
 
-@using (Html.BeginForm())
+@{
+    ViewBag.Title = "Afspraak bewerken";
+}
+
+<ul class="breadcrumb">
+    <li>@Html.ActionLink("Afspraken", "Index", "Afspraak")</li>
+    <li class="active">Bewerken</li>
+</ul>
+
+@using (Html.BeginForm("Edit", "Afspraak", FormMethod.Post, new { @id = "frmAfspraak" }))
 {
     @Html.AntiForgeryToken()
-    <div class="form-horizontal">
-        <h4>Afspraak @ViewBag.Datum</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.Afspraak.ID)
-        @Html.HiddenFor(model => model.Afspraak.Masseur.Naam)
-        @Html.HiddenFor(model => model.Afspraak.Extra.ID)
-        @Html.HiddenFor(model => model.Afspraak.SoortAfspraak.ID)
-        @Html.HiddenFor(model => model.Afspraak.Klant.Naam)
-        @Html.HiddenFor(model => model.Afspraak.Klant.Voornaam)
-        <div class="row">
-            <div class="col s6">
+
+    @Html.ValidationSummary(false)
+    
+    @Html.HiddenFor(model => model.Afspraak.ID)
+    
+    <div class="row">
+        <div class="input-field col s12">
+            @Html.DropDownListFor(model => model.Afspraak.Klant.ID, Model.Klanten)
+            <label>@Html.DisplayNameFor(model => model.Afspraak.Klant)</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-field col s12">
+            @Html.DropDownListFor(model => model.Afspraak.Masseur.ID, Model.Masseurs)
+            <label>@Html.DisplayNameFor(model => model.Afspraak.Masseur)</label>
+        </div>
+    </div>
+
+    <div class="row row-eq-height">
+        <div class="col s6">
+            <div class="block-afspraak">
                 <p>
-                    <label for="datum">@Html.DisplayNameFor(model => model.Datum)</label>
-                    @Html.EditorFor(model => model.Datum, new { htmlAttributes = new { @class = "datepicker", id = "datum", type = "date" } })
+                    <input type="checkbox" id="massage" />
+                    <label for="massage">@Html.DisplayNameFor(model => model.Afspraak.SoortAfspraak)</label>
                 </p>
+                <div id="massage-row">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            @Html.DropDownListFor(model => model.Afspraak.SoortAfspraak.ID, Model.SoortAfspraken, "--", null)
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="col s6">
+        </div>
+        <div class="col s6">
+            <div class="block-afspraak">
                 <p>
-                    <label for="tijdstip">@Html.DisplayNameFor(model => model.Tijdstip)</label>
-                    @Html.EditorFor(model => model.Tijdstip, new { htmlAttributes = new { @class = "timepicker", placeholder = "", type = "time" } })
+                    <input type="checkbox" id="arrangement" />
+                    <label for="arrangement">@Html.DisplayNameFor(model => model.Afspraak.Arrangement)</label>
                 </p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="input-field col s12">
-                @Html.DropDownListFor(model => model.Afspraak.Klant.ID, Model.Klanten)
-                <label>@Html.DisplayNameFor(model => model.Afspraak.Klant)</label>
-            </div>
-        </div>
-               
-        <div class="row">
-            <div class="input-field col s12">
-                @Html.DropDownListFor(model => model.Afspraak.Masseur.ID, Model.Masseurs)
-                <label>@Html.DisplayNameFor(model => model.Afspraak.Masseur)</label>
-            </div>
-        </div>
-        <div class="row row-eq-height">
-            <div class="col s6">
-                <div class="block-afspraak">
-                    <p>
-                        <input type="checkbox" checked id="massage" />
-                        <label for="massage">@Html.DisplayNameFor(model => model.Afspraak.SoortAfspraak)</label>
-                    </p>
-                    <div id="massage-row">
-                        <div class="row">
-                            <div class="input-field col s12">
-                                @Html.DropDownListFor(model => model.Afspraak.SoortAfspraak.ID, Model.SoortAfspraken, "--", null)
-                            </div>
+                <div id="arrangement-row">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            @Html.DropDownListFor(model => model.Afspraak.Arrangement.ID, Model.Arrangementen, "--", null)
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            @Html.DropDownListFor(model => model.Afspraak.Extra.ID, Model.Extras, "--", null)
+                            <label>@Html.DisplayNameFor(model => model.Extras)</label>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col s6">
-                <div class="block-afspraak">
-                    <p>
-                        <input type="checkbox" id="arrangement" />
-                        <label for="arrangement">@Html.DisplayNameFor(model => model.Afspraak.Arrangement)</label>
-                    </p>
-                    <div id="arrangement-row">
-                        <div class="row">
-                            <div class="input-field col s12">
-                                @Html.DropDownListFor(model => model.Afspraak.Arrangement.ID, Model.Arrangementen, "--", null)
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="input-field col s12">
-                                @Html.DropDownListFor(model => model.Afspraak.Extra.ID, Model.Extras, "--", null)
-                                <label>@Html.DisplayNameFor(model => model.Extras)</label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            </div>
-
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.Afspraak.Verplaatsing, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    <div class="checkbox">
-                        @Html.EditorFor(model => model.Afspraak.Verplaatsing)
-                        @Html.ValidationMessageFor(model => model.Afspraak.Verplaatsing, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.Afspraak.Notitie, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Afspraak.Notitie, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Afspraak.Notitie, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.Afspraak.Duur, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Afspraak.Duur, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Afspraak.Duur, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.Afspraak.SoloDuo, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    <div class="checkbox">
-                        @Html.EditorFor(model => model.Afspraak.SoloDuo)
-                        @Html.ValidationMessageFor(model => model.Afspraak.SoloDuo, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.Afspraak.Geannuleerd, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    <div class="checkbox">
-                        @Html.EditorFor(model => model.Afspraak.Geannuleerd)
-                        @Html.ValidationMessageFor(model => model.Afspraak.Geannuleerd, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.Afspraak.AantalPersonen, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Afspraak.AantalPersonen, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Afspraak.AantalPersonen, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.Afspraak.Archief, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    <div class="checkbox">
-                        @Html.EditorFor(model => model.Afspraak.Archief)
-                        @Html.ValidationMessageFor(model => model.Afspraak.Archief, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Save" class="btn btn-default" />
-                </div>
-            </div>
         </div>
+    </div>
+    <div class="row">
+        <div class="col s6">
+            <p>
+                <label for="datum">@Html.DisplayNameFor(model => model.Datum)</label>
+                @Html.EditorFor(model => model.Datum, new { htmlAttributes = new { @class = "datepicker", id = "datum", type = "date" } })
+            </p>
+        </div>
+        <div class="col s6">
+            <p>
+                <label>@Html.DisplayNameFor(model => model.Tijdstip)</label>
+                @Html.EditorFor(model => model.Tijdstip, new { htmlAttributes = new { @class = "timepicker", placeholder = "", type = "time" } })
+            </p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col s6">
+            <input type="checkbox" id="Afspraak_Verplaatsing" name="Afspraak.Verplaatsing" />
+            <label for="Afspraak_Verplaatsing">@Html.DisplayNameFor(model => model.Afspraak.Verplaatsing)</label>
+        </div>
+        @Html.HiddenFor(model => model.Afspraak.SoloDuo)
+    </div>
+
+    <div class="row">
+        <div class="input-field col s12">
+            <p><label for="Afspraak_Notitie">@Html.DisplayNameFor(model => model.Afspraak.Notitie)</label></p>
+            @Html.TextAreaFor(model => model.Afspraak.Notitie, new { @class = "materialize-textarea", placeholder = "" })
+
+        </div>
+    </div>
+    <div class="fixed-action-btn">
+        <a onclick="$('#frmAfspraak')[0].reset();" href="#" class="btn-floating btn-large waves-effect waves-light red"><i class="mdi-navigation-refresh"></i></a>
+        <a onclick="$('#frmAfspraak')[0].submit();" href="#" class="btn-floating btn-large waves-effect waves-light green" name="Create"><i class="mdi-content-save"></i></a>
+    </div>
 }
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+
+
+
 <script>
+    var copyListMassage, copyListArrangement, copyListExtra;
     $(document).ready(function () {
-        $('select').material_select();
+        $('#massage-row').children().hide();
+        $('#arrangement-row').children().hide();
+        if ($("#Afspraak_SoortAfspraak_ID option:selected").index() > 0) {
+            $('#massage-row').children().show();
+            $('#massage').prop('checked', true);
+        }
+        if ($("#Afspraak_Arrangement_ID option:selected").index() > 0) {
+            $('#arrangement-row').children().show();
+            $('#arrangement').prop('checked', true);
+        }
+        if ($("#Afspraak_Extra_ID option:selected").index() > 0) {
+            $('#arrangement-row').children().show();
+            $('#massage').prop('checked', true);
+        }
+
         $('.datepicker').pickadate({
             monthsFull: ['januari', 'februari', 'maart', 'april', 'mei', 'juni', 'juli', 'augustus', 'september', 'oktober', 'november', 'december'],
             monthsShort: ['jan', 'feb', 'mrt', 'apr', 'mei', 'jun', 'jul', 'aug', 'sept', 'okt', 'nov', 'dec'],
@@ -165,7 +132,7 @@
             showMonthsShort: undefined,
             showWeekdaysFull: undefined,
             today: 'Vandaag',
-            clear: 'Leeg',
+            clear: '',
             close: 'OK',
             labelMonthNext: 'Volgende maand',
             labelMonthPrev: 'Vorige maand',
@@ -181,5 +148,31 @@
             selectYears: 100, // Creates a dropdown of 15 years to control year
             closeOnClear: true
         });
+        $('select').material_select();
+    });
+    $("#massage").change(function () {
+        if (this.checked) {
+            $('#massage-row').children().slideDown();
+        }
+        else {
+            $('#massage-row').children().slideUp();
+            $('#Afspraak_SoortAfspraak_ID').val('0');
+            $('select').material_select();
+        }
+    });
+    $("#arrangement").change(function () {
+        if (this.checked) {
+            $('#arrangement-row').children().slideDown();
+        }
+        else {
+            $('#arrangement-row').children().slideUp();
+            $('#Afspraak_Arrangement_ID').val('0');
+            $('#Afspraak_Extra_ID').val('0');
+            $('select').material_select();
+        }
     });
 </script>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
