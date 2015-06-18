@@ -29,6 +29,15 @@ namespace CRMSanto.BusinessLayer.Repository
             return query.ToList<Productregistratie>();
         }
 
+        public List<Productregistratie> GetProductregistratiesByProductenID(int id)
+        {
+            var query = (from pr in context.Productregistratie.Include(p => p.Product)
+                         where pr.Product.ID == id
+                         select pr);
+
+            return query.ToList<Productregistratie>();
+        }
+
         public override Productregistratie Insert(Productregistratie entity)
         {
             context.Klant.Attach(entity.Winkelmand.Klant);

@@ -75,12 +75,13 @@
         <div class="table-responsive">
             <table class="table table-striped table-hover">
                 <tr>
-                    <th>
+                    @*<th>
                         <p>
-                            <input type="checkbox" name="test" id="test" value="mails" />
+                            <input type="checkbox" name="checkbox-th" id="checkbox-th" value="mails" />
                             <label for="checkbox-th"></label>
                         </p>
-                    </th>
+                    </th>*@
+                    <th> </th>
                     <th> </th>
                     <th>
                         @*@Html.DisplayNameFor(model => model.Naam)*@
@@ -110,14 +111,13 @@
 
                 @foreach (var item in Model)
                 {
+                    
+                    
                     <tr class='clickable-row' data-href='/Klant/Edit/@Html.DisplayFor(modelItem => item.ID)'>
                         <td>
                             <p>
-                               
-                                <input type="checkbox" name="Test" id="checkbox-@item.ID" value="mails" />
-                                    <label for="checkbox-@item.ID"></label>
-                         
-                                
+                                <input type="checkbox" class="checkboxes" name="Test" id="@item.ID" value="@item.Email" checked/>
+                                <label for="checkbox-@item.ID"></label>
                             </p>
                         </td>
                         <td>
@@ -151,16 +151,22 @@
         Aantal resultaten: @Model.Count()
 
         <div class="fixed-action-btn">
+            <a  id="mailTo" name="mailTo" class="btn-floating btn-large waves-effect waves-light yellow"><i id="sendButton" class="mdi-content-mail"></i></a>
             <a href='@Url.Action("New", "Klant")' onclick="showProgress();" class="btn-floating btn-large waves-effect waves-light green"><i class="mdi-content-add"></i></a>
         </div>
-
         <script>
+            var emails ="";
             $("img").error(function () {
                 $(this).attr("src", "http://massagesanto.blob.core.windows.net/images/profile.jpg");
             });
-            $(".clickable-row").click(function (e) {
-                if (e.toElement.tagName == 'A') return;
-                else window.document.location = $(this).data("href");
+
+            // RIJ KLIKBAAR MAKEN (ELKE EERSTE TD VAN TR IS NIET KLIKBAAR (= CHECKBOX)
+            // EN BIJ A-ELEMENTEN (= LINK) WORDT DE JQUERY-KLIK GENEGEERD)
+            $('.clickable-row').each(function() {
+                $(this).find('td').slice(1).click(function (e) {
+                    if (e.toElement.tagName == 'A') return;
+                    else window.document.location = $(this).parent().data("href");
+                });
             });
 
             $(document).ready(function () {
@@ -176,17 +182,27 @@
 
             function updateMaxLeeftijd(val) {
                 $('#maxLeeftijd').text(val);
-            }
+            };
             function updateMinLeeftijd(val) {
                 $('#minLeeftijd').text(val);
-            }
+            };
 
             $('#filterDit').click(function () {
                 $(".linkdisabled").disabled();
             });
 
-            $("#Test").click(function () {
-                $("input:checkbox:not(#Test)").attr("checked", $(this).is(":checked"));
+            $(function () {
+                $('#mailTo').on('click', function (event) {
+                    event.preventDefault();
+                    emails = "";
+                    $('.checkboxes:checked').each(function () {
+                        emails = emails + $(this).val() + ", ";
+                    });
+                    var mailto_link = 'mailto:' + emails;
+
+                    win = window.open(mailto_link, 'emailWindow');
+                    if (win && win.open && !win.closed) win.close();
+                });
             });
 
         </script>

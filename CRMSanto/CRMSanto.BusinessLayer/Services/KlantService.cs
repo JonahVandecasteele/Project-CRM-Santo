@@ -158,7 +158,6 @@ namespace CRMSanto.BusinessLayer.Services
         {
             return repoKlantRelatie.Insert(k);
         }
-
         public List<Voedingspatroon> GetVoedingspatronen()
         {
             return repoVoedingspatroon.All().ToList<Voedingspatroon>();
