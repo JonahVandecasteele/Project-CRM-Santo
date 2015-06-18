@@ -591,6 +591,7 @@ namespace CRMSanto.Controllers
             model.MedischeFiche = new MedischeFiche();
             model.PersoonlijkeFiche = new PersoonlijkeFiche();
             model.MedischeFiche.Mutualiteit = new Mutualiteit();
+            model.Adres = new Adres();
             model.Vandaag = DateTime.Now.ToString("dd-MM-yyyy");
             model.SelectedKlantRelatie = new CRMSanto.Models.KlantRelatie() { Relatie = new CRMSanto.Models.Klant() { ID = 0, Naam = "Empty", Voornaam = "Empty" }, RelatieType = new Relatie() { Naam = "Empty" } };
             }
