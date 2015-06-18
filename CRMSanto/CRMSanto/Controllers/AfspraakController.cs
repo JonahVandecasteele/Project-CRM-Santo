@@ -71,11 +71,28 @@ namespace CRMSanto.Controllers
                 }
 
                 NieuweAfspraakPM pm = new NieuweAfspraakPM();
+                List<Klant> klantlist = new List<Klant>();
                 pm.Klanten = new SelectList(ks.GetKlanten().Select(u => new { ID = u.ID, Naam = u.Naam + " " + u.Voornaam }), "ID", "Naam");
                 pm.Masseurs = new SelectList(afs.GetMasseurs().Select(m => new { ID = m.ID, Naam = m.Naam }), "ID", "Naam");
-                pm.SoortAfspraken = new SelectList(afs.GetMassages().Select(ms => new { ID = ms.ID, Naam = ms.Naam }), "ID", "Naam");
-                pm.Arrangementen = new SelectList(afs.GetArrangementen().Select(ar => new { ID = ar.ID, Naam = ar.Naam }), "ID", "Naam");
-                pm.Extras = new SelectList(afs.GetExtras().Select(e => new { ID = e.ID, Naam = e.Naam }), "ID", "Naam");
+
+                List<SoortAfspraak> afspraaktypelist = new List<SoortAfspraak>();
+                afspraaktypelist.Add(new SoortAfspraak { Naam = "--", ID = 0 });
+                //afspraaktypelist.AddRange(afs.GetMassages().Select(ms => new { ID = ms.ID, Naam = ms.Naam }));
+                afspraaktypelist.AddRange(afs.GetMassages());
+                pm.SoortAfspraken = new SelectList(afspraaktypelist, "ID", "Naam");
+
+                List<Arrangement> arrangementenlist = new List<Arrangement>();
+                arrangementenlist.Add(new Arrangement { Naam = "--", ID = 0 });
+                //arrangementenlist.AddRange((List<Arrangement>)afs.GetArrangementen().Select(ar => new { ID = ar.ID, Naam = ar.Naam }));
+                arrangementenlist.AddRange((List<Arrangement>)afs.GetArrangementen());
+                pm.Arrangementen = new SelectList(arrangementenlist, "ID", "Naam");
+
+                List<Extra> extralist = new List<Extra>();
+                extralist.Add(new Extra { Naam = "--", ID = 0 });
+                //extralist.AddRange((List<Extra>)afs.GetExtras().Select(e => new { ID = e.ID, Naam = e.Naam }));
+                extralist.AddRange((List<Extra>)afs.GetExtras());
+                pm.Extras = new SelectList(extralist, "ID", "Naam");
+
                 Afspraak a = afs.GetAfspraakByID(id.Value);
                 pm.Afspraak = a;
                 pm.Afspraak.ID = a.ID;
@@ -119,8 +136,11 @@ namespace CRMSanto.Controllers
                     a.Afspraak.Klant = ks.GetKlantByID(a.Afspraak.Klant.ID);
                 }
                 a.Afspraak.Masseur = afs.GetMasseurByID(a.Afspraak.Masseur.ID);
+                if (a.Afspraak.SoortAfspraak.ID != 0)
                 a.Afspraak.SoortAfspraak = afs.GetMassageByID(a.Afspraak.SoortAfspraak.ID);
+                if(a.Afspraak.Arrangement.ID!=0)
                 a.Afspraak.Arrangement = afs.GetArrangementByID(a.Afspraak.Arrangement.ID);
+                if (a.Afspraak.Extra.ID != 0)
                 a.Afspraak.Extra = afs.GetExtraByID(a.Afspraak.Extra.ID);
                 if (a.Afspraak.Arrangement != null && a.Afspraak.SoortAfspraak != null)
                 {

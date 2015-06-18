@@ -132,7 +132,10 @@ namespace CRMSanto.BusinessLayer.Repository
             if (old.SoortAfspraak.ID != entityToUpdate.SoortAfspraak.ID)
             {
                 context.SoortAfspraak.Attach(entityToUpdate.SoortAfspraak);
-                context.Afspraak.Include(m => m.SoortAfspraak).FirstOrDefault(m => m.ID == entityToUpdate.ID).SoortAfspraak = entityToUpdate.SoortAfspraak;
+                if (entityToUpdate.SoortAfspraak.ID == 0)
+                    context.Afspraak.Include(m => m.SoortAfspraak).FirstOrDefault(m => m.ID == entityToUpdate.ID).SoortAfspraak = null;
+                else
+                    context.Afspraak.Include(m => m.SoortAfspraak).FirstOrDefault(m => m.ID == entityToUpdate.ID).SoortAfspraak = entityToUpdate.SoortAfspraak;
             }
           /*  context.Entry(old.Klant.Adres).CurrentValues.SetValues(entityToUpdate.Klant.Adres);
             if (old.Klant.Adres.Gemeente.ID != entityToUpdate.Klant.Adres.Gemeente.ID && entityToUpdate.Klant.Adres.Gemeente.ID != 0)
@@ -150,12 +153,18 @@ namespace CRMSanto.BusinessLayer.Repository
             if (old.Arrangement.ID != entityToUpdate.Arrangement.ID)
             {
                 context.Arrangement.Attach(entityToUpdate.Arrangement);
-                context.Afspraak.Include(m => m.Arrangement).FirstOrDefault(m => m.ID == entityToUpdate.ID).Arrangement = entityToUpdate.Arrangement;
+                if (entityToUpdate.Arrangement.ID == 0)
+                    context.Afspraak.Include(m => m.Arrangement).FirstOrDefault(m => m.ID == entityToUpdate.ID).Arrangement = null;
+                else
+                    context.Afspraak.Include(m => m.Arrangement).FirstOrDefault(m => m.ID == entityToUpdate.ID).Arrangement = entityToUpdate.Arrangement;
             }
             if (old.Extra.ID != entityToUpdate.Extra.ID)
             {
                 context.Extra.Attach(entityToUpdate.Extra);
-                context.Afspraak.Include(m => m.Extra).FirstOrDefault(m => m.ID == entityToUpdate.ID).Extra = entityToUpdate.Extra;
+                if (entityToUpdate.Extra.ID == 0)
+                    context.Afspraak.Include(m => m.Extra).FirstOrDefault(m => m.ID == entityToUpdate.ID).Extra = null;
+                else
+                    context.Afspraak.Include(m => m.Extra).FirstOrDefault(m => m.ID == entityToUpdate.ID).Extra = entityToUpdate.Extra;
             }
             
             context.Entry(old).CurrentValues.SetValues(entityToUpdate);
