@@ -4,6 +4,6 @@
 @{
     List<CRMSanto.Models.Werksituatie> list = (List<CRMSanto.Models.Werksituatie>)ViewData["WerkSituaties"];
 }
-
+    
     @Html.DropDownListFor(model => model.ID, new SelectList(list, "ID", "Naam"), new { htmlAttributes = new { @class = "browser-default" } })
     <label>Werksituatie</label>

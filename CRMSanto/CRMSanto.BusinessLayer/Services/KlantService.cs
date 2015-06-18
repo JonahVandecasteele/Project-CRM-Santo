@@ -54,7 +54,12 @@ namespace CRMSanto.BusinessLayer.Services
         }
         public void UpdateKlant(Klant klant)
         {
+            
             repoKlant.Update(klant);
+            /*foreach(Karaktertrek karaktertrek in klant.Karaktertrek)
+            {
+                repoKaraktertrek.Update(karaktertrek);
+            } */  
             repoKlant.SaveChanges();
         }
         public Klant InsertKlant(Klant klant)

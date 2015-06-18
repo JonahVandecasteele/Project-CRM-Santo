@@ -19,6 +19,7 @@
 {
     @Html.AntiForgeryToken()
     @Html.HiddenFor(model => model.ID)
+    @Html.HiddenFor(model => model.Foto)
     <div class="row vertical-align">
         <div class="input-field col-xs-9">
             <div class="file-field input-field">
@@ -65,6 +66,7 @@
                             </div>
                         </div>
                         <div class="row">
+                            @Html.HiddenFor(model => model.Adres.ID)
                             <div class="input-field col s6">
                                 @Html.EditorFor(model => model.Adres.Straat, new { htmlAttributes = new { @class = "validate", id = "street", placeholder = "" } })
                                 <label for="street">@Html.DisplayNameFor(model => model.Adres.Straat)</label>

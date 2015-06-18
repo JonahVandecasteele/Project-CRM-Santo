@@ -1,6 +1,6 @@
 ﻿@model CRMSanto.Models.Adres
 
-
+        @Html.HiddenFor(model => model.ID)
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">

@@ -5,5 +5,5 @@
     @{
         List<CRMSanto.Models.Geslacht> list = (List<CRMSanto.Models.Geslacht>)ViewData["Geslachten"];
     }
-    
+    @Html.HiddenFor(model => model.ID)
                 @Html.DropDownListFor(model => model.ID, new SelectList(list, "ID", "Naam"))

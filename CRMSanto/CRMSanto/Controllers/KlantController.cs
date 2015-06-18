@@ -597,6 +597,8 @@ namespace CRMSanto.Controllers
             else
             {
                 Klant k = ks.GetKlantByID(Convert.ToInt32(Session["EditKlant"]));
+                if (k.Foto != String.Empty)
+                    Session["PhotoLink"] = k.Foto;
                 model = new KlantViewModel()
                 {
                     Adres = k.Adres,
@@ -666,6 +668,9 @@ namespace CRMSanto.Controllers
                             model.Voedingspatronen = ks.GetVoedingspatronen();
                             model.Relaties = ks.GetRelaties();
                             model.Klanten = ks.GetKlanten();
+                            model.SelectedKlantRelatie = new CRMSanto.Models.KlantRelatie() { Relatie = new CRMSanto.Models.Klant() { ID = 0, Naam = "Empty", Voornaam = "Empty" }, RelatieType = new Relatie() { Naam = "Empty" } };
+                            if (model.KlantRelatie == null)
+                                model.KlantRelatie = new List<KlantRelatie>();
                             return View(model);
                         }
                         catch (Exception ex)
@@ -700,18 +705,21 @@ namespace CRMSanto.Controllers
                                                 klant.MedischeFiche.Mutualiteit = ks.GetMutualiteitByID(klant.MedischeFiche.Mutualiteit.ID);
                                         }
 
-                                        klant.Foto = Guid.NewGuid().ToString();
-
                                         if (klant.Upload == null)//If the upload would magicaly become null , we grab it from the database.
                                         {
                                             if (Session["PhotoUpload"] != null)
                                             {
+                                                klant.Foto = Guid.NewGuid().ToString();
                                                 ks.SaveImage((HttpPostedFileBase)Session["PhotoUpload"], klant.Foto);//Save photo from last postback
                                             }
                                         }
                                         else
                                         {
-                                            ks.SaveImage(klant.Upload, klant.Foto);//Save photo from current post
+                                            if (klant.Upload != null)
+                                            {
+                                                klant.Foto = Guid.NewGuid().ToString();
+                                                ks.SaveImage(klant.Upload, klant.Foto);//Save photo from current post
+                                            }
                                         }
 
                                         //Set a temp klant object with data from ViewModel and Tempdata
@@ -765,6 +773,26 @@ namespace CRMSanto.Controllers
                                         tempKlant.Karaktertrek = new List<Karaktertrek>();
                                     if (tempKlant.Voedingspatroon == null)
                                         tempKlant.Voedingspatroon = new Voedingspatroon();
+                                    if (tempKlant.KlantRelatie == null)
+                                        tempKlant.KlantRelatie = new List<KlantRelatie>();
+
+                                    if (klant.Upload == null)//If the upload would magicaly become null , we grab it from the database.
+                                    {
+                                        if (Session["PhotoUpload"] != null)
+                                        {
+                                            tempKlant.Foto = Guid.NewGuid().ToString();
+                                            ks.SaveImage((HttpPostedFileBase)Session["PhotoUpload"], tempKlant.Foto);//Save photo from last postback
+                                        }
+                                    }
+                                    else
+                                    {
+                                        if (klant.Upload != null)
+                                        {
+                                            tempKlant.Foto = Guid.NewGuid().ToString();
+                                            ks.SaveImage(klant.Upload, tempKlant.Foto);//Save photo from current post
+                                        }
+                                            
+                                    }
                                     ks.UpdateKlant(tempKlant);
                                     TempData["Klanten"] = null;
                                     Session["EditKlant"] = null;
@@ -786,6 +814,9 @@ namespace CRMSanto.Controllers
                                 klant.Voedingspatronen = ks.GetVoedingspatronen();
                                 klant.Relaties = ks.GetRelaties();
                                 klant.Klanten = ks.GetKlanten();
+                                klant.SelectedKlantRelatie = new CRMSanto.Models.KlantRelatie() { Relatie = new CRMSanto.Models.Klant() { ID = 0, Naam = "Empty", Voornaam = "Empty" }, RelatieType = new Relatie() { Naam = "Empty" } };
+                                if (klant.KlantRelatie == null)
+                                    klant.KlantRelatie = new List<KlantRelatie>();
                                 return View(klant);
                             }
                         }
@@ -803,9 +834,19 @@ namespace CRMSanto.Controllers
             }
             else
             {
-                Image photo = Image.FromStream(new MemoryStream(new WebClient().DownloadData(@"http://massagesanto.blob.core.windows.net/images/profile.jpg")));
-                var stream = ToStream(photo, ImageFormat.Jpeg);
-                return new FileStreamResult(stream, "image/jpeg");
+                if(Session["PhotoLink"] != null)
+                {
+                    Image photo = Image.FromStream(new MemoryStream(new WebClient().DownloadData(@"http://massagesanto.blob.core.windows.net/images/" + Session["PhotoLink"])));
+                    var stream = ToStream(photo, ImageFormat.Jpeg);
+                    return new FileStreamResult(stream, "image/jpeg");
+                }
+                else
+                {
+                    Image photo = Image.FromStream(new MemoryStream(new WebClient().DownloadData(@"http://massagesanto.blob.core.windows.net/images/profile.jpg")));
+                    var stream = ToStream(photo, ImageFormat.Jpeg);
+                    return new FileStreamResult(stream, "image/jpeg");
+                }
+                
             }
         }
         public Stream ToStream(Image image, ImageFormat formaw)
