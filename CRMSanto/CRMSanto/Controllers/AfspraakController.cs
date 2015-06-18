@@ -148,6 +148,11 @@ namespace CRMSanto.Controllers
         [HttpGet]
         public ActionResult New()
         {
+            if(TempData["error"]!=null)
+            {
+                ViewBag.Error = TempData["error"];
+                TempData["error"] = null;
+            }
            
             NieuweAfspraakPM pm = new NieuweAfspraakPM();
             pm.Klanten = new SelectList(ks.GetKlanten().Select(u => new { ID = u.ID, Naam = u.Naam + " " + u.Voornaam }), "ID", "Naam");
@@ -237,7 +242,7 @@ namespace CRMSanto.Controllers
                     else
                     {
                         a.Afspraak.Geannuleerd = false;
-                        //ViewBag.Error = "Afspraak reeds gemaakt op dit tijdstip";
+                        TempData["error"] = "Afspraak reeds gemaakt op dit tijdstip";
                         return RedirectToAction("New");
                         //return View(a);
                     }
