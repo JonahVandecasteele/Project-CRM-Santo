@@ -306,7 +306,6 @@ namespace CRMSanto.Controllers
                 return RedirectToAction("Index");
             }
         }
-
         [HttpPost]
         public ActionResult Annuleer(NieuweAfspraakPM a)
         {
