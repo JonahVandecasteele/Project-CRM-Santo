@@ -601,6 +601,8 @@ namespace CRMSanto.Controllers
             else
             {
                 Klant k = ks.GetKlantByID(Convert.ToInt32(Session["EditKlant"]));
+                List<Productregistratie> producten = ps.GetProductregistratiesByKlantenID(k.ID);
+                List<Afspraak> afspraken = afs.GetAfsprakenByKlantenID(k.ID);
                 if (k.Foto != String.Empty)
                     Session["PhotoLink"] = k.Foto;
                 model = new KlantViewModel()
@@ -627,6 +629,8 @@ namespace CRMSanto.Controllers
                 model.Voedingspatronen = ks.GetVoedingspatronen();
                 model.Relaties = ks.GetRelaties();
                 model.Klanten = ks.GetKlanten();
+                model.Producten = producten;
+                model.Afspraken = afspraken;
                 model.SelectedKlantRelatie = new CRMSanto.Models.KlantRelatie() { Relatie = new CRMSanto.Models.Klant() { ID = 0, Naam = "Empty", Voornaam = "Empty" }, RelatieType = new Relatie() { Naam = "Empty" } };
                 if (model.KlantRelatie == null)
                     model.KlantRelatie = new List<KlantRelatie>();
