@@ -174,15 +174,21 @@ namespace CRMSanto.Controllers
                 string verplaatsing = Request.Form["Afspraak.Verplaatsing"];
                 string soloduo = Request.Form["Afspraak.SoloDuo"];
 
-                if (verplaatsing.Equals("on"))
+                
+                if (verplaatsing != null && verplaatsing.Equals("on"))
                     a.Afspraak.Verplaatsing = true;
                 else
                     a.Afspraak.Verplaatsing = false;
 
-                if (soloduo.Equals("on"))
+                if (soloduo != null && soloduo.Equals("on")){
                     a.Afspraak.SoloDuo = true;
+                }
+
                 else
+                {
                     a.Afspraak.SoloDuo = false;
+                }
+                    
 
                 if (a.Afspraak.Klant.ID != 0)
                 {
