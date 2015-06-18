@@ -7,7 +7,8 @@
 <h2>Edit</h2>
 
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Edit", "Product", FormMethod.Post,
+ new { @id = "frmProduct", enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     
@@ -78,6 +79,10 @@
                 <input type="submit" value="Save" class="btn btn-default" />
             </div>
         </div>
+    </div
+    
+    <div class="fixed-action-btn">
+        <a onclick="$('#frmProduct').submit();" href="#" class="btn-floating btn-large waves-effect waves-light green"><i class="mdi-content-save"></i></a>
     </div>
 }
 

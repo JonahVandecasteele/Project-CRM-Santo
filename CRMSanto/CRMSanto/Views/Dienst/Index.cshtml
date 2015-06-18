@@ -3,140 +3,143 @@
 }
 
 <div class="row">
-    <div class="col s12 m6">
+    <div class="col s12">
         <div class="row">
             <h2>Massages</h2>
         </div>
         <div class="row">
             <a class="waves-effect waves-light btn" href="@Url.Action("New", "Dienst")"><i class="mdi-content-add"></i>Massage toevoegen</a>
         </div>
-        @foreach (var item in ViewBag.Massages)
-        {
-
-            <div class="card pink darken-1 darken-1">
-                <div class="card-content white-text">
-                    <a href='@Url.Action("Edit", new { id = item.ID })' style="color: white; text-decoration: none;"><i class="mdi-editor-mode-edit"></i></a> <span class="card-title">@item.Naam</span>
-                    <p>
-                        @item.Omschrijving
-                    </p>
-                </div>
-                <div class="card-action">
-                    <a href="#">€@item.Prijs</a>
-                    <a href='#'>@item.Duur min</a>
-                </div>
-            </div>
-        }
-    </div>
-    <div class="col s12 m6">
         <div class="row">
-            <div class="row">
-                <h2>Arrangementen</h2>
-            </div>
-            <div class="row">
-                <a class="waves-effect waves-light btn" href="@Url.Action("New2", "Dienst")"><i class="mdi-content-add"></i>Arrangement toevoegen</a>
-            </div>
-                    @foreach (var item in ViewBag.Arrangementen)
+            <div class="table-responsive">
+                <table class="table table-striped table-hover">
+                    <tr>
+                        <th>
+                            Naam
+                        </th>
+                        <th>
+                            Prijs
+                        </th>
+                        <th>
+                            Duur
+                        </th>
+                        <th>
+
+                        </th>
+                    </tr>
+                    @foreach (var item in ViewBag.Massages)
                     {
-
-                        <div class="card amber lighten-5">
-                            <div class="card-content black-text">
-                                <span class="card-title black-text" style="text-rendering: optimizeLegibility; ">@item.Naam</span>
-                            </div>
-                            <div class="card-action">
-                                <a href="#">€@item.Prijs</a>
-                                <a href='#'>@item.Duur min</a>
-                            </div>
-                        </div>
+                        <tr>
+                            <td>
+                                @item.Naam
+                            </td>
+                            <td>
+                                €@item.Prijs
+                            </td>
+                            <td>
+                                @item.Duur minuten
+                            </td>
+                            <td class="text-right">
+                                <nobr>
+                                    <a href='@Url.Action("Edit","Dienst",new { id = item.ID })' class="btn-floating waves-effect waves-light orange inline-btn"><i class="mdi-editor-mode-edit"></i></a>
+                                </nobr>
+                            </td>
+                        </tr>
                     }
-                </div>
-        <div class="row">
-            <div class="row">
-                <h2>Extra's</h2>
+                </table>
             </div>
-            <div class="row">
-                <a class="waves-effect waves-light btn" href="@Url.Action("New3", "Dienst")"><i class="mdi-content-add"></i>Extra toevoegen</a>
-            </div>
-                @foreach (var item in ViewBag.Extras)
-                {
-
-                    <div class="card blue-grey darken-1">
-                        <div class="card-content white-text">
-                            <span class="card-title">@item.Naam</span>
-                        </div>
-                        <div class="card-action">
-                            <a href="#">€@item.Prijs</a>
-                        </div>
-                    </div>
-                }
-            </div>
+        </div>
     </div>
-</div>
-
-<h2>Massages</h2>
+</div>    
 <div class="row">
     <div class="col s12">
-        <a class="waves-effect waves-light btn" href="@Url.Action("New", "Dienst")"><i class="mdi-content-add"></i>Massage toevoegen</a>
+        <div class="row">
+            <h2>Arrangementen</h2>
+        </div>
+        <div class="row">
+            <a class="waves-effect waves-light btn" href="@Url.Action("New2", "Dienst")"><i class="mdi-content-add"></i>Arrangement toevoegen</a>
+        </div>
+        <div class="row">
+            <div class="table-responsive">
+                <table class="table table-striped table-hover">
+                    <tr>
+                        <th>
+                            Naam
+                        </th>
+                        <th>
+                            Prijs
+                        </th>
+                        <th>
+                            Duur
+                        </th>
+                        <th>
+
+                        </th>
+                    </tr>
+                    @foreach (var item in ViewBag.Arrangementen)
+                    {
+                        <tr>
+                            <td>
+                                @item.Naam
+                            </td>
+                            <td>
+                                €@item.Prijs
+                            </td>
+                            <td>
+                                @item.Duur minuten
+                            </td>
+                            <td class="text-right">
+                                <nobr>
+                                    <a href='@Url.Action("Edit2","Dienst",new { id = item.ID })' class="btn-floating waves-effect waves-light orange inline-btn"><i class="mdi-editor-mode-edit"></i></a>
+                                </nobr>
+                            </td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+    </div>
+</div>    
+<div class="row">
+    <div class="col s12">
+        <div class="row">
+            <h2>Extra's</h2>
+        </div>
+        <div class="row">
+            <a class="waves-effect waves-light btn" href="@Url.Action("New3", "Dienst")"><i class="mdi-content-add"></i>Extra toevoegen</a>
+        </div>
+        <div class="row">
+            <div class="table-responsive">
+                <table class="table table-striped table-hover">
+                    <tr>
+                        <th>
+                            Naam
+                        </th>
+                        <th>
+                            Prijs
+                        </th>
+                        <th>
+
+                        </th>
+                    </tr>
+                    @foreach (var item in ViewBag.Massages)
+                    {
+                        <tr>
+                            <td>
+                                @item.Naam
+                            </td>
+                            <td>
+                                €@item.Prijs
+                            </td>
+                            <td class="text-right">
+                                <nobr>
+                                    <a href='@Url.Action("Edit3","Product",new { id = item.ID })' class="btn-floating waves-effect waves-light orange inline-btn"><i class="mdi-editor-mode-edit"></i></a>
+                                </nobr>
+                            </td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
     </div>
 </div>
-
-<table class="table">
-    <tr>
-        <th>Naam</th>
-        <th>Omschrijving</th>
-        <th>Duur</th>
-        <th>Prijs</th>
-    </tr>
-    <tr>
-        @foreach (var item in ViewBag.Massages)
-        {
-        <tr>
-            <td>@item.Naam</td>
-            <td>@item.Omschrijving</td>
-            <td>@item.Duur</td>
-            <td>@item.Prijs</td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.ID })
-            </td>
-        </tr>
-        }
-    </table>
-    <h2>Arrangementen</h2>
-    <a class="waves-effect waves-light btn" href="@Url.Action("New2", "Dienst")"><i class="mdi-content-add"></i>Arrangement toevoegen</a>
-    <table class="table">
-        <tr>
-            <th>Naam</th>
-            <th>Duur</th>
-            <th>Prijs</th>
-        </tr>
-        <tr>
-            @foreach (var item in ViewBag.Arrangementen)
-            {
-            <tr>
-                <td>@item.Naam</td>
-                <td>@item.Duur</td>
-                <td>@item.Prijs</td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit2", new { id = item.ID })
-                </td>
-            </tr>
-            }
-        </table>
-        <h2>Extra's</h2>
-        <a class="waves-effect waves-light btn" href="@Url.Action("New3", "Dienst")"><i class="mdi-content-add"></i>Extra toevoegen</a>
-        <table class="table">
-            <tr>
-                <th>Naam</th>
-                <th>Prijs</th>
-            </tr>
-            <tr>
-                @foreach (var item in ViewBag.Extras)
-                {
-                <tr>
-                    <td>@item.Naam</td>
-                    <td>@item.Prijs</td>
-                    <td>
-                        @Html.ActionLink("Edit", "Edit3", new { id = item.ID })
-                    </td>
-                </tr>
-                }
-            </table>

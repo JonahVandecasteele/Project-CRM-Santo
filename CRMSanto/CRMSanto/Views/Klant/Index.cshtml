@@ -141,6 +141,7 @@
 
         <script>
             $(".clickable-row").click(function () {
+                if (e.toElement.tagName == 'A') return
                 window.document.location = $(this).data("href");
             });
 
