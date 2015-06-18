@@ -53,7 +53,6 @@ namespace CRMSanto.Controllers
         [HttpPost]
         public ActionResult Index(DateTime vanaf)
         {
-
                 AfspraakPM apm = new AfspraakPM();
                 ViewBag.Vanaf = vanaf.ToString("dd-MM-yyyy");
                 apm.Afspraken = afs.VanafAfspraken(vanaf);
