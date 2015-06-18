@@ -107,7 +107,10 @@
                 {
                     <tr class='clickable-row' data-href='/Klant/Edit/@Html.DisplayFor(modelItem => item.ID)'>
                         <td>
-                            <input type="checkbox" name="mails" value="mails">
+                            <p>
+                                <input type="checkbox" name="mails" id="checkbox-@item.ID"value="mails" />
+                                <label for="checkbox-@item.ID"></label>
+                            </p>
                         </td>
                         <td>
                             <img src="@Html.GetPhotoURL(Html.DisplayFor(modelItem => item.Foto).ToString())" alt="" class="profilepic shadow-z-1" />
