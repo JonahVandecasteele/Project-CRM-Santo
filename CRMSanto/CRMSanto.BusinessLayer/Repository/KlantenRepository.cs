@@ -86,12 +86,18 @@ namespace CRMSanto.BusinessLayer.Repository
         public override void Update(Klant entityToUpdate)
         {
             Klant old = GetByID(entityToUpdate.ID);
-            //context.KlantRelatie.AddRange(entity.KlantRelaties);
-            //
+
             context.MedischeFiche.Attach(old.MedischeFiche);
             context.PersoonlijkeFiche.Attach(old.PersoonlijkeFiche);
-            //context.Entry(old.Karaktertrek).CurrentValues.SetValues(entityToUpdate.Karaktertrek);
-            context.Klant.Include(m => m.Karaktertrek).FirstOrDefault(m => m.ID==entityToUpdate.ID).Karaktertrek.Add(entityToUpdate.Karaktertrek.First());
+            foreach(Karaktertrek karakter in entityToUpdate.Karaktertrek)
+            {
+                if(!old.Karaktertrek.Exists(a => a.ID==karakter.ID))
+                {
+                    context.Karaktertrek.Attach(karakter);
+                    context.Klant.Include(m => m.Karaktertrek).FirstOrDefault(m => m.ID == old.ID).Karaktertrek.Add(karakter);
+                }
+      
+            }
             context.Entry(old.PersoonlijkeFiche).CurrentValues.SetValues(entityToUpdate.PersoonlijkeFiche);
             context.Entry(old).CurrentValues.SetValues(entityToUpdate);
         }
