@@ -571,6 +571,8 @@ namespace CRMSanto.Controllers
         [HttpGet]
         public ActionResult New()
         {
+            Session["PhotoLink"] = null;
+            Session["PhotoUpload"]=null;
             KlantViewModel model;
             if (Session["EditKlant"] == null)
             {
@@ -783,8 +785,6 @@ namespace CRMSanto.Controllers
                                     {
                                         tempKlant.Adres.Postcode = "0000";
                                     }
-                                    if (tempKlant.Adres.Gemeente.Plaatsnaam == null)
-                                    {
                                         gemeentelist = ks.GetGemeentesByPostCode(tempKlant.Adres.Postcode);//Get list of gemeentes by postcode
                                         if (gemeentelist.Count > 1)//If more then 1 gemeente possible
                                         {
@@ -799,7 +799,6 @@ namespace CRMSanto.Controllers
                                             tempKlant.Adres.Gemeente = gemeentelist.First();//Only 1 possible so no furder actions needed
                                         }
 
-                                    }
                                     if (klant.Upload == null)//If the upload would magicaly become null , we grab it from the database.
                                     {
                                         if (Session["PhotoUpload"] != null)
