@@ -42,21 +42,17 @@ namespace CRMSanto.Controllers
         {
             AfspraakPM apm = new AfspraakPM();
             apm.Afspraken = afs.GetLopendeAfspraken();
-            //List<Klant> jarigen = ks.GetJarigen();
-            //foreach(Klant k in jarigen)
-            //{
-            //    ks.SendMail(k);
-            //}
             ViewBag.Vanaf = DateTime.Today.ToString("dd-MM-yyyy");
             return View(apm);
         }
         [HttpPost]
         public ActionResult Index(DateTime vanaf)
         {
-            AfspraakPM apm = new AfspraakPM();
-            ViewBag.Vanaf = vanaf.ToString("dd-MM-yyyy");
-            apm.Afspraken = afs.VanafAfspraken(vanaf);
-            return View(apm);
+
+                AfspraakPM apm = new AfspraakPM();
+                ViewBag.Vanaf = vanaf.ToString("dd-MM-yyyy");
+                apm.Afspraken = afs.VanafAfspraken(vanaf);
+                return View(apm);
         }
         [HttpGet]
         public ActionResult Edit(int? id)
