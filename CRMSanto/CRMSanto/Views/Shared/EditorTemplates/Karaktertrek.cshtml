@@ -9,7 +9,7 @@
         
 }
 
-    @Html.DropDownListFor(model => model.ID, new SelectList(list, "ID", "Naam"))
+    @Html.DropDownListFor(model => model.ID, new SelectList(list, "ID", "Naam"), new { @class = "browser-default" })
     @*<select>
         <option value="" disabled selected>--</option>
         @foreach (var item in list)

@@ -2643,9 +2643,24 @@
         }
     }
     /*#endregion*/
-    
+    /*#region CONTAINER RESIZE*/
     @media only screen and (min-width: 993px) {
         .container {
             width: 95%;
         }
     }
+    /*#endregion*/
+    /*#region PRINT CSS*/
+    @media print {
+        .btn, btn-floating {
+            display: none !important;
+        }
+          a[href]:after {
+             content: none !important;
+        }
+          h1,h2,h3,h4{
+              padding: 0 !important;
+              margin: 0 !important;
+          }
+    }
+    /*#endregion*/
