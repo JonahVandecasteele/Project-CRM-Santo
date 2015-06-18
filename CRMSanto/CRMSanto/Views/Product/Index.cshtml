@@ -32,7 +32,6 @@
                     <tr>
                         <th>@Html.ActionLink(Html.DisplayNameFor(model => model.Naam).ToString(), "Index", new { sortOrder = ViewBag.NameSortParm })</th>
                         <th>@Html.ActionLink(Html.DisplayNameFor(model => model.Inhoud).ToString(), "Index", new { sortOrder = ViewBag.InhoudSortParm })</th>
-                        <th>Verkocht</th>
                         <th>@Html.ActionLink(Html.DisplayNameFor(model => model.AankoopPrijs).ToString(), "Index", new { sortOrder = ViewBag.APSortParm })</th>
                         <th>@Html.ActionLink(Html.DisplayNameFor(model => model.VerkoopPrijs).ToString(), "Index", new { sortOrder = ViewBag.VPSortParm })</th>
                         <th></th>
@@ -43,7 +42,6 @@
                     <tr class="product">
                         <td>@Html.DisplayFor(modelItem => item.Naam)</td>
                         <td>@Html.DisplayFor(modelItem => item.Inhoud)</td>
-                        <td>3</td>
                         <td>€ @Html.DisplayFor(modelItem => item.AankoopPrijs)</td>
                         <td>€ @Html.DisplayFor(modelItem => item.VerkoopPrijs)</td>
                         <td>

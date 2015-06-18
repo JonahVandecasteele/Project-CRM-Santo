@@ -42,21 +42,17 @@ namespace CRMSanto.Controllers
         {
             AfspraakPM apm = new AfspraakPM();
             apm.Afspraken = afs.GetLopendeAfspraken();
-            //List<Klant> jarigen = ks.GetJarigen();
-            //foreach(Klant k in jarigen)
-            //{
-            //    ks.SendMail(k);
-            //}
             ViewBag.Vanaf = DateTime.Today.ToString("dd-MM-yyyy");
             return View(apm);
         }
         [HttpPost]
         public ActionResult Index(DateTime vanaf)
         {
-            AfspraakPM apm = new AfspraakPM();
-            ViewBag.Vanaf = vanaf.ToString("dd-MM-yyyy");
-            apm.Afspraken = afs.VanafAfspraken(vanaf);
-            return View(apm);
+
+                AfspraakPM apm = new AfspraakPM();
+                ViewBag.Vanaf = vanaf.ToString("dd-MM-yyyy");
+                apm.Afspraken = afs.VanafAfspraken(vanaf);
+                return View(apm);
         }
         [HttpGet]
         public ActionResult Edit(int? id)
@@ -152,6 +148,11 @@ namespace CRMSanto.Controllers
         [HttpGet]
         public ActionResult New()
         {
+            if(TempData["error"]!=null)
+            {
+                ViewBag.Error = TempData["error"];
+                TempData["error"] = null;
+            }
            
             NieuweAfspraakPM pm = new NieuweAfspraakPM();
             pm.Klanten = new SelectList(ks.GetKlanten().Select(u => new { ID = u.ID, Naam = u.Naam + " " + u.Voornaam }), "ID", "Naam");
@@ -241,7 +242,7 @@ namespace CRMSanto.Controllers
                     else
                     {
                         a.Afspraak.Geannuleerd = false;
-                        //ViewBag.Error = "Afspraak reeds gemaakt op dit tijdstip";
+                        TempData["error"] = "Afspraak reeds gemaakt op dit tijdstip";
                         return RedirectToAction("New");
                         //return View(a);
                     }
