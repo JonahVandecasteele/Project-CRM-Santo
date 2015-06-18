@@ -17,9 +17,13 @@
 
 @using (Html.BeginForm("New", "Klant", FormMethod.Post, new { @id = "frmKlant", enctype = "multipart/form-data" }))
 {
+    
     @Html.AntiForgeryToken()
     @Html.HiddenFor(model => model.ID)
     @Html.HiddenFor(model => model.Foto)
+    if (Model.Gemeentes == null)
+    {
+
     <div class="row vertical-align">
         <div class="input-field col-xs-9">
             <div class="file-field input-field">
@@ -101,6 +105,7 @@
                                 <p>
                                         @foreach (var item in Model.Geslachten)
                                         {
+                                            
                                             count = count + 1;
                                             switch (item.Naam)
                                             {
@@ -117,7 +122,7 @@
                                                     gender = @item.Naam;
                                                     break;
                                             }
-                                            <input @(@count == 1 ? "checked" : "") name="Geslacht.ID" type="radio" id="@item.ID" class="with-gap radio-klant" value="@item.ID" />
+                                            <input @(@item.ID == Model.Geslacht.ID ? "checked" : "") name="Geslacht.ID" type="radio" id="@item.ID" class="with-gap radio-klant" value="@item.ID" />
                                             <label for="@item.ID">@gender</label>
                                         }
                                 </p>
@@ -190,6 +195,18 @@
                 @*<a onclick="$('#frmKlant')[0].reset();" href="#" class="btn-floating btn-large waves-effect waves-light red"><i class="mdi-navigation-refresh"></i></a>*@
                 <a onclick="$('#frmKlant')[0].submit();" href="#" class="btn-floating btn-large waves-effect waves-light green" name="Create"><i class="mdi-content-save"></i></a>
             </div>
+    }
+    else
+    {
+        <h3>Meer dan 1 overeenstemende gemeente gevonden</h3>
+        <p>Selecteer de passende gemeente :</p>
+        @Html.DropDownListFor(model => model.Adres.Gemeente.ID, new SelectList(Model.Gemeentes, "ID", "Plaatsnaam"))
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Finish" name="Create" class="btn btn-default" />
+            </div>
+        </div>
+    }
 }
 
             @section Scripts {

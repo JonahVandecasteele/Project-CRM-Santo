@@ -571,6 +571,9 @@ namespace CRMSanto.Controllers
         [HttpGet]
         public ActionResult New()
         {
+            TempData["NewKlantM"] = null;
+            Session["PhotoLink"] = null;
+            Session["PhotoUpload"]=null;
             KlantViewModel model;
             if (Session["EditKlant"] == null)
             {
@@ -688,7 +691,7 @@ namespace CRMSanto.Controllers
                         }
                         else
                         {
-                            if (ModelState.IsValid)
+                            if (ModelState.IsValid || TempData["NewKlantM"] != null)
                             {
                                 if(klant.ID==0)
                                 {
@@ -743,9 +746,8 @@ namespace CRMSanto.Controllers
                                             if (gemeentelist.Count > 1)//If more then 1 gemeente possible
                                             {
                                                 TempData["NewKlantM"] = klant;//Save klant data for postback
-                                                KlantViewModel model = klant;//Prep View Model
-                                                model.Gemeentes = gemeentelist;//Fill gemeentes so view knows that it has to show all possible gemeentes
-                                                return View(model);//Return this for view to handle
+                                                klant.Gemeentes = gemeentelist;//Fill gemeentes so view knows that it has to show all possible gemeentes
+                                                return View(klant);//Return this for view to handle
                                             }
                                             else
                                             {
@@ -770,20 +772,14 @@ namespace CRMSanto.Controllers
                                 {
                                     Klant tempKlant = new Klant();
                                     tempKlant = new Klant() { Voornaam = klant.Voornaam, Naam = klant.Naam, Geboortedatum = klant.Geboortedatum, Adres = klant.Adres, Email = klant.Email, Karaktertrek = (List<Karaktertrek>)TempData["Karaktertreken"], Telefoon = klant.Telefoon, Foto = klant.Foto, Geslacht = klant.Geslacht, ID = klant.ID, MedischeFiche = klant.MedischeFiche, PersoonlijkeFiche = klant.PersoonlijkeFiche, Voedingspatroon = klant.Voedingspatroon, KlantRelatie = klant.KlantRelatie };
-                                    if (tempKlant.Karaktertrek == null)
-                                        tempKlant.Karaktertrek = new List<Karaktertrek>();
-                                    if (tempKlant.Voedingspatroon == null)
-                                        tempKlant.Voedingspatroon = new Voedingspatroon();
-                                    if (tempKlant.KlantRelatie == null)
-                                        tempKlant.KlantRelatie = new List<KlantRelatie>();
-
+                                    
                                     //Get all possible gemeentes
                                     List<Gemeente> gemeentelist = new List<Gemeente>();
                                     if (tempKlant.Adres.Postcode == null)
                                     {
                                         tempKlant.Adres.Postcode = "0000";
                                     }
-                                    if (tempKlant.Adres.Gemeente.Plaatsnaam == null)
+                                    if (TempData["NewKlantM"] == null)
                                     {
                                         gemeentelist = ks.GetGemeentesByPostCode(tempKlant.Adres.Postcode);//Get list of gemeentes by postcode
                                         if (gemeentelist.Count > 1)//If more then 1 gemeente possible
@@ -798,8 +794,14 @@ namespace CRMSanto.Controllers
 
                                             tempKlant.Adres.Gemeente = gemeentelist.First();//Only 1 possible so no furder actions needed
                                         }
-
                                     }
+                                    else
+                                    {
+                                        tempKlant = (Klant)TempData["NewKlantM"];//Get data from before gemeente selection
+                                        tempKlant.Adres.Gemeente = ks.GetGemeenteByID(klant.Adres.Gemeente.ID);//Get selected gemeente
+                                    }
+                                        
+
                                     if (klant.Upload == null)//If the upload would magicaly become null , we grab it from the database.
                                     {
                                         if (Session["PhotoUpload"] != null)
@@ -817,9 +819,16 @@ namespace CRMSanto.Controllers
                                         }
                                             
                                     }
+                                    if (tempKlant.Karaktertrek == null)
+                                        tempKlant.Karaktertrek = new List<Karaktertrek>();
+                                    if (tempKlant.Voedingspatroon == null)
+                                        tempKlant.Voedingspatroon = new Voedingspatroon();
+                                    if (tempKlant.KlantRelatie == null)
+                                        tempKlant.KlantRelatie = new List<KlantRelatie>();
                                     ks.UpdateKlant(tempKlant);
                                     TempData["Klanten"] = null;
                                     Session["EditKlant"] = null;
+                                    TempData["NewKlantM"] = null;
                                     return RedirectToAction("Index");
                                 }
                                 
