@@ -185,7 +185,8 @@ namespace CRMSanto.Controllers
                     //
                 }
             }
-            return View(a);
+            //return View(a);
+            return RedirectToAction("Index");
         }
         [HttpGet]
         public ActionResult New()
