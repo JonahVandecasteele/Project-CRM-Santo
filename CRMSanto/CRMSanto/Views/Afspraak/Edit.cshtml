@@ -43,7 +43,7 @@
                 <div id="massage-row">
                     <div class="row">
                         <div class="input-field col s12">
-                            @Html.DropDownListFor(model => model.Afspraak.SoortAfspraak.ID, Model.SoortAfspraken, "--", null)
+                            @Html.DropDownListFor(model => model.Afspraak.SoortAfspraak.ID, Model.SoortAfspraken)
                         </div>
                     </div>
                 </div>
@@ -58,12 +58,12 @@
                 <div id="arrangement-row">
                     <div class="row">
                         <div class="input-field col s12">
-                            @Html.DropDownListFor(model => model.Afspraak.Arrangement.ID, Model.Arrangementen, "--", null)
+                            @Html.DropDownListFor(model => model.Afspraak.Arrangement.ID, Model.Arrangementen)
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            @Html.DropDownListFor(model => model.Afspraak.Extra.ID, Model.Extras, "--", null)
+                            @Html.DropDownListFor(model => model.Afspraak.Extra.ID, Model.Extras)
                             <label>@Html.DisplayNameFor(model => model.Extras)</label>
                         </div>
                     </div>
