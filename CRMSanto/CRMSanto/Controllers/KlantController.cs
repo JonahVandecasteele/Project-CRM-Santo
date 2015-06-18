@@ -804,7 +804,8 @@ namespace CRMSanto.Controllers
                                         tempKlant = (Klant)TempData["NewKlantM"];//Get data from before gemeente selection
                                         tempKlant.Adres.Gemeente = ks.GetGemeenteByID(klant.Adres.Gemeente.ID);//Get selected gemeente
                                     }
-                                        
+                                    tempKlant.MedischeFiche.Mutualiteit = ks.GetMutualiteitByID(tempKlant.MedischeFiche.Mutualiteit.ID);
+                                    tempKlant.MedischeFiche.Voedingspatroon = ks.GetVoedingspatroonByID(tempKlant.MedischeFiche.Voedingspatroon.ID);
 
                                     if (klant.Upload == null)//If the upload would magicaly become null , we grab it from the database.
                                     {

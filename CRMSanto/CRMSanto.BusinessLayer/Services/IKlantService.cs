@@ -20,6 +20,7 @@ namespace CRMSanto.BusinessLayer.Services
         CRMSanto.Models.Relatie GetRelatieByID(int id);
         System.Collections.Generic.List<CRMSanto.Models.Relatie> GetRelaties();
         System.Collections.Generic.List<CRMSanto.Models.Voedingspatroon> GetVoedingspatronen();
+        CRMSanto.Models.Voedingspatroon GetVoedingspatroonByID(int id);
         CRMSanto.Models.Werksituatie GetWerkSituatieByID(int id);
         System.Collections.Generic.List<CRMSanto.Models.Werksituatie> GetWerkSituaties();
         CRMSanto.Models.Karaktertrek InsertKaraktertrek(CRMSanto.Models.Karaktertrek k);
