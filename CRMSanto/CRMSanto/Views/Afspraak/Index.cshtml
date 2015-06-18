@@ -51,6 +51,7 @@
                                 <th>
                                     Extra
                                 </th>
+                                <th>Aantal personen</th>
                                 <th>
                                     Verplaatsing
                                 </th>
@@ -72,10 +73,7 @@
                                     <td>
                                         <div class="row vertical-align klant-home">
                                             <div class="col-md-3">
-                                                <a href="Klant/Edit/@Html.DisplayFor(modelItem => item.Klant.ID)"><img src="@Html.GetPhotoURL(Html.DisplayFor(modelItem => item.Klant.Foto).ToString())" alt="" class="profilepic shadow-z-1" /></a>
-                                            </div>
-                                            <div class="col-md-9">
-                                                <a href="Klant/Edit/@Html.DisplayFor(modelItem => item.Klant.ID)">@Html.DisplayFor(modelItem => item.Klant.Naam) @Html.DisplayFor(modelItem => item.Klant.Voornaam)</a>
+                                                <a href="Klant/Edit/@Html.DisplayFor(modelItem => item.Klant.ID)" title="@Html.DisplayFor(modelItem => item.Klant.Naam) @Html.DisplayFor(modelItem => item.Klant.Voornaam)"><img src="@Html.GetPhotoURL(Html.DisplayFor(modelItem => item.Klant.Foto).ToString())" alt="@Html.DisplayFor(modelItem => item.Klant.Naam) @Html.DisplayFor(modelItem => item.Klant.Voornaam)" class="profilepic shadow-z-1" /></a>
                                             </div>
                                         </div>
                                     </td>
@@ -92,9 +90,15 @@
                                         @Html.DisplayFor(modelItem => item.Extra.Naam)
                                     </td>
                                     <td>
+                                        @if (item.AantalPersonen != 0)
+                                        {
+                                            @Html.DisplayFor(modelItem => item.AantalPersonen)
+                                        }
+                                    </td>
+                                    <td>
                                         @if (item.Verplaatsing)
                                         {
-                                        <text>Ja: </text>@(item.Klant.Adres.Gemeente);
+                                        <text>Ja: </text>@(item.Klant.Adres.Gemeente.Plaatsnaam);
                                         }
                                     </td>                                
                                     <td>

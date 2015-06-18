@@ -37,7 +37,7 @@
         <div class="col s6">
             <div class="block-afspraak">
                 <p>
-                    <input type="checkbox" checked id="massage" />
+                    <input type="checkbox" id="massage" />
                     <label for="massage">@Html.DisplayNameFor(model => model.Afspraak.SoortAfspraak)</label>
                 </p>
                 <div id="massage-row">
@@ -65,6 +65,12 @@
                         <div class="col s12">
                             <label for="Afspraak_Extra_ID">@Html.DisplayNameFor(model => model.Extras)</label>
                             @Html.DropDownListFor(model => model.Afspraak.Extra.ID, Model.Extras, new { @class = "browser-default" })
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12">
+                            <label for="Afspraak_AantalPersonen">@Html.DisplayNameFor(model => model.Afspraak.AantalPersonen)</label>
+                            @Html.EditorFor(model => model.Afspraak.AantalPersonen)
                         </div>
                     </div>
                 </div>
@@ -114,7 +120,7 @@
     $(document).ready(function () {
         $('#massage-row').children().hide();
         $('#arrangement-row').children().hide();
-        if ($("#Afspraak_SoortAfspraak_ID option:selected").index() > 0) {
+        if ($("#Afspraak_SoortAfspraak_ID option:selected").index() != 0) {
             $('#massage-row').children().show();
             $('#massage').prop('checked', true);
         }
@@ -124,7 +130,7 @@
         }
         if ($("#Afspraak_Extra_ID option:selected").index() > 0) {
             $('#arrangement-row').children().show();
-            $('#massage').prop('checked', true);
+            $('#arrangement').prop('checked', true);
         }
 
         $('.datepicker').pickadate({
