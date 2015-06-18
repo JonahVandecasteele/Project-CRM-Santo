@@ -15,6 +15,7 @@ using model = CRMSanto.Models;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.OpenIdConnect;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
+using System.ComponentModel.DataAnnotations;
 
 namespace CRMSanto.Controllers
 {
@@ -36,7 +37,9 @@ namespace CRMSanto.Controllers
             this.ks = ks;
         }
 
+        
         [HttpGet]
+        //[Authorize]
         public ActionResult Index()
         {
             if (TempData["error"] != null)
@@ -51,6 +54,7 @@ namespace CRMSanto.Controllers
             return View(apm);
         }
         [HttpPost]
+        //[Authorize]
         public ActionResult Index(DateTime vanaf)
         {
                 AfspraakPM apm = new AfspraakPM();
@@ -59,6 +63,7 @@ namespace CRMSanto.Controllers
                 return View(apm);
         }
         [HttpGet]
+        //[Authorize]
         public ActionResult Edit(int? id)
         {
             if(id.HasValue)
@@ -123,6 +128,7 @@ namespace CRMSanto.Controllers
             }
         }      
         [HttpPost]
+        //[Authorize]
         public ActionResult Edit(NieuweAfspraakPM a)
         {
             
@@ -187,6 +193,7 @@ namespace CRMSanto.Controllers
             return RedirectToAction("Index");
         }
         [HttpGet]
+        //[Authorize]
         public ActionResult New()
         {
             if(TempData["error"]!=null)
@@ -210,6 +217,7 @@ namespace CRMSanto.Controllers
             return View(pm);
         }
         [HttpPost]
+        //[Authorize]
         public async Task<ActionResult> New(NieuweAfspraakPM a)
         {
                 string verplaatsing = Request.Form["Afspraak.Verplaatsing"];
@@ -301,6 +309,7 @@ namespace CRMSanto.Controllers
             //return View(pm);
         }
         [HttpGet]
+        //[Authorize]
         public ActionResult Annuleer(int? id)
         {
             if(id.HasValue)
@@ -337,6 +346,7 @@ namespace CRMSanto.Controllers
             }
         }
         [HttpPost]
+        //[Authorize]
         public ActionResult Annuleer(NieuweAfspraakPM a)
         {
             if (a.Afspraak.Klant.ID != 0)

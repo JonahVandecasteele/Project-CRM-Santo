@@ -33,6 +33,8 @@ namespace CRMSanto.Controllers
 
         //    return View(ks.GetMutualiteiten());
         //}
+
+        //[Authorize]
         public ActionResult Index(string sortOrder, string sortGeslacht)
         {
             Session["EditKlant"] = null;
@@ -554,6 +556,8 @@ namespace CRMSanto.Controllers
                 
             }
         }
+        
+        //[Authorize]
         public ActionResult Details(int? id)
         {
             if (id == null) { return RedirectToAction("Index"); }
@@ -568,7 +572,9 @@ namespace CRMSanto.Controllers
             kdpm.Afspraken = afspraken;
             return View(kdpm);
         }
+
         [HttpGet]
+        //[Authorize]
         public ActionResult New()
         {
             TempData["NewKlantM"] = null;
@@ -638,11 +644,15 @@ namespace CRMSanto.Controllers
             
             return View(model);
         }
+
+        //[Authorize]
         public ActionResult Edit(int ID)
         {
             Session["EditKlant"] = ID;
             return RedirectToAction("New");
         }
+
+        //[Authorize]
         [HttpPost]
         public ActionResult New(KlantViewModel klant)
         {
@@ -861,6 +871,8 @@ namespace CRMSanto.Controllers
                         
                     }
         }
+
+        //[Authorize]
         public ActionResult Photo()
         {
             if (Session["PhotoUpload"] != null)
@@ -886,6 +898,7 @@ namespace CRMSanto.Controllers
                 
             }
         }
+
         public Stream ToStream(Image image, ImageFormat formaw)
         {
             var stream = new System.IO.MemoryStream();

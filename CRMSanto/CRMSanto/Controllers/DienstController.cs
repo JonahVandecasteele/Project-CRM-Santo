@@ -25,11 +25,13 @@ namespace CRMSanto.Controllers
         // GET: Dienst
         
         [HttpGet]
+        //[Authorize]
         public ActionResult New()
         {
             return View();
         }
         [HttpPost]
+        //[Authorize]
         public ActionResult New(SoortAfspraak m)
         {
             if (ModelState.IsValid)
@@ -43,6 +45,7 @@ namespace CRMSanto.Controllers
             }
         }
         [HttpGet]
+        //[Authorize]
         public ActionResult Edit(int? id)
         {
             if(id==null)
@@ -55,6 +58,7 @@ namespace CRMSanto.Controllers
             }            
         }
         [HttpPost]
+        //[Authorize]
         public ActionResult Edit(SoortAfspraak m)
         {
             if (ModelState.IsValid)
@@ -68,11 +72,13 @@ namespace CRMSanto.Controllers
             }
         }        
         [HttpGet]
+        //[Authorize]
         public ActionResult New2()
         {
             return View();
         }
         [HttpPost]
+        //[Authorize]
         public ActionResult New2(Arrangement a)
         {
             if (ModelState.IsValid)
@@ -87,6 +93,7 @@ namespace CRMSanto.Controllers
             }
         }
         [HttpGet]
+        //[Authorize]
         public ActionResult Edit2(int? id)
         {
             if (id == null)
@@ -99,6 +106,7 @@ namespace CRMSanto.Controllers
             }
         }
         [HttpPost]
+        //[Authorize]
         public ActionResult Edit2(Arrangement a)
         {
             if(ModelState.IsValid)
@@ -114,11 +122,13 @@ namespace CRMSanto.Controllers
             
         }
         [HttpGet]
+        //[Authorize]
         public ActionResult New3()
         {
             return View();
         }
         [HttpPost]
+        //[Authorize]
         public ActionResult New3(Extra e)
         {
             if (ModelState.IsValid)
@@ -132,6 +142,7 @@ namespace CRMSanto.Controllers
             }
         }
         [HttpGet]
+        //[Authorize]
         public ActionResult Edit3(int? id)
         {
             if (id == null)
@@ -144,6 +155,7 @@ namespace CRMSanto.Controllers
             }
         }
         [HttpPost]
+        //[Authorize]
         public ActionResult Edit3(Extra e)
         {
             if (ModelState.IsValid)
