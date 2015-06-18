@@ -35,6 +35,7 @@
                                 <th>
                                     @Html.DisplayNameFor(model => model.Afspraken[0].DatumTijdstip)
                                 </th>
+                                <th></th>
                                 <th>
                                     Klant
                                 </th>
@@ -44,18 +45,16 @@
                                 <th>
                                     @Html.DisplayNameFor(model => model.Afspraken[0].SoortAfspraak)
                                 </th>
-                                <td>
-                                    Arrangement
-                                </td>
-                                <td>
-                                    Extra
-                                </td>
-                                <td>
-                                    Verplaatsing
-                                </td>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.Afspraken[0].SoloDuo)
+                                    Arrangement
                                 </th>
+                                <th>
+                                    Extra
+                                </th>
+                                <th>
+                                    Verplaatsing
+                                </th>
+                                <th></th>
                             </tr>
                             @foreach (var item in Model.Afspraken)
                             {
@@ -66,6 +65,8 @@
                                 <tr class='@style'>
                                     <td>
                                         @item.DatumTijdstip.Date.ToShortDateString() <br />
+                                    </td>
+                                    <td>
                                         @item.DatumTijdstip.ToString("HH:mm") - @item.DatumTijdstip.AddMinutes(item.Duur).ToString("HH:mm")
                                     </td>
                                     <td>
@@ -95,10 +96,7 @@
                                         {
                                             <button class="btn btn-fab-mini btn-raised btn-sm btn-material-pink" onclick="routeLink('@Html.DisplayFor(modelItem => item.Klant.Adres.Straat)', '@Html.DisplayFor(modelItem => item.Klant.Adres.Nummer)', '@Html.DisplayFor(modelItem => item.Klant.Adres.Postcode)', '@Html.DisplayFor(modelItem => item.Klant.Adres.Gemeente)');return false;"><i class="mdi-maps-navigation"></i></button>
                                         }
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.SoloDuo)
-                                    </td>
+                                    </td>                                
                                     <td>
                                         <nobr>
                                             <a href='@Url.Action("Edit","Afspraak",new { id = item.ID })' class="btn-floating waves-effect waves-light orange inline-btn"><i class="mdi-editor-mode-edit"></i></a>
