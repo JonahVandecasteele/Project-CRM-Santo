@@ -211,7 +211,7 @@
                     event.preventDefault();
                     emails = "";
                     $('.checkboxes:checked').each(function () {
-                        emails = emails + $(this).val() + ", ";
+                        emails = emails + $(this).val() + "; ";
                     });
                     var mailto_link = 'mailto:' + emails;
 
