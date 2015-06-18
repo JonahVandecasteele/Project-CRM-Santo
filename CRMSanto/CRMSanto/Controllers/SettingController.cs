@@ -51,14 +51,12 @@ namespace CRMSanto.Controllers
         {
             return View();
         }
-
         [HttpPost]
         public ActionResult OpkuisAfspraken(DateTime van, DateTime tot)
         {
             afs.InsertArchief(van,tot);
             return RedirectToAction("Index");
         }
-
         [HttpGet]
         public ActionResult NewMutualiteit()
         {
@@ -81,6 +79,23 @@ namespace CRMSanto.Controllers
         public ActionResult NewRelatie(Relatie r)
         {
             ks.InsertRelatie(r);
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public ActionResult NewMailImage()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult NewMailImage(HttpPostedFileBase file)
+        {
+            if(file!=null)
+            {
+                ks.SaveImage(file, "verjaardagsmail.jpg");
+            }
+
             return RedirectToAction("Index");
         }
     }

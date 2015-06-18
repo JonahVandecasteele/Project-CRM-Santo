@@ -21,13 +21,24 @@ namespace CRMSanto.Controllers
         // GET: Product
         public ActionResult Index(string sortOrder)
         {
+            if (TempData["Producten"] == null)
+            {
+                TempData["Producten"] = ps.GetProducten();
+            }
+            TempData["Search"] = Request.Form["Search"];
             //if (Request.Form["zoeken"] != null)
             if(Request.Form["submit"] != null)
             {
                 string zoeken = Request.Form["Search"];
                 //return View(ps.GetProducten());
                 List<Product> producten = ps.GetProducten().Where(x => x.Naam.ToLower().Contains(zoeken.ToLower())).ToList();
+                TempData["Producten"] = producten.ToList();
                 return View(producten);
+            }
+            else if (Request.Form["clear"] != null)
+            {
+                TempData["Search"] = null;
+                return View(ps.GetProducten().OrderBy(x => x.Naam));
             }
             else
             {
@@ -35,9 +46,9 @@ namespace CRMSanto.Controllers
                 ViewBag.InhoudSortParm = sortOrder == "inhoud" ? "inhoud_desc" : "inhoud";
                 ViewBag.APSortParm = sortOrder == "aankoopprijs" ? "aankoopprijs_desc" : "aankoopprijs";
                 ViewBag.VPSortParm = sortOrder == "verkoopprijs" ? "verkoopprijs_desc" : "verkoopprijs";
-             
-                List<Product> producten = ps.GetProducten();
-                ViewBag.Search = null;
+
+                List<Product> producten = (List<Product>)TempData["Producten"];
+                //ViewBag.Search = null;
                 switch (sortOrder)
                 {
                     case "name":
@@ -70,6 +81,7 @@ namespace CRMSanto.Controllers
                         break;
 
                 }
+                TempData["Producten"] = producten;
                 return View(producten);
             }
             
@@ -91,7 +103,7 @@ namespace CRMSanto.Controllers
         public ActionResult Edit(Product p)
         {
             ps.EditProduct(p);
-            return View();
+            return RedirectToAction("Index");
         }
         [HttpGet]
         public ActionResult New()
@@ -101,9 +113,6 @@ namespace CRMSanto.Controllers
         [HttpPost]
         public ActionResult New(Product p)
         {
-            HttpPostedFileBase photo = p.Upload;
-            p.Foto = photo.FileName;
-            ps.SaveImage(photo);
             ps.AddProduct(p);
             return RedirectToAction("Index");
         }
