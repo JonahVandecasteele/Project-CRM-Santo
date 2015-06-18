@@ -148,8 +148,8 @@
 
         <script>
             $(".clickable-row").click(function () {
-                if (e.toElement.tagName == 'A') return
-                window.document.location = $(this).data("href");
+                if (e.toElement.tagName == 'A') return;
+                else window.document.location = $(this).data("href");
             });
 
             $(document).ready(function () {
