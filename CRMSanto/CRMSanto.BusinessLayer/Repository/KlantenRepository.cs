@@ -108,7 +108,7 @@ namespace CRMSanto.BusinessLayer.Repository
                 context.Klant.Include(m => m.Geslacht).FirstOrDefault(m => m.ID == entityToUpdate.ID).Geslacht = entityToUpdate.Geslacht;
             }
             context.Entry(old.Adres).CurrentValues.SetValues(entityToUpdate.Adres);
-            if (old.Adres.Gemeente != null && old.Adres.Gemeente.ID != entityToUpdate.Adres.Gemeente.ID)
+            if (old.Adres.Gemeente != null && old.Adres.Gemeente.ID != entityToUpdate.Adres.Gemeente.ID && entityToUpdate.Adres.Gemeente.ID != 0)
             {
                 context.Gemeente.Attach(entityToUpdate.Adres.Gemeente);
                 context.Adres.Include(m => m.Gemeente).FirstOrDefault(m => m.ID == entityToUpdate.Adres.ID).Gemeente = entityToUpdate.Adres.Gemeente;
