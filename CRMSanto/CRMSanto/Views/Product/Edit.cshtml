@@ -1,91 +1,83 @@
 ﻿@model CRMSanto.Models.Product
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Product bewerken";
 }
 
-<h2>Edit</h2>
+<ul class="breadcrumb">
+    <li>@Html.ActionLink("Producten", "Index", "Product")</li>
+    <li class="active">Bewerken</li>
+</ul>
 
 
 @using (Html.BeginForm("Edit", "Product", FormMethod.Post,
  new { @id = "frmProduct", enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>Product</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.ID)
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Naam, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Naam, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Naam, "", new { @class = "text-danger" })
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="row">
+        <div class="col s12">
+            <div class="row">
+                <div class="input-field col s12">
+                    @Html.LabelFor(model => model.Naam)
+                    @Html.EditorFor(model => model.Naam, new { htmlAttributes = new { placeholder = "" } })
+                    @Html.ValidationMessageFor(model => model.Naam, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.AankoopPrijs, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.AankoopPrijs, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.AankoopPrijs, "", new { @class = "text-danger" })
+            <div class="row">
+                <div class="input-field col s6">
+                    <label for="AankoopPrijs">Aankoopprijs</label>
+                    @Html.EditorFor(model => model.AankoopPrijs, new { htmlAttributes = new { placeholder = "" } })
+                    @Html.ValidationMessageFor(model => model.AankoopPrijs, "", new { @class = "text-danger" })
+                </div>
+                <div class="input-field col s6">
+                    <label for="VerkoopPrijs">Verkoopprijs</label>
+                    @Html.EditorFor(model => model.VerkoopPrijs, new { htmlAttributes = new { placeholder = "" } })
+                    @Html.ValidationMessageFor(model => model.VerkoopPrijs, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.VerkoopPrijs, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.VerkoopPrijs, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.VerkoopPrijs, "", new { @class = "text-danger" })
+            <div class="row">
+                <div class="input-field col s6">
+                    @Html.LabelFor(model => model.Inhoud)
+                    @Html.EditorFor(model => model.Inhoud, new { htmlAttributes = new { placeholder = "" } })
+                    @Html.ValidationMessageFor(model => model.Inhoud, "", new { @class = "text-danger" })
+                </div>
+                <div class="input-field col s6">
+                    @Html.LabelFor(model => model.Barcode)
+                    @Html.EditorFor(model => model.Barcode, new { htmlAttributes = new { placeholder = "" } })
+                    @Html.ValidationMessageFor(model => model.Barcode, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Inhoud, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Inhoud, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Inhoud, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Omschrijving, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Omschrijving, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Omschrijving, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.MinStock, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.MinStock, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.MinStock, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Barcode, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Barcode, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Barcode, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+            <div class="row">
+                <div class="input-field col s12">
+                    @Html.LabelFor(model => model.Omschrijving)
+                    @Html.TextAreaFor(model => model.Omschrijving, new { @class = "materialize-textarea", placeholder = "" })
+                    @Html.ValidationMessageFor(model => model.Omschrijving, "", new { @class = "text-danger" })
+                </div>
             </div>
         </div>
     </div>
-    
+
+
     <div class="fixed-action-btn">
+        <a onclick="$('#frmProduct').reset();" href="#" class="btn-floating btn-large waves-effect waves-light red"><i class="mdi-navigation-refresh"></i></a>
         <a onclick="$('#frmProduct').submit();" href="#" class="btn-floating btn-large waves-effect waves-light green"><i class="mdi-content-save"></i></a>
     </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
+<div class="progress">
+    <div class="indeterminate"></div>
 </div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+<script>
+    $(document).ready(function () {
+        $(".progress").hide();
+    });
+    function showProgress() {
+        $(".progress").show();
+    }
+</script>
