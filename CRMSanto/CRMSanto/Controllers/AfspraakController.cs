@@ -76,19 +76,16 @@ namespace CRMSanto.Controllers
 
                 List<SoortAfspraak> afspraaktypelist = new List<SoortAfspraak>();
                 afspraaktypelist.Add(new SoortAfspraak { Naam = "--", ID = 0 });
-                //afspraaktypelist.AddRange(afs.GetMassages().Select(ms => new { ID = ms.ID, Naam = ms.Naam }));
                 afspraaktypelist.AddRange(afs.GetMassages());
                 pm.SoortAfspraken = new SelectList(afspraaktypelist, "ID", "Naam");
 
                 List<Arrangement> arrangementenlist = new List<Arrangement>();
                 arrangementenlist.Add(new Arrangement { Naam = "--", ID = 0 });
-                //arrangementenlist.AddRange((List<Arrangement>)afs.GetArrangementen().Select(ar => new { ID = ar.ID, Naam = ar.Naam }));
                 arrangementenlist.AddRange((List<Arrangement>)afs.GetArrangementen());
                 pm.Arrangementen = new SelectList(arrangementenlist, "ID", "Naam");
 
                 List<Extra> extralist = new List<Extra>();
                 extralist.Add(new Extra { Naam = "--", ID = 0 });
-                //extralist.AddRange((List<Extra>)afs.GetExtras().Select(e => new { ID = e.ID, Naam = e.Naam }));
                 extralist.AddRange((List<Extra>)afs.GetExtras());
                 pm.Extras = new SelectList(extralist, "ID", "Naam");
 

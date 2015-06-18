@@ -94,7 +94,7 @@
 
     <div class="row">
         <div class="col s6">
-            <input type="checkbox" id="Afspraak_Verplaatsing" name="Afspraak.Verplaatsing" @(Model.Afspraak.Verplaatsing == true ? "checked" : "") />
+            <input type="checkbox" id="Afspraak_Verplaatsing" name="Verplaatsing" @(Model.Afspraak.Verplaatsing == true ? "checked" : "") />
             <label for="Afspraak_Verplaatsing">@Html.DisplayNameFor(model => model.Afspraak.Verplaatsing)</label>
         </div>
         @Html.HiddenFor(model => model.Afspraak.Verplaatsing)
