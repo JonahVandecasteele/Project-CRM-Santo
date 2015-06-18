@@ -186,6 +186,7 @@ namespace CRMSanto.Controllers
                 }
             }
             //return View(a);
+            TempData["error"] = "Foutieve aanpassingen!";
             return RedirectToAction("Index");
         }
         [HttpGet]
