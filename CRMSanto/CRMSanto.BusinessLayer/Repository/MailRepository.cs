@@ -37,7 +37,7 @@ namespace CRMSanto.BusinessLayer.Repository
             headers.Add("X-Mailin-custom", "my custom value");
             headers.Add("X-Mailin-IP", "102.102.1.2");
             headers.Add("X-Mailin-Tag", "My tag");
-            Object sendEmail = sendinBlue.send_email(to, "Gelukkige verjaardag", from_name, "<img src='https://dl.dropboxusercontent.com/u/37586195/kaart.jpg'/>", "Gefeliciteerd!", new Dictionary<string, string>(), headers);
+            Object sendEmail = sendinBlue.send_email(to, "Gelukkige verjaardag", from_name, "<img src='http://massagesanto.blob.core.windows.net/images/verjaardagsmail.jpg'/>", "Gefeliciteerd!", new Dictionary<string, string>(), headers);
         }
     }
 }
