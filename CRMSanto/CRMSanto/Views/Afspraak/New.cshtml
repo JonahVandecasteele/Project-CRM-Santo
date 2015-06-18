@@ -4,6 +4,10 @@
     ViewBag.Title = "Afspraak toevoegen";
 }
 
+<script src="@Url.Content("~/Scripts/jquery.timepicker.js")"></script>
+<script src="@Url.Content("~/Scripts/jquery.timepicker.min.js")"></script>
+
+
 <ul class="breadcrumb">
     <li>@Html.ActionLink("Afspraken","Index","Afspraak")</li>
     <li class="active">Toevoegen</li>
@@ -75,7 +79,7 @@
         <div class="col s6">
             <p>
                 <label>@Html.DisplayNameFor(model => model.Tijdstip)</label>
-                @Html.EditorFor(model => model.Tijdstip, new { htmlAttributes = new { @class = "timepicker", placeholder = "", type="time" } })
+                @Html.EditorFor(model => model.Tijdstip, new { htmlAttributes = new { @class = "timepicker", id = "tijd", placeholder = "", type="time" } })
             </p>
         </div>
     </div>
@@ -151,9 +155,9 @@
                 }
             });
 
-            $(document).ready(function () {
-                $('.timepicker').timepicker({ timeFormat: 'HH:mm:ss p' });
-            });
+            //$(document).ready(function () {
+            //    $('.timepicker').timepicker({ timeFormat: 'HH:mm:ss', interval: 15, dropdown: true, minTime: '8:30:00' });
+            //});
         </script>
 
         @section Scripts {
