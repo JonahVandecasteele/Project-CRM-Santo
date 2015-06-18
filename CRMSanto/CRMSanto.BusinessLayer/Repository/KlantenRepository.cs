@@ -53,8 +53,8 @@ namespace CRMSanto.BusinessLayer.Repository
                     context.Karaktertrek.Attach(item);
                 }
             }
-            else
                 context.Geslacht.Attach(entity.Geslacht);
+
             if (entity.Adres.Gemeente != null)
             {
                 context.Gemeente.Attach(entity.Adres.Gemeente);
@@ -81,18 +81,15 @@ namespace CRMSanto.BusinessLayer.Repository
         }
         public override void Update(Klant entityToUpdate)
         {
-            context.Adres.Attach(entityToUpdate.Adres);
-            context.Geslacht.Attach(entityToUpdate.Geslacht);
-            foreach (Karaktertrek kar in entityToUpdate.Karaktertrek)
-            {
-                context.Karaktertrek.Attach(kar);
-            }
-            context.MedischeFiche.Attach(entityToUpdate.MedischeFiche);
-            context.PersoonlijkeFiche.Attach(entityToUpdate.PersoonlijkeFiche);
-            context.Voedingspatroon.Attach(entityToUpdate.Voedingspatroon);
-            Klant klant = context.Klant.Attach(entityToUpdate);
-
-            context.Entry(entityToUpdate).State = EntityState.Modified;
+            Klant old = GetByID(entityToUpdate.ID);
+            //context.KlantRelatie.AddRange(entity.KlantRelaties);
+            //
+            context.MedischeFiche.Attach(old.MedischeFiche);
+            context.PersoonlijkeFiche.Attach(old.PersoonlijkeFiche);
+            //context.Entry(old.Karaktertrek).CurrentValues.SetValues(entityToUpdate.Karaktertrek);
+            context.Klant.Include(m => m.Karaktertrek).FirstOrDefault(m => m.ID==entityToUpdate.ID).Karaktertrek.Add(entityToUpdate.Karaktertrek.First());
+            context.Entry(old.PersoonlijkeFiche).CurrentValues.SetValues(entityToUpdate.PersoonlijkeFiche);
+            context.Entry(old).CurrentValues.SetValues(entityToUpdate);
         }
         public void SaveImage(HttpPostedFileBase p,string filename)
         {
