@@ -15,15 +15,15 @@
 
     @Html.ValidationSummary(false)
     <div class="row">
-        <div class="input-field col s12">
-            @Html.DropDownListFor(model => model.Afspraak.Klant.ID, Model.Klanten)
-            <label>@Html.DisplayNameFor(model => model.Afspraak.Klant)</label>
+        <div class="col s12">
+            <p><label for="Afspraak_Klant_ID">@Html.DisplayNameFor(model => model.Afspraak.Klant)</label></p>
+            @Html.DropDownListFor(model => model.Afspraak.Klant.ID, Model.Klanten, new {@class = "browser-default" })
         </div>
     </div>
     <div class="row">
-        <div class="input-field col s12">
-            @Html.DropDownListFor(model => model.Afspraak.Masseur.ID, Model.Masseurs)
-            <label>@Html.DisplayNameFor(model => model.Afspraak.Masseur)</label>
+        <div class="col s12">
+            <p><label for="Afspraak_Masseur_ID">@Html.DisplayNameFor(model => model.Afspraak.Masseur)</label></p>
+            @Html.DropDownListFor(model => model.Afspraak.Masseur.ID, Model.Masseurs, new { @class = "browser-default" })
         </div>
     </div>
 
@@ -37,7 +37,7 @@
                 <div id="massage-row">
                     <div class="row">
                         <div class="input-field col s12">
-                            @Html.DropDownListFor(model => model.Afspraak.SoortAfspraak.ID, Model.SoortAfspraken, "--", null)
+                            @Html.DropDownListFor(model => model.Afspraak.SoortAfspraak.ID, Model.SoortAfspraken, "--", new { @class = "browser-default" })
                         </div>
                     </div>
                     </div>
@@ -52,13 +52,13 @@
                 <div id="arrangement-row">
                     <div class="row">
                         <div class="input-field col s12">
-                            @Html.DropDownListFor(model => model.Afspraak.Arrangement.ID, Model.Arrangementen, "--", null)
+                            @Html.DropDownListFor(model => model.Afspraak.Arrangement.ID, Model.Arrangementen, "--", new { @class = "browser-default" })
                         </div>
                     </div>
                     <div class="row">
-                        <div class="input-field col s12">
-                            @Html.DropDownListFor(model => model.Afspraak.Extra.ID, Model.Extras, "--", null)
-                            <label>@Html.DisplayNameFor(model => model.Extras)</label>
+                        <div class="col s12">
+                            <label for="Afspraak_Extra_ID">@Html.DisplayNameFor(model => model.Extras)</label>
+                            @Html.DropDownListFor(model => model.Afspraak.Extra.ID, Model.Extras, "--", new { @class = "browser-default" })
                         </div>
                     </div>
                 </div>

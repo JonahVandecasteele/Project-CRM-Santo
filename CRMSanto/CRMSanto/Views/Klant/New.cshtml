@@ -200,7 +200,7 @@
     {
         <h3>Meer dan 1 overeenstemende gemeente gevonden</h3>
         <p>Selecteer de passende gemeente :</p>
-        @Html.DropDownListFor(model => model.Adres.Gemeente.ID, new SelectList(Model.Gemeentes, "ID", "Plaatsnaam"))
+        @Html.DropDownListFor(model => model.Adres.Gemeente.ID, new SelectList(Model.Gemeentes, "ID", "Plaatsnaam"), new { @class = "browser-default" })
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Finish" name="Create" class="btn btn-default" />

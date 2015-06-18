@@ -11,12 +11,12 @@
 <hr />
         @Html.HiddenFor(model => model.Relatie.Naam)
         @Html.HiddenFor(model => model.Relatie.Voornaam)
-        @Html.DropDownListFor(model => model.Relatie.ID, new SelectList(klantlist, "ID", "Naam"))
+        @Html.DropDownListFor(model => model.Relatie.ID, new SelectList(klantlist, "ID", "Naam"), new { @class = "browser-default" })
         <label>Karaktertrekken</label>
         @Html.ValidationMessageFor(model => model.Relatie.ID, "", new { @class = "text-danger" })
 
         @Html.HiddenFor(model => model.RelatieType.Naam)
-        @Html.DropDownListFor(model => model.RelatieType.ID, new SelectList(relatielist, "ID", "Naam"))
+        @Html.DropDownListFor(model => model.RelatieType.ID, new SelectList(relatielist, "ID", "Naam"), new { @class = "browser-default" })
         <label>Karaktertrekken</label>
         @Html.ValidationMessageFor(model => model.RelatieType.ID, "", new { @class = "text-danger" })
         <button class="btn waves-effect waves-light" type="submit" name="addrelatie">

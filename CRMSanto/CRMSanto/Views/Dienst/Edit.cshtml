@@ -1,65 +1,50 @@
 ﻿@model CRMSanto.Models.SoortAfspraak
 
-@using (Html.BeginForm())
+@{
+    ViewBag.Title = "Massage bewerken";
+}
+
+<ul class="breadcrumb">
+    <li>@Html.ActionLink("Diensten", "Index", "Dienst")</li>
+    <li class="active">Massage bewerken</li>
+</ul>
+
+@using (Html.BeginForm("Edit", "Dienst", FormMethod.Post, new { @id = "frmDienst" }))
 {
     @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>SoortAfspraak</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.ID)
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Naam, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Naam, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Naam, "", new { @class = "text-danger" })
+    <div class="row">
+        <div class="col s12">
+            <div class="row">
+                <div class="input-field col s12">
+                    @Html.LabelFor(model => model.Naam)
+                    @Html.EditorFor(model => model.Naam, new { htmlAttributes = new { placeholder = "" } })
+                    @Html.ValidationMessageFor(model => model.Naam, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Omschrijving, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Omschrijving, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Omschrijving, "", new { @class = "text-danger" })
+            <div class="row">
+                <div class="input-field col s6">
+                    @Html.LabelFor(model => model.Prijs)
+                    @Html.EditorFor(model => model.Prijs, new { htmlAttributes = new { placeholder = "" } })
+                    @Html.ValidationMessageFor(model => model.Prijs, "", new { @class = "text-danger" })
+                </div>
+                <div class="input-field col s6">
+                    @Html.LabelFor(model => model.Duur)
+                    @Html.EditorFor(model => model.Duur, new { htmlAttributes = new { placeholder = "" } })
+                    @Html.ValidationMessageFor(model => model.Duur, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Duur, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Duur, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Duur, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Prijs, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Prijs, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Prijs, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Verplaatsingmogelijk, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.Verplaatsingmogelijk)
-                    @Html.ValidationMessageFor(model => model.Verplaatsingmogelijk, "", new { @class = "text-danger" })
+            <div class="row">
+                <div class="input-field col s12">
+                    <p><label for="Afspraak_Notitie">@Html.DisplayNameFor(model => model.Omschrijving)</label></p>
+                    @Html.TextAreaFor(model => model.Omschrijving, new { @class = "materialize-textarea", placeholder = "" })
                 </div>
             </div>
         </div>
+    </div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
-        </div>
+    <div class="fixed-action-btn">
+        <a onclick="$('#frmDienst')[0].reset();" href="#" class="btn-floating btn-large waves-effect waves-light red"><i class="mdi-navigation-refresh"></i></a>
+        <a onclick="$('#frmDienst')[0].submit();" href="#" class="btn-floating btn-large waves-effect waves-light green" name="Create"><i class="mdi-content-save"></i></a>
     </div>
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>

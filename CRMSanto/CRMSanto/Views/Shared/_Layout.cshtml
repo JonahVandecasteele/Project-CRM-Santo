@@ -32,6 +32,18 @@
         document.write('<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />\n')
         document.write('<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"><\/script>\n')
     }
+
+    $(document).ready(function () {
+        $(".btn").each(function (index) {
+            $(this).addClass("hidden-print");
+        });
+        $(".navbar-fixed").each(function (index) {
+            $(this).addClass("hidden-print");
+        });
+        $(".btn-floating").each(function (index) {
+            $(this).addClass("hidden-print");
+        });
+    });
     </script>
         @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
