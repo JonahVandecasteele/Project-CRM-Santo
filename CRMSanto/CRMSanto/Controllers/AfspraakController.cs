@@ -132,7 +132,7 @@ namespace CRMSanto.Controllers
             if(ModelState.IsValid)
             {
                 string verplaatsing = Request.Form["Verplaatsing"];
-                if (verplaatsing.Equals("on"))
+                if (verplaatsing!=null&&verplaatsing.Equals("on"))
                     a.Afspraak.Verplaatsing = true;
                 else
                     a.Afspraak.Verplaatsing = false;
