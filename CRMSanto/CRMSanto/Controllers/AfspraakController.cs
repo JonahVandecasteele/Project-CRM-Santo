@@ -87,12 +87,17 @@ namespace CRMSanto.Controllers
                 a.Duur = pm.Afspraak.Duur;
                 a.SoloDuo = pm.Afspraak.SoloDuo;
                 a.SoortAfspraak = pm.Afspraak.SoortAfspraak;
-                a.Arrangement = pm.Afspraak.Arrangement;
                 a.AantalPersonen = pm.Afspraak.AantalPersonen;
                 a.Klant = pm.Afspraak.Klant;
                 a.Archief = pm.Afspraak.Archief;
                 a.Geannuleerd = pm.Afspraak.Geannuleerd;
                 a.Masseur = pm.Afspraak.Masseur;
+                a.Arrangement = pm.Afspraak.Arrangement;
+                if (a.Arrangement == null)
+                    a.Arrangement = new Arrangement();
+                a.Extra = pm.Afspraak.Extra;
+                if (a.Extra == null)
+                    a.Extra = new Extra();
 
 
                 return View(pm);

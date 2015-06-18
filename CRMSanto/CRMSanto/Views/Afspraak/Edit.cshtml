@@ -16,7 +16,10 @@
     @Html.ValidationSummary(false)
     
     @Html.HiddenFor(model => model.Afspraak.ID)
-    
+    @Html.HiddenFor(model => model.Afspraak.Masseur.Naam)
+    @Html.HiddenFor(model => model.Afspraak.Klant.Naam)
+    @Html.HiddenFor(model => model.Afspraak.Klant.Voornaam)
+
     <div class="row">
         <div class="input-field col s12">
             @Html.DropDownListFor(model => model.Afspraak.Klant.ID, Model.Klanten)
