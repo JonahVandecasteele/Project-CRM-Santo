@@ -29,11 +29,18 @@ namespace CRMSanto.Controllers
             //if (Request.Form["zoeken"] != null)
             if(Request.Form["submit"] != null)
             {
-                string zoeken = Request.Form["Search"];
-                //return View(ps.GetProducten());
-                List<Product> producten = ps.GetProducten().Where(x => x.Naam.ToLower().Contains(zoeken.ToLower())).ToList();
-                TempData["Producten"] = producten.ToList();
-                return View(producten);
+                if (Request.Form["Search"] != "")
+                {
+                    string zoeken = Request.Form["Search"];
+                    //return View(ps.GetProducten());
+                    List<Product> producten = ps.GetProducten().Where(x => x.Naam.ToLower().Contains(zoeken.ToLower())).ToList();
+                    TempData["Producten"] = producten.ToList();
+                    return View(producten);
+                }
+                else
+                {
+                    return View(ps.GetProducten().OrderBy(n => n.Naam));
+                }
             }
             else if (Request.Form["clear"] != null)
             {

@@ -150,6 +150,10 @@
                     $('#arrangement-row').children().slideUp();
                 }
             });
+
+            $(document).ready(function () {
+                $('.timepicker').timepicker({ timeFormat: 'HH:mm:ss p' });
+            });
         </script>
 
         @section Scripts {

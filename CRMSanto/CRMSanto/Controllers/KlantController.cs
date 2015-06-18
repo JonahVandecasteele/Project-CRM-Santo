@@ -86,7 +86,7 @@ namespace CRMSanto.Controllers
                 }
                
                 else { 
-                    return View(ks.GetKlanten());
+                    return View(ks.GetKlanten().OrderBy(n => n.Naam));
                 }
             }
             else if (Request.Form["filterDit"] != null)
@@ -492,7 +492,7 @@ namespace CRMSanto.Controllers
             else if (Request.Form["clear"] != null)
             {
                 TempData["Search"] = null;
-                return View(ks.GetKlanten());
+                return View(ks.GetKlanten().OrderBy(n => n.Naam));
             }
             else
             {
