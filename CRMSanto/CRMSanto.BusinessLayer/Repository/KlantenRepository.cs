@@ -46,6 +46,11 @@ namespace CRMSanto.BusinessLayer.Repository
         {
             context.Adres.Add(entity.Adres);
             //
+
+            if (entity.Geslacht != null)
+            {
+                context.Geslacht.Attach(entity.Geslacht);
+            }
             if (entity.Karaktertrek != null)
             {
                 foreach (Karaktertrek item in entity.Karaktertrek)
@@ -93,6 +98,7 @@ namespace CRMSanto.BusinessLayer.Repository
             Klant klant = context.Klant.Attach(entityToUpdate);
 
             context.Entry(entityToUpdate).State = EntityState.Modified;
+            
         }
         public void SaveImage(HttpPostedFileBase p,string filename)
         {
