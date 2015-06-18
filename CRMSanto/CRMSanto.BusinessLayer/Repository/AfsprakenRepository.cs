@@ -29,7 +29,7 @@ namespace CRMSanto.BusinessLayer.Repository
         public List<Afspraak> AfsprakenVandaag() 
         {
             DateTime dt = DateTime.Now;
-            var query = (from a in context.Afspraak.Include(k => k.Klant).Include(m => m.Masseur).Include(ms=>ms.SoortAfspraak).Include(k=>k.Klant.Adres).Include(k=>k.Klant.Adres.Gemeente)
+            var query = (from a in context.Afspraak.Include(k => k.Klant).Include(m => m.Masseur).Include(ms=>ms.SoortAfspraak).Include(k=>k.Klant.Adres).Include(k=>k.Klant.Adres.Gemeente).Include(a=>a.Arrangement)
                          where a.Geannuleerd == false && a.Archief == false && SqlFunctions.DateDiff("DAY", dt.Date, DbFunctions.TruncateTime(a.DatumTijdstip)) == 0
                          orderby a.DatumTijdstip ascending
                          select a);
@@ -63,7 +63,7 @@ namespace CRMSanto.BusinessLayer.Repository
         }
         public List<Afspraak> VanafAfspraken(DateTime vanaf)
         {
-            var query = (from a in context.Afspraak.Include(k => k.Klant).Include(m => m.Masseur).Include(ms => ms.SoortAfspraak).Include(k => k.Klant.Adres).Include(k=>k.Klant.Adres.Gemeente)
+            var query = (from a in context.Afspraak.Include(k => k.Klant).Include(m => m.Masseur).Include(ms => ms.SoortAfspraak).Include(k => k.Klant.Adres).Include(k=>k.Klant.Adres.Gemeente).Include(a=>a.Arrangement).Include(e=>e.Extra)
                          where a.Geannuleerd == false && a.Archief == false && SqlFunctions.DateDiff("DAY", vanaf.Date, DbFunctions.TruncateTime(a.DatumTijdstip)) >= 0
                          orderby a.DatumTijdstip ascending
                          select a);
