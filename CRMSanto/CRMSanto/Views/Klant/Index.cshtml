@@ -147,6 +147,9 @@
         </div>
 
         <script>
+            $("img").error(function () {
+                $(this).attr("src", "http://massagesanto.blob.core.windows.net/images/profile.jpg");
+            });
             $(".clickable-row").click(function (e) {
                 if (e.toElement.tagName == 'A') return;
                 else window.document.location = $(this).data("href");
@@ -154,9 +157,6 @@
 
             $(document).ready(function () {
                 $('select').material_select();
-                $("img").error(function () {
-                    $(this).attr("src", "http://massagesanto.blob.core.windows.net/images/profile.jpg");
-                });
                 $('.expand-one').click(function () {
                         $('.content-one').slideToggle();
                         $('#icon-one').toggleClass("rotated");
