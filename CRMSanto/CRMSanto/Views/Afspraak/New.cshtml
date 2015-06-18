@@ -4,15 +4,11 @@
     ViewBag.Title = "Afspraak toevoegen";
 }
 
-<script src="@Url.Content("~/Scripts/jquery.timepicker.js")"></script>
-<script src="@Url.Content("~/Scripts/jquery.timepicker.min.js")"></script>
-
-
 <ul class="breadcrumb">
     <li>@Html.ActionLink("Afspraken","Index","Afspraak")</li>
     <li class="active">Toevoegen</li>
 </ul>
-<h2>@ViewBag.Error</h2>
+<h3>@ViewBag.Error</h3>
 @using (Html.BeginForm("New", "Afspraak", FormMethod.Post,new { @id = "frmAfspraak" }))
 {
     @Html.AntiForgeryToken()
@@ -79,26 +75,24 @@
         <div class="col s6">
             <p>
                 <label>@Html.DisplayNameFor(model => model.Tijdstip)</label>
-                @Html.EditorFor(model => model.Tijdstip, new { htmlAttributes = new { @class = "timepicker", id = "tijd", placeholder = "", type="time" } })
+                @Html.EditorFor(model => model.Tijdstip, new { htmlAttributes = new { @class = "timepicker", placeholder = "", type="time" } })
             </p>
         </div>
     </div>
 
     <div class="row">
         <div class="col s6">
-                <input type="checkbox" id="Afspraak_SoloDuo" name="Afspraak.SoloDuo" />
-                <label for="Afspraak_SoloDuo">@Html.DisplayNameFor(model => model.Afspraak.SoloDuo)</label>
-        </div>
-        <div class="col s6">
             <input type="checkbox" id="Afspraak_Verplaatsing" name="Afspraak.Verplaatsing" />
             <label for="Afspraak_Verplaatsing">@Html.DisplayNameFor(model => model.Afspraak.Verplaatsing)</label>         
         </div>
+        @Html.HiddenFor(model => model.Afspraak.SoloDuo)
     </div>
     
     <div class="row">
         <div class="input-field col s12">
-            @Html.TextAreaFor(model => model.Afspraak.Notitie, new { @class = "materialize-textarea", placeholder = "" })
-            <label>@Html.DisplayNameFor(model => model.Afspraak.Notitie)</label>
+            <p><label for="Afspraak_Notitie">@Html.DisplayNameFor(model => model.Afspraak.Notitie)</label></p>
+                @Html.TextAreaFor(model => model.Afspraak.Notitie, new { @class = "materialize-textarea", placeholder = "" })
+
         </div>
     </div>
     <div class="fixed-action-btn">
@@ -110,6 +104,7 @@
 
 
         <script>
+            var copyListMassage, copyListArrangement, copyListExtra;
             $(document).ready(function () {
                 $('select').material_select();
                 $('#arrangement-row').children().hide();
@@ -137,6 +132,9 @@
                     selectYears: 100, // Creates a dropdown of 15 years to control year
                     closeOnClear: true
                 });
+                copyListMassage = $('#Afspraak_SoortAfspraak_ID').clone(true);
+                copyListArrangement = $('#Afspraak_Arrangement_ID').clone(true);
+                copyListExtra = $('#Afspraak_Extra_ID').clone(true);
             });
             $("#massage").change(function () {
                 if (this.checked) {
@@ -144,6 +142,8 @@
                 }
                 else {
                     $('#massage-row').children().slideUp();
+                    $('#Afspraak_SoortAfspraak_ID').replaceWith(copyListMassage);
+                    $('select').material_select();
                 }
             });
             $("#arrangement").change(function () {
@@ -152,12 +152,11 @@
                 }
                 else {
                     $('#arrangement-row').children().slideUp();
+                    $('#Afspraak_Arrangement_ID').replaceWith(copyListArrangement);
+                    $('#Afspraak_Extra_ID').replaceWith(copyListExtra);
+                    $('select').material_select();
                 }
             });
-
-            //$(document).ready(function () {
-            //    $('.timepicker').timepicker({ timeFormat: 'HH:mm:ss', interval: 15, dropdown: true, minTime: '8:30:00' });
-            //});
         </script>
 
         @section Scripts {

@@ -110,25 +110,42 @@ namespace CRMSanto.BusinessLayer.Repository
         }
         public override void Update(Afspraak entityToUpdate)
         {
-            context.Klant.Attach(entityToUpdate.Klant);
-            context.Masseur.Attach(entityToUpdate.Masseur);
-            if (entityToUpdate.SoortAfspraak != null)
+            Afspraak old = GetByID(entityToUpdate.ID);
+            if (old.Klant != null && old.Klant.ID != entityToUpdate.Klant.ID)
+            {
+                context.Klant.Attach(entityToUpdate.Klant);
+                context.Afspraak.Include(m => m.Klant).FirstOrDefault(m => m.ID == entityToUpdate.ID).Klant = entityToUpdate.Klant;
+            }
+            if (old.SoortAfspraak != null && old.SoortAfspraak.ID != entityToUpdate.SoortAfspraak.ID)
             {
                 context.SoortAfspraak.Attach(entityToUpdate.SoortAfspraak);
+                context.Afspraak.Include(m => m.SoortAfspraak).FirstOrDefault(m => m.ID == entityToUpdate.ID).SoortAfspraak = entityToUpdate.SoortAfspraak;
+            }
+            context.Entry(old.Adres).CurrentValues.SetValues(entityToUpdate.Adres);
+            if (old.Adres.Gemeente != null && old.Adres.Gemeente.ID != entityToUpdate.Adres.Gemeente.ID && entityToUpdate.Adres.Gemeente.ID != 0)
+            {
+                context.Gemeente.Attach(entityToUpdate.Adres.Gemeente);
+                context.Adres.Include(m => m.Gemeente).FirstOrDefault(m => m.ID == entityToUpdate.Adres.ID).Gemeente = entityToUpdate.Adres.Gemeente;
             }
 
-            if (entityToUpdate.Arrangement != null)
+            if (old.Masseur != null && old.Masseur.ID != entityToUpdate.Masseur.ID)
+            {
+                context.Masseur.Attach(entityToUpdate.Masseur);
+                context.Afspraak.Include(m => m.Masseur).FirstOrDefault(m => m.ID == entityToUpdate.ID).Masseur = entityToUpdate.Masseur;
+            }
+
+            if (old.Arrangement != null && old.Arrangement.ID != entityToUpdate.Arrangement.ID)
             {
                 context.Arrangement.Attach(entityToUpdate.Arrangement);
+                context.Afspraak.Include(m => m.Arrangement).FirstOrDefault(m => m.ID == entityToUpdate.ID).Arrangement = entityToUpdate.Arrangement;
             }
-
-            if (entityToUpdate.Extra != null)
+            if (old.Extra != null && old.Extra.ID != entityToUpdate.Extra.ID)
             {
                 context.Extra.Attach(entityToUpdate.Extra);
+                context.Afspraak.Include(m => m.Extra).FirstOrDefault(m => m.ID == entityToUpdate.ID).Extra = entityToUpdate.Extra;
             }
-
-            Afspraak afspraak = context.Afspraak.Attach(entityToUpdate);         
-            context.Entry(entityToUpdate).State = EntityState.Modified;
+            
+            context.Entry(old).CurrentValues.SetValues(entityToUpdate);
         }
         public void UpdateAnnuleer(Afspraak a)
         {
