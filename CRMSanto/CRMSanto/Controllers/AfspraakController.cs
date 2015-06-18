@@ -128,8 +128,14 @@ namespace CRMSanto.Controllers
         [HttpPost]
         public ActionResult Edit(NieuweAfspraakPM a)
         {
+            
             if(ModelState.IsValid)
             {
+                string verplaatsing = Request.Form["Verplaatsing"];
+                if (verplaatsing.Equals("on"))
+                    a.Afspraak.Verplaatsing = true;
+                else
+                    a.Afspraak.Verplaatsing = false;
                 if (a.Afspraak.Klant.ID != 0)
                 {
                     a.Afspraak.Klant = ks.GetKlantByID(a.Afspraak.Klant.ID);
