@@ -36,7 +36,6 @@ namespace CRMSanto.Controllers
             this.ks = ks;
         }
 
-
         [HttpGet]
         public ActionResult Index()
         {
