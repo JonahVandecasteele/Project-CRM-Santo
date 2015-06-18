@@ -58,7 +58,6 @@ namespace CRMSanto.BusinessLayer.Repository
                     context.Karaktertrek.Attach(item);
                 }
             }
-                context.Geslacht.Attach(entity.Geslacht);
 
             if (entity.Adres.Gemeente != null)
             {
