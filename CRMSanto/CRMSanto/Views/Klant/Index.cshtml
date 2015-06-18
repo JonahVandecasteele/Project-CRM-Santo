@@ -11,7 +11,7 @@
 
 @using (Html.BeginForm("Index", "Klant", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
-    <div class="input-group search">
+    <div class="input-group search hidden-print">
         <input type="text" value="@ViewBag.Search" name="Search" class="form-control" placeholder="Zoeken...">
         <span class="input-group-btn">
             <button class="btn-floating waves-effect waves-light santo-brown-bg inline-btn" name="submit" type="submit" tabindex="-1">
@@ -23,7 +23,7 @@
            
         </span>
     </div>
-    <div class="panel-group filter-panel" id="accordion" role="tablist" aria-multiselectable="true">
+    <div class="panel-group filter-panel hidden-print" id="accordion" role="tablist" aria-multiselectable="true">
         <div class="panel panel-default">
             <div class="panel-heading" role="tab" id="headingOne">
                 <h4 class="panel-title expand-one">
@@ -33,38 +33,38 @@
             <div class="panel-body content-one klant-hidden">
                 <div class="row">
                     <div class="col s12">
-                            <div class="row">
-                                <div class="col s12">
-                                    <p>
-                                        <label for="geslachten">Geslacht</label>
-                                        @Html.DropDownList("Options", ViewData["Options"] as SelectList, "--", new { @class = "browser-default", id = "geslachten", sortGeslacht = ViewBag.sortGeslacht })
-                                    </p>
-                                </div>
+                        <div class="row">
+                            <div class="col s12">
+                                <p>
+                                    <label for="geslachten">Geslacht</label>
+                                    @Html.DropDownList("Options", ViewData["Options"] as SelectList, "--", new { @class = "browser-default", id = "geslachten", sortGeslacht = ViewBag.sortGeslacht })
+                                </p>
                             </div>
-                            <div class="row">
-                                <div class="col s12">
-                                    <p class="range-field">
-                                        <label for="LeeftijdVan">Minimum leeftijd: <span id="minLeeftijd"></span></label>
-                                        <input type="range" id="LeeftijdVan" name="LeeftijdVan" min="0" max="100" value="@ViewBag.LeeftijdVan" onchange="updateMinLeeftijd(this.value);" />
-                                    </p>
-                                    </div>
-                                </div>
-                            <div class="row">
-                                <div class="col s12">
-                                    <p class="range-field">
-                                        <label for="LeeftijdTot">Maximum leeftijd: <span id="maxLeeftijd"></span></label>
-                                        <input type="range" id="LeeftijdTot" name="LeeftijdTot" min="0" max="100" value="@ViewBag.LeeftijdTot" onchange="updateMaxLeeftijd(this.value);" />
-                                    </p>
-                                </div>
+                        </div>
+                        <div class="row">
+                            <div class="col s12">
+                                <p class="range-field">
+                                    <label for="LeeftijdVan">Minimum leeftijd: <span id="minLeeftijd"></span></label>
+                                    <input type="range" id="LeeftijdVan" name="LeeftijdVan" min="0" max="100" value="@ViewBag.LeeftijdVan" onchange="updateMinLeeftijd(this.value);" />
+                                </p>
                             </div>
+                        </div>
+                        <div class="row">
+                            <div class="col s12">
+                                <p class="range-field">
+                                    <label for="LeeftijdTot">Maximum leeftijd: <span id="maxLeeftijd"></span></label>
+                                    <input type="range" id="LeeftijdTot" name="LeeftijdTot" min="0" max="100" value="@ViewBag.LeeftijdTot" onchange="updateMaxLeeftijd(this.value);" />
+                                </p>
+                            </div>
+                        </div>
                         <div class="last row">
                             <div class="col s12">
                                 <button class="btn waves-effect waves-light" name="filterDit" id="filterDit" type="submit" tabindex="-1">
                                     Toepassen
                                     <i class="mdi-content-filter-list right"></i>
                                 </button>
-                                </div>
                             </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -75,14 +75,13 @@
         <div class="table-responsive">
             <table class="table table-striped table-hover">
                 <tr>
-                    <th>
+                    <th class="hidden-print">
                         <p>
                             <input type="checkbox" class="checkboxes" name="checkboxmail" id="selectAll" />
                             <label for="selectAll"></label>
                         </p>
                     </th>
-                    @*<th> </th>*@
-                    <th> </th>
+                    <th class="hidden-print"> </th>
                     <th>
                         @*@Html.DisplayNameFor(model => model.Naam)*@
                         @Html.ActionLink(Html.DisplayNameFor(model => model.Naam).ToString(), "Index", new { sortOrder = ViewBag.NameSortParm }, new { @class = "linkdisabled" })
@@ -114,13 +113,13 @@
                     
                     
                     <tr class='clickable-row' data-href='/Klant/Edit/@Html.DisplayFor(modelItem => item.ID)'>
-                        <td>
+                        <td class="hidden-print">
                             <p>
                                 <input type="checkbox" class="checkboxes" name="checkboxmail" id="checkbox-@item.ID" value="@item.Email" />
                                 <label for="checkbox-@item.ID"></label>
                             </p>
                         </td>
-                        <td>
+                        <td class="hidden-print">
                             <img src="@Html.GetPhotoURL(Html.DisplayFor(modelItem => item.Foto).ToString())" alt="" class="profilepic shadow-z-1" />
                         </td>
                         <td>
