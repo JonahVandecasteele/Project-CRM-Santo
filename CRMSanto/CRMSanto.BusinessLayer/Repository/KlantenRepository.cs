@@ -20,7 +20,7 @@ namespace CRMSanto.BusinessLayer.Repository
         }
         public override IEnumerable<Klant> All()
         {
-            var query = (from k in context.Klant.Include(g => g.Geslacht).Include(kar => kar.Karaktertrek).Include(m => m.MedischeFiche).Include(p => p.PersoonlijkeFiche).Include(p => p.PersoonlijkeFiche.Werksituatie).Include(a => a.Adres).Include(g => g.Adres.Gemeente).Include(r => r.KlantRelatie).Include(v => v.Voedingspatroon)
+            var query = (from k in context.Klant.Include(g => g.Geslacht).Include(kar => kar.Karaktertrek).Include(m => m.MedischeFiche).Include(m => m.MedischeFiche.Voedingspatroon).Include(m => m.MedischeFiche.Mutualiteit).Include(p => p.PersoonlijkeFiche).Include(p => p.PersoonlijkeFiche.Werksituatie).Include(a => a.Adres).Include(g => g.Adres.Gemeente).Include(r => r.KlantRelatie).Include(v => v.Voedingspatroon)
                          orderby k.Naam
                          select k);
            
@@ -36,12 +36,12 @@ namespace CRMSanto.BusinessLayer.Repository
         }
         public override Klant GetByID(object id)
         {
-            var query = (from k in context.Klant.Include(g => g.Geslacht).Include(kar => kar.Karaktertrek).Include(m => m.MedischeFiche).Include(p => p.PersoonlijkeFiche).Include(p => p.PersoonlijkeFiche.Werksituatie).Include(a => a.Adres).Include(g => g.Adres.Gemeente).Include(v => v.Voedingspatroon) where k.ID == (int)id select k);
+            var query = (from k in context.Klant.Include(g => g.Geslacht).Include(kar => kar.Karaktertrek).Include(m => m.MedischeFiche).Include(m => m.MedischeFiche.Voedingspatroon).Include(m => m.MedischeFiche.Mutualiteit).Include(p => p.PersoonlijkeFiche).Include(p => p.PersoonlijkeFiche.Werksituatie).Include(a => a.Adres).Include(g => g.Adres.Gemeente).Include(v => v.Voedingspatroon) where k.ID == (int)id select k);
             return query.SingleOrDefault<Klant>();
         }
         public IEnumerable<Klant> GetByPostCode(string postcode)
         {
-            var query = (from k in context.Klant.Include(g => g.Geslacht).Include(kar => kar.Karaktertrek).Include(m => m.MedischeFiche).Include(p => p.PersoonlijkeFiche).Include(p => p.PersoonlijkeFiche.Werksituatie).Include(a => a.Adres).Include(g => g.Adres.Gemeente).Include(v => v.Voedingspatroon) where k.Adres.Postcode == postcode select k);
+            var query = (from k in context.Klant.Include(g => g.Geslacht).Include(kar => kar.Karaktertrek).Include(m => m.MedischeFiche).Include(m => m.MedischeFiche.Voedingspatroon).Include(m => m.MedischeFiche.Mutualiteit).Include(p => p.PersoonlijkeFiche).Include(p => p.PersoonlijkeFiche.Werksituatie).Include(a => a.Adres).Include(g => g.Adres.Gemeente).Include(v => v.Voedingspatroon) where k.Adres.Postcode == postcode select k);
             return query.ToList<Klant>();
         }
         public override Klant Insert(Klant entity)
@@ -88,7 +88,12 @@ namespace CRMSanto.BusinessLayer.Repository
         public override void Update(Klant entityToUpdate)
         {
             Klant old = GetByID(entityToUpdate.ID);
-            
+            if (old.MedischeFiche == null)
+                old.MedischeFiche = new MedischeFiche();
+            if (old.MedischeFiche.Voedingspatroon == null)
+                old.MedischeFiche.Voedingspatroon = new Voedingspatroon();
+            if (old.MedischeFiche.Mutualiteit == null)
+                old.MedischeFiche.Mutualiteit = new Mutualiteit();
             //Lower Vars
             context.PersoonlijkeFiche.Attach(old.PersoonlijkeFiche);
             context.Entry(old.PersoonlijkeFiche).CurrentValues.SetValues(entityToUpdate.PersoonlijkeFiche);
@@ -99,6 +104,16 @@ namespace CRMSanto.BusinessLayer.Repository
             }
             context.MedischeFiche.Attach(old.MedischeFiche);
             context.Entry(old.MedischeFiche).CurrentValues.SetValues(entityToUpdate.MedischeFiche);
+            if (old.MedischeFiche.Mutualiteit.ID != entityToUpdate.MedischeFiche.Mutualiteit.ID)
+            {
+                context.Mutualiteit.Attach(entityToUpdate.MedischeFiche.Mutualiteit);
+                context.MedischeFiche.Include(m => m.Mutualiteit).FirstOrDefault(m => m.ID == entityToUpdate.MedischeFiche.ID).Mutualiteit = entityToUpdate.MedischeFiche.Mutualiteit;
+            }
+            if (old.MedischeFiche != null && old.MedischeFiche.Voedingspatroon.ID != entityToUpdate.MedischeFiche.Voedingspatroon.ID)
+            {
+                context.Voedingspatroon.Attach(entityToUpdate.MedischeFiche.Voedingspatroon);
+                context.MedischeFiche.Include(m => m.Voedingspatroon).FirstOrDefault(m => m.ID == entityToUpdate.MedischeFiche.ID).Voedingspatroon = entityToUpdate.MedischeFiche.Voedingspatroon;
+            }
             //Top Level Vars
             if (old.Geslacht != null && old.Geslacht.ID != entityToUpdate.Geslacht.ID)
             {

@@ -19,6 +19,7 @@ namespace CRMSanto.Controllers
             this.ks = ks;
         }
         // GET: Product
+        //[Authorize]
         public ActionResult Index(string sortOrder)
         {
             if (TempData["Producten"] == null)
@@ -95,6 +96,7 @@ namespace CRMSanto.Controllers
             
         }
         [HttpGet]
+        //[Authorize]
         public ActionResult Edit(int? id)
         {
             if (id.HasValue)
@@ -106,24 +108,33 @@ namespace CRMSanto.Controllers
                 return RedirectToAction("Index");
             }
         }
+
         [HttpPost]
+        //[Authorize]
         public ActionResult Edit(Product p)
         {
             ps.EditProduct(p);
             return RedirectToAction("Index");
         }
+
         [HttpGet]
+        //[Authorize]
         public ActionResult New()
         {
             return View();
         }
+
+
         [HttpPost]
+        //[Authorize]
         public ActionResult New(Product p)
         {
             ps.AddProduct(p);
             return RedirectToAction("Index");
         }
+
         [HttpGet]
+        //[Authorize]
         public ActionResult NewProductRegistration(int? id)
         {
             if (id.HasValue)
@@ -143,7 +154,9 @@ namespace CRMSanto.Controllers
                 return RedirectToAction("Index");
             }
         }
+
         [HttpPost]
+        //[Authorize]
         public ActionResult NewProductRegistration(NieuweProductRegistratiePM nprpm)
         {
             nprpm.Klanten = new SelectList(ks.GetKlanten(), "ID", "Naam");

@@ -23,52 +23,68 @@ namespace CRMSanto.Controllers
             return View();
         }
         [HttpGet]
+        //[Authorize]
         public ActionResult NewKaraktertrek(List<Karaktertrek> Karaktertrekken)
         {
             ViewBag.List = ks.GetKaraktertreken();
             return View();
         }
+
         [HttpPost]
+        //[Authorize]
         public ActionResult NewKaraktertrek(Karaktertrek k)
         {
             ks.InsertKaraktertrek(k);
             return RedirectToAction("Index");
         }
+
         [HttpGet]
+        //[Authorize]
         public ActionResult NewWerksituatie()
         {
             ViewBag.List = ks.GetWerkSituaties();
             return View();
         }
+
         [HttpPost]
+        //[Authorize]
         public ActionResult NewWerksituatie(Werksituatie w)
         {
             ks.InsertWerkSituatie(w);
             return RedirectToAction("Index");
         }
+
         [HttpGet]
+        //[Authorize]
         public ActionResult OpkuisAfspraken()
         {
             return View();
         }
+
         [HttpPost]
+        //[Authorize]
         public ActionResult OpkuisAfspraken(DateTime van, DateTime tot)
         {
             afs.InsertArchief(van,tot);
             return RedirectToAction("Index");
         }
+
         [HttpGet]
+        //[Authorize]
         public ActionResult NewMutualiteit()
         {
             ViewBag.List = ks.GetMutualiteiten();
             return View();
         }
+
         [HttpPost]
+        //[Authorize]
         public ActionResult NewMutualiteit(Mutualiteit m)
         {
             ks.InsertMutualiteit(m);
             return RedirectToAction("Index");
         }
+
         [HttpGet]
         public ActionResult NewRelatie()
         {
@@ -83,12 +99,14 @@ namespace CRMSanto.Controllers
         }
 
         [HttpGet]
+        //[Authorize]
         public ActionResult NewMailImage()
         {
             return View();
         }
 
         [HttpPost]
+        //[Authorize]
         public ActionResult NewMailImage(HttpPostedFileBase file)
         {
             if(file!=null)

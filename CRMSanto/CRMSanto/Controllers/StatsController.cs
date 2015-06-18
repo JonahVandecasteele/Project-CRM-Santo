@@ -22,6 +22,7 @@ namespace CRMSanto.Controllers
         }
 
         // GET: Stats
+        //[Authorize]
         public ActionResult Index()
         {
             StatsPM stats = new StatsPM();

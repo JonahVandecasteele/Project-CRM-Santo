@@ -162,6 +162,10 @@ namespace CRMSanto.BusinessLayer.Services
         {
             return repoVoedingspatroon.All().ToList<Voedingspatroon>();
         }
+        public Voedingspatroon GetVoedingspatroonByID(int id)
+        {
+            return repoVoedingspatroon.GetByID(id);
+        }
         public void Mails()
         {
             List<Klant> klanten = new List<Klant>();
