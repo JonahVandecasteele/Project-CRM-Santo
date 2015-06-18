@@ -75,12 +75,13 @@
         <div class="table-responsive">
             <table class="table table-striped table-hover">
                 <tr>
-                    <th>
+                    @*<th>
                         <p>
-                            <input type="checkbox" name="test" id="test" value="mails" />
+                            <input type="checkbox" name="checkbox-th" id="checkbox-th" value="mails" />
                             <label for="checkbox-th"></label>
                         </p>
-                    </th>
+                    </th>*@
+                    <th> </th>
                     <th> </th>
                     <th>
                         @*@Html.DisplayNameFor(model => model.Naam)*@
@@ -110,14 +111,13 @@
 
                 @foreach (var item in Model)
                 {
+                    
+                    
                     <tr class='clickable-row' data-href='/Klant/Edit/@Html.DisplayFor(modelItem => item.ID)'>
                         <td>
                             <p>
-                               
-                                <input type="checkbox" name="Test" id="checkbox-@item.ID" value="mails" />
-                                    <label for="checkbox-@item.ID"></label>
-                         
-                                
+                                <input type="checkbox" class="checkboxes" name="Test" id="@item.ID" value="@item.Email" checked/>
+                                <label for="checkbox-@item.ID"></label>
                             </p>
                         </td>
                         <td>
@@ -151,6 +151,7 @@
         Aantal resultaten: @Model.Count()
 
         <div class="fixed-action-btn">
+            <a  id="mailTo" name="mailTo" onclick="mailTo();" class="btn-floating btn-large waves-effect waves-light yellow"><i class="mdi-content-mail"></i></a>
             <a href='@Url.Action("New", "Klant")' onclick="showProgress();" class="btn-floating btn-large waves-effect waves-light green"><i class="mdi-content-add"></i></a>
         </div>
 
@@ -185,8 +186,22 @@
                 $(".linkdisabled").disabled();
             });
 
-            $("#Test").click(function () {
-                $("input:checkbox:not(#Test)").attr("checked", $(this).is(":checked"));
+            var checkedValues = $('.checkboxes:checked').map(function () {
+                return this.value;
+            }).get();
+
+            function mailTo() {               
+                    var emails = [];
+                    $('.checkboxes:checked').each(function () {
+                        emails.push(this.value);
+                    $('mailTo').attr("href", "mailto:" + emails);
+                    console.log(emails);
+                });
             });
+            
+
+            //$("#Test").click(function () {
+            //    $("input:checkbox:not(#Test)").attr("checked", $(this).is(":checked"));
+            //});
 
         </script>
