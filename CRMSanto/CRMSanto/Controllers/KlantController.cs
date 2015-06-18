@@ -777,6 +777,29 @@ namespace CRMSanto.Controllers
                                     if (tempKlant.KlantRelatie == null)
                                         tempKlant.KlantRelatie = new List<KlantRelatie>();
 
+                                    //Get all possible gemeentes
+                                    List<Gemeente> gemeentelist = new List<Gemeente>();
+                                    if (tempKlant.Adres.Postcode == null)
+                                    {
+                                        tempKlant.Adres.Postcode = "0000";
+                                    }
+                                    if (tempKlant.Adres.Gemeente.Plaatsnaam == null)
+                                    {
+                                        gemeentelist = ks.GetGemeentesByPostCode(tempKlant.Adres.Postcode);//Get list of gemeentes by postcode
+                                        if (gemeentelist.Count > 1)//If more then 1 gemeente possible
+                                        {
+                                            TempData["NewKlantM"] = klant;//Save klant data for postback
+                                            KlantViewModel model = klant;//Prep View Model
+                                            model.Gemeentes = gemeentelist;//Fill gemeentes so view knows that it has to show all possible gemeentes
+                                            return View(model);//Return this for view to handle
+                                        }
+                                        else
+                                        {
+
+                                            tempKlant.Adres.Gemeente = gemeentelist.First();//Only 1 possible so no furder actions needed
+                                        }
+
+                                    }
                                     if (klant.Upload == null)//If the upload would magicaly become null , we grab it from the database.
                                     {
                                         if (Session["PhotoUpload"] != null)
