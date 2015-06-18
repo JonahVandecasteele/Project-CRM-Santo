@@ -20,7 +20,7 @@ namespace CRMSanto.BusinessLayer.Repository
         }
         public override IEnumerable<Klant> All()
         {
-            var query = (from k in context.Klant.Include(g => g.Geslacht).Include(kar => kar.Karaktertrek).Include(m => m.MedischeFiche).Include(p => p.PersoonlijkeFiche).Include(a =>a.Adres).Include(g => g.Adres.Gemeente).Include(r => r.KlantRelatie)  select k);
+            var query = (from k in context.Klant.Include(g => g.Geslacht).Include(kar => kar.Karaktertrek).Include(m => m.MedischeFiche).Include(p => p.PersoonlijkeFiche).Include(p => p.PersoonlijkeFiche.Werksituatie).Include(a => a.Adres).Include(g => g.Adres.Gemeente).Include(r => r.KlantRelatie) select k);
            
             return query.ToList<Klant>();
         }
@@ -34,12 +34,12 @@ namespace CRMSanto.BusinessLayer.Repository
         }
         public override Klant GetByID(object id)
         {
-            var query = (from k in context.Klant.Include(g => g.Geslacht).Include(kar => kar.Karaktertrek).Include(m => m.MedischeFiche).Include(p => p.PersoonlijkeFiche).Include(a => a.Adres).Include(g => g.Adres.Gemeente) where k.ID == (int)id select k);
+            var query = (from k in context.Klant.Include(g => g.Geslacht).Include(kar => kar.Karaktertrek).Include(m => m.MedischeFiche).Include(p => p.PersoonlijkeFiche).Include(p => p.PersoonlijkeFiche.Werksituatie).Include(a => a.Adres).Include(g => g.Adres.Gemeente) where k.ID == (int)id select k);
             return query.SingleOrDefault<Klant>();
         }
         public IEnumerable<Klant> GetByPostCode(string postcode)
         {
-            var query = (from k in context.Klant.Include(g => g.Geslacht).Include(kar => kar.Karaktertrek).Include(m => m.MedischeFiche).Include(p => p.PersoonlijkeFiche).Include(a => a.Adres) where k.Adres.Postcode == postcode select k);
+            var query = (from k in context.Klant.Include(g => g.Geslacht).Include(kar => kar.Karaktertrek).Include(m => m.MedischeFiche).Include(p => p.PersoonlijkeFiche).Include(p => p.PersoonlijkeFiche.Werksituatie).Include(a => a.Adres) where k.Adres.Postcode == postcode select k);
             return query.ToList<Klant>();
         }
         public override Klant Insert(Klant entity)
@@ -86,19 +86,33 @@ namespace CRMSanto.BusinessLayer.Repository
         public override void Update(Klant entityToUpdate)
         {
             Klant old = GetByID(entityToUpdate.ID);
-
-            context.MedischeFiche.Attach(old.MedischeFiche);
+            
+            //Lower Vars
             context.PersoonlijkeFiche.Attach(old.PersoonlijkeFiche);
-            foreach(Karaktertrek karakter in entityToUpdate.Karaktertrek)
+            context.Entry(old.PersoonlijkeFiche).CurrentValues.SetValues(entityToUpdate.PersoonlijkeFiche);
+            if(old.PersoonlijkeFiche.Werksituatie.ID!=entityToUpdate.PersoonlijkeFiche.Werksituatie.ID)
             {
-                if(!old.Karaktertrek.Exists(a => a.ID==karakter.ID))
+                context.Werksituatie.Attach(entityToUpdate.PersoonlijkeFiche.Werksituatie);
+                context.PersoonlijkeFiche.Include(m => m.Werksituatie).FirstOrDefault(m => m.ID == entityToUpdate.PersoonlijkeFiche.ID).Werksituatie = entityToUpdate.PersoonlijkeFiche.Werksituatie;
+            }
+            context.MedischeFiche.Attach(old.MedischeFiche);
+            context.Entry(old.MedischeFiche).CurrentValues.SetValues(entityToUpdate.MedischeFiche);
+            //Top Level Vars
+            if(old.Geslacht.ID != entityToUpdate.Geslacht.ID)
+            {
+                context.Geslacht.Attach(entityToUpdate.Geslacht);
+                context.Klant.Include(m => m.Geslacht).FirstOrDefault(m => m.ID == entityToUpdate.ID).Geslacht = entityToUpdate.Geslacht;
+            }
+            foreach (Karaktertrek karakter in entityToUpdate.Karaktertrek)
+            {
+                if (!old.Karaktertrek.Exists(a => a.ID == karakter.ID))
                 {
                     context.Karaktertrek.Attach(karakter);
                     context.Klant.Include(m => m.Karaktertrek).FirstOrDefault(m => m.ID == old.ID).Karaktertrek.Add(karakter);
                 }
-      
+
             }
-            context.Entry(old.PersoonlijkeFiche).CurrentValues.SetValues(entityToUpdate.PersoonlijkeFiche);
+
             context.Entry(old).CurrentValues.SetValues(entityToUpdate);
         }
         public void SaveImage(HttpPostedFileBase p,string filename)
