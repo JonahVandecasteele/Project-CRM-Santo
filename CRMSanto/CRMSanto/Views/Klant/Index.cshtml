@@ -75,6 +75,7 @@
         <div class="table-responsive">
             <table class="table table-striped table-hover">
                 <tr>
+                    <th>checkbox</th>
                     <th> </th>
                     <th>
                         @*@Html.DisplayNameFor(model => model.Naam)*@
@@ -105,6 +106,9 @@
                 @foreach (var item in Model)
                 {
                     <tr class='clickable-row' data-href='/Klant/Edit/@Html.DisplayFor(modelItem => item.ID)'>
+                        <td>
+                            <input type="checkbox" name="mails" value="mails">
+                        </td>
                         <td>
                             <img src="@Html.GetPhotoURL(Html.DisplayFor(modelItem => item.Foto).ToString())" alt="" class="profilepic shadow-z-1" />
                         </td>
