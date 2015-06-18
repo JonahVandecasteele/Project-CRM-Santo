@@ -151,11 +151,11 @@
         Aantal resultaten: @Model.Count()
 
         <div class="fixed-action-btn">
-            <a  id="mailTo" name="mailTo" onclick="mailTo();" class="btn-floating btn-large waves-effect waves-light yellow"><i class="mdi-content-mail"></i></a>
+            <a  id="mailTo" name="mailTo" class="btn-floating btn-large waves-effect waves-light yellow"><i id="sendButton" class="mdi-content-mail"></i></a>
             <a href='@Url.Action("New", "Klant")' onclick="showProgress();" class="btn-floating btn-large waves-effect waves-light green"><i class="mdi-content-add"></i></a>
         </div>
-
         <script>
+            var emails ="";
             $("img").error(function () {
                 $(this).attr("src", "http://massagesanto.blob.core.windows.net/images/profile.jpg");
             });
@@ -191,13 +191,18 @@
                 $(".linkdisabled").disabled();
             });
 
-            var checkedValues = $('.checkboxes:checked').map(function () {
-                return this.value;
-            }).get();
+            $(function () {
+                $('#mailTo').on('click', function (event) {
+                    event.preventDefault();
+                    emails = "";
+                    $('.checkboxes:checked').each(function () {
+                        emails = emails + $(this).val() + ", ";
+                    });
+                    var mailto_link = 'mailto:' + emails;
 
-                  
-            //$("#Test").click(function () {
-            //    $("input:checkbox:not(#Test)").attr("checked", $(this).is(":checked"));
-            //});
+                    win = window.open(mailto_link, 'emailWindow');
+                    if (win && win.open && !win.closed) win.close();
+                });
+            });
 
         </script>
