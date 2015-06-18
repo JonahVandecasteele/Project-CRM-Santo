@@ -91,7 +91,7 @@ namespace CRMSanto.Controllers
         public ActionResult Edit(Product p)
         {
             ps.EditProduct(p);
-            return View();
+            return RedirectToAction("Index");
         }
         [HttpGet]
         public ActionResult New()
