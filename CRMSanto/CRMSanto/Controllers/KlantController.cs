@@ -571,6 +571,8 @@ namespace CRMSanto.Controllers
         [HttpGet]
         public ActionResult New()
         {
+            Session["PhotoLink"] = null;
+            Session["PhotoUpload"]=null;
             KlantViewModel model;
             if (Session["EditKlant"] == null)
             {
@@ -591,6 +593,7 @@ namespace CRMSanto.Controllers
             model.MedischeFiche = new MedischeFiche();
             model.PersoonlijkeFiche = new PersoonlijkeFiche();
             model.MedischeFiche.Mutualiteit = new Mutualiteit();
+            model.Adres = new Adres();
             model.Vandaag = DateTime.Now.ToString("dd-MM-yyyy");
             model.SelectedKlantRelatie = new CRMSanto.Models.KlantRelatie() { Relatie = new CRMSanto.Models.Klant() { ID = 0, Naam = "Empty", Voornaam = "Empty" }, RelatieType = new Relatie() { Naam = "Empty" } };
             }
@@ -775,6 +778,26 @@ namespace CRMSanto.Controllers
                                         tempKlant.Voedingspatroon = new Voedingspatroon();
                                     if (tempKlant.KlantRelatie == null)
                                         tempKlant.KlantRelatie = new List<KlantRelatie>();
+
+                                    //Get all possible gemeentes
+                                    List<Gemeente> gemeentelist = new List<Gemeente>();
+                                    if (tempKlant.Adres.Postcode == null)
+                                    {
+                                        tempKlant.Adres.Postcode = "0000";
+                                    }
+                                        gemeentelist = ks.GetGemeentesByPostCode(tempKlant.Adres.Postcode);//Get list of gemeentes by postcode
+                                        if (gemeentelist.Count > 1)//If more then 1 gemeente possible
+                                        {
+                                            TempData["NewKlantM"] = klant;//Save klant data for postback
+                                            KlantViewModel model = klant;//Prep View Model
+                                            model.Gemeentes = gemeentelist;//Fill gemeentes so view knows that it has to show all possible gemeentes
+                                            return View(model);//Return this for view to handle
+                                        }
+                                        else
+                                        {
+
+                                            tempKlant.Adres.Gemeente = gemeentelist.First();//Only 1 possible so no furder actions needed
+                                        }
 
                                     if (klant.Upload == null)//If the upload would magicaly become null , we grab it from the database.
                                     {
