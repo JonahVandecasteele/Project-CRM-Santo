@@ -108,7 +108,9 @@ namespace CRMSanto.Controllers
         [HttpPost]
         public ActionResult Edit(NieuweAfspraakPM a)
         {
-            if (a.Afspraak.Klant.ID != 0)
+            if(ModelState.IsValid)
+            {
+                if (a.Afspraak.Klant.ID != 0)
                 {
                     a.Afspraak.Klant = ks.GetKlantByID(a.Afspraak.Klant.ID);
                 }
@@ -124,8 +126,7 @@ namespace CRMSanto.Controllers
                 {
                     a.Afspraak.Duur = a.Afspraak.SoortAfspraak.Duur;
                 }
-                else if(a.Afspraak.Arrangement != null)
-
+                else if (a.Afspraak.Arrangement != null)
                 {
                     a.Afspraak.Duur = a.Afspraak.Arrangement.Duur;
                 }
@@ -134,27 +135,28 @@ namespace CRMSanto.Controllers
                 {
                     a.Afspraak.Duur = 60;
                 }
-                
-                
+
+
                 if (a.Datum.Date == DateTime.MinValue)
                     a.Afspraak.DatumTijdstip = ViewBag.Datum + a.Tijdstip.TimeOfDay;
                 else
                     a.Afspraak.DatumTijdstip = a.Datum.Date + a.Tijdstip.TimeOfDay;
 
-                    afs.UpdateAfspraak(a.Afspraak);
-                    if (a.Afspraak.Geannuleerd == false)
-                    {                      
-                        return RedirectToAction("Index");
-                    }
-                        
-                    else
-                    {
-                        a.Afspraak.Geannuleerd = false;
-                        TempData["error"] = "Er is reeds een afspraak op dit tijdstip gemaakt!";
-                        return RedirectToAction("Index");
-                        //return View(a);
-                    }                   
-                 return View(a);
+                afs.UpdateAfspraak(a.Afspraak);
+                if (a.Afspraak.Geannuleerd == false)
+                {
+                    return RedirectToAction("Index");
+                }
+
+                else
+                {
+                    a.Afspraak.Geannuleerd = false;
+                    TempData["error"] = "Er is reeds een afspraak op dit tijdstip gemaakt!";
+                    return RedirectToAction("Index");
+                    //
+                }
+            }
+            return View(a);
         }
         [HttpGet]
         public ActionResult New()

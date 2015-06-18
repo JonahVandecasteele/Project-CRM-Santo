@@ -95,10 +95,6 @@ namespace CRMSanto.BusinessLayer.Repository
                 context.Werksituatie.Attach(entityToUpdate.PersoonlijkeFiche.Werksituatie);
                 context.PersoonlijkeFiche.Include(m => m.Werksituatie).FirstOrDefault(m => m.ID == entityToUpdate.PersoonlijkeFiche.ID).Werksituatie = entityToUpdate.PersoonlijkeFiche.Werksituatie;
             }
-            else
-            {
-
-            }
             context.MedischeFiche.Attach(old.MedischeFiche);
             context.Entry(old.MedischeFiche).CurrentValues.SetValues(entityToUpdate.MedischeFiche);
             //Top Level Vars
