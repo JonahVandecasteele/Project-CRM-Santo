@@ -11,13 +11,11 @@
     @Html.HiddenFor(model => model.Afspraak.ID)
     @Html.HiddenFor(model => model.Datum);
     @Html.HiddenFor(model => model.Tijdstip);
-    @Html.HiddenFor(model => model.Afspraak.Klant);
-    @Html.HiddenFor(model => model.Afspraak.Masseur);
-    @Html.HiddenFor(model => model.Afspraak.SoortAfspraak);
+    @Html.HiddenFor(model => model.Afspraak.Klant.ID);
     @Html.HiddenFor(model => model.Afspraak.SoortAfspraak.ID);
-    @Html.HiddenFor(model => model.Afspraak.Arrangement);
     @Html.HiddenFor(model => model.Afspraak.Arrangement.ID);
     @Html.HiddenFor(model => model.Afspraak.Extra.ID);
+    @Html.HiddenFor(model => model.Afspraak.Masseur.ID)
     @Html.HiddenFor(model => model.Afspraak.Verplaatsing);
     @Html.HiddenFor(model => model.Afspraak.Notitie)
     @Html.HiddenFor(model => model.Afspraak.Duur)
@@ -30,11 +28,10 @@
         <div class="col s12">
             <div class="row">
                 <h2>@ViewBag.Datum.ToString("dd MMMM yyyy hh:mm")</h2>
-                <p><b>Klant:</b> @Html.DisplayFor(model => model.Afspraak.Klant.Naam) @Html.DisplayFor(model => model.Afspraak.Klant.Voornaam)</p>
-                <p><b>Afspraak:</b> @Html.DisplayFor(model => model.Afspraak.SoortAfspraak.Naam)</p>
+                <h4>@Html.DisplayFor(model => model.Afspraak.Klant.Naam) @Html.DisplayFor(model => model.Afspraak.Klant.Voornaam)</h4>
             </div>
             <div class="row">
-                <h3>Ben je zeker dat je deze afspraak wil verwijderen?</h3>
+                <h5>Ben je zeker dat je deze afspraak wil verwijderen?</h5>
                 <button class="btn waves-effect waves-light red" type="submit" name="action">
                     <i class="mdi-action-delete left"></i>                    
                     Ja
