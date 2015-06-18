@@ -147,7 +147,7 @@
         </div>
 
         <script>
-            $(".clickable-row").click(function () {
+            $(".clickable-row").click(function (e) {
                 if (e.toElement.tagName == 'A') return;
                 else window.document.location = $(this).data("href");
             });
