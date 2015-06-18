@@ -5,6 +5,9 @@
         transition-duration: 0.4s;
         transition-property: transform;
     }
+    .card-panel.yellow.black-text {
+        font-size: 20px
+    }
     #icon-one.rotated,
     #icon-two.rotated,
     #icon-three.rotated,

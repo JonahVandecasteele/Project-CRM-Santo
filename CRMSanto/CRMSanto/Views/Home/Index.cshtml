@@ -9,38 +9,36 @@
 <div class="table-responsive">
     <table class="table table-striped table-hover">
         <tr>
-            <th>
-
-            </th>            
+            <th></th>
             <th>
                 @Html.DisplayNameFor(model => model.DatumTijdstip)
             </th>
+            <th>Klant</th>
             <th>
                 Masseur
             </th>
             <th>
-                Klant
+                @Html.DisplayNameFor(model => model.SoortAfspraak)
             </th>
             <th>
-                Soort afspraak
+                Arrangement
             </th>
             <th>
-                Duo
+                Extra
             </th>
             <th>
-                Op verplaatsing
+                # personen
             </th>
-
         </tr>
 
         @foreach (var item in Model)
         {
-            
+
             var style = "";
             if (item.Masseur.ID == 8) { style = "success"; };
             if (item.Masseur.ID == 9) { style = "warning"; };
             if (item.Masseur.ID == 10) { style = "info"; };
-            
+
             <tr class='@style'>
                 <td>
                     @if (item.Verplaatsing)
@@ -51,31 +49,35 @@
                         </button>
                     }
                 </td>
-                <td>    
+                <td>
                     @item.DatumTijdstip.ToString("HH:mm") - @item.DatumTijdstip.AddMinutes(item.Duur).ToString("HH:mm")
+                </td>
+                <td>
+                    <div class="row vertical-align klant-home">
+                        <div class="col-md-3">
+                            <a href="Klant/Edit/@Html.DisplayFor(modelItem => item.Klant.ID)" title="@Html.DisplayFor(modelItem => item.Klant.Naam) @Html.DisplayFor(modelItem => item.Klant.Voornaam)"><img src="@Html.GetPhotoURL(Html.DisplayFor(modelItem => item.Klant.Foto).ToString())" alt="@Html.DisplayFor(modelItem => item.Klant.Naam) @Html.DisplayFor(modelItem => item.Klant.Voornaam)" class="profilepic shadow-z-1" /></a>
+                        </div>
+                    </div>
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Masseur.Naam)
                 </td>
                 <td>
-                    <div class="row vertical-align klant-home">
-                        <div class="col-md-3">
-                            <a href="Klant/Edit/@Html.DisplayFor(modelItem => item.Klant.ID)"><img src="@Html.GetPhotoURL(Html.DisplayFor(modelItem => item.Klant.Foto).ToString())" alt="" class="profilepic shadow-z-1" /></a>
-                        </div>
-                        <div class="col-md-9">
-                            <a href="Klant/Edit/@Html.DisplayFor(modelItem => item.Klant.ID)">@Html.DisplayFor(modelItem => item.Klant.Naam) @Html.DisplayFor(modelItem => item.Klant.Voornaam)</a>
-                        </div>
-                    </div>
-                </td>
-                <td>
                     @Html.DisplayFor(modelItem => item.SoortAfspraak.Naam)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.SoloDuo)
+                    @Html.DisplayFor(modelItem => item.Arrangement.Naam)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Verplaatsing)
+                    @Html.DisplayFor(modelItem => item.Extra.Naam)
                 </td>
+                <td>
+                    @if (item.AantalPersonen != 0)
+                    {
+                        @Html.DisplayFor(modelItem => item.AantalPersonen)
+                    }
+                </td>
+
             </tr>
         }
 

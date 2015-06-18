@@ -1,20 +1,41 @@
 ﻿@{
-    ViewBag.Title = "OpkuisAfspraken";
+    ViewBag.Title = "Afspraken archiveren";
 }
 
-<h2>Opkuis Afspraken</h2>
+<ul class="breadcrumb">
+    <li>@Html.ActionLink("Instellingen", "Index", "Setting")</li>
+    <li class="active">Afspraken archiveren</li>
+</ul>
 
 
-@using (Html.BeginForm())
+
+@using (Html.BeginForm("OpkuisAfspraken", "Setting", FormMethod.Post,
+ new { @id = "frmSetting", enctype = "multipart/form-data" }))
 {
-    <input type="DateTime" id="van" name="van" />
-    <input type="DateTime" id="tot" name="tot" />
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+    <div class="row">
+        <div class="col s12">
+            <div class="row">
+                <div class="col s12">
+                    <div class="card-panel yellow black-text"><i class="mdi-alert-warning"></i> Met deze functie archiveert u alle afspraken binnen de gekozen periode!</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s6">
+                    <label for="van">Begindatum</label>
+                    <input type="date" id="van" name="van" />
+                </div>
+                <div class="col s6">
+                    <label for="van">Einddatum</label>
+                    <input type="date" id="tot" name="tot" />
+                </div>
             </div>
         </div>
+    </div>
+            <div class="fixed-action-btn">
+                <a onclick="$('#frmSetting').submit();" href="#" class="btn-floating btn-large waves-effect waves-light red"><i class="mdi-action-history"></i></a>
+            </div>
+
 }
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+            @section Scripts {
+                @Scripts.Render("~/bundles/jqueryval")
+            }
