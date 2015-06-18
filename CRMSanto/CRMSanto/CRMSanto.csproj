@@ -479,6 +479,7 @@
     <Content Include="Views\Dienst\Edit2.cshtml" />
     <Content Include="Views\Dienst\New3.cshtml" />
     <Content Include="Views\Dienst\Edit3.cshtml" />
+    <Content Include="Views\Setting\NewMailImage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
