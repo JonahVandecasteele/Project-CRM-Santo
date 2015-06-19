@@ -75,6 +75,47 @@ namespace CRMSanto.Helpers
 
             return returnResults;
         }
+        internal async Task<List<model.CalendarEvent>> GetCalanderByDate(DateTime begining,DateTime ending)
+        {
+            // Make sure we have a reference to the Outlook Services client
+            var outlookServicesClient = await AuthenticationHelper.EnsureOutlookServicesClientCreatedAsync("Calendar");
+
+            List<model.CalendarEvent> returnResults = new List<model.CalendarEvent>();
+
+            var eventsResults = await (from i in outlookServicesClient.Me.Calendar.Events
+                                       where i.Start >= begining &&
+                                       i.Start <= ending
+                                       orderby i.Start
+                                       select i).Take(10).ExecuteAsync();
+
+
+
+            var events = eventsResults.CurrentPage;
+
+            foreach (IEvent serverEvent in events)
+            {
+
+                //model.CalendarEvent modelEvent = await GetEventDetailsAsync(ctx, serverEvent.Id);
+                model.CalendarEvent modelEvent = new model.CalendarEvent(serverEvent);
+                if ((!eventsResults.MorePagesAvailable))
+                {
+                    if (modelEvent.ID == events.Last<IEvent>().Id)
+                    {
+                        modelEvent.IsLastItem = true;
+
+                    }
+                }
+                if ((modelEvent.ID == events.First<IEvent>().Id) )
+                {
+                    modelEvent.IsFirstItem = true;
+                }
+
+                returnResults.Add(modelEvent);
+            }
+
+
+            return returnResults;
+        }
 
         /// <summary>
         /// Adds a new event to user's default calendar
