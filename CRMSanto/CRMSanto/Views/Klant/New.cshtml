@@ -12,7 +12,7 @@
 
 <ul class="breadcrumb">
     <li>@Html.ActionLink("Klanten", "Index", "Klant")</li>
-    <li class="active">Toevoegen</li>
+    <li class="active">Toevoegen / bewerken</li>
 </ul>
 
 @using (Html.BeginForm("New", "Klant", FormMethod.Post, new { @id = "frmKlant", enctype = "multipart/form-data" }))
@@ -33,10 +33,10 @@
             <div class="row">
                 <div class="col s12">
                     <div class="row ">
-                        <div class="col s3">
+                        <div class="col s12 l3">
                             <p class="statKlant"><i class="tiny mdi-editor-insert-chart"></i> <b>Aantal afspraken:</b> @Html.DisplayFor(model => model.Afspraken.Count)</p>
                         </div>
-                        <div class="col s3">
+                        <div class="col s12 l3 marginTopMobile">
                             <p class="statKlant"><i class="tiny mdi-editor-insert-chart"></i> <b>Aantal gekochte producten:</b> @producten</p>
                         </div>
                     </div>
