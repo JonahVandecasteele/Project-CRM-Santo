@@ -53,10 +53,13 @@
                     @item.DatumTijdstip.ToString("HH:mm") - @item.DatumTijdstip.AddMinutes(item.Duur).ToString("HH:mm")
                 </td>
                 <td>
-                    <div class="row vertical-align klant-home">
+                    <div class="row vertical-align klant-home hidden-print">
                         <div class="col-md-3">
                             <a href="Klant/Edit/@Html.DisplayFor(modelItem => item.Klant.ID)" title="@Html.DisplayFor(modelItem => item.Klant.Naam) @Html.DisplayFor(modelItem => item.Klant.Voornaam)"><img src="@Html.GetPhotoURL(Html.DisplayFor(modelItem => item.Klant.Foto).ToString())" alt="@Html.DisplayFor(modelItem => item.Klant.Naam) @Html.DisplayFor(modelItem => item.Klant.Voornaam)" class="profilepic shadow-z-1" /></a>
                         </div>
+                    </div>
+                    <div class="visible-print-inline">
+                        @Html.DisplayFor(modelItem => item.Klant.Naam) @Html.DisplayFor(modelItem => item.Klant.Voornaam)
                     </div>
                 </td>
                 <td>
