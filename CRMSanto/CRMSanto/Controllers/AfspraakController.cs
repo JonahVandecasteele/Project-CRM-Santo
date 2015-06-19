@@ -129,7 +129,7 @@ namespace CRMSanto.Controllers
         }      
         [HttpPost]
         //[Authorize]
-        public ActionResult Edit(NieuweAfspraakPM a)
+        public async Task<ActionResult> Edit(NieuweAfspraakPM a)
         {
             
             if(ModelState.IsValid)
@@ -167,12 +167,30 @@ namespace CRMSanto.Controllers
                 {
                     a.Afspraak.Duur = 60;
                 }
-
+                
 
                 if (a.Datum.Date == DateTime.MinValue)
                     a.Afspraak.DatumTijdstip = ViewBag.Datum + a.Tijdstip.TimeOfDay;
                 else
                     a.Afspraak.DatumTijdstip = a.Datum.Date + a.Tijdstip.TimeOfDay;
+
+                _O365ServiceOperationFailed = false;
+                String newEventID = "";
+                List<CalendarEvent> list = new List<CalendarEvent>();
+                try
+                {
+                    Afspraak afspraak = afs.GetAfspraakByID(a.Afspraak.ID);
+                    //newEventID = await _calenderOperations.AddCalendarEventAsync(a.Afspraak.Klant.Adres.ToString(), a.Afspraak.Klant.ToString(), a.Afspraak.Klant.Naam + " " + a.Afspraak.Klant.Voornaam, a.Afspraak.SoortAfspraak.Naam + " - " + a.Afspraak.Masseur.Naam, DateTimeOffset.Parse(a.Afspraak.DatumTijdstip.ToString()), DateTimeOffset.Parse(a.Afspraak.DatumTijdstip.ToString()));
+                    list = await _calenderOperations.GetCalanderByDate(afspraak.DatumTijdstip, afspraak.DatumTijdstip.AddMinutes(afspraak.Duur));
+                    if (list.Count == 1)
+                    {
+                        await _calenderOperations.UpdateCalendarEventAsync(list.First().ID, a.Afspraak.Klant.Adres.ToString(), a.Afspraak.Klant.ToString(),"", a.Afspraak.SoortAfspraak.Naam + " - " + a.Afspraak.Masseur.Naam, DateTimeOffset.Parse(a.Afspraak.DatumTijdstip.ToString()), DateTimeOffset.Parse(a.Afspraak.DatumTijdstip.ToString()));
+                    }
+                }
+                catch (Exception)
+                {
+                    _O365ServiceOperationFailed = true;
+                }
 
                 afs.UpdateAfspraak(a.Afspraak);
                 if (a.Afspraak.Geannuleerd == false)
